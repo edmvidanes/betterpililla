@@ -1,0 +1,708 @@
+{
+  "schemaVersion": "civic-research-updates/v1",
+  "capturedAt": "2026-10-21",
+  "municipality": "Cavinti, Laguna, Philippines",
+  "scope": "Priority collection attempts under plan section 6.4. Supplemental immutable research evidence only; does not replace canonical facts, legislative rows, or existing coverage conflicts.",
+  "timestampPolicy": "Web-reader attempts expose no per-request clock: retrievedAt uses observed UTC calendar date (day precision). Direct-fetch response hashes include exact observed UTC timestamps. No synthetic midnight timestamps.",
+  "rightsAndRetention": "No bulk mirroring, authentication bypass, certificate override or restricted/private records collected. Public municipal attachments downloaded transiently for checksum/text extraction; PDFs and rendered page removed. Retain bounded attributed excerpts, hashes and source URLs only; unknown reuse licenses are not permission to redistribute entire documents.",
+  "observationContract": {
+    "required": [
+      "recordId",
+      "sourceId",
+      "sourceUrl",
+      "retrievedAt",
+      "availabilityStatus",
+      "verificationStatus",
+      "freshnessStatus",
+      "notes"
+    ],
+    "findings": "Optional bounded sourceOriginalText excerpts with SHA-256 of exact UTF-8 excerpt text; page is a 1-based PDF page where established. responseSha256, when present, separately hashes exact fetched response bytes.",
+    "httpStatus": "null means reader did not expose HTTP status, not HTTP 200. Availability describes observed retrieval, not completeness.",
+    "metadataSeparation": "indexMetadata is copied canonical index evidence, not a claim extracted from attachment contents. Machine or visual extraction remains unreviewed.",
+    "sourceReferences": "Each observations[].sourceId references an existing source-register entry. Discovery through a registered page may use that page source ID with an explicit note; proposed new sources are not silently treated as registered."
+  },
+  "observations": [
+    {
+      "recordId": "research:2026-10-21:psgc",
+      "sourceId": "psa-psgc-cavinti",
+      "sourceUrl": "https://psa.gov.ph/classification/psgc/barangays/0403407000",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "access-blocked",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Direct web reader returned HTTP 403. No bypass attempted; no underlying Cavinti table, value, roster, or complete archive retrieved.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": 403
+      }
+    },
+    {
+      "recordId": "research:2026-10-21:popcen-release",
+      "sourceId": "psa-2024-popcen-release",
+      "sourceUrl": "https://psa.gov.ph/content/2024-census-population-popcen-population-counts-declared-official-president",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "access-blocked",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Direct web reader returned HTTP 403. No bypass attempted; no underlying Cavinti table, value, roster, or complete archive retrieved.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": 403
+      }
+    },
+    {
+      "recordId": "research:2026-10-21:openstat-2020",
+      "sourceId": "psa-openstat-2020",
+      "sourceUrl": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__PO_2020?rxid=0c98a039-222d-403f-b284-434d529eff6e&tablelist=true",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "access-blocked",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Direct web reader returned HTTP 403. No bypass attempted; no underlying Cavinti table, value, roster, or complete archive retrieved.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": 403
+      }
+    },
+    {
+      "recordId": "research:2026-10-21:openstat-2024",
+      "sourceId": "psa-2024-openstat",
+      "sourceUrl": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__PO_2024?tablelist=true",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "access-blocked",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Direct web reader returned HTTP 403. No bypass attempted; no underlying Cavinti table, value, roster, or complete archive retrieved.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": 403
+      }
+    },
+    {
+      "recordId": "research:2026-10-21:cmci",
+      "sourceId": "dti-cmci-cavinti",
+      "sourceUrl": "https://cmci.dti.gov.ph/lgu-profile.php?lgu=Cavinti&year=2024",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "access-blocked",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Direct web reader returned HTTP 403. No bypass attempted; no underlying Cavinti table, value, roster, or complete archive retrieved.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": 403
+      }
+    },
+    {
+      "recordId": "research:2026-10-21:blgf",
+      "sourceId": "blgf-fiscal-data",
+      "sourceUrl": "https://blgf.gov.ph/lgu-fiscal-data/",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "access-blocked",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Direct web reader returned HTTP 403. No bypass attempted; no underlying Cavinti table, value, roster, or complete archive retrieved.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": 403
+      }
+    },
+    {
+      "recordId": "research:2026-10-21:coa",
+      "sourceId": "coa-annual-audits",
+      "sourceUrl": "https://www.coa.gov.ph/reports/annual-audit-reports",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "access-blocked",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Direct web reader returned HTTP 403. No bypass attempted; no underlying Cavinti table, value, roster, or complete archive retrieved.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": 403
+      }
+    },
+    {
+      "recordId": "research:2026-10-21:doh",
+      "sourceId": "doh-calabarzon-facilities",
+      "sourceUrl": "https://ro4a.doh.gov.ph/rural-health-units",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "access-blocked",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Direct web reader returned HTTP 403. No bypass attempted; no underlying Cavinti table, value, roster, or complete archive retrieved.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": 403
+      }
+    },
+    {
+      "recordId": "research:2026-10-21:classification-root",
+      "sourceId": "psa-classification-api",
+      "sourceUrl": "https://classification.psa.gov.ph/psgc/Q3_2026",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "available",
+      "verificationStatus": "primary-direct",
+      "freshnessStatus": "not-checked",
+      "notes": "Reader followed trailing-slash URL. API discovery page itself advertises HTTP 200 OK and endpoints; this is not access to a barangay roster. Original register description of token requirement must not be interpreted as this root discovery page being unavailable.",
+      "retrieval": {
+        "method": "web-reader",
+        "finalUrl": "https://classification.psa.gov.ph/psgc/Q3_2026/",
+        "httpStatus": 200,
+        "httpStatusBasis": "HTTP 200 OK displayed inside API documentation response"
+      },
+      "findings": [
+        {
+          "sourceOriginalText": "Return all available PSGC endpoints for the given version.",
+          "hashAlgorithm": "sha256",
+          "hash": "be98067e95cfb41428308013c5adfc4f77837ae14310b6832d451e139f1f6c89",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes"
+        }
+      ]
+    },
+    {
+      "recordId": "research:2026-10-21:classification-barangays",
+      "sourceId": "psa-classification-api",
+      "sourceUrl": "https://classification.psa.gov.ph/psgc/Q3_2026/barangays",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "access-blocked",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Direct reader returned HTTP 400. No barangay rows or error-body explanation were returned. Do not infer this response is a token error.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": 400
+      }
+    },
+    {
+      "recordId": "research:2026-10-21:fdp",
+      "sourceId": "dilg-fdp",
+      "sourceUrl": "https://fdpp.dilg.gov.ph/",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "access-blocked",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Reader failed: unable to verify the first certificate. Certificate validation was not disabled. No HTTP status or underlying records obtained.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": null,
+        "error": "unable to verify the first certificate"
+      }
+    },
+    {
+      "recordId": "research:2026-10-21:phivolcs",
+      "sourceId": "phivolcs-hazard-maps",
+      "sourceUrl": "https://www.phivolcs.dost.gov.ph/gis-web-hazard-maps",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "access-blocked",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Reader failed: unable to verify the first certificate. Certificate validation was not disabled. No HTTP status or underlying records obtained.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": null,
+        "error": "unable to verify the first certificate"
+      }
+    },
+    {
+      "recordId": "research:2026-10-21:charter-page",
+      "sourceId": "cavinti-citizens-charter",
+      "sourceUrl": "https://www.cavinti-egov.com/citizenscharter",
+      "retrievedAt": "2026-10-21T15:01:16.902Z",
+      "availabilityStatus": "available",
+      "verificationStatus": "primary-direct",
+      "freshnessStatus": "not-checked",
+      "notes": "Rendered table has headings only. Direct HTML fetch discovered public AJAX endpoint citizensCharterData. No inferred services, requirements, fees or steps.",
+      "retrieval": {
+        "method": "web-reader and direct-fetch",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "byteLength": 38310,
+        "responseSha256": "b7ed9b239aa51ef1fc57dc1b8ed846a5ec7bbb0d87bb608ae3fdafe36b8970e1"
+      },
+      "findings": [
+        {
+          "sourceOriginalText": "Service Name / Document | Office & Contact | Document",
+          "hashAlgorithm": "sha256",
+          "hash": "1659e6331166e27d46a4ba667291716dbdbd8b39a6a8ac6f8efad1d04802417b",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes"
+        }
+      ]
+    },
+    {
+      "recordId": "research:2026-10-21:charter-data",
+      "sourceId": "cavinti-citizens-charter",
+      "sourceUrl": "https://www.cavinti-egov.com/citizensCharterData",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "empty-in-capture",
+      "verificationStatus": "primary-direct",
+      "freshnessStatus": "not-checked",
+      "notes": "Public endpoint linked by Charter HTML returned draw=0, recordsTotal=0, recordsFiltered=0, data=[]. This establishes an empty endpoint response only, not that Cavinti has no municipal services.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": null,
+        "contentType": "application/json"
+      },
+      "findings": [
+        {
+          "sourceOriginalText": "{\n  \"draw\": 0,\n  \"recordsTotal\": 0,\n  \"recordsFiltered\": 0,\n  \"data\": []\n}",
+          "hashAlgorithm": "sha256",
+          "hash": "f0fb36addaa2d7158111feb2a0f0a75fc215f04261f08301eb318c64dc80df85",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes",
+          "representation": "web-reader JSON rendering; not raw-response byte hash"
+        }
+      ]
+    },
+    {
+      "recordId": "research:2026-10-21:other-documents",
+      "sourceId": "cavinti-other-documents",
+      "sourceUrl": "https://cavinti-egov.com/otherDocuments",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "available",
+      "verificationStatus": "primary-direct",
+      "freshnessStatus": "not-checked",
+      "notes": "Reader exposed only first ten entries of a stated 33. Latest displayed entries dated Oct 16, 2026 concern named associations. No complete catalog captured; no Charter, executive-order or procurement absence can be concluded.",
+      "retrieval": {
+        "method": "web-reader-jina",
+        "httpStatus": null
+      },
+      "findings": [
+        {
+          "sourceOriginalText": "Showing 1 to 10 of 33 entries",
+          "hashAlgorithm": "sha256",
+          "hash": "643f332cf8fbde3f63ce0c8f4b1548620b87f9396b324686045d1ac1d073dd78",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes"
+        },
+        {
+          "sourceOriginalText": "SAMAHAN NG MAGSASAKANG MAGPAPALAY NG BRGY. POBLACION ASSOCIATION INCORPORATED",
+          "hashAlgorithm": "sha256",
+          "hash": "0624af84da84c8f1629efc256150245c18f597356cb081b8ec388a3b1d69ab63",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes"
+        }
+      ]
+    },
+    {
+      "recordId": "research:2026-10-21:philgeps",
+      "sourceId": "philgeps-cavinti-award-lead",
+      "sourceUrl": "https://notices.philgeps.gov.ph/GEPS/R4/R3_AwardNotice_AwardAbstract.html?AwardID=5917411&LineItemID=1&OrgID=297358",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "unknown",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Reader returned application-shell HTML with empty body and scripts, not the award fields. Previously recorded conflicting dates are not resolved. No awarded amount, supplier, completion or procurement totals asserted.",
+      "retrieval": {
+        "method": "web-reader-raw-html",
+        "httpStatus": null
+      }
+    },
+    {
+      "recordId": "research:2026-10-21:deped",
+      "sourceId": "deped-school-identifiers",
+      "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List-4.pdf",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "available",
+      "verificationStatus": "machine-extracted-unreviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "PDF text extraction exposed a lapel voice amplifier allocation list, not a current school masterlist. Quoted row has Division=Laguna, not municipality; school name alone must not establish Cavinti geography, operation or a complete current roster. Converter output was partial; page for quoted school row not established.",
+      "retrieval": {
+        "method": "web-reader-markit",
+        "httpStatus": null,
+        "contentType": "application/pdf"
+      },
+      "findings": [
+        {
+          "sourceOriginalText": "LAPEL VOICE AMPLIFIERS FOR CLASSROOM INSTRUCTION",
+          "hashAlgorithm": "sha256",
+          "hash": "9da3cbd23cde38e44f0bc53da477c8f3b070202894148aca3e515790ed39dac1",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes"
+        },
+        {
+          "sourceOriginalText": "|7651|108275|Region IV-A|Laguna|Cavinti Elementary|23|",
+          "hashAlgorithm": "sha256",
+          "hash": "2bcad4650d46067f9c4ad19e72b7cd4b228f0f06e2652360458db199a19c8b51",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes",
+          "page": null,
+          "columns": [
+            "No",
+            "School ID",
+            "Region",
+            "Division",
+            "School Name",
+            "No of Teachers"
+          ]
+        }
+      ]
+    },
+    {
+      "recordId": "research:2026-10-21:tourism-document",
+      "sourceId": "tieza-pagsanjan-gorge",
+      "sourceUrl": "https://tieza.gov.ph/wp-content/uploads/2015/11/Pagsanjan-Garden-Resort.pdf",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "available",
+      "verificationStatus": "machine-extracted-unreviewed",
+      "freshnessStatus": "stale",
+      "notes": "Two-page historical property/privatization document, not a current attraction inventory, current operating status, arrival count or advice to visit. No municipal value derived from resort land area.",
+      "retrieval": {
+        "method": "web-reader-markit",
+        "httpStatus": null,
+        "contentType": "application/pdf"
+      },
+      "findings": [
+        {
+          "sourceOriginalText": "Proclamation No. 1551 declaring the Pagsanjan Gorge National Park in Cavinti, Laguna as a tourist zone under the control of the Philippine Tourism Authority signed on May 31, 1976 by then President Ferdinand Marcos.",
+          "hashAlgorithm": "sha256",
+          "hash": "1eca0755ae226a384638239e02008e71bf96cb48c055cbf3bc5e6bbcb6eca5ad",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "recordId": "research:2026-10-21:hazardhunter",
+      "sourceId": "hazardhunterph",
+      "sourceUrl": "https://hazardhunter.georisk.gov.ph/map",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "available",
+      "verificationStatus": "primary-direct",
+      "freshnessStatus": "not-checked",
+      "notes": "Interactive tool and terms rendered; no Cavinti assessment, export, hazard classification, affected-population table or official boundary retrieved. Source explicitly limits boundary authority.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": null
+      },
+      "findings": [
+        {
+          "sourceOriginalText": "Lastly, it should be noted that administrative boundaries used are only an approximate and are not considered authoritative.",
+          "hashAlgorithm": "sha256",
+          "hash": "0d9db29dd842cabee74108991353ffa99ac2c94c5870785d004dec74637663e9",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes"
+        }
+      ]
+    },
+    {
+      "recordId": "research:2026-10-21:namria",
+      "sourceId": "namria-emapa",
+      "sourceUrl": "https://isportal.namria.gov.ph/eMapa/",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "available",
+      "verificationStatus": "primary-direct",
+      "freshnessStatus": "not-checked",
+      "notes": "Map request/purchase storefront rendered; no official Cavinti polygon, downloadable layer, edition, datum or reuse license retrieved. Page links Geoportal Philippines as a different route; no authentication or purchase performed.",
+      "retrieval": {
+        "method": "web-reader-jina",
+        "httpStatus": null
+      },
+      "findings": [
+        {
+          "sourceOriginalText": "For your other digital data needs, please visit Geoportal Philippines.",
+          "hashAlgorithm": "sha256",
+          "hash": "b58b7c6ff3d11dd946ad6dc652183e4bc16e00ff3289cc8b2d3e185ae186239c",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes"
+        }
+      ]
+    },
+    {
+      "recordId": "research:2026-10-21:municipal-geography",
+      "sourceId": "cavinti-about",
+      "sourceUrl": "https://www.cavinti-egov.com/aboutUs",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "available",
+      "verificationStatus": "primary-direct",
+      "freshnessStatus": "not-checked",
+      "notes": "Geographical text and 17 barangay headings rendered, including barangay Mahipon-Lumot. This does not reconcile the existing official-title/secondary-roster conflict. No contact-number block rendered in this capture and no number called or validated. No official polygon or coordinate datum established.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": null
+      },
+      "findings": [
+        {
+          "sourceOriginalText": "barangay Mahipon-Lumot",
+          "hashAlgorithm": "sha256",
+          "hash": "e443e73cdc969294534c77edf446c001791d202166dc3d9120ed00d8e6e42c59",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes"
+        },
+        {
+          "sourceOriginalText": "It is bounded by the Municipality of Paete to the north, Kalayaan to the north-west, Lumban to the west, Luisiana to the south, Pagsanjan to the southwest and the province of Quezon to the east.",
+          "hashAlgorithm": "sha256",
+          "hash": "e02bbb2a0e0d9ae33607eaeb5ed750b32f545932b10f51634164726866fe4e7c",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes"
+        }
+      ]
+    },
+    {
+      "recordId": "research:2026-10-21:municipal-channels",
+      "sourceId": "cavinti-official-home",
+      "sourceUrl": "https://www.cavinti-egov.com/",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "available",
+      "verificationStatus": "primary-direct",
+      "freshnessStatus": "not-checked",
+      "notes": "Official home directly links public PIO, Tourism, Water, MENRO, MPS, BFP, RHU and MDRRMO channels. Link publication does not validate phone numbers, current staff, service availability or a dated advisory.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": null
+      },
+      "findings": [
+        {
+          "sourceOriginalText": "MDRRMO CavintiDisaster Risk Reduction",
+          "hashAlgorithm": "sha256",
+          "hash": "d2eef94e70e28c228e4a1ab2fb61f33e07c96f99c8987376da6b7e21c034ec48",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes",
+          "linkedUrl": "https://www.facebook.com/mdrrmo.cavinti",
+          "representation": "reader concatenated visible link label"
+        },
+        {
+          "sourceOriginalText": "Cavinti TourismTourism & Culture",
+          "hashAlgorithm": "sha256",
+          "hash": "b3e817fc5459d02cbb6e9a10fc2de9ed903916abb9a087207a4a020339768b6d",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes",
+          "linkedUrl": "https://www.facebook.com/LGUCavintiTourismOfficial",
+          "representation": "reader concatenated visible link label"
+        }
+      ]
+    },
+    {
+      "recordId": "research:2026-10-21:mdrrmo-channel",
+      "sourceId": "cavinti-official-home",
+      "sourceUrl": "https://www.facebook.com/mdrrmo.cavinti",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "empty-in-capture",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Official-home-linked external channel attempted. Reader redirected to web.facebook.com and returned metadata only, no dated public post body. No posts, comments, reactions or personal profiles archived; no current advisory or tourism claim extracted. sourceId denotes municipal page establishing official link, not an independently registered social source.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": null
+      }
+    },
+    {
+      "recordId": "research:2026-10-21:tourism-channel",
+      "sourceId": "cavinti-official-home",
+      "sourceUrl": "https://www.facebook.com/LGUCavintiTourismOfficial",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "empty-in-capture",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Official-home-linked external channel attempted. Reader redirected to web.facebook.com and returned metadata only, no dated public post body. No posts, comments, reactions or personal profiles archived; no current advisory or tourism claim extracted. sourceId denotes municipal page establishing official link, not an independently registered social source.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": null
+      }
+    },
+    {
+      "recordId": "research:2026-10-21:pagasa-flood",
+      "sourceId": "pagasa-flood-maps",
+      "sourceUrl": "https://www.pagasa.dost.gov.ph/products-and-services/flood-hazard-maps",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "available",
+      "verificationStatus": "primary-direct",
+      "freshnessStatus": "not-checked",
+      "notes": "Page displayed scale/location selectors and linked Weather Advisory. No Cavinti-specific layer, map download, hazard exposure metric or current local warning obtained.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": null
+      },
+      "findings": [
+        {
+          "sourceOriginalText": "1:10,000 Scale Map",
+          "hashAlgorithm": "sha256",
+          "hash": "315b3e4188db20de4969826ef69690967910e750418bdd1c005e10e3c6c74e98",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes"
+        }
+      ]
+    },
+    {
+      "recordId": "research:2026-10-21:pagasa-advisory-route",
+      "sourceId": "pagasa-flood-maps",
+      "sourceUrl": "https://pagasa.dost.gov.ph/weather/weather-advisory",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "available",
+      "verificationStatus": "primary-direct",
+      "freshnessStatus": "not-checked",
+      "notes": "Linked official PAGASA route displays WEATHER ADVISORY NO. 6 and PDF links, but no issue/valid time or Cavinti target area in extracted text. Number alone is not a validated current warning. sourceId records discovery through registered PAGASA page; separate advisory source registration recommended.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": null
+      },
+      "findings": [
+        {
+          "sourceOriginalText": "WEATHER ADVISORY NO. 6",
+          "hashAlgorithm": "sha256",
+          "hash": "150c870c7ffced1802a839174147582180a37f2bb688d2876c7cee8b8000fb15",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes"
+        }
+      ]
+    },
+    {
+      "recordId": "research:2026-10-21:pagasa-advisory-pdf",
+      "sourceId": "pagasa-flood-maps",
+      "sourceUrl": "https://pubfiles.pagasa.dost.gov.ph/tamss/weather/advisory.pdf",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "available",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Linked PDF retrieved by reader, but text extraction incomplete for page 1. No advisory message, issue/expiry time or Cavinti scope extracted. Not a current warning in this data pack.",
+      "retrieval": {
+        "method": "web-reader-markit",
+        "httpStatus": null,
+        "contentType": "application/pdf"
+      },
+      "textExtractionStatus": "incomplete-image-pdf",
+      "pagesAttempted": [
+        1
+      ]
+    },
+    {
+      "recordId": "research:2026-10-21:budget-pdf",
+      "sourceId": "cavinti-ordinances-index",
+      "sourceUrl": "https://cavinti-egov.com/uploads/documents/appropriation-ordinance-no-009-2026-supplemental-budget-no-4-of-the-municipality-of-cavinti-laguna-1790766124.pdf",
+      "retrievedAt": "2026-10-21T15:01:19.527Z",
+      "availabilityStatus": "available",
+      "verificationStatus": "machine-extracted-unreviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Official canonical index attachment retrieved. Reader reports incomplete pages 1–3; pdftotext returns only three form-feed separators. Page 1 rendered locally and bounded document-heading excerpts visually transcribed; not independent legal review. OCR executable tesseract unavailable. Index metadata kept separate; no budget aggregate, expenditure, contract or project completion inferred. Public PDF and rendered image downloaded transiently for extraction only and removed; no mirror retained.",
+      "retrieval": {
+        "method": "web-reader, direct-fetch, pdfinfo, pdftotext and pdftoppm page-1 rendering",
+        "httpStatus": 200,
+        "contentType": "application/pdf",
+        "byteLength": 1512386,
+        "responseSha256": "0206e7ff851113d6454230f075429c3fcc6993525036300b57267c3b8d87b2cb"
+      },
+      "indexMetadata": {
+        "recordId": "ordinance:e74159972e1a56defbc2:5",
+        "documentNumber": "No. Appropriation Ordinance No. 009 - 2026",
+        "sourceDateLabel": "Aug 10, 2026",
+        "sourceDate": "2026-08-10",
+        "verificationStatus": "metadata-extracted-from-official-index; attachment-content-not-reviewed"
+      },
+      "textExtractionStatus": "native-text-empty; page-1-bounded-visual-transcription-unreviewed",
+      "pageCount": 3,
+      "pagesAttempted": [
+        1,
+        2,
+        3
+      ],
+      "pagesVisuallyInspected": [
+        1
+      ],
+      "findings": [
+        {
+          "sourceOriginalText": "APPROPRIATION ORDINANCE NO. 009-2026",
+          "hashAlgorithm": "sha256",
+          "hash": "89e54490d374f5330e3e7f1ee60a68e5173ee7ffbfa2af4497abdb1c5a891af6",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes",
+          "page": 1,
+          "extractionMethod": "visual-transcription",
+          "verificationStatus": "machine-extracted-unreviewed"
+        },
+        {
+          "sourceOriginalText": "Introduced by: HON. ARRANTLEE R. ARROYO, Municipal Mayor",
+          "hashAlgorithm": "sha256",
+          "hash": "35cccf8c450f17be956d0198a8244cae28a7acd4b2e743467aaa6a186f440375",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes",
+          "page": 1,
+          "extractionMethod": "visual-transcription",
+          "verificationStatus": "machine-extracted-unreviewed"
+        }
+      ]
+    },
+    {
+      "recordId": "research:2026-10-21:barangay-procedure-pdf",
+      "sourceId": "cavinti-barangay-count-ordinance",
+      "sourceUrl": "https://cavinti-egov.com/uploads/documents/municipal-ordinance-no-051-2026-an-ordinance-institutionalizing-the-rules-and-procedure-for-the-nineteen-19-barangays-1790765813.pdf",
+      "retrievedAt": "2026-10-21T15:01:24.477Z",
+      "availabilityStatus": "available",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Public attachment fetched and checksummed. Reader reports incomplete text on pages 1–22; pdfinfo reports 22 unencrypted pages and pdftotext outputs only 22 form-feed separators. No roster or enacted clause extracted; title remains index metadata only. Transient PDF removed; no blanket mirroring. Missing local tesseract prevents OCR in this attempt.",
+      "retrieval": {
+        "method": "web-reader, direct-fetch, pdfinfo and pdftotext",
+        "httpStatus": 200,
+        "contentType": "application/pdf",
+        "byteLength": 12865397,
+        "responseSha256": "729301852681acf3e45681a93ce44369fd17d986e1faa7f0439a4ad8a9bbcdcf"
+      },
+      "textExtractionStatus": "native-text-empty; OCR-unavailable",
+      "pageCount": 22,
+      "pagesAttempted": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ]
+    }
+  ],
+  "discoveryAttempts": [
+    {
+      "recordId": "research:2026-10-21:dpwh-discovery",
+      "sourceUrl": "https://www.dpwh.gov.ph/dpwh",
+      "retrievedAt": "2026-10-21",
+      "proposedSourceId": "dpwh-projects",
+      "availabilityStatus": "access-blocked",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "retrieval": {
+        "method": "web-reader-raw-html",
+        "httpStatus": null,
+        "finalUrl": "https://www.dpwh.gov.ph/dpwh/"
+      },
+      "notes": "Direct portal retrieval returned Incapsula resource script, no content. No bypass attempted. Two primary-domain searches produced unrelated project leads, not verified Cavinti projects. No municipality-filtered register, award, budget or completion rows obtained."
+    }
+  ],
+  "proposedSources": [
+    {
+      "sourceId": "dpwh-projects",
+      "publisher": "Department of Public Works and Highways",
+      "sourceTier": "primary-government",
+      "canonicalUrl": "https://www.dpwh.gov.ph/dpwh/",
+      "reason": "Separate national public works source not present in initial register; direct access blocked by application protection shell."
+    },
+    {
+      "sourceId": "pagasa-weather-advisory",
+      "publisher": "DOST PAGASA",
+      "sourceTier": "primary-government",
+      "canonicalUrl": "https://pagasa.dost.gov.ph/weather/weather-advisory",
+      "reason": "Official weather advisory route discovered through registered flood-map page; PDF contents not text-readable in this attempt."
+    },
+    {
+      "sourceId": "cavinti-mdrrmo-channel",
+      "publisher": "MDRRMO Cavinti",
+      "sourceTier": "primary-lgu-social",
+      "canonicalUrl": "https://www.facebook.com/mdrrmo.cavinti",
+      "reason": "Official municipal homepage links channel. No dated public post body captured; noarchive metadata respected, no archive made."
+    },
+    {
+      "sourceId": "cavinti-tourism-channel",
+      "publisher": "Cavinti Tourism",
+      "sourceTier": "primary-lgu-social",
+      "canonicalUrl": "https://www.facebook.com/LGUCavintiTourismOfficial",
+      "reason": "Official municipal homepage links channel. Metadata only; no dated post body or complete inventory captured."
+    }
+  ],
+  "collectionLimits": [
+    "Current PSGC and 2020/2024 census tables remain unverified; 17/19 barangay and naming conflict remains unresolved.",
+    "Citizen Charter JSON returned an empty table; service procedures, fees, requirements and complete service catalog remain unavailable.",
+    "No complete CMCI, municipal finance, procurement, project, school or health register retrieved; no totals or completion metrics inferred.",
+    "No official Cavinti polygon or authoritative boundary export obtained. HazardHunterPH expressly disclaims authority of its approximate administrative boundaries.",
+    "Municipal channel publication and page reachability are not contact or hotline live validation. No current local safety advisory asserted.",
+    "Legislative PDFs sampled only: one current-year appropriation and one current-year barangay procedure document. No complete attachment corpus, executive-order archive or audit report extracted. Native text blank for both; one budget page visually inspected, not independently legally reviewed.",
+    "PAGASA advisory attachment text unreadable; no issue/valid time or Cavinti target area verified. Historical TIEZA document cannot establish current tourism access, operation or arrivals.",
+    "Search snippets were used as discovery leads only, not promoted to verified findings."
+  ]
+}

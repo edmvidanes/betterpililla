@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "civic-municipality/v1",
+  "recordId": "ph:laguna:cavinti",
+  "name": "Cavinti",
+  "province": "Laguna",
+  "region": "CALABARZON",
+  "psgcMunicipalityCode": {
+    "value": "0403407000",
+    "sourceId": "psa-psgc-cavinti",
+    "sourceTier": "primary-government",
+    "verificationStatus": "indexed-primary-direct-fetch-blocked",
+    "notes": "PSA search-index evidence surfaced this code; the full official record was not retrievable in this research."
+  },
+  "populationFacts": [
+    {
+      "indicator": "total_population",
+      "value": 24740,
+      "unit": "persons",
+      "geography": "municipality",
+      "referenceYear": 2024,
+      "sourceId": "psa-psgc-cavinti",
+      "sourceTier": "primary-government",
+      "verificationStatus": "indexed-primary-direct-fetch-blocked",
+      "sourceUrl": "https://psa.gov.ph/classification/psgc/barangays/0403407000",
+      "notes": "The value appeared in PSA search-index results for Cavinti; fetch the official PSA table before marking directly verified."
+    },
+    {
+      "indicator": "total_population",
+      "value": 23980,
+      "unit": "persons",
+      "geography": "municipality",
+      "referenceYear": 2020,
+      "sourceId": "philatlas-cavinti",
+      "sourceTier": "secondary-reference",
+      "verificationStatus": "published-secondary-needs-PSA-crosscheck",
+      "sourceUrl": "https://www.philatlas.com/luzon/r04a/laguna/cavinti.html",
+      "notes": "PhilAtlas attributes its population series to census data. Not promoted as a directly verified PSA value in this snapshot."
+    },
+    {
+      "indicator": "total_population",
+      "value": 21702,
+      "unit": "persons",
+      "geography": "municipality",
+      "referenceYear": 2015,
+      "sourceId": "philatlas-cavinti",
+      "sourceTier": "secondary-reference",
+      "verificationStatus": "published-secondary-needs-PSA-crosscheck",
+      "sourceUrl": "https://www.philatlas.com/luzon/r04a/laguna/cavinti.html"
+    },
+    {
+      "indicator": "population_growth_rate_annualized",
+      "value": 2.12,
+      "unit": "percent",
+      "geography": "municipality",
+      "period": "2015-2020",
+      "sourceId": "philatlas-cavinti",
+      "sourceTier": "secondary-reference",
+      "verificationStatus": "published-secondary-needs-PSA-crosscheck",
+      "sourceUrl": "https://www.philatlas.com/luzon/r04a/laguna/cavinti.html",
+      "notes": "Published by the secondary source; this project did not calculate the rate."
+    },
+    {
+      "indicator": "total_population",
+      "value": 4027,
+      "unit": "persons",
+      "geography": "municipality",
+      "referenceYear": 1903,
+      "sourceId": "philatlas-cavinti",
+      "sourceTier": "secondary-reference",
+      "verificationStatus": "published-secondary-needs-PSA-crosscheck",
+      "sourceUrl": "https://www.philatlas.com/luzon/r04a/laguna/cavinti.html"
+    }
+  ],
+  "geography": {
+    "officialAboutPageCoordinatesText": {
+      "longitudeRange": "121° 28’ 6.31” – 121° 37’ 57.06”",
+      "latitudeRange": "14° 11’ 30.40” – 14° 23’ 29.96”",
+      "sourceId": "cavinti-about",
+      "verificationStatus": "source-published-no-gis-file"
+    },
+    "neighborsAsPublished": [
+      "Paete (north)",
+      "Kalayaan (north-west)",
+      "Lumban (west)",
+      "Luisiana (south)",
+      "Pagsanjan (south-west)",
+      "Quezon Province (east)"
+    ],
+    "boundaryGeometry": {
+      "status": "not-found-in-checked-primary-sources",
+      "notes": "No downloadable official municipality/barangay polygon was verified. Do not imply a secondary map boundary is an official legal boundary."
+    }
+  },
+  "publishedDescription": {
+    "slogan": "Ecotourism, Eventful, Adventure and Glamping Capital of Laguna",
+    "sourceId": "cavinti-official-home",
+    "verificationStatus": "source-published"
+  },
+  "asOf": "2026-10-21",
+  "importantLimit": "This snapshot separates indexed PSA evidence and secondary published values. It does not calculate demographic indicators or claim a complete municipal statistical profile."
+}

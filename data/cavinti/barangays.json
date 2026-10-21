@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "civic-barangay-roster-evidence/v1",
+  "municipality": "Cavinti, Laguna, Philippines",
+  "capturedAt": "2026-10-21",
+  "canonicalRoster": {
+    "status": "unresolved-primary-source-conflict",
+    "count": null,
+    "sourceId": null,
+    "notes": "Do not present any of these lists as a reconciled current official roster. The municipal About page displays 17 barangay headings; an ordinance title states 19; a secondary profile lists 19. Obtain a dated PSA PSGC extract and reconcile names before setting the canonical roster."
+  },
+  "sourceClaims": [
+    {
+      "sourceId": "cavinti-about",
+      "sourceTier": "primary-lgu",
+      "sourceUrl": "https://www.cavinti-egov.com/aboutUs",
+      "claim": "Barangay names displayed as headings on the municipal About page",
+      "count": 17,
+      "namesAsPublished": [
+        "Anglas",
+        "Sumucab",
+        "Poblacion",
+        "Bulajo",
+        "Bukal",
+        "Cansuso",
+        "Duhat",
+        "Kanluran Talaongan",
+        "Mahipon-Lumot",
+        "Bangco",
+        "Paowin",
+        "Silangan Talaongan",
+        "Udia",
+        "Layug",
+        "Sisilmin",
+        "Inao-awan",
+        "Tibatib"
+      ],
+      "verificationStatus": "source-page-observed; roster-count-conflicts-with-other-sources",
+      "notes": "This records the visible page content, not a claim that the page's list is complete or current."
+    },
+    {
+      "sourceId": "cavinti-barangay-count-ordinance",
+      "sourceTier": "primary-lgu",
+      "sourceUrl": "https://cavinti-egov.com/uploads/documents/municipal-ordinance-no-051-2026-an-ordinance-institutionalizing-the-rules-and-procedure-for-the-nineteen-19-barangays-1790765813.pdf",
+      "claim": "The published ordinance title states nineteen (19) barangays",
+      "count": 19,
+      "namesAsPublished": null,
+      "verificationStatus": "title-observed; attached PDF roster-not-verified",
+      "notes": "A count in a title does not establish the complete names or resolve the municipal-page discrepancy."
+    },
+    {
+      "sourceId": "philatlas-cavinti",
+      "sourceTier": "secondary-reference",
+      "sourceUrl": "https://www.philatlas.com/luzon/r04a/laguna/cavinti.html",
+      "claim": "Secondary profile lists 19 barangays and published 2015/2020 population counts",
+      "count": 19,
+      "namesAsPublished": [
+        "Anglas",
+        "Bangco",
+        "Bukal",
+        "Bulajo",
+        "Cansuso",
+        "Duhat",
+        "Inao-awan",
+        "Kanluran Talaongan",
+        "Labayo",
+        "Layasin",
+        "Layug",
+        "Mahipon",
+        "Paowin",
+        "Poblacion",
+        "Silangan Talaongan",
+        "Sisilmin",
+        "Sumucab",
+        "Tibatib",
+        "Udia"
+      ],
+      "verificationStatus": "published-secondary; primary-PSA-table-not-retrieved",
+      "notes": "Retained as a source-specific claim and population table, not adopted as the canonical current roster."
+    }
+  ],
+  "secondaryPopulationTable": {
+    "sourceId": "philatlas-cavinti",
+    "sourceTier": "secondary-reference",
+    "referenceYears": [2015, 2020],
+    "verificationStatus": "published-secondary-needs-PSA-crosscheck",
+    "rows": [
+      { "sourceName": "Anglas", "population2015": 331, "population2020": 427 },
+      { "sourceName": "Bangco", "population2015": 159, "population2020": 175 },
+      { "sourceName": "Bukal", "population2015": 1182, "population2020": 1263 },
+      { "sourceName": "Bulajo", "population2015": 529, "population2020": 529 },
+      { "sourceName": "Cansuso", "population2015": 1162, "population2020": 1417 },
+      { "sourceName": "Duhat", "population2015": 1673, "population2020": 1830 },
+      { "sourceName": "Inao-awan", "population2015": 977, "population2020": 1046 },
+      { "sourceName": "Kanluran Talaongan", "population2015": 1803, "population2020": 1906 },
+      { "sourceName": "Labayo", "population2015": 115, "population2020": 148 },
+      { "sourceName": "Layasin", "population2015": 579, "population2020": 630 },
+      { "sourceName": "Layug", "population2015": 467, "population2020": 603 },
+      { "sourceName": "Mahipon", "population2015": 2097, "population2020": 2475 },
+      { "sourceName": "Paowin", "population2015": 820, "population2020": 890 },
+      { "sourceName": "Poblacion", "population2015": 6358, "population2020": 6696 },
+      { "sourceName": "Silangan Talaongan", "population2015": 1853, "population2020": 2024 },
+      { "sourceName": "Sisilmin", "population2015": 272, "population2020": 341 },
+      { "sourceName": "Sumucab", "population2015": 392, "population2020": 421 },
+      { "sourceName": "Tibatib", "population2015": 192, "population2020": 199 },
+      { "sourceName": "Udia", "population2015": 741, "population2020": 960 }
+    ],
+    "publishedTotalsInMunicipalityProfile": {
+      "2015": 21702,
+      "2020": 23980,
+      "calculatedByThisProject": false
+    },
+    "nameResolution": "No alias mapping is asserted. In particular, Mahipon-Lumot and Mahipon remain distinct source strings until an official crosswalk is found."
+  },
+  "discrepancies": [
+    {
+      "issue": "roster-count",
+      "claims": [17, 19, 19],
+      "sourceIds": ["cavinti-about", "cavinti-barangay-count-ordinance", "philatlas-cavinti"],
+      "resolution": "unresolved",
+      "nextEvidenceNeeded": "Dated current PSA PSGC barangay table or equivalent official administrative roster."
+    },
+    {
+      "issue": "names-present-in-secondary-list-but-not-municipal-about-headings",
+      "names": ["Labayo", "Layasin"],
+      "sourceIds": ["cavinti-about", "philatlas-cavinti"],
+      "resolution": "unresolved"
+    },
+    {
+      "issue": "source-name-variation",
+      "values": ["Mahipon-Lumot", "Mahipon"],
+      "sourceIds": ["cavinti-about", "philatlas-cavinti"],
+      "resolution": "unresolved; do not silently merge"
+    }
+  ]
+}

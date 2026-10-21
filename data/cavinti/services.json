@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "civic-service-catalogue-evidence/v1",
+  "municipality": "Cavinti, Laguna, Philippines",
+  "capturedAt": "2026-10-21",
+  "sourceId": "cavinti-citizens-charter",
+  "sourceUrl": "https://www.cavinti-egov.com/citizenscharter",
+  "sourceLabel": "Citizens' Charter",
+  "observedTableColumns": ["Service Name / Document", "Office & Contact", "Document"],
+  "observedServiceRows": 0,
+  "catalogueStatus": "no-rows-rendered; coverage-gap-not-empty-service-catalogue",
+  "services": [],
+  "notes": [
+    "The checked page rendered the table headings but no service records. This does not mean Cavinti offers no services.",
+    "Do not synthesize service requirements, fees, steps, eligibility rules, office contacts, or turnaround times from another LGU.",
+    "The municipality's actual Citizens' Charter documents must be obtained and parsed before publishing service cards."
+  ]
+}

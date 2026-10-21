@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://bettercavinti.local/schemas/officials.schema.json",
+  "title": "Official directory evidence v1",
+  "$ref": "canonical.schema.json#/$defs/officials"
+}

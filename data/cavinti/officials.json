@@ -1,0 +1,180 @@
+{
+  "schemaVersion": "civic-official-directory-evidence/v1",
+  "municipality": "Cavinti, Laguna, Philippines",
+  "capturedAt": "2026-10-21",
+  "records": [
+    {
+      "recordId": "cavinti-executive-arrantlee-romulo-arroyo",
+      "displayName": "HON. ARRANTLEE ROMULO ARROYO",
+      "directorySection": "Executive Office",
+      "roleLabel": "Municipal Mayor",
+      "roleEvidence": {
+        "sourceId": "cavinti-resolutions-index",
+        "documentNumber": "Res. No. 341-2026",
+        "documentUrl": "https://cavinti-egov.com/uploads/documents/resolution-no-341-2026-subscription-agreement-psa-correction-of-names-1791966529.pdf",
+        "evidenceText": "The official resolution-index title identifies HON. ARRANTLEE R. ARROYO as the Municipal Mayor.",
+        "verificationStatus": "official-index-title-observed; PDF attachment text-not-reviewed"
+      },
+      "profileSourceId": "cavinti-executive-directory",
+      "termDates": null,
+      "contactDetails": null,
+      "notes": "Do not infer a term or publish contact details that are not present in the cited profile source."
+    },
+    {
+      "recordId": "cavinti-council-milbert-oliveros",
+      "displayName": "HON. MILBERT L. OLIVEROS",
+      "directorySection": "The Council",
+      "roleLabel": "Vice Mayor and Presiding Officer",
+      "roleEvidence": {
+        "sourceId": "cavinti-resolutions-index",
+        "documentNumber": "Res. No. 234-2026",
+        "documentUrl": "https://cavinti-egov.com/uploads/documents/resolution-no-234-2026-moa-tibatib-and-pob-ecopark-mgt-1778043583.pdf",
+        "verificationStatus": "primary-document-reference; current reader text extraction incomplete",
+        "notes": "The earlier PDF extraction recorded the Vice Mayor / Presiding Officer role. The current direct read could not extract the PDF pages fully; recheck the attachment before treating the profile as current."
+      },
+      "committeeLabel": "Committee of the whole",
+      "authoredCountAsDisplayed": 7,
+      "coauthoredCountAsDisplayed": 0,
+      "expertiseLabel": null,
+      "sourceId": "cavinti-legislative-directory",
+      "verificationStatus": "primary-directory-card-and-official-role-reference; term-not-established"
+    },
+    {
+      "recordId": "cavinti-council-jovenil-gordula",
+      "displayName": "HON. DR. JOVENIL T. GORDULA",
+      "directorySection": "The Council",
+      "roleLabel": null,
+      "committeeLabel": "COMMITTEE ON FINANCE BUDGET AND APPROPRIATIONS - COOPERATIVES - TRADE COMMERCE ADN INDUSTRY",
+      "authoredCountAsDisplayed": 1,
+      "coauthoredCountAsDisplayed": 0,
+      "expertiseLabel": null,
+      "sourceId": "cavinti-legislative-directory",
+      "verificationStatus": "primary-directory-card-observed; role-and-term-not-established"
+    },
+    {
+      "recordId": "cavinti-council-glenn-cabuhat",
+      "displayName": "HON. GLENN HAZE M. CABUHAT",
+      "directorySection": "The Council",
+      "roleLabel": null,
+      "committeeLabel": "COMMITTEE ON SOCIAL SERVICES WOMEN AND FAMILY - TOURISM CULTURE AND ARTS",
+      "authoredCountAsDisplayed": 24,
+      "coauthoredCountAsDisplayed": 2,
+      "expertiseLabel": null,
+      "sourceId": "cavinti-legislative-directory",
+      "verificationStatus": "primary-directory-card-observed; role-and-term-not-established"
+    },
+    {
+      "recordId": "cavinti-council-godfrey-lubuguin",
+      "displayName": "HON. GODFREY L. LUBUGUIN",
+      "directorySection": "The Council",
+      "roleLabel": null,
+      "committeeLabel": "COMMITTEE ON INFRASTRUCTURE AND PUBLIC WORKS - HOUSING AND LAND UTILIZATION",
+      "authoredCountAsDisplayed": 5,
+      "coauthoredCountAsDisplayed": 0,
+      "expertiseLabel": null,
+      "sourceId": "cavinti-legislative-directory",
+      "verificationStatus": "primary-directory-card-observed; role-and-term-not-established"
+    },
+    {
+      "recordId": "cavinti-council-habshan-blastique",
+      "displayName": "HON. HABSHAN DAVE D. BLASTIQUE",
+      "directorySection": "The Council",
+      "roleLabel": null,
+      "committeeLabel": "COMMITTEE ON PEACE AND ORDER PUBLIC SAFETY - AGRICULTURE - MARKET AND SLAUGHTER HOUSE",
+      "authoredCountAsDisplayed": 12,
+      "coauthoredCountAsDisplayed": 1,
+      "expertiseLabel": null,
+      "sourceId": "cavinti-legislative-directory",
+      "verificationStatus": "primary-directory-card-observed; role-and-term-not-established"
+    },
+    {
+      "recordId": "cavinti-council-jose-mari-esguerra",
+      "displayName": "HON. DR. JOSE MARI L. ESGUERRA",
+      "directorySection": "The Council",
+      "roleLabel": null,
+      "committeeLabel": "COMMITTEE ON HEALTH AND SANITATION - PUBLIC UTILITIES AND FACILITIES ENERGY AND COMMUNICATIONS",
+      "authoredCountAsDisplayed": 40,
+      "coauthoredCountAsDisplayed": 2,
+      "expertiseLabel": null,
+      "sourceId": "cavinti-legislative-directory",
+      "verificationStatus": "primary-directory-card-observed; role-and-term-not-established"
+    },
+    {
+      "recordId": "cavinti-council-joseph-baltazar",
+      "displayName": "HON. JOSEPH P. BALTAZAR",
+      "directorySection": "The Council",
+      "roleLabel": null,
+      "committeeLabel": "COMMITTEE ON ENVIRONMENTAL PROTECTION AND DISASTER PREPAREDNESS",
+      "authoredCountAsDisplayed": 2,
+      "coauthoredCountAsDisplayed": 0,
+      "expertiseLabel": null,
+      "sourceId": "cavinti-legislative-directory",
+      "verificationStatus": "primary-directory-card-observed; role-and-term-not-established"
+    },
+    {
+      "recordId": "cavinti-council-romel-villanueva",
+      "displayName": "HON. ROMEL J. VILLANUEVA",
+      "directorySection": "The Council",
+      "roleLabel": null,
+      "committeeLabel": "COMMITTEE ON RULES AND PRIVILEGES - ORDINANCES AND LEGAL MATTERS - EDUCATION",
+      "authoredCountAsDisplayed": 98,
+      "coauthoredCountAsDisplayed": 0,
+      "expertiseLabel": null,
+      "sourceId": "cavinti-legislative-directory",
+      "verificationStatus": "primary-directory-card-observed; role-and-term-not-established"
+    },
+    {
+      "recordId": "cavinti-council-limron-sanchez",
+      "displayName": "HON. LIMRON O. SANCHEZ",
+      "directorySection": "The Council",
+      "roleLabel": null,
+      "committeeLabel": "COMMITTEE ON YOUTH AND SPORTS DEVELOPMENT - GAMES AND AMUSEMENTS",
+      "authoredCountAsDisplayed": 14,
+      "coauthoredCountAsDisplayed": 3,
+      "expertiseLabel": null,
+      "sourceId": "cavinti-legislative-directory",
+      "verificationStatus": "primary-directory-card-observed; role-and-term-not-established"
+    },
+    {
+      "recordId": "cavinti-council-manuel-dela-roca",
+      "displayName": "HON. MANUEL A. DELA ROCA",
+      "directorySection": "The Council",
+      "roleLabel": null,
+      "committeeLabel": "COMMITTEE ON BARANGAY AFFAIRS - HUMAN RIGHTS",
+      "authoredCountAsDisplayed": 4,
+      "coauthoredCountAsDisplayed": 0,
+      "expertiseLabel": null,
+      "sourceId": "cavinti-legislative-directory",
+      "verificationStatus": "primary-directory-card-observed; role-and-term-not-established"
+    },
+    {
+      "recordId": "cavinti-council-melandro-lope",
+      "displayName": "HON. MELANDRO B. LOPE",
+      "directorySection": "The Council",
+      "roleLabel": null,
+      "committeeLabel": "COMMITTEE ON GOOD GOVERNMENT PUBLIC ETHICS AND ACCOUNTABILITY - CIVIL SERVICE",
+      "authoredCountAsDisplayed": 13,
+      "coauthoredCountAsDisplayed": 1,
+      "expertiseLabel": null,
+      "sourceId": "cavinti-legislative-directory",
+      "verificationStatus": "primary-directory-card-observed; role-and-term-not-established"
+    },
+    {
+      "recordId": "cavinti-council-nitzshell-torres-dela-torre",
+      "displayName": "NITZSHELL TORRES-DELA TORRE J.D.",
+      "directorySection": "The Council",
+      "roleLabel": null,
+      "committeeLabel": null,
+      "authoredCountAsDisplayed": 0,
+      "coauthoredCountAsDisplayed": 0,
+      "expertiseLabel": "Juris Doctor",
+      "sourceId": "cavinti-legislative-directory",
+      "verificationStatus": "primary-directory-card-observed; exact office or membership status unclear"
+    }
+  ],
+  "directoryLimitations": [
+    "The legislative page displays 12 cards but does not supply complete term dates or an explicit office/role label for every card.",
+    "Authored and co-authored numbers are preserved as displayed; they are not independently reconciled against the full legal catalog.",
+    "Profile completeness is not evidence that a person is not an official. Missing profile/contact details remain unknown rather than blank-as-zero."
+  ]
+}

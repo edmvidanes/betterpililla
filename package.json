@@ -1,0 +1,39 @@
+{
+  "name": "bettercavinti",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "predev": "npm run data:build",
+    "dev": "vite",
+    "prebuild": "npm run data:build",
+    "build": "tsc -b && vite build && node --experimental-strip-types scripts/build-routes.ts",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "test:e2e": "playwright test",
+    "data:build": "node --experimental-strip-types scripts/data/build-public.ts",
+    "data:validate": "node --experimental-strip-types scripts/data/validate.ts",
+    "data:refresh": "node --experimental-strip-types scripts/data/refresh.ts",
+    "data:coverage": "node --experimental-strip-types scripts/data/report-coverage.ts",
+    "test:data": "node --experimental-strip-types --test scripts/data/*.test.ts"
+  },
+  "dependencies": {
+    "@bettergov/kapwa": "^1.4.1",
+    "ajv": "^8.20.0",
+    "parse5": "^8.0.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.88.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.4"
+  }
+}

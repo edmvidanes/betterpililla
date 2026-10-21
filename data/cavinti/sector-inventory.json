@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "civic-sector-coverage/v1",
+  "municipality": "Cavinti, Laguna, Philippines",
+  "capturedAt": "2026-10-21",
+  "sectors": [
+    {
+      "sector": "education",
+      "availability": "partial-secondary-directory-leads",
+      "verifiedLocalRecords": [],
+      "directoryLeads": [
+        {
+          "schoolNameAsPublished": "Calminue Integrated National High School",
+          "schoolId": "307926",
+          "sourceId": "deped-laguna-directory",
+          "sourceTier": "secondary-reference",
+          "sourceUrl": "https://depedlaguna.com/schools/senior-high-school/",
+          "verificationStatus": "listed-in-unversioned-regional-directory; not-reconciled-to-current-DepEd-masterlist"
+        },
+        {
+          "schoolNameAsPublished": "Cavinti Integrated National High School",
+          "schoolId": "307911",
+          "sourceId": "deped-laguna-directory",
+          "sourceTier": "secondary-reference",
+          "sourceUrl": "https://depedlaguna.com/schools/senior-high-school/",
+          "verificationStatus": "listed-in-unversioned-regional-directory; not-reconciled-to-current-DepEd-masterlist"
+        }
+      ],
+      "searchOnlyElementaryLeads": {
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List-4.pdf",
+        "verificationStatus": "search-result-leads-only; direct PDF table not checked",
+        "publicationDisposition": "research-only; do-not-publish-as-current-school-roster",
+        "records": [
+          { "schoolNameAsPublished": "Bukal ES", "schoolId": "108270" },
+          { "schoolNameAsPublished": "Bulajo ES", "schoolId": "108271" },
+          { "schoolNameAsPublished": "Burol ES", "schoolId": "108272" },
+          { "schoolNameAsPublished": "Calminue ES", "schoolId": "108273" },
+          { "schoolNameAsPublished": "Cansuso ES", "schoolId": "108274" },
+          { "schoolNameAsPublished": "Cavinti ES", "schoolId": "108275" },
+          { "schoolNameAsPublished": "Inao-Awan ES", "schoolId": "108276" },
+          { "schoolNameAsPublished": "Layug ES", "schoolId": "108277" },
+          { "schoolNameAsPublished": "Lumot ES", "schoolId": "108278" },
+          { "schoolNameAsPublished": "Paowin ES", "schoolId": "108279" },
+          { "schoolNameAsPublished": "Sumucab ES", "schoolId": "108280" },
+          { "schoolNameAsPublished": "Talaongan East ES", "schoolId": "108281" },
+          { "schoolNameAsPublished": "Talaongan West ES", "schoolId": "108282" },
+          { "schoolNameAsPublished": "Silsimin ES", "schoolId": "164508" },
+          { "schoolNameAsPublished": "Layasin ES", "schoolId": "164526" }
+        ],
+        "notes": "Names/IDs are discovery leads from search results, not a verified current DepEd masterlist. Do not reconcile spelling variants by guess."
+      },
+      "missingData": ["dated authoritative complete school roster", "enrollment", "staffing", "facilities", "performance series"]
+    },
+    {
+      "sector": "health",
+      "availability": "official-emergency-contacts-only; facility-profile-unverified",
+      "factsFile": "emergency-contacts.json",
+      "sourceIds": ["cavinti-about", "cavinti-rhu-channel", "doh-calabarzon-facilities"],
+      "missingData": ["DOH-verified facility registration", "current services and operating hours", "staffing", "facility-level indicators"],
+      "privacyBoundary": "Never ingest patient-level records, case details, or identifiable health data."
+    },
+    {
+      "sector": "agriculture-and-fisheries",
+      "availability": "no-verified-municipal-statistics-extracted",
+      "discoverySources": [
+        "https://psa.gov.ph/taxonomy/term/1709",
+        "https://psa.gov.ph/sites/default/files/kmcd/files/2022-CAF-Data-Items.pdf",
+        "https://psa.gov.ph/publication/selected-statistics-on-agriculture-and-fisheries",
+        "https://rsso04a.psa.gov.ph/sites/default/files/attachment-dir/Fisheries%20Production_Fourth%20Qtr%202024%20and%20Annual%202024.pdf"
+      ],
+      "missingData": ["Cavinti-specific 2022 CAF published tables", "municipality-level crop/livestock/fisheries series"],
+      "notes": "Laguna or CALABARZON totals are not Cavinti totals; do not downscale them."
+    },
+    {
+      "sector": "tourism-and-culture",
+      "availability": "ordinance-evidence-only; no-verified-arrival-series",
+      "sourceIds": ["cavinti-official-home", "cavinti-ordinances-index", "cavinti-about"],
+      "knownRecord": {
+        "documentNumber": "No. 053 - 2026",
+        "title": "An ordinance mandating accurate monthly tourist-arrival reports by tourism establishments",
+        "sourceId": "cavinti-ordinances-index",
+        "attachmentUrl": "https://cavinti-egov.com/uploads/documents/municipal-ordinance-no-053-2026-mandatory-tourist-arrival-reporting-1791442174.pdf",
+        "verificationStatus": "official-index-title-captured; PDF text-not-reviewed"
+      },
+      "missingData": ["current verified attractions register", "public site-level operating information", "publishable visitor counts", "accommodation inventory"],
+      "privacyBoundary": "Do not scrape or publish establishment submissions unless officially released in aggregate and licensed for reuse."
+    },
+    {
+      "sector": "disaster-and-hazards",
+      "availability": "official-plan-reference-and-hotlines; no-extracted-hazard-layer",
+      "discoverySources": [
+        "https://hazardhunter.georisk.gov.ph/map",
+        "https://www.phivolcs.dost.gov.ph/gis-web-hazard-maps",
+        "https://www.pagasa.dost.gov.ph/products-and-services/flood-hazard-maps",
+        "https://cavinti-egov.com/resolutions"
+      ],
+      "knownRecord": {
+        "documentNumber": "Resolution No. 338-2023",
+        "title": "Adoption of the Local Disaster Risk Reduction and Management Plan 2024-2028",
+        "verificationStatus": "official-index-reference-observed; plan document and indicators not extracted"
+      },
+      "missingData": ["published plan text and measurable indicators", "dated Cavinti hazard layers", "barangay-level exposure tables"],
+      "safetyRule": "Hazard outputs must cite input layer, date, location and limitations; never present a map assessment as an emergency warning."
+    },
+    {
+      "sector": "weather-and-climate",
+      "availability": "official-source-catalogued; no-Cavinti-station-series-confirmed",
+      "discoverySources": [
+        "https://www.pagasa.dost.gov.ph/climate/climatological-normals",
+        "https://climgridph.pagasa.dost.gov.ph/ClimGridPh/historical_rainfall.php"
+      ],
+      "missingData": ["verified Cavinti station identifier and series", "municipality-specific climatological normals"],
+      "notes": "Do not label a nearby station or gridded estimate as an observation made in Cavinti."
+    },
+    {
+      "sector": "environment-and-watershed",
+      "availability": "regional-context-only; no-local-measurement-series",
+      "discoverySources": [
+        "https://www.napocor.gov.ph/wp-content/uploads/NPC_Corporate_Governance/2023/2023_Watershed_Management_Activities.pdf",
+        "https://llda.gov.ph/wp-content/uploads/2019/09/Vol_12.Caliraya-SB.pdf",
+        "https://www.cavinti-egov.com/"
+      ],
+      "context": "The checked sources identify the Caliraya-Lumot watershed and Cavinti's inclusion in the Caliraya sub-basin; these do not establish current municipal measurements.",
+      "missingData": ["Cavinti water quality series", "waste and sanitation indicators", "forest-cover or biodiversity series", "environmental permits register"]
+    },
+    {
+      "sector": "competitiveness",
+      "availability": "official-source-lead; complete-labelled-profile-not-retrieved",
+      "sourceId": "dti-cmci-cavinti",
+      "sourceUrl": "https://cmci.dti.gov.ph/lgu-profile.php?lgu=Cavinti&year=2024",
+      "retrievalStatus": "HTTP 403 on direct reader access; search index exposed only a partial unlabelled snippet",
+      "verifiedRankingOrScore": null,
+      "missingData": ["labelled annual rank and score", "year-series rows", "indicator and units metadata"],
+      "publicationDisposition": "do-not-publish-rank-or-score-from-snippet; retrieve the official DTI table and retain its year, municipality class, denominator, and indicator labels"
+    },
+    {
+      "sector": "finance-procurement-and-projects",
+      "availability": "source-coverage-documented-no-complete-local-dataset",
+      "factsFile": "transparency.json",
+      "sourceIds": ["dilg-fdp", "blgf-fiscal-data", "bettergov-blgf-mirror", "philgeps-cavinti-award-lead", "coa-annual-audits"],
+      "notes": "No missing/inaccessible result is represented as a zero value or a complete record set."
+    }
+  ]
+}

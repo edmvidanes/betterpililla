@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "civic-emergency-contact-evidence/v1",
+  "municipality": "Cavinti, Laguna, Philippines",
+  "capturedAt": "2026-10-21",
+  "sourceId": "cavinti-about",
+  "sourceUrl": "https://www.cavinti-egov.com/aboutUs",
+  "pagePublicationDate": null,
+  "freshnessStatus": "official-page-values-observed; numbers-not-live-validated",
+  "records": [
+    {
+      "service": "Cavinti Municipal Police Station",
+      "category": "police",
+      "numbersAsPublished": ["0998-598-5644", "0906-785-4205", "(049) 523-3813"],
+      "verificationStatus": "official-source-published; freshness-unverified"
+    },
+    {
+      "service": "Rural Health Unit Cavinti",
+      "category": "health-emergency",
+      "numbersAsPublished": ["0919-316-8506", "0946-570-8130"],
+      "verificationStatus": "official-source-published; freshness-unverified"
+    },
+    {
+      "service": "Municipal Disaster Risk Reduction and Management Office",
+      "category": "disaster-response",
+      "numbersAsPublished": ["0960-582-8836"],
+      "verificationStatus": "official-source-published; freshness-unverified"
+    },
+    {
+      "service": "Bureau of Fire Protection Cavinti",
+      "category": "fire-emergency",
+      "numbersAsPublished": ["0916-234-6589"],
+      "verificationStatus": "official-source-published; freshness-unverified"
+    },
+    {
+      "service": "Municipal Social Welfare and Development Office",
+      "category": "social-welfare",
+      "numbersAsPublished": ["0923-082-2070"],
+      "verificationStatus": "official-source-published; freshness-unverified"
+    },
+    {
+      "service": "Philippine Coast Guard contact listed by the municipality",
+      "category": "coast-guard",
+      "numbersAsPublished": ["0905-376-7148"],
+      "verificationStatus": "official-source-published; freshness-unverified"
+    }
+  ],
+  "publicUseWarning": "Do not label these numbers current or suitable for emergency reliance until the municipal office confirms them. Show the source and last-check date; keep a national emergency fallback separately sourced and independently validated."
+}

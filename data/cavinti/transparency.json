@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "civic-transparency-evidence/v1",
+  "municipality": "Cavinti, Laguna, Philippines",
+  "capturedAt": "2026-10-21",
+  "summary": {
+    "completeMunicipalFinanceDatasetAvailable": false,
+    "completeProcurementDatasetAvailable": false,
+    "completeInfrastructureProjectDatasetAvailable": false,
+    "publishedTotalValues": null,
+    "zeroValuesImplied": false,
+    "notes": "No complete municipal finance, procurement, or infrastructure values were verified. Source access failure, a search miss, or an unextracted file is not a zero and is not a complete dataset."
+  },
+  "sourceChecks": [
+    {
+      "sourceId": "dilg-fdp",
+      "sourceUrl": "https://fdpp.dilg.gov.ph/",
+      "sourceTier": "primary-government",
+      "retrievalStatus": "TLS certificate verification failed in this research",
+      "municipalRecordsExtracted": null,
+      "publicationDisposition": "coverage-gap"
+    },
+    {
+      "sourceId": "blgf-fiscal-data",
+      "sourceUrl": "https://blgf.gov.ph/lgu-fiscal-data/",
+      "sourceTier": "primary-government",
+      "retrievalStatus": "HTTP 403 in this research",
+      "municipalRecordsExtracted": null,
+      "publicationDisposition": "coverage-gap"
+    },
+    {
+      "sourceId": "bettergov-blgf-mirror",
+      "sourceUrl": "https://data.bettergov.ph/datasets/9",
+      "sourceTier": "secondary-mirror-of-government-data",
+      "retrievalStatus": "dataset listing visible; no Cavinti row extracted",
+      "listingMetadata": {
+        "resourceCount": 43,
+        "totalSize": "13.35 MB",
+        "lastUpdated": "2025-08-01"
+      },
+      "municipalRecordsExtracted": null,
+      "publicationDisposition": "discovery-only-until-the-underlying-local-record-is-retrieved-and-attributed"
+    },
+    {
+      "sourceId": "philgeps-cavinti-award-lead",
+      "sourceUrl": "https://notices.philgeps.gov.ph/GEPS/R4/R3_AwardNotice_AwardAbstract.html?AwardID=5917411&LineItemID=1&OrgID=297358",
+      "sourceTier": "primary-government",
+      "retrievalStatus": "search-result lead; complete municipality/year query not performed",
+      "candidatePublishedAt": "2026-01-09",
+      "candidateAwardDate": "2026-12-02",
+      "dateConsistency": "candidate award date is after this snapshot date; do not state as completed award",
+      "municipalRecordsExtracted": null,
+      "publicationDisposition": "unverified-lead-only"
+    },
+    {
+      "sourceId": "coa-annual-audits",
+      "sourceUrl": "https://www.coa.gov.ph/reports/annual-audit-reports",
+      "sourceTier": "primary-government",
+      "retrievalStatus": "general annual-report page accessible; no Cavinti report or values verified",
+      "listedCoverage": "CY 2014-2024",
+      "municipalRecordsExtracted": null,
+      "publicationDisposition": "coverage-gap"
+    }
+  ],
+  "officialLocalDocumentLeads": [
+    {
+      "documentType": "ordinance",
+      "documentNumber": "No. 009-2026",
+      "titleAsIndexed": "FY2026 Supplemental Budget No. 4",
+      "amountTextAsIndexed": "PHP 1,500,000",
+      "documentUrl": "https://cavinti-egov.com/uploads/documents/appropriation-ordinance-no-009-2026-supplemental-budget-no-4-of-the-municipality-of-cavinti-laguna-1790766124.pdf",
+      "sourceId": "cavinti-ordinances-index",
+      "verificationStatus": "amount-is-a-title-extraction-lead; PDF text-not-reviewed",
+      "amountUsableAsVerifiedFinanceFact": false
+    },
+    {
+      "documentType": "ordinance",
+      "documentNumber": "No. 008-2026",
+      "titleAsIndexed": "FY2026 Supplemental Budget No. 3; Sambalilo Festival",
+      "amountTextAsIndexed": "PHP 5,944,899.59",
+      "documentUrl": "https://cavinti-egov.com/uploads/documents/appropriation-ordinance-no-008-2026-supplemental-no-3-sambalilo-festival-edited-and-reso-1786519903.pdf",
+      "sourceId": "cavinti-ordinances-index",
+      "verificationStatus": "amount-is-a-title-extraction-lead; PDF text-not-reviewed",
+      "amountUsableAsVerifiedFinanceFact": false
+    },
+    {
+      "documentType": "resolution",
+      "documentNumber": "Resolution No. 277-2026",
+      "titleAsIndexed": "Annual Budget CY 2026 – Duhat Brgy.",
+      "documentUrl": "https://cavinti-egov.com/uploads/documents/resolution-no-277-2026-annual-budget-cy-2026-duhat-brgy-1782989950.pdf",
+      "sourceId": "cavinti-resolutions-index",
+      "retrievalStatus": "search result observed; PDF opening redirected to municipal admin login",
+      "scopeWarning": "This title concerns Barangay Duhat; it is not evidence of the municipal-wide budget.",
+      "verificationStatus": "document-content-and-amount-not-retrieved",
+      "amountUsableAsVerifiedFinanceFact": false
+    }
+  ],
+  "procurementAndProjectCoverage": {
+    "philgeps": {
+      "completeCavintiQueryCaptured": false,
+      "recordCount": null,
+      "contractValueTotal": null,
+      "status": "not-established"
+    },
+    "dpwhInfrastructure": {
+      "CavintiProjectRosterCaptured": false,
+      "allocationTotal": null,
+      "status": "no-local-project-record-verified"
+    },
+    "municipalProjectProgress": {
+      "verifiedRecords": null,
+      "status": "no-complete-public-project-register-retrieved"
+    }
+  },
+  "candidateTitleSearch": {
+    "sourceId": "cavinti-resolutions-index",
+    "matchRule": "title text containing annual budget, supplemental budget, or appropriation ordinance",
+    "candidateCount": 170,
+    "verificationStatus": "machine-extracted title candidates; not individually checked against PDF contents",
+    "financialDataset": false
+  },
+  "publicationRules": [
+    "Keep records as distinct source rows even when numbers, titles, or amounts repeat; retain attachment URL and row fingerprint.",
+    "Only display a value as verified after checking the original document, its jurisdiction, fiscal period, line item, and units.",
+    "Never aggregate a barangay budget into the municipal budget or attribute Laguna/provincial values to Cavinti.",
+    "Keep zero, not reported, not found, inaccessible, and not applicable as different states."
+  ]
+}

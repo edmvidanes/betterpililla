@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "civic-data-manifest/v1",
+  "municipality": {
+    "recordId": "ph:laguna:cavinti",
+    "name": "Cavinti",
+    "province": "Laguna",
+    "psgcCode": "0403407000",
+    "psgcCodeStatus": "indexed-primary-direct-fetch-blocked"
+  },
+  "generatedAt": "2026-10-21",
+  "license": {
+    "projectCode": "CC0",
+    "projectAuthoredMetadata": "CC0 where project-authored",
+    "upstreamContent": "Source-specific terms apply; unknown terms are not treated as permission to republish."
+  },
+  "datasets": [
+    {
+      "id": "municipality",
+      "canonicalJson": "municipality.json",
+      "schemaVersion": "civic-municipality/v1",
+      "recordCount": 1,
+      "sourceIds": ["cavinti-official-home", "cavinti-about", "psa-psgc-cavinti", "philatlas-cavinti"],
+      "status": "contains primary source claims, indexed-primary leads, and separately labeled secondary values"
+    },
+    {
+      "id": "barangays",
+      "canonicalJson": "barangays.json",
+      "schemaVersion": "civic-barangay-roster-evidence/v1",
+      "recordCount": 19,
+      "sourceIds": ["cavinti-about", "cavinti-barangay-count-ordinance", "philatlas-cavinti"],
+      "status": "source-specific roster claims and a secondary population table; canonical current roster unresolved"
+    },
+    {
+      "id": "officials",
+      "canonicalJson": "officials.json",
+      "schemaVersion": "civic-official-directory-evidence/v1",
+      "recordCount": 13,
+      "sourceIds": ["cavinti-executive-directory", "cavinti-legislative-directory", "cavinti-resolutions-index"],
+      "status": "directory-card evidence; several roles and all term dates incomplete"
+    },
+    {
+      "id": "emergency-contacts",
+      "canonicalJson": "emergency-contacts.json",
+      "schemaVersion": "civic-emergency-contact-evidence/v1",
+      "recordCount": 6,
+      "sourceIds": ["cavinti-about"],
+      "status": "official page values; freshness unverified"
+    },
+    {
+      "id": "services",
+      "canonicalJson": "services.json",
+      "schemaVersion": "civic-service-catalogue-evidence/v1",
+      "recordCount": 0,
+      "sourceIds": ["cavinti-citizens-charter"],
+      "status": "zero rows observed in the captured page; not evidence that there are zero municipal services"
+    },
+    {
+      "id": "sector-inventory",
+      "canonicalJson": "sector-inventory.json",
+      "schemaVersion": "civic-sector-coverage/v1",
+      "recordCount": 9,
+      "sourceIds": ["deped-laguna-directory", "deped-elementary-allocation-leads", "psa-cbms-cavinti", "dti-cmci-cavinti", "dilg-fdp", "blgf-fiscal-data", "bettergov-blgf-mirror", "philgeps-cavinti-award-lead", "coa-annual-audits", "cavinti-about", "cavinti-rhu-channel", "doh-calabarzon-facilities", "cavinti-official-home", "cavinti-ordinances-index"],
+      "status": "source coverage and candidate leads, not complete sector datasets"
+    },
+    {
+      "id": "transparency",
+      "canonicalJson": "transparency.json",
+      "schemaVersion": "civic-transparency-evidence/v1",
+      "recordCount": 8,
+      "sourceIds": ["dilg-fdp", "blgf-fiscal-data", "bettergov-blgf-mirror", "philgeps-cavinti-award-lead", "coa-annual-audits", "cavinti-ordinances-index", "cavinti-resolutions-index"],
+      "status": "access results and unverified document leads; no complete financial/procurement/project totals"
+    },
+    {
+      "id": "ordinances",
+      "canonicalJson": "legislation/ordinances.json",
+      "convenienceCsv": "legislation/ordinances.csv",
+      "schemaVersion": "civic-legislation-record-set/v1",
+      "recordCount": 406,
+      "sourceId": "cavinti-ordinances-index",
+      "sourceFeedUrl": "https://cavinti-egov.com/ordinancesData?draw=1&start=0&length=5000",
+      "sourceFeedSha256": "e761b27947616b5a7de1ac4930a56bc708cba4825a79c8f6ba0a1cb52cbb2ed8",
+      "dateRange": { "from": "1992-07-24", "to": "2026-09-28" },
+      "status": "all returned index rows captured; PDF attachments not fully reviewed"
+    },
+    {
+      "id": "research-updates",
+      "canonicalJson": "research-updates.json",
+      "schemaVersion": "civic-research-updates/v1",
+      "recordCount": 29,
+      "sourceIds": ["blgf-fiscal-data", "cavinti-about", "cavinti-barangay-count-ordinance", "cavinti-citizens-charter", "cavinti-official-home", "cavinti-ordinances-index", "cavinti-other-documents", "coa-annual-audits", "deped-school-identifiers", "dilg-fdp", "doh-calabarzon-facilities", "dti-cmci-cavinti", "hazardhunterph", "namria-emapa", "pagasa-flood-maps", "philgeps-cavinti-award-lead", "phivolcs-hazard-maps", "psa-2024-openstat", "psa-2024-popcen-release", "psa-classification-api", "psa-openstat-2020", "psa-psgc-cavinti", "tieza-pagsanjan-gorge"],
+      "status": "supplemental incomplete priority research; native PDF text blank; bounded budget page-1 visual transcription unreviewed; no canonical domain fact replacement"
+    },
+    {
+      "id": "resolutions",
+      "canonicalJson": "legislation/resolutions.json",
+      "convenienceCsv": "legislation/resolutions.csv",
+      "schemaVersion": "civic-legislation-record-set/v1",
+      "recordCount": 4492,
+      "sourceId": "cavinti-resolutions-index",
+      "sourceFeedUrl": "https://cavinti-egov.com/resolutionsData?draw=1&start=0&length=5000",
+      "sourceFeedSha256": "3fcdac1fef6c7c293ba70731d0c68db58c9cd9e3fad48ede28d0155fcf23a053",
+      "dateRange": { "from": "1992-07-17", "to": "2026-10-12" },
+      "status": "all returned index rows captured; PDF attachments not fully reviewed"
+    }
+  ],
+  "globalLimitations": [
+    "The current PSA PSGC roster and directly retrieved population tables are not present; indexed and secondary claims are marked as such.",
+    "Municipal services, finance, procurement, projects, competitiveness, boundaries, and several sector series are incomplete or inaccessible.",
+    "Do not interpret missing datasets, inaccessible sources, or empty observed pages as zero activity or as proof no records exist."
+  ]
+}

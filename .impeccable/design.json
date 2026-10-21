@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T15:40:09.345Z",
+  "title": "Design System: Civic portal",
+  "extensions": {
+    "breakpoints": [{"name":"single-column","value":"800px"},{"name":"stack-fields","value":"480px"}],
+    "shadows": [],
+    "motion": []
+  },
+  "components": [
+    {"name":"Evidence notice","kind":"custom","description":"Coverage and verification limitation, not a current warning.","html":"<aside class=\"ds-notice\">Coverage gap — not evidence of zero activity.</aside>","css":".ds-notice{background:#fffaeb;color:#5c420b;border:1px solid #e5cc86;border-radius:.5rem;padding:1rem 1.2rem;font:1rem/1.65 system-ui,sans-serif}"},
+    {"name":"Source status","kind":"chip","description":"Informational stable evidence code.","html":"<span class=\"ds-status\">machine-extracted-unreviewed</span>","css":".ds-status{display:inline-block;background:#eef3fb;color:#304c76;border-radius:.25rem;padding:.15rem .5rem;font:.75rem/1.6 system-ui,sans-serif;overflow-wrap:anywhere}"},
+    {"name":"Public record input","kind":"input","description":"Native labeled search or filter input.","html":"<label class=\"ds-label\">Search original metadata<input class=\"ds-input\" type=\"search\"></label>","css":".ds-label{display:block;font:600 .9rem/1.65 system-ui,sans-serif;color:#172b4d}.ds-input{display:block;max-width:100%;font:1rem/1.65 system-ui,sans-serif;border:1px solid #899bb5;border-radius:.35rem;padding:.6rem .7rem;background:white;color:#172b4d}.ds-input:hover{border-color:#1747ab}.ds-input:focus-visible{outline:3px solid #c05600;outline-offset:4px}"},
+    {"name":"Topic navigation","kind":"nav","description":"Native disclosure with current topic highlighted.","html":"<details class=\"ds-topics\" open><summary>Browse topics</summary><a href=\"#\" aria-current=\"page\">Legislation</a></details>","css":".ds-topics{font:.9rem/1.65 system-ui,sans-serif;color:#172b4d}.ds-topics summary{font-weight:700;cursor:pointer}.ds-topics a{display:block;padding:.45rem .8rem;border-radius:.3rem;color:#1747ab;text-decoration:none}.ds-topics a[aria-current]{background:#eaf1ff;font-weight:700}.ds-topics a:hover{background:#f1f5fb}.ds-topics :focus-visible{outline:3px solid #c05600;outline-offset:4px}"}
+  ],
+  "narrative": {
+    "overview":"The user selected restrained Kapwa styling with Tailwind, not a bespoke visual redesign.",
+    "keyCharacteristics":["Readable source evidence","Visible coverage limits","Native accessible controls","No authored animation"],
+    "dos":["Preserve source-original strings and visibly label missing translations.","Expose coverage gaps and last checks next to affected content."],
+    "donts":["Display an unavailable dataset as a zero-value metric.","Add branding or decorative systems beyond the approved restrained interface."]
+  }
+}
