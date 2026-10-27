@@ -17,6 +17,8 @@ export function datasetRows(id: string, data: Document): Document[] {
       verificationStatus: data.secondaryPopulationTable.verificationStatus, canonicalRoster: data.canonicalRoster,
       sourceClaims: data.sourceClaims, discrepancies: data.discrepancies }));
     case 'sector-inventory': return data.sectors;
+    case 'officials': return [...data.records.map((row: Document) => ({ rowType: 'official-directory', ...row })),
+      ...(data.historicalElectionWinners ?? []).map((row: Document) => ({ rowType: 'historical-election-winner', sourceId: data.historicalElectionSource.sourceId, ...row }))];
     case 'transparency': return [...data.sourceChecks.map((row: Document) => ({ rowType: 'source-check', ...row })),
       ...data.officialLocalDocumentLeads.map((row: Document) => ({ rowType: 'document-lead', ...row })),
       ...(data.dpwhProjectSnapshot ?? []).map((row: Document) => ({ rowType: 'project-snapshot', ...row }))];

@@ -34,9 +34,10 @@
       "id": "officials",
       "canonicalJson": "officials.json",
       "schemaVersion": "civic-official-directory-evidence/v1",
-      "recordCount": 13,
-      "sourceIds": ["cavinti-executive-directory", "cavinti-legislative-directory", "cavinti-resolutions-index"],
-      "status": "directory-card evidence; several roles and all term dates incomplete"
+      "recordCount": 94,
+      "sourceIds": ["cavinti-executive-directory", "cavinti-legislative-directory", "cavinti-resolutions-index", "openhalalan-winners"],
+      "rights": "OpenHalalan election records: ODbL 1.0, https://opendatacommons.org/licenses/odbl/1-0/; Leung et al. (2026), https://doi.org/10.5281/zenodo.17783099.",
+      "status": "directory-card evidence and separately attributed historical election winner claims; election results do not establish current tenure"
     },
     {
       "id": "emergency-contacts",

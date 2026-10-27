@@ -41,7 +41,7 @@ export async function publish(pack: DataPack, destination = resolve('public/data
         rowCount: rows.length, capturedAt: data.capturedAt ?? data.retrievedAt ?? data.asOf ?? data.generatedAt,
         sha256: sha256(bytes), sourceIds: [...sourceIds].sort(),
         coverage: declaration?.status ?? (id === 'source-register' ? register.scope : manifest.globalLimitations.join(' ')),
-        rights: `${manifest.license.projectAuthoredMetadata}. ${manifest.license.upstreamContent}`,
+        rights: `${manifest.license.projectAuthoredMetadata}. ${manifest.license.upstreamContent}${declaration?.rights ? ` ${declaration.rights}` : ''}`,
         ...(data.sourceFeedSha256 ? { sourceResponseHashes: [data.sourceFeedSha256] } : {}),
         csvNestedColumns: nestedColumns });
     }
