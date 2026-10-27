@@ -55,12 +55,18 @@ export default function CavintiMap({ locale, center, zoom }: {
       map.addControl(new maplibre.AttributionControl({ compact: true }), 'bottom-right')
       map.on('style.load', () => {
         for (const layer of map!.getStyle().layers) {
-          if (layer.id === 'background') map!.setPaintProperty(layer.id, 'background-color', '#EAF1FF')
-          if (layer.id === 'water' || layer.id.startsWith('waterway')) {
-            map!.setPaintProperty(layer.id, layer.type === 'fill' ? 'fill-color' : 'line-color', '#B8D6F5')
+          if (layer.type === 'background') map!.setPaintProperty(layer.id, 'background-color', '#f8fbff')
+          if (layer.type === 'fill') {
+            const source = layer['source-layer']
+            const color = source === 'water' ? '#1d4ed8' : source === 'building' ? '#d6e2f7' : '#eaf1ff'
+            map!.setPaintProperty(layer.id, 'fill-color', color)
           }
+          if (layer.type === 'line' && layer['source-layer'] === 'waterway') map!.setPaintProperty(layer.id, 'line-color', '#1d4ed8')
           if (layer.type === 'symbol' && layer.layout?.['text-field']) {
-            map!.setPaintProperty(layer.id, 'text-color', '#172B4D')
+            const waterLabel = layer['source-layer'] === 'water_name'
+            map!.setPaintProperty(layer.id, 'text-color', waterLabel ? '#ffffff' : '#172b4d')
+            map!.setPaintProperty(layer.id, 'text-halo-color', waterLabel ? '#1d4ed8' : '#ffffff')
+            map!.setPaintProperty(layer.id, 'text-halo-width', 1.5)
           }
         }
       })
@@ -82,22 +88,18 @@ export default function CavintiMap({ locale, center, zoom }: {
     }
   }, [visible, center, zoom])
 
-  return <section className="atlas-map-section atlas-inner" aria-labelledby="atlas-map-title">
-    <div className="atlas-map-heading">
-      <div>
-        <h2 id="atlas-map-title">{t.mapSection}</h2>
-        <p>{t.mapDescription}</p>
-      </div>
-      <div className="atlas-map-controls" aria-label={t.mapSection}>
+  return <section className="atlas-map-section atlas-inner" aria-labelledby="atlas-map-title" aria-describedby="atlas-map-description">
+    <h2 id="atlas-map-title" className="sr-only">{t.mapSection}</h2>
+    <p id="atlas-map-description" className="sr-only">{t.mapDescription}</p>
+    <div className="atlas-map-frame">
+      <div ref={mapElement} className="atlas-map-canvas" role="application" aria-label={t.mapDescription} />
+      <div className="atlas-map-controls" role="group" aria-label={t.mapSection}>
         <button type="button" aria-label={t.mapZoomIn} disabled={!ready || failed} onClick={() => mapRef.current?.zoomIn()}>+</button>
         <button type="button" aria-label={t.mapZoomOut} disabled={!ready || failed} onClick={() => mapRef.current?.zoomOut()}>−</button>
         <button type="button" aria-label={t.mapReset} disabled={!ready || failed} onClick={() => mapRef.current?.jumpTo({ center: [...center], zoom })}>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.64-6.36L3 8m0-5v5h5" /></svg>
         </button>
       </div>
-    </div>
-    <div className="atlas-map-frame">
-      <div ref={mapElement} className="atlas-map-canvas" role="application" aria-label={t.mapDescription} />
       {!visible && <p className="atlas-map-status">{t.mapLoading}</p>}
       {visible && !ready && !failed && <p className="atlas-map-status" role="status">{t.mapLoading}</p>}
       {failed && <p className="atlas-map-status atlas-map-error" role="alert">{t.mapUnavailable}</p>}
