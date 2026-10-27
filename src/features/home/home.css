@@ -30,7 +30,10 @@
 .atlas-service-badges a { display: inline-flex; align-items: center; min-height: 44px; padding: .4rem .85rem; border: 1px solid #bccbe4; border-radius: 999px; color: #1747ab; background: #eaf1ff; font-weight: 600; text-decoration: none; }
 .atlas-service-badges a:hover { border-color: #1747ab; text-decoration: underline; }
 .atlas-browse { display: grid; grid-template-columns: 27% minmax(0, 1fr); gap: 2.5rem; padding-block: 2.75rem 3rem; }
-.atlas-browse > h2 { font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.08; letter-spacing: -.03em; margin: 0; text-wrap: initial; }
+.atlas-browse-intro h2 { font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.08; letter-spacing: -.03em; margin: 0; text-wrap: initial; }
+.atlas-hall-photo { margin: 1.5rem 0 0; }
+.atlas-hall-photo img { display: block; width: 100%; height: auto; }
+.atlas-hall-photo figcaption { margin-top: .4rem; font-size: .75rem; color: #4c5e78; }
 .atlas-index { border-left: 1px solid #d6deeb; padding-left: 2.5rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 2.5rem; }
 .atlas-index h3 { font-size: 1.05rem; line-height: 1.4; margin: 0 0 .55rem; }
 .atlas-links { list-style: none; padding: 0; margin: 0; }
@@ -106,7 +109,8 @@ footer.atlas-footer { background: #191d21; color: white; border: 0; padding: 4re
   .atlas-search input { flex: 1 1 200px; }
   .atlas-search button { min-width: 100px; }
   .atlas-browse { grid-template-columns: 1fr; gap: 1.5rem; padding-block: 2rem; }
-  .atlas-browse > h2 { max-width: 16ch; }
+  .atlas-browse-intro h2 { max-width: 16ch; }
+  .atlas-hall-photo { max-width: 28rem; }
   .atlas-index { border: 0; padding: 0; }
   .atlas-shortcuts { padding-block: 1.75rem; }
   .atlas-shortcuts .atlas-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }

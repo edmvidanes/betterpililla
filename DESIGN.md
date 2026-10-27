@@ -48,6 +48,10 @@ Use the body stack and responsive headline scale above. No font is downloaded by
 
 The header has a maximum width of 1440px; content has a maximum width of 1320px with no global sidebar. The utility strip includes the independent/nonofficial notice, BetterLGU initiative link, project information, official municipal site, public contacts and language switch. Primary navigation groups Services, Government, Statistics, OpenLGU and Transparency. At 1150px and below, a Menu button reveals stacked disclosure groups. The homepage pairs search and introductory content with quick-access links; at 700px and below these stack, as do topic and filter grids. Detailed coverage warnings stay on the affected routes; a compact homepage summary links to sources. The homepage footer places the portal identity and project description alongside project links, with a centered community and cost statement below; it does not include a sitemap. Source tables scroll within their own region.
 
+On the homepage, the main header slides into a sticky position after the photo hero has passed; reduced-motion preferences disable the entrance animation. The mobile utility strip and header use compact spacing, and the sticky menu scrolls within the viewport.
+
+The public-information index places a 2013 photograph of Cavinti Municipal Hall beneath its heading, with a linked photographer and license credit.
+
 ## Elevation & Depth
 
 Flat surfaces with subtle borders and tonal notices. No decorative shadows, gradients or hero metrics.

@@ -133,7 +133,13 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
     </section>
 
     <section className="atlas-inner atlas-browse" aria-labelledby="atlas-browse-title">
-      <h2 id="atlas-browse-title">{t.atlasBrowse}</h2>
+      <div className="atlas-browse-intro">
+        <h2 id="atlas-browse-title">{t.atlasBrowse}</h2>
+        <figure className="atlas-hall-photo">
+          <img src={`${import.meta.env.BASE_URL}cavinti-municipal-hall.webp`} alt={locale === 'fil' ? 'Bahay pamahalaan ng Cavinti noong 2013' : 'Cavinti municipal hall in 2013'} width="1000" height="1333" loading="lazy" />
+          <figcaption><a href="https://commons.wikimedia.org/wiki/File:Cavinti,Lagunajf8166_03.JPG">Ramon FVelasquez</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></figcaption>
+        </figure>
+      </div>
       <div className="atlas-index">
         <section><h3>{t.atlasGovernment}</h3>{links(['government', 'officials', 'barangays', 'services'], true)}</section>
         <section><h3>{t.atlasRecords}</h3>{links(['finance', 'procurement', 'projects', 'legislation', 'downloads'], true)}</section>
