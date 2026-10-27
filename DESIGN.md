@@ -46,7 +46,7 @@ Use the body stack and responsive headline scale above. No font is downloaded by
 
 ## Layout
 
-The header has a maximum width of 1440px; content has a maximum width of 1320px with no global sidebar. The utility strip includes the independent/nonofficial notice, BetterLGU initiative link, project information, official municipal site, public contacts and language switch. Primary navigation groups Services, Government, Statistics, OpenLGU and Transparency. At 1150px and below, a Menu button reveals stacked disclosure groups. The homepage pairs search and introductory content with quick-access links; at 700px and below these stack, as do topic and filter grids. Detailed coverage warnings stay on the affected routes; a compact homepage summary links to sources. Source tables scroll within their own region.
+The header has a maximum width of 1440px; content has a maximum width of 1320px with no global sidebar. The utility strip includes the independent/nonofficial notice, BetterLGU initiative link, project information, official municipal site, public contacts and language switch. Primary navigation groups Services, Government, Statistics, OpenLGU and Transparency. At 1150px and below, a Menu button reveals stacked disclosure groups. The homepage pairs search and introductory content with quick-access links; at 700px and below these stack, as do topic and filter grids. Detailed coverage warnings stay on the affected routes; a compact homepage summary links to sources. The homepage footer pairs the portal identity and description with a compact row of project links, without a sitemap. Source tables scroll within their own region.
 
 ## Elevation & Depth
 

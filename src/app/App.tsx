@@ -172,7 +172,12 @@ function App() {
     <div className={`site-layout${route === '' ? ' home-layout' : ''}`}>
       <main id="main" tabIndex={-1}>{content}</main>
     </div>
-    <footer className={route === '' ? 'atlas-footer' : undefined}><p>{t.community}</p><nav aria-label={t.footer}>
+    <footer className={route === '' ? 'atlas-footer' : undefined}>
+      {route === '' && <div className="atlas-footer-intro">
+        <a className="atlas-footer-brand" href={href('')}>Better{lgu.name}<small>{t.communityPortal} · {lgu.name}, {lgu.province}</small></a>
+        <p>{t.description}</p>
+      </div>}
+      <p>{t.community}</p><nav aria-label={t.footer}>
       {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads'] as MessageKey[]).map(key => <a key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</a>)}
       <a href={lgu.repository}>GitHub</a>
     </nav></footer>

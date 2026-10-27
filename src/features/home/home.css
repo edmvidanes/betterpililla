@@ -51,7 +51,15 @@
 .atlas-sources a, footer.atlas-footer a { color: white; }
 .atlas-sources a:hover, footer.atlas-footer a:hover { color: #eaf1ff; }
 .atlas-sources :focus-visible, footer.atlas-footer :focus-visible { outline-color: white; }
-footer.atlas-footer { background: #172b4d; color: white; }
+footer.atlas-footer { background: #172b4d; color: white; border: 0; padding: 4rem clamp(1.25rem, 8vw, 8rem) 3rem; }
+.atlas-footer-intro { max-width: 36rem; margin-bottom: 3rem; }
+.atlas-footer-brand { display: inline-block; font-size: 1.5rem; font-weight: 750; line-height: 1.2; letter-spacing: -.035em; text-decoration: none; }
+.atlas-footer-brand small { display: block; margin-top: .4rem; font-size: .75rem; font-weight: 600; letter-spacing: 0; }
+.atlas-footer-intro p { margin: 1.25rem 0 0; color: #eaf1ff; }
+.atlas-footer > p { color: #eaf1ff; margin: 0 0 1rem; }
+.atlas-footer nav { gap: .75rem 1.5rem; }
+.atlas-footer nav a { text-decoration: none; }
+.atlas-footer nav a:hover { text-decoration: underline; }
 @media (max-width: 1000px) {
   .atlas-browse { grid-template-columns: 1fr; gap: 1.5rem; }
   .atlas-index { gap: 1.5rem; padding-left: 1.5rem; }
