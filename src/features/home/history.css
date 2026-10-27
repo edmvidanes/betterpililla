@@ -1,14 +1,15 @@
 .atlas-history {
-  display: grid;
-  grid-template-columns: minmax(220px, .8fr) minmax(0, 1.4fr);
-  gap: clamp(2rem, 7vw, 7rem);
   padding-block: clamp(3rem, 7vw, 6.5rem);
   border-top: 1px solid #d6deeb;
   border-bottom: 1px solid #d6deeb;
 }
 
+.atlas-history-heading {
+  margin: 0 auto clamp(2rem, 4vw, 3.5rem);
+  text-align: center;
+}
+
 .atlas-history-heading h2 {
-  max-width: 9ch;
   margin: 0;
   color: #172b4d;
   font-size: clamp(2rem, 4vw, 3.5rem);
@@ -17,68 +18,104 @@
 }
 
 .atlas-history-heading > p {
-  max-width: 38ch;
-  margin: 1rem 0 0;
+  max-width: 52ch;
+  margin: 1rem auto 0;
   color: #4c5e78;
   font-size: 1.05rem;
+}
+
+.atlas-history-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(220px, 1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
 }
 
 .atlas-history-timeline {
   list-style: none;
   margin: 0;
-  padding: 0;
-  border-top: 1px solid #d6deeb;
+  padding: 0 0 0 1.5rem;
+  border-left: 2px solid #1d4ed8;
 }
 
 .atlas-history-timeline li {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(155px, .75fr) minmax(0, 1.5fr);
-  column-gap: clamp(1rem, 3vw, 2.5rem);
-  padding-block: 1.5rem;
-  border-bottom: 1px solid #d6deeb;
+  grid-template-columns: minmax(5.5rem, .28fr) minmax(0, 1fr);
+  column-gap: clamp(1rem, 2.5vw, 2rem);
+  padding: 0 0 2rem 1.25rem;
+}
+
+.atlas-history-timeline li:last-child { padding-bottom: 0; }
+
+.atlas-history-timeline li::before {
+  position: absolute;
+  top: .3rem;
+  left: calc(-1.5rem - 6px);
+  width: 10px;
+  height: 10px;
+  border: 2px solid #1d4ed8;
+  border-radius: 50%;
+  background: #fff;
+  content: '';
 }
 
 .atlas-history-timeline time {
-  grid-column: 1;
-  grid-row: 1 / span 2;
   color: #1747ab;
-  font-size: .9rem;
+  font-size: .95rem;
   font-weight: 700;
   line-height: 1.5;
+  font-variant-numeric: tabular-nums;
 }
 
-.atlas-history-timeline p {
-  grid-column: 2;
+.atlas-history-event h3,
+.atlas-history-note h3 {
   margin: 0;
   color: #172b4d;
+  font-size: 1.125rem;
+  line-height: 1.35;
+}
+
+.atlas-history-event p,
+.atlas-history-note p {
+  margin: .5rem 0 0;
+  color: #4c5e78;
   font-size: 1rem;
   line-height: 1.65;
 }
 
-.atlas-history-timeline a {
-  grid-column: 2;
-  width: fit-content;
-  margin-top: .8rem;
+.atlas-history-event a,
+.atlas-history-note a {
+  display: inline-block;
+  margin-top: .65rem;
   color: #1747ab;
   font-size: .875rem;
   text-underline-offset: .2em;
 }
 
-.atlas-history-timeline a:hover { color: #1d4ed8; }
-.atlas-history-timeline a:focus-visible { outline: 3px solid #1d4ed8; outline-offset: 4px; }
+.atlas-history-event a:hover,
+.atlas-history-note a:hover { color: #1d4ed8; }
+.atlas-history-event a:focus-visible,
+.atlas-history-note a:focus-visible { outline: 3px solid #1d4ed8; outline-offset: 4px; }
 .atlas-history-external { width: 1em; height: 1em; margin-left: .4em; vertical-align: middle; }
 
+.atlas-history-notes {
+  display: grid;
+  gap: 1.5rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid #d6deeb;
+}
+
+.atlas-history-note { padding-bottom: 1.5rem; border-bottom: 1px solid #d6deeb; }
+.atlas-history-note:last-child { padding-bottom: 0; border-bottom: 0; }
+
 @media (max-width: 760px) {
-  .atlas-history { grid-template-columns: 1fr; gap: 2rem; }
-  .atlas-history-heading h2 { max-width: 14ch; }
+  .atlas-history-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .atlas-history-notes { padding: 0; border-left: 0; }
 }
 
 @media (max-width: 500px) {
-  .atlas-history-timeline li { grid-template-columns: 1fr; row-gap: .6rem; }
-  .atlas-history-timeline time,
-  .atlas-history-timeline p,
-  .atlas-history-timeline a { grid-column: 1; grid-row: auto; }
-  .atlas-history-timeline time { font-size: .85rem; }
-  .atlas-history-timeline a { margin-top: 0; }
-  .atlas-history-source-title { display: none; }
+  .atlas-history-timeline { padding-left: 1.1rem; }
+  .atlas-history-timeline li { grid-template-columns: 1fr; row-gap: .4rem; padding-left: .9rem; }
+  .atlas-history-timeline li::before { left: calc(-1.1rem - 6px); }
 }
