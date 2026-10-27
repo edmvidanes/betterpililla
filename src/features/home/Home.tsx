@@ -12,6 +12,24 @@ function Arrow() {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
 }
 
+const browseIcons: Partial<Record<MessageKey, string>> = {
+  government: 'M3 10h18M5 10v9m5-9v9m4-9v9m5-9v9M3 21h18M12 3l9 5H3l9-5Z',
+  officials: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4 21a8 8 0 0 1 16 0',
+  barangays: 'M3 11 12 4l9 7M5 10v10h14V10M9 20v-6h6v6',
+  services: 'M12 3v18M3 12h18M7 7h10v10H7z',
+  finance: 'M4 7h16v13H4zM4 7l2-3h12l2 3M15 13h5M16 13h.01',
+  procurement: 'M4 7h16l-1 13H5L4 7ZM9 7V5a3 3 0 0 1 6 0v2',
+  projects: 'M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6',
+  legislation: 'M6 3h12v18H6zM9 7h6M9 11h6M9 15h6',
+  downloads: 'M12 3v12m-4-4 4 4 4-4M4 17v3h16v-3',
+  demographics: 'M9 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM2 21a7 7 0 0 1 14 0M16 4a4 4 0 0 1 0 8m2 3a6 6 0 0 1 4 6',
+  competitiveness: 'M4 20V12h4v8M10 20V8h4v12M16 20V4h4v16M3 20h18',
+  map: 'M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3V6Zm6-3v15m6-12v15',
+  places: 'M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0ZM12 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z',
+  advisories: 'M12 3 2 20h20L12 3Zm0 6v5m0 3h.01',
+}
+
+
 export default function Home({ locale, capturedAt, href, search, contacts }: {
   locale: Locale
   capturedAt: string
@@ -20,8 +38,8 @@ export default function Home({ locale, capturedAt, href, search, contacts }: {
   contacts: DataRecord
 }) {
   const t = catalogs[locale]
-  const links = (keys: MessageKey[]) => <ul className="atlas-links">{keys.map(key =>
-    <li key={key}><a href={href(routes.find(([, label]) => label === key)![0])}><span>{t[key]}</span><Arrow /></a></li>,
+  const links = (keys: MessageKey[], icons = false) => <ul className="atlas-links">{keys.map(key =>
+    <li key={key}><a href={href(routes.find(([, label]) => label === key)![0])}><span className="atlas-link-label">{icons && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={browseIcons[key]} /></svg>}{t[key]}</span><Arrow /></a></li>,
   )}</ul>
 
   return <div className="atlas">
@@ -59,9 +77,9 @@ export default function Home({ locale, capturedAt, href, search, contacts }: {
     <section className="atlas-inner atlas-browse" aria-labelledby="atlas-browse-title">
       <h2 id="atlas-browse-title">{t.atlasBrowse}</h2>
       <div className="atlas-index">
-        <section><h3>{t.atlasGovernment}</h3>{links(['government', 'officials', 'barangays', 'services'])}</section>
-        <section><h3>{t.atlasRecords}</h3>{links(['finance', 'procurement', 'projects', 'legislation', 'downloads'])}</section>
-        <section className="atlas-local"><h3>{t.atlasLocal}</h3>{links(['demographics', 'competitiveness', 'map', 'places', 'advisories'])}</section>
+        <section><h3>{t.atlasGovernment}</h3>{links(['government', 'officials', 'barangays', 'services'], true)}</section>
+        <section><h3>{t.atlasRecords}</h3>{links(['finance', 'procurement', 'projects', 'legislation', 'downloads'], true)}</section>
+        <section className="atlas-local"><h3>{t.atlasLocal}</h3>{links(['demographics', 'competitiveness', 'map', 'places', 'advisories'], true)}</section>
       </div>
     </section>
 
