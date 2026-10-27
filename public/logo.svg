@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>BetterCavinti Philippine sun, waterfall and weave emblem</title>
+  <defs>
+    <path id="ray" d="m29.5 7.5-.5-4.5 1.5 1L32 0l1.5 4 1.5-1-.5 4.5Z"/>
+  </defs>
+  <g fill="#1d4ed8">
+    <circle cx="32" cy="17" r="7"/>
+    <use href="#ray"/>
+    <use href="#ray" transform="rotate(45 32 17)"/>
+    <use href="#ray" transform="rotate(90 32 17)"/>
+    <use href="#ray" transform="rotate(135 32 17)"/>
+    <use href="#ray" transform="rotate(180 32 17)"/>
+    <use href="#ray" transform="rotate(225 32 17)"/>
+    <use href="#ray" transform="rotate(270 32 17)"/>
+    <use href="#ray" transform="rotate(315 32 17)"/>
+  </g>
+  <path fill="#1d4ed8" d="M4 30 17 23h7v9h-5v4L4 43V30Zm56 0-13-7h-7v9h5v4l15 7V30Z"/>
+  <path fill="#172b4d" d="m4 47 15-7 7 4-14 7 8 4 12-6 12 6 8-4-14-7 7-4 15 7v9l-16 8-12-6-12 6-16-8v-9Z"/>
+  <path fill="#1d4ed8" d="M28 36h8c0 5 3 8 6 10l-10-3-10 3c3-2 6-5 6-10Z"/>
+</svg>

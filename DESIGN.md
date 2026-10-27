@@ -60,6 +60,8 @@ Lightly rounded panels, inputs and notices use the frontmatter radii. Record lis
 
 Use installed Kapwa `Button` variants for actions and explicitly labeled native inputs/selects. Grouped navigation uses native exclusive disclosures with click-outside and Escape dismissal; mobile Escape returns focus to the Menu button. Keyboard focus is a visible 3px outline with a 4px offset. Source citations expose publisher routes, direct evidence URLs, independent status dimensions and last checks. Status chips are informational, not actions. The first focusable link skips to main content.
 
+The header and browser tab share `public/logo.svg`: an original blue-and-navy emblem combining a Philippine eight-rayed sun with simplified waterfall and interlocking weave forms inspired by Cavinti's municipal seal. It is a community-portal mark, not the official seal. The header retains its bilingual wordmark descriptor and home-link accessible name; the adjacent mark is decorative. Render at 48px on desktop and 40px on mobile. Both asset URLs respect the deployment base.
+
 ## Do's and Don'ts
 
 - Do preserve source-original strings and visibly label missing translations.
