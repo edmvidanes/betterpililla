@@ -1,12 +1,14 @@
-import { useEffect, useState, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { Button } from '@bettergov/kapwa/button'
 import { lgu } from '../config/lgu'
 import { catalogs, formatDate, formatNumber, type Locale, type MessageKey } from '../i18n/locales'
 import { loadData, type DataPack, type DataRecord, type EvidenceValue } from '../data/loaders'
 import { DataStatus, EvidenceTree, ExternalDocumentLink, SourceCitation } from '../components/Evidence'
+import SearchPalette from '../components/SearchPalette'
 import Legislation, { type LegislationRecord } from '../features/legislation/Legislation'
 import Home from '../features/home/Home'
 import { routes } from './route-manifest'
+import { searchPortal } from './search'
 import { barangayId } from '../domain/ids'
 
 const base = import.meta.env.BASE_URL
@@ -23,6 +25,11 @@ function App() {
   const [data, setData] = useState<DataPack | null>(null)
   const [error, setError] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const searchDialog = useRef<HTMLDialogElement>(null)
+  const openSearch = () => {
+    if (!searchDialog.current?.open) searchDialog.current?.showModal()
+    searchDialog.current?.querySelector<HTMLInputElement>('input')?.focus()
+  }
   const navigationGroups: { label: string; keys: MessageKey[] }[] = [
     { label: t.services, keys: ['services', 'places', 'advisories'] },
     { label: t.government, keys: ['government', 'officials', 'offices', 'committees', 'barangays', 'map'] },
@@ -32,6 +39,7 @@ function App() {
   ]
   useEffect(() => {
     const closeMenus = (event: MouseEvent | KeyboardEvent) => {
+      if (event instanceof KeyboardEvent && searchDialog.current?.open) return
       if (event instanceof KeyboardEvent && event.key !== 'Escape') return
       document.querySelectorAll<HTMLDetailsElement>('.nav-group[open]').forEach(group => {
         if (event instanceof MouseEvent && group.contains(event.target as Node)) return
@@ -50,6 +58,16 @@ function App() {
       document.removeEventListener('click', closeMenus)
       document.removeEventListener('keydown', closeMenus)
     }
+  }, [])
+  useEffect(() => {
+    const shortcut = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && !event.altKey && !event.shiftKey && event.key.toLowerCase() === 'k') {
+        event.preventDefault()
+        openSearch()
+      }
+    }
+    document.addEventListener('keydown', shortcut)
+    return () => document.removeEventListener('keydown', shortcut)
   }, [])
   useEffect(() => { loadData().then(setData).catch(() => setError(true)) }, [])
   useEffect(() => {
@@ -169,9 +187,10 @@ function App() {
             return <a key={key} href={href(path)} aria-current={route === path ? 'page' : undefined}>{t[key]}</a>
           })}</div>
         </details>)}
-        <a className="header-search" href={href('search')} aria-label={t.search}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg><span>{t.search}</span></a>
+        <a className="header-search" href={href('search')} aria-label={t.search} aria-keyshortcuts="Control+K Meta+K" onClick={event => { event.preventDefault(); openSearch() }}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg><span>{t.search}</span><kbd>Ctrl K</kbd></a>
       </nav>
     </div></header>
+    <SearchPalette dialog={searchDialog} data={data} error={error} locale={locale} href={href} />
     <div className={`site-layout${route === '' ? ' home-layout' : ''}`}>
       <main id="main" tabIndex={-1}>{content}</main>
     </div>
@@ -209,8 +228,7 @@ function SearchResults({ rows, href, locale }: { rows: DataPack['portal']['searc
 }
 function SearchPage({ data, locale, href }: { data: DataPack; locale: Locale; href: (path: string) => string }) {
   const query = new URLSearchParams(location.search).get('q') || ''
-  const terms = query.toLocaleLowerCase().split(/\s+/).filter(Boolean)
-  const matching = data.portal.search.filter(row => terms.every(term => `${row.title} ${row.text} ${row.sourceIds?.join(' ')}`.toLocaleLowerCase().includes(term)))
+  const matching = searchPortal(data.portal.search, query, locale)
   return <><h1>{catalogs[locale].search}</h1><SearchForm locale={locale} href={href} initial={query} /><SearchResults key={query} rows={matching} href={href} locale={locale} /></>
 }
 export default App

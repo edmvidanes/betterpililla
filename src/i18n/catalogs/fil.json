@@ -1,5 +1,9 @@
 {
   "menuLabel": "Menu", "joinInitiative": "Sumali sa BetterLGU",
+  "closeSearch": "Isara ang paghahanap",
+  "searchPrompt": "Mag-type upang maghanap ng mga rekord, paksa at sanggunian.",
+  "searchPage": "Pahina",
+  "searchAll": "Tingnan ang lahat ng resulta", "searchNavigate": "para mag-navigate", "searchSelect": "para pumili", "searchDismiss": "para isara",
   "quickAccess": "Mabilis na akses", "viewCoverage": "Tingnan ang mga sanggunian at limitasyon ng datos", "projectLinks": "Mga link ng proyekto at wika", "officialWebsite": "Opisyal na website", "hotlines": "Mga hotline", "communityPortal": "Portal ng komunidad", "closeMenu": "Isara ang menu",
   "footerDescription": "Isang open-source na inisyatiba na nagbibigay ng akses sa impormasyong pangmunisipyo, lokal na batas, at pampublikong datos para sa mga taga-{place}.",
   "footerCommunity": "Binuo ng komunidad para sa komunidad.",

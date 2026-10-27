@@ -30,6 +30,8 @@ SITE_BASE=/bettercavinti/ npm run preview
 
 The Community Atlas homepage uses a fluid place-name masthead, a three-photo strip, search with service-office badges, quick links, grouped browsing, a history timeline, a map and source transparency. Quick links sit immediately below search. Components and responsive styles live in `src/features/home/`; global navigation and search remain shared with the rest of the portal.
 
+Press Ctrl+K (or Command+K on macOS) from any page, or use the header search control, to open live search. Matching portal pages appear before captured records; arrow keys select results and Escape closes the palette. The full search page uses the same ranking.
+
 The demographics section pairs locally hosted Cavinti photography with population bars from the current data pack. Year links lead to the original sources; the PSA index-only 2024 figure and the secondary PhilAtlas figures remain separately labeled. The section's Caliraya Lake photograph is by [Judgefloro](https://commons.wikimedia.org/wiki/File:9720Kanluran_Talaongan,_Cavinti,_Laguna_09.jpg), CC0 1.0, resized and converted to WebP.
 The Sambalilo Festival photograph is credited to Cavinti Tourism by [The Filipino Rambler](https://www.thefilipinorambler.com/2025/02/cavinti-laguna-a-journey-into-the-art-of-sambalilo-weaving-and-beyond.html). The user reports permission from Cavinti Tourism for its photographs. This permission is not an open license; the photograph was resized and converted to WebP.
 The cave photograph comes from the [Cavinti Underground River and Caves Complex website](https://cavintiunderground.wixsite.com/cavinticave), whose contact page lists the municipal administrator. Converted to WebP; user reports permission from Cavinti Tourism.
