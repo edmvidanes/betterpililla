@@ -82,6 +82,17 @@ export default function CavintiMap({ locale, center, zoom }: {
       })
       mapRef.current = map
       map.addControl(new maplibre.AttributionControl({ compact: true }), 'bottom-right')
+      map.on('style.load', () => {
+        for (const layer of map!.getStyle().layers) {
+          if (layer.id === 'background') map!.setPaintProperty(layer.id, 'background-color', '#EAF1FF')
+          if (layer.id === 'water' || layer.id.startsWith('waterway')) {
+            map!.setPaintProperty(layer.id, layer.type === 'fill' ? 'fill-color' : 'line-color', '#B8D6F5')
+          }
+          if (layer.type === 'symbol' && layer.layout?.['text-field']) {
+            map!.setPaintProperty(layer.id, 'text-color', '#172B4D')
+          }
+        }
+      })
       map.once('load', () => {
         loaded = true
         if (!cancelled) setReady(true)
