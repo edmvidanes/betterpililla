@@ -52,15 +52,17 @@
 .atlas-sources a, footer.atlas-footer a { color: white; }
 .atlas-sources a:hover, footer.atlas-footer a:hover { color: #eaf1ff; }
 .atlas-sources :focus-visible, footer.atlas-footer :focus-visible { outline-color: white; }
-footer.atlas-footer { background: #172b4d; color: white; border: 0; padding: 4rem clamp(1.25rem, 8vw, 8rem) 3rem; }
-.atlas-footer-intro { max-width: 36rem; margin-bottom: 3rem; }
+footer.atlas-footer { background: #172b4d; color: white; border: 0; padding: 4rem clamp(1.25rem, 4.3vw, 4.25rem) 2rem; }
+.atlas-footer-main { display: grid; grid-template-columns: minmax(0, 24rem) minmax(0, 1fr); gap: clamp(3rem, 10vw, 10rem); }
+.atlas-footer-intro { max-width: 24rem; }
 .atlas-footer-brand { display: inline-block; font-size: 1.5rem; font-weight: 750; line-height: 1.2; letter-spacing: -.035em; text-decoration: none; }
 .atlas-footer-brand small { display: block; margin-top: .4rem; font-size: .75rem; font-weight: 600; letter-spacing: 0; }
-.atlas-footer-intro p { margin: 1.25rem 0 0; color: #eaf1ff; }
-.atlas-footer > p { color: #eaf1ff; margin: 0 0 1rem; }
-.atlas-footer nav { gap: .75rem 1.5rem; }
-.atlas-footer nav a { text-decoration: none; }
-.atlas-footer nav a:hover { text-decoration: underline; }
+.atlas-footer-intro p { margin: 1.5rem 0 0; color: #eaf1ff; }
+.atlas-footer nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-content: start; gap: 1.25rem 3rem; max-width: 40rem; }
+.atlas-footer nav a, .atlas-footer-bottom a { width: fit-content; text-decoration: none; }
+.atlas-footer nav a:hover, .atlas-footer-bottom a:hover { text-decoration: underline; }
+.atlas-footer-bottom { display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; margin-top: 8rem; color: #eaf1ff; }
+.atlas-footer-bottom p { margin: 0; }
 @media (max-width: 1000px) {
   .atlas-browse { grid-template-columns: 1fr; gap: 1.5rem; }
   .atlas-index { gap: 1.5rem; padding-left: 1.5rem; }
@@ -84,6 +86,9 @@ footer.atlas-footer { background: #172b4d; color: white; border: 0; padding: 4re
   .atlas-shortcuts .atlas-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .atlas-sources { grid-template-columns: 1fr; gap: 1.25rem; padding-block: 2rem; }
   .atlas-source-links { border: 0; padding: 0; }
+  .atlas-footer-main { grid-template-columns: 1fr; gap: 2.5rem; }
+  .atlas-footer nav { gap: 1rem 1.5rem; }
+  .atlas-footer-bottom { margin-top: 4rem; flex-wrap: wrap; }
 }
 @media (max-width: 420px) {
   .atlas-index { grid-template-columns: 1fr; }
