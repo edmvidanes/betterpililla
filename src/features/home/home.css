@@ -96,7 +96,7 @@ footer.atlas-footer { background: #191d21; color: white; border: 0; padding: 4re
   .atlas-photo-strip { grid-template-columns: 1.5fr 1fr 1fr; gap: .25rem; margin-inline: .25rem; }
   .atlas-photo-strip img { height: 210px; }
   .atlas-credits { font-size: .75rem; }
-  .atlas-search { padding-block: 1.75rem .5rem; }
+  .atlas-search { padding-block: 1.75rem 1.5rem; }
   .atlas-search .search-form > div { flex-wrap: wrap; }
   .atlas-search input { flex: 1 1 200px; }
   .atlas-search button { min-width: 100px; }
