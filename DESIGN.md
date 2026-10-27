@@ -27,14 +27,14 @@ rounded:
   input: "0.35rem"
 spacing:
   panel: "1.25rem"
-  desktop-column-gap: "3rem"
+  homepage-column-gap: "5rem"
 ---
 
 # Design System: Civic portal
 
 ## Overview
 
-The user selected restrained Kapwa styling with Tailwind, not a bespoke visual redesign. This file records the implemented interface; it does not add a new branding direction. Sources, coverage and readable original records lead. No authored animation or decorative illustration is required.
+The portal uses restrained Kapwa styling with Tailwind. Following the user's BetterLB navigation reference, the global shell uses a compact utility strip and grouped horizontal navigation instead of a documentation-style sidebar. The homepage prioritizes search and quick access; detailed source limits remain on the affected pages and source routes.
 
 ## Colors
 
@@ -46,7 +46,7 @@ Use the body stack and responsive headline scale above. No font is downloaded by
 
 ## Layout
 
-The desktop shell has a maximum width of 1320px, a 230px topic column and a fluid content column. At 800px and below it becomes a single column; native topic navigation starts collapsed on mobile. At 480px, filter fields and topic lists stack. Source tables may scroll inside their own labeled page region rather than overflowing the document.
+The header has a maximum width of 1440px; content has a maximum width of 1320px with no global sidebar. The utility strip includes the independent/nonofficial notice, BetterLGU initiative link, project information, official municipal site, public contacts and language switch. Primary navigation groups Services, Government, Statistics, OpenLGU and Transparency. At 1150px and below, a Menu button reveals stacked disclosure groups. The homepage pairs search and introductory content with quick-access links; at 700px and below these stack, as do topic and filter grids. Detailed coverage warnings stay on the affected routes; a compact homepage summary links to sources. Source tables scroll within their own region.
 
 ## Elevation & Depth
 
@@ -58,7 +58,7 @@ Lightly rounded panels, inputs and notices use the frontmatter radii. Record lis
 
 ## Components
 
-Use the installed Kapwa `Button` variants for actions. Inputs/selects are native, explicitly labeled controls. Keyboard focus is a visible 3px outline with a 4px offset. Source citations expose publisher routes, direct evidence URLs, independent status dimensions and last checks. Status chips are informational, not actions. The topic menu is a native disclosure, and the first focusable link skips to main content.
+Use installed Kapwa `Button` variants for actions and explicitly labeled native inputs/selects. Grouped navigation uses native exclusive disclosures with click-outside and Escape dismissal; mobile Escape returns focus to the Menu button. Keyboard focus is a visible 3px outline with a 4px offset. Source citations expose publisher routes, direct evidence URLs, independent status dimensions and last checks. Status chips are informational, not actions. The first focusable link skips to main content.
 
 ## Do's and Don'ts
 
