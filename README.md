@@ -65,6 +65,16 @@ Additional primary-source collection attempts and bounded, unreviewed PDF transc
 
 The 2026-10-27 research adds the legislative office's published contact details, a dated school-garden evaluation, two BSP opinions on proposed municipal borrowing, and a historical national road appropriation. Contact details are not live-validated; borrowing proposals do not establish loan drawdown or debt, and an appropriation does not establish spending or construction. None of these records is a complete directory, budget, debt register, school roster, or project inventory.
 
+### Public information pages
+
+Services lead to the official Citizens’ Charter and captured office contacts; no unverified application instructions are invented. Facilities prioritize captured school-directory leads and the health-office contact. Advisories link to official weather and hazard resources, explicitly not a live alert feed. Government and officials use descriptive navigation and searchable directory rows; contact pages expose tap-to-call numbers with their live-validation limit.
+
+Demographics offers a keyboard-operable population chart with year selection and recent/all-captured-year ranges. Points retain their published reference years and source provenance; connecting lines do not supply intermediate values. The source-published growth rate remains separate. Finance displays document leads and access checks, not charts made from unverified document-title amounts.
+
+Legislation keeps search, type and year visible; number, author, topic, date-range and source filters expand under “More filters”. Active advanced URL filters open that section automatically; reload and locale switching preserve them. Open data and sources have local search, compact records, downloads and expandable provenance. Source citations retain separate localized verification, access and freshness states.
+
+Page components live in `src/features/` with shared styles in `civic.css`. New interface copy belongs in the typed `civic-en.json` / `civic-fil.json` catalogs; legislative messages stay in their existing catalogs. Source-original wording remains unchanged and language-marked. `e2e/civic.spec.ts` covers population/evidence selection, intersecting directory filters and advanced legislative deep links.
+
 ## Manual refresh
 
 ```sh
