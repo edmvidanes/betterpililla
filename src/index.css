@@ -38,7 +38,6 @@ input { caret-color: #1747ab; }
 .header-search { display: flex; align-items: center; gap: .5rem; color: #172b4d; padding: .7rem; }
 .header-search svg { width: 22px; height: 22px; }
 .header-search span, .menu-toggle { display: none; }
-.header-search kbd { font-family: inherit; font-size: .75rem; font-weight: 600; white-space: nowrap; border: 1px solid var(--portal-border); border-radius: .35rem; padding: .1rem .35rem; }
 .site-layout { max-width: 1320px; margin: auto; padding: 3rem 2rem 5rem; }
 main { min-width: 0; outline: none; }
 h1 { font-size: clamp(1.75rem, 3vw, 2.6rem); line-height: 1.2; font-weight: 730; letter-spacing: -.025em; margin: .1rem 0 1.25rem; overflow-wrap: anywhere; text-wrap: balance; }

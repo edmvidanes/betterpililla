@@ -187,7 +187,7 @@ function App() {
             return <a key={key} href={href(path)} aria-current={route === path ? 'page' : undefined}>{t[key]}</a>
           })}</div>
         </details>)}
-        <a className="header-search" href={href('search')} aria-label={t.search} aria-keyshortcuts="Control+K Meta+K" onClick={event => { event.preventDefault(); openSearch() }}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg><span>{t.search}</span><kbd>Ctrl K</kbd></a>
+        <a className="header-search" href={href('search')} aria-label={t.search} aria-keyshortcuts="Control+K Meta+K" onClick={event => { event.preventDefault(); openSearch() }}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg><span>{t.search}</span></a>
       </nav>
     </div></header>
     <SearchPalette dialog={searchDialog} data={data} error={error} locale={locale} href={href} />
