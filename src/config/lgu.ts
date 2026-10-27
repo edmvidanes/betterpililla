@@ -18,8 +18,9 @@ export interface MunicipalityConfig {
     author: string
     source: string
     license: string
-    licenseUrl: string
+    licenseUrl?: string
   }[]
+  demographicsPhotos: MunicipalityConfig['homepagePhotos']
 }
 
 export const lgu: MunicipalityConfig = {
@@ -58,6 +59,31 @@ export const lgu: MunicipalityConfig = {
       author: 'Judgefloro',
       source: 'https://commons.wikimedia.org/wiki/File:38Tibatib_Poblacion,_Cavinti,_Laguna_08.jpg',
       license: 'CC0 1.0', licenseUrl: 'https://creativecommons.org/publicdomain/zero/1.0/',
+    },
+  ],
+  demographicsPhotos: [
+    {
+      src: 'images/cavinti/caliraya-shore.webp', width: 960, height: 720,
+      title: 'Caliraya Lake · Kanluran Talaongan',
+      alt: { en: 'Caliraya Lake at Kanluran Talaongan, Cavinti.', fil: 'Lawa ng Caliraya sa Kanluran Talaongan, Cavinti.' },
+      author: 'Judgefloro', source: 'https://commons.wikimedia.org/wiki/File:9720Kanluran_Talaongan,_Cavinti,_Laguna_09.jpg',
+      license: 'CC0 1.0', licenseUrl: 'https://creativecommons.org/publicdomain/zero/1.0/',
+    },
+    {
+      src: 'images/cavinti/cavinti-cave.webp', width: 640, height: 428,
+      title: 'Cavinti Underground River and Caves Complex',
+      alt: { en: 'Rock formations and daylight inside a cave in Cavinti.', fil: 'Mga batong hugis at liwanag sa loob ng kuweba sa Cavinti.' },
+      author: 'Cavinti Underground River and Caves Complex',
+      source: 'https://cavintiunderground.wixsite.com/cavinticave',
+      license: 'Used with permission',
+    },
+    {
+      src: 'images/cavinti/sambalilo-festival.webp', width: 1200, height: 800,
+      title: 'Sambalilo Festival',
+      alt: { en: 'Performers dance at the Sambalilo Festival in Cavinti.', fil: 'Mga mananayaw sa Sambalilo Festival sa Cavinti.' },
+      author: 'Cavinti Tourism',
+      source: 'https://www.thefilipinorambler.com/2025/02/cavinti-laguna-a-journey-into-the-art-of-sambalilo-weaving-and-beyond.html',
+      license: 'Used with permission',
     },
   ],
 }

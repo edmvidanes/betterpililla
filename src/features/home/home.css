@@ -43,6 +43,23 @@
 .atlas-shortcuts a { color: white; font-size: clamp(1.1rem, 2vw, 1.6rem); font-weight: 650; justify-content: flex-start; }
 .atlas-shortcuts svg { width: 26px; height: 26px; }
 .atlas-shortcuts :focus-visible { outline-color: white; }
+.atlas-demographics { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; padding-block: 4rem; }
+.atlas-demographics h2 { margin: 0 0 .5rem; font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.1; letter-spacing: -.03em; }
+.atlas-demographics-data > p { margin: 0 0 1.5rem; }
+.population-chart { display: grid; gap: 1rem; margin-block: 2rem; }
+.population-row { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr) auto; gap: .35rem .75rem; align-items: center; font-variant-numeric: tabular-nums; }
+.population-row a { font-weight: 700; }
+.population-row strong { text-align: right; }
+.population-row small { grid-column: 2 / -1; color: #4c5e78; }
+.population-track { height: .75rem; background: #eaf1ff; }
+.population-track span { display: block; height: 100%; background: #1d4ed8; }
+.population-more { font-weight: 700; text-underline-offset: .2em; }
+.demographics-photos { margin: 0; min-width: 0; }
+.demographics-photo-strip { display: flex; flex-direction: column; height: clamp(300px, 34vw, 480px); gap: .4rem; }
+.demographics-photo-strip a { display: block; flex: 1 1 0; min-height: 0; overflow: hidden; transition: flex-grow .4s ease; }
+.demographics-photo-strip a:hover, .demographics-photo-strip a:focus-visible { flex-grow: 5; }
+.demographics-photo-strip img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (prefers-reduced-motion: reduce) { .demographics-photo-strip a { transition: none; } }
 .atlas-sources { display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; padding-block: 2.5rem 3rem; align-items: start; background: #1d4ed8; color: white; }
 .atlas-sources h2 { font-size: clamp(1.6rem, 3vw, 2.6rem); line-height: 1.15; letter-spacing: -.025em; margin: 0 0 .65rem; }
 .atlas-sources p { color: #eaf1ff; margin: 0; }
@@ -71,6 +88,8 @@ footer.atlas-footer { background: #191d21; color: white; border: 0; padding: 4re
   .atlas-shortcuts .atlas-links { gap: 1rem; }
 }
 @media (max-width: 700px) {
+  .atlas-demographics { grid-template-columns: 1fr; gap: 2rem; padding-block: 2.5rem; }
+  .demographics-photo-strip { height: 300px; }
   .atlas-inner { padding-inline: 1.25rem; }
   .atlas-place { padding-top: 1.75rem; }
   .atlas-place h1 { font-size: clamp(3.1rem, 13.5vw, 5.5rem); margin-bottom: 1.25rem; }

@@ -6,6 +6,7 @@ import { routes } from '../../app/route-manifest'
 import History from './History'
 import ServiceHighlights from './ServiceHighlights'
 import CavintiMap from './CavintiMap'
+import Demographics from './Demographics'
 import './home.css'
 
 function Arrow() {
@@ -30,12 +31,13 @@ const browseIcons: Partial<Record<MessageKey, string>> = {
 }
 
 
-export default function Home({ locale, capturedAt, href, search, contacts }: {
+export default function Home({ locale, capturedAt, href, search, contacts, municipality }: {
   locale: Locale
   capturedAt: string
   href: (path: string) => string
   search: ReactNode
   contacts: DataRecord
+  municipality: DataRecord
 }) {
   const t = catalogs[locale]
   const links = (keys: MessageKey[], icons = false) => <ul className="atlas-links">{keys.map(key =>
@@ -82,6 +84,8 @@ export default function Home({ locale, capturedAt, href, search, contacts }: {
         <section className="atlas-local"><h3>{t.atlasLocal}</h3>{links(['demographics', 'competitiveness', 'map', 'places', 'advisories'], true)}</section>
       </div>
     </section>
+
+    <Demographics locale={locale} href={href} municipality={municipality} />
 
     <History locale={locale} />
     <CavintiMap locale={locale} center={lgu.mapView.center} zoom={lgu.mapView.zoom} />
