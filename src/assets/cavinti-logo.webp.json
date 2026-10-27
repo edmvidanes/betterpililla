@@ -1,0 +1,15 @@
+{
+  "approved": true,
+  "approval": "User: looks solid",
+  "model": "openai-codex/gpt-image-2",
+  "prompt": "Edit the supplied BetterCavinti logo, preserving its golden yellow Philippine eight-rayed sun and navy asymmetric gorge. Fix the central problem: the waterfall currently looks like an empty transparent crack and is NOT recognizable as water. Redraw the actual Cavinti Falls as a highly visible SOLID OPAQUE WHITE waterfall with two restrained pale-blue interior accents. The white waterfall must be real painted white pixels, NOT transparency, NOT a cutout, NOT an empty dark slot. Only the exterior background should be transparent. Keep it ONE tall narrow continuous plunge, gently leaning from upper right toward lower left, with a narrower lip through the gorge notch and a moderately wider base. Increase its visual width enough to read clearly at 48px: the white stream should occupy approximately 15 percent of the emblem width at its midpoint, not a hairline. Add a simple unmistakable WHITE fan of spray where it strikes a small pale-blue pool, connecting the stream to horizontal blue water at the base. Main focal point must be the unmistakable white falling water against dark navy rock, not a generic cleft between mountains. Real Cavinti Falls geometry: broad near-vertical layered gorge face left, steeper asymmetric wall right, one narrow plunge down their notch, no split falls or broad curtain. Retain the yellow sun above, EXACTLY EIGHT major rays with three-pronged treatment. Simplify the interwoven blue waves at the bottom so they do not compete with the waterfall. Refined professionally drawn flat civic emblem, bold clean contours, visually clear at small sizes. Colors: golden yellow sun, deep navy cliffs, cobalt and pale-blue water, solid white waterfall and spray. No gradients, shading, textures, words, letters, framing circle, stars, borders or mockup. One square isolated logo on TRANSPARENT EXTERIOR BACKGROUND; preserve opaque WHITE WATERFALL inside the emblem. Do not fill the waterfall with navy or transparency.",
+  "reference": {
+    "path": "public/images/cavinti/cavinti-falls.webp",
+    "author": "Kathleen Mae Tugano",
+    "source": "https://commons.wikimedia.org/wiki/File:Pagsanjan_Falls_-_Pagsanjan,_Laguna_1.jpg",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "license": "CC BY-SA 4.0",
+  "changes": "AI-generated flat emblem referencing the photograph, with a Philippine sun and simplified gorge and water. Not a documentary image or official seal. Header and favicon are Lanczos-resized derivatives."
+}
