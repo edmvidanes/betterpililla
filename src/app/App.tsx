@@ -5,6 +5,7 @@ import { catalogs, formatDate, formatNumber, type Locale, type MessageKey } from
 import { loadData, type DataPack, type DataRecord, type EvidenceValue } from '../data/loaders'
 import { DataStatus, EvidenceTree, ExternalDocumentLink, SourceCitation } from '../components/Evidence'
 import Legislation, { type LegislationRecord } from '../features/legislation/Legislation'
+import Home from '../features/home/Home'
 import { routes } from './route-manifest'
 import { barangayId } from '../domain/ids'
 
@@ -83,25 +84,7 @@ function App() {
   let content: ReactNode
   if (error) content = <><h1>{t.loadError}</h1><Button onClick={() => location.reload()}>{t.retry}</Button><p><ExternalDocumentLink url={lgu.officialUrl} /></p></>
   else if (!data) content = <p role="status">{t.loading}</p>
-  else if (route === '') content = <>
-    <section className="home-intro">
-      <div className="home-welcome">
-        <h1>{lgu.name}, {lgu.province}</h1>
-        <p className="lead">{t.intro}</p>
-        <p className="measure">{t.description}</p>
-        <SearchForm locale={locale} href={href} />
-      </div>
-      <section className="quick-access" aria-labelledby="quick-access-title">
-        <h2 id="quick-access-title">{t.quickAccess}</h2>
-        <ul>{(['services', 'officials', 'legislation', 'downloads'] as MessageKey[]).map(key => {
-          const path = routes.find(([, label]) => label === key)![0]
-          return <li key={key}><a href={href(path)}><span>{t[key]}</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg></a></li>
-        })}</ul>
-      </section>
-    </section>
-    <section className="home-topics"><h2>{t.browse}</h2>{navLinks(['government', 'barangays', 'finance', 'procurement', 'projects', 'demographics', 'competitiveness', 'map', 'places', 'advisories'])}</section>
-    <div className="coverage-summary"><p><strong>{t.coverage}</strong> · {t.capture}: {formatDate(data.portal.capturedAt, locale)}</p><a href={href('sources')}>{t.viewCoverage}</a></div>
-  </>
+  else if (route === '') content = <Home locale={locale} capturedAt={data.portal.capturedAt} href={href} search={<SearchForm locale={locale} href={href} />} />
   else if (route === 'services') {
     const query = new URLSearchParams(location.search).get('q') || ''
     const serviceRows = records(data.services.services)
@@ -159,7 +142,7 @@ function App() {
   else content = notFound()
   return <>
     <a className="skip-link" href="#main">{t.skip}</a>
-    <div className="community-bar"><div className="utility-inner">
+    <div className={`community-bar${route === '' ? ' atlas-utility' : ''}`}><div className="utility-inner">
       <p>{t.community}</p>
       <nav aria-label={t.projectLinks}>
         <a className="initiative-link" href="https://lgu.bettergov.ph/">{t.joinInitiative}</a>
@@ -169,7 +152,7 @@ function App() {
         <a href={`${base}${locale === 'en' ? 'fil' : 'en'}/${route.split('/').map(encodeURIComponent).join('/')}${location.search}${location.hash}`} lang={locale === 'en' ? 'fil' : 'en'} hrefLang={locale === 'en' ? 'fil' : 'en'}>{locale === 'en' ? 'Filipino' : 'English'}</a>
       </nav>
     </div></div>
-    <header className="site-header"><div className="header-inner">
+    <header className={`site-header${route === '' ? ' atlas-header' : ''}`}><div className="header-inner">
       <a className="brand" href={href('')} aria-label={`Better${lgu.name} · ${t.home}`}>Better<span>{lgu.name}</span><small>{t.communityPortal} · {lgu.name}, {lgu.province}</small></a>
       <button className="menu-toggle" aria-expanded={menuOpen} aria-controls="primary-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? t.closeMenu : t.menuLabel}</button>
       <nav id="primary-navigation" className={`primary-navigation${menuOpen ? ' is-open' : ''}`} aria-label={t.navigation}>
@@ -189,7 +172,7 @@ function App() {
     <div className={`site-layout${route === '' ? ' home-layout' : ''}`}>
       <main id="main" tabIndex={-1}>{content}</main>
     </div>
-    <footer><p>{t.community}</p><nav aria-label={t.footer}>
+    <footer className={route === '' ? 'atlas-footer' : undefined}><p>{t.community}</p><nav aria-label={t.footer}>
       {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads'] as MessageKey[]).map(key => <a key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</a>)}
       <a href={lgu.repository}>GitHub</a>
     </nav></footer>

@@ -38,22 +38,6 @@ input { caret-color: #1747ab; }
 .header-search svg { width: 22px; height: 22px; }
 .header-search span, .menu-toggle { display: none; }
 .site-layout { max-width: 1320px; margin: auto; padding: 3rem 2rem 5rem; }
-.home-layout { padding-top: 0; }
-.home-intro { display: grid; grid-template-columns: 1.3fr 1fr; gap: 5rem; padding: 5rem 0 4rem; border-bottom: 1px solid var(--portal-border); align-items: center; }
-.home-welcome h1 { font-size: clamp(2.4rem, 4vw, 3.6rem); }
-.home-welcome .lead { font-size: 1.45rem; max-width: 30ch; }
-.home-welcome .measure { color: #4c5e78; max-width: 58ch; }
-.home-welcome .search-form { margin-bottom: 0; }
-.quick-access { padding-left: 2rem; border-left: 1px solid var(--portal-border); }
-.quick-access h2 { margin: 0 0 1rem; }
-.quick-access ul { list-style: none; padding: 0; margin: 0; }
-.quick-access li { border-bottom: 1px solid var(--portal-border); }
-.quick-access a { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; font-size: 1.1rem; font-weight: 650; text-decoration: none; }
-.quick-access a:hover span { text-decoration: underline; text-underline-offset: .2em; }
-.quick-access svg { width: 22px; height: 22px; flex-shrink: 0; }
-.home-topics { padding-top: 1rem; }
-.home-topics .topic-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.coverage-summary { border-top: 1px solid var(--portal-border); padding-top: 1rem; margin-top: 2.5rem; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; color: #4c5e78; font-size: .85rem; }
 main { min-width: 0; outline: none; }
 h1 { font-size: clamp(1.75rem, 3vw, 2.6rem); line-height: 1.2; font-weight: 730; letter-spacing: -.025em; margin: .1rem 0 1.25rem; overflow-wrap: anywhere; text-wrap: balance; }
 h2 { font-size: 1.3rem; line-height: 1.4; font-weight: 700; margin: 2.1rem 0 .65rem; overflow-wrap: anywhere; }
@@ -119,7 +103,6 @@ footer nav { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; }
   .header-search { padding: 1rem .25rem; }
   .header-search span { display: inline; }
   .utility-inner { align-items: flex-start; flex-wrap: wrap; gap: .3rem 1rem; }
-  .home-intro { gap: 2.5rem; }
 }
 @media (max-width: 700px) {
   .site-layout, .header-inner, .utility-inner, footer { padding-inline: 1.25rem; }
@@ -129,11 +112,7 @@ footer nav { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; }
   .header-inner { padding-block: 1rem; }
   .brand { font-size: 1.35rem; }
   .brand small { max-width: 28ch; font-size: .65rem; }
-  .home-intro { grid-template-columns: 1fr; padding: 2.5rem 0; gap: 2rem; }
-  .home-welcome h1 { font-size: 2.5rem; }
-  .home-welcome .lead { font-size: 1.2rem; }
-  .quick-access { padding-left: 0; border-left: 0; }
-  .home-topics .topic-list, .field-grid, .topic-list { grid-template-columns: 1fr; }
+  .field-grid, .topic-list { grid-template-columns: 1fr; }
   .site-layout:not(.home-layout) { padding-top: 2rem; }
   .panel { padding: 1rem; }
 }
