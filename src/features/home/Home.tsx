@@ -51,17 +51,44 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
       const intro = gsap.timeline()
       intro.fromTo(atlas.querySelector('h1'), { y: 20, opacity: .7 }, { y: 0, opacity: 1, duration: 1.4, ease: 'power3.out' })
         .fromTo(atlas.querySelector('.atlas-photo-strip'), { clipPath: 'inset(0 0 0 12%)' }, { clipPath: 'inset(0)', duration: 1.8, ease: 'power3.out' }, 0)
+      atlas.querySelectorAll<HTMLElement>('.atlas-index > section').forEach(group => {
+        gsap.fromTo(group, { y: 36, opacity: .65 }, {
+          y: 0, opacity: 1, ease: 'none', immediateRender: false,
+          scrollTrigger: { trigger: group, start: 'top 95%', end: 'top 55%', scrub: 1.2 },
+        })
+      })
+      const demographics = atlas.querySelector<HTMLElement>('.atlas-demographics-data')
+      if (demographics) {
+        gsap.fromTo(demographics, { x: -36, opacity: .7 }, {
+          x: 0, opacity: 1, ease: 'none', immediateRender: false,
+          scrollTrigger: { trigger: demographics, start: 'top 95%', end: 'top 50%', scrub: 1.2 },
+        })
+      }
+      const chart = atlas.querySelector<HTMLElement>('.population-chart')
+      if (chart) {
+        gsap.fromTo(chart.querySelectorAll('.population-track span'), { scaleX: 0, transformOrigin: 'left center' }, {
+          scaleX: 1, ease: 'none', immediateRender: false,
+          scrollTrigger: { trigger: chart, start: 'top 90%', end: 'bottom 55%', scrub: 1.2 },
+        })
+      }
+      atlas.querySelectorAll<HTMLElement>('.atlas-history-heading, .atlas-history-layout').forEach(part => {
+        gsap.fromTo(part, { y: 40, opacity: .65 }, {
+          y: 0, opacity: 1, duration: 1.1, ease: 'power3.out', immediateRender: false,
+          scrollTrigger: { trigger: part, start: 'top 88%', once: true },
+        })
+      })
+
 
       atlas.querySelectorAll<HTMLElement>('.demographics-photo-strip img').forEach(image => {
-        gsap.fromTo(image, { scale: 1.12 }, {
+        gsap.fromTo(image, { scale: 1.2 }, {
           scale: 1, ease: 'none', immediateRender: false,
           scrollTrigger: { trigger: image.parentElement, start: 'top bottom', end: 'bottom top', scrub: 1.2 },
         })
       })
       const map = atlas.querySelector<HTMLElement>('.atlas-map-frame')
       if (map) {
-        gsap.fromTo(map, { clipPath: 'inset(0 4% 0 4%)' }, {
-          clipPath: 'inset(0)', ease: 'none', immediateRender: false,
+        gsap.fromTo(map, { clipPath: 'inset(0% 18% 0% 18%)' }, {
+          clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', immediateRender: false,
           scrollTrigger: { trigger: map, start: 'top bottom', end: 'top 40%', scrub: 1.2 },
         })
       }
