@@ -1,0 +1,14 @@
+{
+  "approved": "c-community-atlas.webp",
+  "alternatives": ["a-panoramic.webp", "b-blue-frame.webp"],
+  "approval": "User selected C — Community Atlas.",
+  "palette": "Existing blue-and-white Kapwa palette",
+  "priority": "Explore public information",
+  "imagery": "Generated concept scenery; not verified Cavinti photography",
+  "seed": "fac849ac",
+  "constraints": [
+    "Preserve bilingual navigation and evidence-backed content",
+    "Include meaningful sections between hero and footer",
+    "Keep each commit to at most 150 changed lines"
+  ]
+}
