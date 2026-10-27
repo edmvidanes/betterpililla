@@ -10,7 +10,7 @@
 .atlas-service-list h3 { margin: 0 0 .5rem; color: #1747ab; font-size: 1.2rem; line-height: 1.3; letter-spacing: -.015em; }
 .atlas-service-list p { margin: 0 0 .75rem; color: #172b4d; font-size: .9rem; }
 .atlas-service-list span { margin-top: auto; color: #1747ab; font-size: .85rem; }
-.atlas-service-footer { grid-column: 1 / -1; border-top: 1px solid #bccbe4; padding-top: .75rem; }
+footer.atlas-service-footer { grid-column: 1 / -1; max-width: none; margin: 0; border-top: 1px solid #bccbe4; padding: .75rem 0 0; }
 .atlas-service-coverage { margin: 0 0 .5rem; color: #4c5e78; font-size: .85rem; }
 .atlas-service-source { margin: 0; color: #4c5e78; font-size: .8rem; }
 @media (max-width: 900px) {

@@ -5,7 +5,7 @@ const churchSource = 'https://philhistoricsites.nhcp.gov.ph/registry_database/ch
 const records = [
   {
     date: '1619–1621',
-    dateTime: '1619-01-01',
+    dateTime: '1619',
     title: 'historyChurch',
     narrative: 'historyChurchNarrative',
     source: churchSource,
@@ -33,7 +33,6 @@ export default function History({ locale }: { locale: Locale }) {
 
   return <section className="atlas-inner atlas-history" aria-labelledby="atlas-history-title">
     <header className="atlas-history-heading">
- 
       <h2 id="atlas-history-title">{t.historyTitle}</h2>
       <p>{t.historyIntro}</p>
     </header>
