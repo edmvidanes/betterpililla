@@ -3,6 +3,12 @@ import type { DataPack } from '../data/loaders'
 import { searchPortal } from '../app/search'
 import { catalogs, type Locale } from '../i18n/locales'
 import './search-palette.css'
+function ResultIcon({ type, label }: { type: string; label: string }) {
+  return <svg className="palette-result-type" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" role="img" aria-label={label}>
+    {type === 'source' ? <><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" /></> : type === 'legislation' ? <><path d="M12 3v17M5 21h14M4 7h16M7 7l-4 7h8L7 7Zm10 0-4 7h8l-4-7Z" /></> : <><path d="M6 3h8l4 4v14H6z" /><path d="M14 3v5h4M9 12h6M9 16h6" /></>}
+  </svg>
+}
+
 
 export default function SearchPalette({ dialog, data, error, locale, href }: {
   dialog: RefObject<HTMLDialogElement | null>; data: DataPack | null; error: boolean
@@ -32,7 +38,7 @@ export default function SearchPalette({ dialog, data, error, locale, href }: {
     </div>
     <div className="palette-body">
       {!data ? <p className="palette-message" role="status">{error ? t.loadError : t.loading}</p> : !query.trim() ? <p className="palette-message">{t.searchPrompt}</p> : !results.length ? <p className="palette-message" role="status">{t.noResults}</p> : <ul id="palette-results" role="listbox" aria-label={t.search}>
-        {results.map((row, index) => <li id={`palette-result-${index}`} role="option" aria-selected={index === active} key={`${row.type}:${row.id}`} onMouseMove={() => setActive(index)}><a href={href(row.path)} tabIndex={-1}><span className="palette-result-type">{row.type === 'page' ? t.searchPage : row.type}</span><span className="palette-result-title">{row.title}</span><span className="palette-arrow" aria-hidden="true">→</span></a></li>)}
+        {results.map((row, index) => <li id={`palette-result-${index}`} role="option" aria-selected={index === active} key={`${row.type}:${row.id}`} onMouseMove={() => setActive(index)}><a href={href(row.path)} tabIndex={-1}><ResultIcon type={row.type} label={row.type === 'page' ? t.searchPage : row.type} /><span className="palette-result-title">{row.title}</span><span className="palette-arrow" aria-hidden="true">→</span></a></li>)}
       </ul>}
       {query.trim() && data && <a className="palette-all" href={`${href('search')}?q=${encodeURIComponent(query)}`}>{t.searchAll} <span aria-hidden="true">→</span></a>}
     </div>
