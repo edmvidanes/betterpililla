@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import type { EvidenceValue } from '../data/loaders'
 import type { NormalizedSource as SourceRecord } from '../domain/types'
 import { catalogs, type Locale } from '../i18n/locales'
+import { civicCatalogs } from '../i18n/civic'
 import { normalizeStatus } from '../domain/status'
 
 export function ExternalDocumentLink({ url, children }: { url: string; children?: ReactNode }) {
@@ -9,8 +10,19 @@ export function ExternalDocumentLink({ url, children }: { url: string; children?
   return <a href={url} rel="noreferrer">{children ?? url}</a>
 }
 export function SourceCitation({ source, href, locale }: { source: SourceRecord; href: string; locale: Locale }) {
-  const status = Object.values(source.status)
-  return <div className="citation"><a href={href}>{source.name || source.publisher}</a><span className="badge">{source.tier}</span><p><ExternalDocumentLink url={source.url || source.canonicalUrl || ''} /></p><p>{catalogs[locale].status}: <span lang="en">{source.retrievalStatus}</span></p>{status.length > 0 && <p>{status.map(code => <span key={code} className="badge" lang="en">{code}</span>)}</p>}{source.lastCheckedAt && <p>{catalogs[locale].checked}: {source.lastCheckedAt}</p>}</div>
+  const c = civicCatalogs[locale]
+  return <details className="citation"><summary>{source.name || source.publisher}<span>{source.lastCheckedAt}</span></summary>
+    <a href={href}>{c.sourceDetails}</a>
+    <p><ExternalDocumentLink url={source.url || source.canonicalUrl || ''} /></p>
+    <dl>
+      <div><dt>{c.verification}</dt><dd>{c[source.status.verificationStatus]}</dd></div>
+      <div><dt>{c.availability}</dt><dd>{c[source.status.availabilityStatus]}</dd></div>
+      <div><dt>{c.freshness}</dt><dd>{c[source.status.freshnessStatus]}</dd></div>
+    </dl>
+    <p>{catalogs[locale].checked}: {source.lastCheckedAt}</p>
+    <p lang="en">{source.retrievalStatus}</p>
+    <p className="civic-meta" lang="en">{source.tier}</p>
+  </details>
 }
 export function DataStatus({ children }: { children: ReactNode }) {
   return <div className="notice" role="note">{children}</div>

@@ -24,6 +24,8 @@
 .directory-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2.5rem; list-style: none; padding: 0; }
 .directory-grid > li { padding: 1.5rem 0; border-bottom: 1px solid var(--portal-border); }
 .directory-grid h2, .directory-grid h3 { margin: 0 0 .5rem; font-size: 1.15rem; }
+.government-link { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 44px; }
+.government-link svg { flex-shrink: 0; }
 .directory-grid p { margin: .4rem 0; }
 .directory-role { font-weight: 650; }
 .civic-phone { font-size: 1.35rem; font-weight: 650; display: inline-block; padding: .3rem 0; }
@@ -79,6 +81,7 @@
 @media (max-width: 500px) {
   .citation dl { grid-template-columns: 1fr; }
   .citation summary { align-items: start; }
+  .chart-plot text { font-size: 26px; }
   .citation summary span { display: none; }
   .population-chart, .legislation-search { padding: 1rem; }
   .legislation-search .field-grid { grid-template-columns: 1fr; }

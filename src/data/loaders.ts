@@ -4,6 +4,7 @@ import type { Json, Portal } from '../domain/types'
 // Canonical evidence has source-specific shapes; recursive rendering preserves their original fields.
 export type EvidenceValue = Json
 export type DataRecord = Record<string, EvidenceValue>
+export const rows = (value: EvidenceValue | undefined): DataRecord[] => Array.isArray(value) ? value as DataRecord[] : []
 export interface DataPack {
   portal: Portal; municipality: DataRecord; barangays: DataRecord; officials: DataRecord;
   contacts: DataRecord; services: DataRecord; sectors: DataRecord; transparency: DataRecord;
