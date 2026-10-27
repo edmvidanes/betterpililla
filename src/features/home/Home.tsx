@@ -39,6 +39,13 @@ export default function Home({ locale, capturedAt, href, search }: {
       </figure>
     </section>
 
+    <section className="atlas-shortcuts" aria-labelledby="atlas-shortcuts-title">
+      <div className="atlas-inner">
+        <h2 id="atlas-shortcuts-title">{t.atlasShortcuts}</h2>
+        {links(['services', 'officials', 'legislation', 'downloads'])}
+      </div>
+    </section>
+
     <section className="atlas-inner atlas-search" aria-labelledby="atlas-intro">
       <h2 id="atlas-intro">{t.intro}</h2>
       <p>{t.description}</p>
@@ -51,13 +58,6 @@ export default function Home({ locale, capturedAt, href, search }: {
         <section><h3>{t.atlasGovernment}</h3>{links(['government', 'officials', 'barangays', 'services'])}</section>
         <section><h3>{t.atlasRecords}</h3>{links(['finance', 'procurement', 'projects', 'legislation', 'downloads'])}</section>
         <section className="atlas-local"><h3>{t.atlasLocal}</h3>{links(['demographics', 'competitiveness', 'map', 'places', 'advisories'])}</section>
-      </div>
-    </section>
-
-    <section className="atlas-shortcuts" aria-labelledby="atlas-shortcuts-title">
-      <div className="atlas-inner">
-        <h2 id="atlas-shortcuts-title">{t.atlasShortcuts}</h2>
-        {links(['services', 'officials', 'legislation', 'downloads'])}
       </div>
     </section>
 
