@@ -31,7 +31,7 @@
   "serviceCoverageNote": "Office contacts are published by the municipality, but numbers and service availability have not been live-validated. Confirm requirements, fees and hours with the office.",
   "serviceOfficeLink": "View office details",
   "serviceCharterLink": "Browse the service directory",
-  "mapSection": "Explore Cavinti",
+  "mapSection": "Map of Cavinti",
   "mapDescription": "Find Cavinti and the surrounding lake landscape. Pan and zoom to explore. This is an OpenStreetMap basemap, not an official municipal boundary.",
   "mapLoading": "Loading the map…",
   "mapUnavailable": "The map could not be loaded. Check your connection and browser graphics support, then reload the page.",

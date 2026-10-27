@@ -27,7 +27,7 @@ export const lgu: MunicipalityConfig = {
   dataPath: 'data', repository: 'https://github.com/klnwlks/bettercavinti',
   officialUrl: 'https://www.cavinti-egov.com/', defaultLocale: 'en',
   // Approximate OSM town center; map orientation only, not an official boundary.
-  mapView: { center: [121.5070018, 14.2453833], zoom: 11 },
+  mapView: { center: [121.5070018, 14.2453833], zoom: 14 },
   sourceIds: {
     about: 'cavinti-about', charter: 'cavinti-citizens-charter',
     executive: 'cavinti-executive-directory', legislative: 'cavinti-legislative-directory',

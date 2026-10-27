@@ -55,17 +55,17 @@ export default function CavintiMap({ locale, center, zoom }: {
       map.addControl(new maplibre.AttributionControl({ compact: true }), 'bottom-right')
       map.on('style.load', () => {
         for (const layer of map!.getStyle().layers) {
-          if (layer.type === 'background') map!.setPaintProperty(layer.id, 'background-color', '#f8fbff')
+          if (layer.type === 'background') map!.setPaintProperty(layer.id, 'background-color', '#1d4ed8')
           if (layer.type === 'fill') {
             const source = layer['source-layer']
-            const color = source === 'water' ? '#1d4ed8' : source === 'building' ? '#d6e2f7' : '#eaf1ff'
+            const color = source === 'water' ? '#eaf1ff' : source === 'building' ? '#3763d9' : '#1d4ed8'
             map!.setPaintProperty(layer.id, 'fill-color', color)
           }
-          if (layer.type === 'line' && layer['source-layer'] === 'waterway') map!.setPaintProperty(layer.id, 'line-color', '#1d4ed8')
+          if (layer.type === 'line' && layer['source-layer'] === 'waterway') map!.setPaintProperty(layer.id, 'line-color', '#eaf1ff')
           if (layer.type === 'symbol' && layer.layout?.['text-field']) {
             const waterLabel = layer['source-layer'] === 'water_name'
-            map!.setPaintProperty(layer.id, 'text-color', waterLabel ? '#ffffff' : '#172b4d')
-            map!.setPaintProperty(layer.id, 'text-halo-color', waterLabel ? '#1d4ed8' : '#ffffff')
+            map!.setPaintProperty(layer.id, 'text-color', waterLabel ? '#172b4d' : '#ffffff')
+            map!.setPaintProperty(layer.id, 'text-halo-color', waterLabel ? '#eaf1ff' : '#1d4ed8')
             map!.setPaintProperty(layer.id, 'text-halo-width', 1.5)
           }
         }
@@ -89,7 +89,7 @@ export default function CavintiMap({ locale, center, zoom }: {
   }, [visible, center, zoom])
 
   return <section className="atlas-map-section atlas-inner" aria-labelledby="atlas-map-title" aria-describedby="atlas-map-description">
-    <h2 id="atlas-map-title" className="sr-only">{t.mapSection}</h2>
+    <h2 id="atlas-map-title">{t.mapSection}</h2>
     <p id="atlas-map-description" className="sr-only">{t.mapDescription}</p>
     <div className="atlas-map-frame">
       <div ref={mapElement} className="atlas-map-canvas" role="application" aria-label={t.mapDescription} />
