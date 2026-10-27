@@ -1,44 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
-import type { Locale } from '../../i18n/locales'
+import { catalogs, type Locale } from '../../i18n/locales'
 import type { Map as MapLibreMap } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import './cavinti-map.css'
-type MapMessages = {
-  mapSection: string
-  mapDescription: string
-  mapLoading: string
-  mapUnavailable: string
-  mapZoomIn: string
-  mapZoomOut: string
-  mapReset: string
-  mapAttribution: string
-}
-
-const messages: Record<Locale, MapMessages> = {
-  en: {
-    mapSection: 'Explore Cavinti',
-    mapDescription: 'A view of Cavinti and the surrounding lake landscape. Pan and zoom to explore; no municipal boundary is shown.',
-    mapLoading: 'Loading the map…',
-    mapUnavailable: 'The map could not be loaded. Check your connection and reload the page to try again.',
-    mapZoomIn: 'Zoom in', mapZoomOut: 'Zoom out', mapReset: 'Reset map view',
-    mapAttribution: 'Map data © OpenStreetMap contributors · © OpenMapTiles · OpenFreeMap',
-  },
-  fil: {
-    mapSection: 'Tuklasin ang Cavinti',
-    mapDescription: 'Tanawin ng Cavinti at ng mga lawa sa paligid nito. Igalaw at i-zoom ang mapa para mag-explore; walang ipinapakitang hangganan ng bayan.',
-    mapLoading: 'Iniloload ang mapa…',
-    mapUnavailable: 'Hindi ma-load ang mapa. Suriin ang koneksyon at i-reload ang pahina upang subukan muli.',
-    mapZoomIn: 'Palakihin ang mapa', mapZoomOut: 'Paliitin ang mapa', mapReset: 'Ibalik ang orihinal na tanawin',
-    mapAttribution: 'Datos ng mapa © OpenStreetMap contributors · © OpenMapTiles · OpenFreeMap',
-  },
-}
 
 export default function CavintiMap({ locale, center, zoom }: {
   locale: Locale
   center: readonly [number, number]
   zoom: number
 }) {
-  const t = messages[locale]
+  const t = catalogs[locale]
   const mapElement = useRef<HTMLDivElement>(null)
   const mapRef = useRef<MapLibreMap | null>(null)
   const [visible, setVisible] = useState(false)
@@ -95,7 +66,10 @@ export default function CavintiMap({ locale, center, zoom }: {
       })
       map.once('load', () => {
         loaded = true
-        if (!cancelled) setReady(true)
+        if (!cancelled) {
+          setReady(true)
+          setFailed(false)
+        }
       })
       map.on('error', (event) => {
         if (event.error && !loaded) setFailed(true)
@@ -106,9 +80,7 @@ export default function CavintiMap({ locale, center, zoom }: {
       map?.remove()
       mapRef.current = null
     }
-  // Map instance is intentionally initialized once with its supplied location.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible])
+  }, [visible, center, zoom])
 
   return <section className="atlas-map-section atlas-inner" aria-labelledby="atlas-map-title">
     <div className="atlas-map-heading">

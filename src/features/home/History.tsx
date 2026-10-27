@@ -3,6 +3,12 @@ import './history.css'
 
 const records = [
   {
+    date: '1619',
+    title: 'historyChurch',
+    narrative: 'historyChurchNarrative',
+    source: 'https://philhistoricsites.nhcp.gov.ph/registry_database/church-of-cavinti/',
+  },
+  {
     date: '1904-10-05',
     title: 'historyAct1240',
     narrative: 'historyAct1240Narrative',
@@ -30,7 +36,7 @@ export default function History({ locale }: { locale: Locale }) {
         <p>{t[record.narrative]}</p>
         <a href={record.source} target="_blank" rel="noreferrer">
           {t.historySourcesLabel}<span className="atlas-history-source-title"> · {t[record.title]}</span>
-          <span className="atlas-history-external" aria-hidden="true"> ↗</span>
+          <svg className="atlas-history-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg>
         </a>
       </li>)}
     </ol>
