@@ -6,6 +6,17 @@
   "refreshMode": "manual-on-demand",
   "sources": [
     {
+      "id": "dpwh-bettergov-snapshot",
+      "name": "BetterGov DPWH transparency dataset snapshot",
+      "tier": "secondary-reference",
+      "url": "https://huggingface.co/datasets/bettergovph/dpwh-transparency-data/tree/648ea96af4f7625d606fda0b78803917913a26b7",
+      "formats": ["Parquet"],
+      "retrievalStatus": "public dataset downloaded on 2026-10-27; upstream project capture date unknown",
+      "lastCheckedAt": "2026-10-27",
+      "sourceContentHash": "5b411cf3f112fabd1913c70681791e5e2b78b43a8393f489f48bd882f154e123",
+      "coverage": "CC0-labeled BetterGov compilation attributed to DPWH transparency data. Text matches for Cavinti are incomplete, may cover multiple municipalities and do not verify present status or municipal expenditure."
+    },
+    {
       "id": "bsp-lgu-borrowings",
       "name": "Bangko Sentral ng Pilipinas LGU proposed domestic borrowing opinions",
       "tier": "primary-government",
