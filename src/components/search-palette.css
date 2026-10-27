@@ -1,0 +1,24 @@
+.search-dialog { margin: min(12vh, 7rem) auto auto; width: min(47rem, calc(100% - 2rem)); max-height: min(75vh, 46rem); padding: 0; border: 1px solid #bccbe4; border-radius: .65rem; background: #fff; color: #172b4d; box-shadow: 0 20px 60px rgb(23 43 77 / 22%); overflow: hidden; }
+.search-dialog[open] { display: flex; flex-direction: column; }
+.search-dialog::backdrop { background: rgb(23 43 77 / 55%); }
+.palette-input-row { display: flex; align-items: center; gap: .8rem; padding: .9rem 1.15rem; border-bottom: 1px solid #d6deeb; }
+.palette-input-row > svg, .palette-close svg { width: 21px; height: 21px; flex: none; }
+.palette-input-row > svg { color: #4c5e78; }
+.palette-input-row input { flex: 1; width: 100%; padding: .35rem 0; border: 0; border-radius: 0; background: transparent; font-size: 1rem; }
+.palette-input-row input:focus-visible { outline: none; }
+.palette-input-row:focus-within { box-shadow: inset 0 -2px #1d4ed8; }
+.palette-input-row input::-webkit-search-cancel-button { display: none; }
+.palette-close { display: grid; place-items: center; width: 36px; height: 36px; border-radius: .35rem; color: #4c5e78; }
+.palette-close:hover { background: #eaf1ff; color: #1747ab; }
+.palette-body { min-height: 8rem; overflow-y: auto; overscroll-behavior: contain; padding: .5rem; }
+.palette-message { margin: 0; padding: 1.2rem .75rem; color: #4c5e78; }
+.palette-body ul { list-style: none; margin: 0; padding: 0; }
+.palette-body li a { display: flex; align-items: center; gap: .8rem; padding: .85rem .75rem; border-radius: .35rem; color: #172b4d; text-decoration: none; }
+.palette-body li[aria-selected='true'] a, .palette-body li a:hover { background: #eaf1ff; color: #1747ab; }
+.palette-result-type { flex: none; max-width: 7rem; color: #4c5e78; font-size: .75rem; overflow-wrap: anywhere; }
+.palette-result-title { flex: 1; min-width: 0; font-weight: 600; line-height: 1.4; overflow-wrap: anywhere; }
+.palette-arrow { color: #4c5e78; }
+.palette-all { display: block; padding: .85rem .75rem; font-weight: 600; }
+.palette-footer { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; padding: .75rem 1.25rem; border-top: 1px solid #d6deeb; color: #4c5e78; font-size: .75rem; }
+.palette-footer kbd { padding: .15rem .35rem; border: 1px solid #d6deeb; border-radius: .3rem; font: inherit; }
+@media (max-width: 700px) { .search-dialog { margin-top: 1rem; max-height: calc(100dvh - 2rem); } .palette-result-type { max-width: 5rem; } .palette-footer { gap: .4rem .8rem; } }
