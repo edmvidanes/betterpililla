@@ -13,9 +13,10 @@ import { Government, Officials, Contacts } from '../features/Government'
 import Demographics from '../features/Demographics'
 import Finance from '../features/Finance'
 import { Downloads, Sources } from '../features/Catalogues'
+import Barangays from '../features/Barangays'
+import Geography from '../features/Geography'
 import { routes } from './route-manifest'
 import { searchPortal } from './search'
-import { barangayId } from '../domain/ids'
 
 const base = import.meta.env.BASE_URL
 function App() {
@@ -115,19 +116,7 @@ function App() {
   }
   else if (route === 'government/offices' || route.startsWith('government/offices/')) content = <Contacts data={data} locale={locale} href={href} officeId={route === 'government/offices' ? undefined : route.slice('government/offices/'.length)} />
   else if (route === 'government/committees') content = <><h1>{t.committees}</h1>{original}<DataStatus>{t.unknown}: {t.term}</DataStatus><ul className="record-list">{officialRows.filter(row => row.committeeLabel).map(row => <li key={String(row.recordId)}><h2>{String(row.committeeLabel)}</h2><a href={href(`government/officials/${encodeURIComponent(String(row.recordId))}`)}>{String(row.displayName)}</a>{cite(String(row.sourceId))}</li>)}</ul></>
-  else if (route === 'government/barangays' || route.startsWith('government/barangays/')) {
-    const claims = records(data.barangays.sourceClaims)
-    const names = [...new Set(claims.flatMap(claim => Array.isArray(claim.namesAsPublished) ? claim.namesAsPublished as string[] : []))]
-    const id = route.slice('government/barangays/'.length)
-    const name = names.find(n => barangayId(n) === id)
-    if (route !== 'government/barangays' && !name) content = notFound()
-    else {
-      const selectedClaims = name ? claims.filter(claim => (claim.namesAsPublished as string[] | null)?.includes(name)) : claims
-      const population = data.barangays.secondaryPopulationTable as DataRecord
-      const populationRows = records(population.rows).filter(row => !name || row.sourceName === name)
-      content = <><h1>{name || t.barangays}</h1><DataStatus>{t.rosterWarning}</DataStatus>{!name && <ul className="topic-list">{names.map(n => <li key={n}><a href={href(`government/barangays/${encodeURIComponent(barangayId(n))}`)}>{n}</a></li>)}</ul>}{selectedClaims.map(claim => <section key={String(claim.sourceId)} className="panel">{tree(claim)}{cite(String(claim.sourceId))}</section>)}{populationRows.length > 0 && <section><h2>{t.population}</h2><p>{t.secondary}</p>{tree(populationRows)}{cite(String(population.sourceId))}</section>}{name && <a href={correctionLink(id)}>{t.correction}</a>}</>
-    }
-  }
+  else if (route === 'government/barangays' || route.startsWith('government/barangays/')) content = <Barangays data={data} locale={locale} href={href} recordId={route === 'government/barangays' ? undefined : route.slice('government/barangays/'.length)} correctionLink={correctionLink} />
   else if (route === 'open-lgu/legislation' || route.startsWith('open-lgu/legislation/')) content = <Legislation locale={locale} records={allLegislation} recordId={route === 'open-lgu/legislation' ? undefined : route.slice('open-lgu/legislation/'.length)} href={href} sourceLink={sourceHref} correctionLink={correctionLink} />
   else if (route === 'open-lgu/terms') content = <><h1>{t.terms}</h1>{gap()}<p>{t.term}: {t.unknown}</p>{cite(lgu.sourceIds.legislative)}</>
   else if (route.startsWith('open-lgu/terms/')) content = notFound()
@@ -135,7 +124,7 @@ function App() {
   else if (route === 'statistics/competitiveness') content = <><h1>{t.competitiveness}</h1>{gap()}{cite(lgu.sourceIds.competitiveness)}</>
   else if (route === 'statistics/municipal-income' || route === 'transparency/finance') content = <Finance data={data} locale={locale} href={href} income={route.startsWith('statistics')} />
   else if (route === 'transparency/procurement' || route === 'transparency/projects') content = <><h1>{route.endsWith('projects') ? t.projects : t.procurement}</h1>{gap()}{tree(data.transparency.procurementAndProjectCoverage)}{records(data.transparency.sourceChecks).filter(r => r.sourceId === lgu.sourceIds.procurement).map(r => <section key={String(r.sourceId)}>{tree(r)}</section>)}{cite(lgu.sourceIds.procurement)}{route.endsWith('projects') && <p><a href={correctionLink('', 'project-observation.yml')}>{t.observation}</a></p>}</>
-  else if (route === 'map') content = <><h1>{t.map}</h1><DataStatus>{t.noGeometry}</DataStatus>{tree(data.municipality.geography)}{cite(lgu.sourceIds.about)}</>
+  else if (route === 'map') content = <Geography data={data} locale={locale} href={href} />
   else if (route === 'places') content = <Places data={data} locale={locale} href={href} />
   else if (route === 'advisories') content = <Advisories data={data} locale={locale} href={href} />
   else if (route === 'open-data') content = <Downloads data={data} locale={locale} href={href} />
