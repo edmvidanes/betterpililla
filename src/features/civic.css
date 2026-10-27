@@ -87,3 +87,30 @@
   .legislation-search .field-grid { grid-template-columns: 1fr; }
   .chart-selection { font-size: 1.65rem; }
 }
+.barangay-layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr); gap: 3rem; margin-top: 1.5rem; align-items: start; }
+.barangay-layout > * { min-width: 0; }
+.barangay-layout h2:first-child { margin-top: 0; }
+.barangay-tools { gap: .75rem; }
+.barangay-tools label { flex-basis: 120px; }
+.barangay-tools label:first-child { flex-basis: 100%; }
+.barangay-bars { list-style: none; padding: 0; margin: 1rem 0 2rem; font-variant-numeric: tabular-nums; }
+.barangay-bars > li { border-bottom: 1px solid var(--portal-border); }
+.barangay-bars a, .barangay-bars > li:not(:has(a)) { display: block; padding: 1rem 0; }
+.barangay-bars a:hover { text-decoration: none; }
+.barangay-bars a:hover strong { text-decoration: underline; }
+.barangay-bar-label { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: .5rem; }
+.barangay-bar-label > :last-child { text-align: right; }
+.barangay-bar-track { display: block; height: 10px; background: #eaf1ff; }
+.barangay-bar-track > span { display: block; height: 100%; background: #1d4ed8; }
+.barangay-claim { margin-block: 1.25rem; }
+.barangay-claim .civic-meta { margin-bottom: 0; }
+.barangay-evidence .citation summary span { display: none; }
+.geography-map { margin-top: 2rem; }
+.geography-map .atlas-map-section { padding: 0; }
+.geography-coordinates { font-variant-numeric: tabular-nums; }
+.geography-coordinates dt { color: #4c5e78; font-size: .85rem; margin-top: 1rem; }
+.geography-coordinates dd { margin: .3rem 0 1rem; overflow-wrap: anywhere; }
+.geography-neighbors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; list-style: none; }
+.geography-neighbors li { padding: .8rem 0; border-bottom: 1px solid var(--portal-border); }
+@media (max-width: 800px) { .barangay-layout { grid-template-columns: 1fr; gap: 2rem; } }
+@media (max-width: 500px) { .geography-neighbors { grid-template-columns: 1fr; } }
