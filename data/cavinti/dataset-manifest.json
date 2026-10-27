@@ -51,8 +51,8 @@
       "canonicalJson": "services.json",
       "schemaVersion": "civic-service-catalogue-evidence/v1",
       "recordCount": 0,
-      "sourceIds": ["cavinti-citizens-charter"],
-      "status": "zero rows observed in the captured page; not evidence that there are zero municipal services"
+      "sourceIds": ["cavinti-citizens-charter", "cavinti-ordinances-index"],
+      "status": "zero Charter rows observed; separately listed ordinance title leads are not verified current services"
     },
     {
       "id": "sector-inventory",
@@ -66,9 +66,9 @@
       "id": "transparency",
       "canonicalJson": "transparency.json",
       "schemaVersion": "civic-transparency-evidence/v1",
-      "recordCount": 8,
-      "sourceIds": ["dilg-fdp", "blgf-fiscal-data", "bettergov-blgf-mirror", "philgeps-cavinti-award-lead", "coa-annual-audits", "cavinti-ordinances-index", "cavinti-resolutions-index", "bsp-lgu-borrowings"],
-      "status": "access results and unverified document leads; no complete financial/procurement/project totals"
+      "recordCount": 80,
+      "sourceIds": ["dilg-fdp", "blgf-fiscal-data", "bettergov-blgf-mirror", "philgeps-cavinti-award-lead", "coa-annual-audits", "cavinti-ordinances-index", "cavinti-resolutions-index", "bsp-lgu-borrowings", "dpwh-bettergov-snapshot"],
+      "status": "partial historical project snapshot and document leads; no complete financial, procurement, or project totals"
     },
     {
       "id": "ordinances",

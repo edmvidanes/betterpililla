@@ -18,7 +18,8 @@ export function datasetRows(id: string, data: Document): Document[] {
       sourceClaims: data.sourceClaims, discrepancies: data.discrepancies }));
     case 'sector-inventory': return data.sectors;
     case 'transparency': return [...data.sourceChecks.map((row: Document) => ({ rowType: 'source-check', ...row })),
-      ...data.officialLocalDocumentLeads.map((row: Document) => ({ rowType: 'document-lead', ...row }))];
+      ...data.officialLocalDocumentLeads.map((row: Document) => ({ rowType: 'document-lead', ...row })),
+      ...(data.dpwhProjectSnapshot ?? []).map((row: Document) => ({ rowType: 'project-snapshot', ...row }))];
     case 'services': return data.services;
     default: return Array.isArray(data.records) ? data.records : [data];
   }
