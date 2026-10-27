@@ -26,6 +26,18 @@ SITE_BASE=/bettercavinti/ npm run build
 SITE_BASE=/bettercavinti/ npm run preview
 ```
 
+## Landing page and photographs
+
+The Community Atlas homepage uses a fluid place-name masthead, a three-photo strip, grouped topic browsing, quick links and a source-transparency section. Its component and responsive styles live in `src/features/home/`; the existing global navigation and search remain shared with the rest of the portal.
+
+Photographs are real Cavinti images hosted locally under `public/images/cavinti/`, not AI-generated scenery. Configure their paths, dimensions, bilingual alternative text, source URLs, authors and licenses in `lgu.homepagePhotos`. The native photo-credit disclosure links to each source and license and identifies resizing, WebP conversion and display cropping.
+
+- [Caliraya Lake at Kanluran Talaongan](https://commons.wikimedia.org/wiki/File:9720Kanluran_Talaongan,_Cavinti,_Laguna_10.jpg), Judgefloro — [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- [Cavinti/Pagsanjan Falls](https://commons.wikimedia.org/wiki/File:Pagsanjan_Falls_-_Pagsanjan,_Laguna_1.jpg), Kathleen Mae Tugano — [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). The resized WebP derivative remains under that license.
+- [Cavinti Bridge II in Tibatib](https://commons.wikimedia.org/wiki/File:38Tibatib_Poblacion,_Cavinti,_Laguna_08.jpg), Judgefloro — [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+
+Generated design proposals under `.impeccable/proposals/` are development references only and are not deployed. Another municipality must supply its own licensed photographs and credits alongside its data pack.
+
 ## Evidence and downloads
 
 `data/cavinti/` is the reviewed canonical evidence pack. `public/data/` is ignored, atomically generated output, never a second editable source. The browser reads generated files only. Public downloads include JSON, CSV, JSON Schema, source register, capture dates, technical row counts, hashes, rights and coverage notes. Nested CSV columns contain JSON; the download manifest identifies those columns. **Import CSV columns as text**: exact source strings are preserved and may begin spreadsheet formula characters.
