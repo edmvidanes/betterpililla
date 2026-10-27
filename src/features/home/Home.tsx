@@ -44,10 +44,9 @@ export default function Home({ locale, capturedAt, href, search, contacts }: {
       </figure>
     </section>
 
-    <section className="atlas-inner atlas-search" aria-labelledby="atlas-intro">
-      <h2 id="atlas-intro">{t.intro}</h2>
-      <p>{t.description}</p>
+    <section className="atlas-inner atlas-search" aria-label={t.query}>
       {search}
+      <ServiceHighlights locale={locale} href={href} contacts={contacts} />
     </section>
 
     <section className="atlas-shortcuts" aria-labelledby="atlas-shortcuts-title">
@@ -67,7 +66,6 @@ export default function Home({ locale, capturedAt, href, search, contacts }: {
     </section>
 
     <History locale={locale} />
-    <ServiceHighlights locale={locale} href={href} contacts={contacts} capturedAt={capturedAt} />
     <CavintiMap locale={locale} center={lgu.mapView.center} zoom={lgu.mapView.zoom} />
 
     <section className="atlas-inner atlas-sources" aria-labelledby="atlas-sources-title">

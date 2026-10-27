@@ -16,13 +16,14 @@
 .atlas-credits ul { list-style: none; padding: 0; margin: .25rem 0 1rem; }
 .atlas-credits li { padding-block: .2rem; }
 .atlas-search { padding-block: 2.25rem 1rem; }
-.atlas-search h2 { font-size: clamp(1.6rem, 3.4vw, 2.75rem); line-height: 1.2; letter-spacing: -.025em; margin: 0 0 .55rem; }
-.atlas-search > p { margin: 0; color: #4c5e78; max-width: 85ch; font-size: 1.05rem; }
-.atlas-search .search-form { max-width: none; margin: 1.5rem 0 0; }
+.atlas-search .search-form { max-width: none; margin: 0; }
 .atlas-search .search-form > div { gap: .7rem; }
 .atlas-search input { background: #eaf1ff; border-color: #d6deeb; min-height: 48px; }
 .atlas-search input:hover { border-color: #1747ab; }
 .atlas-search button { min-width: 128px; min-height: 48px; }
+.atlas-service-badges { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; margin: 1rem 0 0; }
+.atlas-service-badges a { display: inline-flex; align-items: center; min-height: 44px; padding: .4rem .85rem; border: 1px solid #bccbe4; border-radius: 999px; color: #1747ab; background: #eaf1ff; font-weight: 600; text-decoration: none; }
+.atlas-service-badges a:hover { border-color: #1747ab; text-decoration: underline; }
 .atlas-browse { display: grid; grid-template-columns: 27% minmax(0, 1fr); gap: 2.5rem; padding-block: 2.75rem 3rem; }
 .atlas-browse > h2 { font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.08; letter-spacing: -.03em; margin: 0; text-wrap: initial; }
 .atlas-index { border-left: 1px solid #d6deeb; padding-left: 2.5rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.75rem 2.5rem; }
