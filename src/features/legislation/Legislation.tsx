@@ -109,6 +109,7 @@ function RelatedRows({ record, matches, text, href }: { record: LegislationRecor
 function LegislationIndex({ locale, records, href, sourceLink }: LegislationProps) {
   const text = legislationLabels[locale]
   const [{ filters, page }, setQuery] = useState(readQuery)
+  const [advancedOpen, setAdvancedOpen] = useState(() => ['number', 'author', 'topic', 'from', 'to', 'source'].some(key => Boolean(readQuery().filters[key as FilterKey])))
   const formatNumber = new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH')
   const sources = useMemo(() => [...new Set(records.map((record) => record.sourceId))].sort(), [records])
   const years = useMemo(() => [...new Set(records.map((record) => record.sourceDate.slice(0, 4)).filter((year) => /^\d{4}$/.test(year)))].sort().reverse(), [records])
@@ -166,14 +167,13 @@ function LegislationIndex({ locale, records, href, sourceLink }: LegislationProp
   return (
     <>
       <h1>{text.title}</h1>
-      <p className="max-w-prose">{text.introduction}</p>
-      <p className="notice">{text.coverage}</p>
-      <section className="panel" aria-labelledby="legislation-filters">
+      <p className="civic-intro">{text.introduction}</p>
+      <section className="legislation-search" aria-labelledby="legislation-filters">
         <h2 id="legislation-filters">{text.filters}</h2>
         <form onSubmit={(event) => event.preventDefault()}>
-          <div className="field-grid">
-            <label htmlFor="legislation-query">{text.query}
-              <input id="legislation-query" name="q" type="search" value={filters.q} onChange={(event) => updateFilter('q', event.target.value)} />
+          <div className="legislation-primary">
+            <label className="legislation-query" htmlFor="legislation-query">{text.query}
+              <input id="legislation-query" name="q" type="search" placeholder={text.queryPlaceholder} aria-describedby="legislation-filter-hint" value={filters.q} onChange={(event) => updateFilter('q', event.target.value)} />
             </label>
             <label htmlFor="legislation-type">{text.type}
               <select id="legislation-type" name="type" value={filters.type} onChange={(event) => updateFilter('type', event.target.value)}>
@@ -185,15 +185,20 @@ function LegislationIndex({ locale, records, href, sourceLink }: LegislationProp
                 {filters.type && !['ordinance', 'resolution', 'executive-order', 'other'].includes(filters.type) && <option value={filters.type}>{filters.type}</option>}
               </select>
             </label>
-            <label htmlFor="legislation-number">{text.number}
-              <input id="legislation-number" name="number" value={filters.number} onChange={(event) => updateFilter('number', event.target.value)} />
-            </label>
             <label htmlFor="legislation-year">{text.year}
               <select id="legislation-year" name="year" value={filters.year} onChange={(event) => updateFilter('year', event.target.value)}>
                 <option value="">{text.all}</option>
                 {filters.year && !years.includes(filters.year) && <option value={filters.year}>{filters.year}</option>}
                 {years.map((year) => <option key={year} value={year}>{year}</option>)}
               </select>
+            </label>
+          </div>
+          <p id="legislation-filter-hint" className="civic-meta">{text.filterHint}</p>
+          <details className="civic-disclosure" open={advancedOpen} onToggle={event => setAdvancedOpen(event.currentTarget.open)}>
+            <summary>{text.advancedFilters}</summary>
+            <div className="field-grid">
+            <label htmlFor="legislation-number">{text.number}
+              <input id="legislation-number" name="number" value={filters.number} onChange={(event) => updateFilter('number', event.target.value)} />
             </label>
             <label htmlFor="legislation-author">{text.author}
               <input id="legislation-author" name="author" value={filters.author} onChange={(event) => updateFilter('author', event.target.value)} />
@@ -215,10 +220,12 @@ function LegislationIndex({ locale, records, href, sourceLink }: LegislationProp
               </select>
             </label>
           </div>
+          </details>
           <Button type="button" variant="outline" onClick={() => setQuery({ filters: { ...EMPTY_FILTERS }, page: 1 })}>{text.reset}</Button>
         </form>
         {filters.from && filters.to && filters.from > filters.to && <p className="notice" role="status">{text.datesReversed}</p>}
       </section>
+      <details className="civic-disclosure"><summary>{text.coverageTitle}</summary><p>{text.coverage}</p></details>
       <section aria-labelledby="legislation-results">
         <h2 id="legislation-results">{text.results}</h2>
         <p role="status" aria-live="polite" aria-atomic="true">
