@@ -1,0 +1,17 @@
+{
+  "regions": [
+    { "id": "header", "kind": "chrome", "grid": "A0:J0", "box": { "x": 0, "y": 0, "w": 1, "h": 0.0521 }, "note": "White header with existing navigation and independent-site notice" },
+    { "id": "masthead", "kind": "text", "grid": "A0:J1", "box": { "x": 0.041, "y": 0.0846, "w": 0.915, "h": 0.0684 }, "note": "Oversized navy Cavinti, Laguna headline" },
+    { "id": "lake", "kind": "image", "bleed": true, "grid": "A1:E3", "box": { "x": 0.0049, "y": 0.1712, "w": 0.4766, "h": 0.196 }, "note": "Generated concept scenery: broad lake and green islands; no UI text" },
+    { "id": "waterfall", "kind": "image", "bleed": true, "grid": "E1:G3", "box": { "x": 0.4873, "y": 0.1712, "w": 0.1982, "h": 0.196 }, "note": "Generated concept scenery: waterfall and tropical forest; no UI text" },
+    { "id": "forest", "kind": "image", "bleed": true, "grid": "G1:J3", "box": { "x": 0.6914, "y": 0.1712, "w": 0.3027, "h": 0.196 }, "note": "Generated concept scenery: forest path and lakeside; no UI text" },
+    { "id": "image-caption", "kind": "text", "grid": "A3:C3", "box": { "x": 0.0449, "y": 0.3743, "w": 0.293, "h": 0.0104 }, "note": "Visible concept-imagery disclosure" },
+    { "id": "intro", "kind": "text", "grid": "A4:I4", "note": "Find public records. Check the source. Supporting municipal information text" },
+    { "id": "search", "kind": "control", "grid": "A4:J5", "box": { "x": 0.0449, "y": 0.4655, "w": 0.9111, "h": 0.0482 }, "note": "Explicit search label, pale blue input and blue submit button" },
+    { "id": "browse-heading", "kind": "text", "grid": "A5:C6", "note": "Explore public information stacked at left" },
+    { "id": "topic-index", "kind": "control", "grid": "D5:J7", "box": { "x": 0.3398, "y": 0.5397, "w": 0.6162, "h": 0.2201 }, "note": "Government & community and spending & records columns; local information below" },
+    { "id": "quick-access", "kind": "control", "grid": "A7:J8", "box": { "x": 0, "y": 0.7799, "w": 1, "h": 0.0892 }, "note": "Full-width cobalt shortcut band with four white links" },
+    { "id": "source-summary", "kind": "control", "grid": "A8:J9", "box": { "x": 0.0449, "y": 0.8874, "w": 0.9111, "h": 0.0684 }, "note": "Source transparency statement, coverage date and three evidence links" },
+    { "id": "footer", "kind": "chrome", "grid": "A9:J9", "box": { "x": 0, "y": 0.9688, "w": 1, "h": 0.0312 }, "note": "Independent notice and project links" }
+  ]
+}
