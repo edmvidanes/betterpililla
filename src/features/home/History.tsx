@@ -93,7 +93,7 @@ export default function History({ locale }: { locale: Locale }) {
                 {record.dateTime < '1900' ? <path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6M12 4V2M10 3h4" /> : record.dateTime < '1939' ? <path d="M3 10h18M5 10v9m5-9v9m4-9v9m5-9v9M3 21h18M12 3l9 5H3l9-5Z" /> : record.dateTime < '2024' ? <path d="M3 16c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0M12 3 8 10h4l-1 4 5-7h-4l1-4Z" /> : <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM20 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />}
               </svg>
               <span>{t[record.title]}</span>
-              <span className="atlas-history-toggle" aria-hidden="true" />
+              <svg className="atlas-history-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
             </summary>
             <div className="atlas-history-detail">
               <p>{t[record.narrative]}</p>
