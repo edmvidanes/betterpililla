@@ -2,7 +2,7 @@
   "menuLabel": "Menu", "joinInitiative": "Sumali sa BetterLGU",
   "quickAccess": "Mabilis na akses", "viewCoverage": "Tingnan ang mga sanggunian at limitasyon ng datos", "projectLinks": "Mga link ng proyekto at wika", "officialWebsite": "Opisyal na website", "hotlines": "Mga hotline", "communityPortal": "Portal ng komunidad", "closeMenu": "Isara ang menu",
   "footerDescription": "Isang open-source na inisyatiba na nagbibigay ng akses sa impormasyong pangmunisipyo, lokal na batas, at pampublikong datos para sa mga taga-{place}.",
-  "footerOpenSource": "Proyektong open-source",
+  "footerCost": "Gastos ng mga taga-{place} = ₱0",
   "atlasBrowse": "Tuklasin ang pampublikong impormasyon",
   "atlasGovernment": "Pamahalaan at komunidad",
   "atlasRecords": "Paggasta at mga rekord",

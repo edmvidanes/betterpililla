@@ -182,8 +182,10 @@ function App() {
           {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads'] as MessageKey[]).map(key => <a key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</a>)}
         </nav>
       </div>
-      <div className="atlas-footer-statement"><span>{t.community}</span><strong>{t.footerOpenSource}</strong></div>
-      <div className="atlas-footer-bottom"><a href={lgu.repository}>GitHub</a></div>
+      <div className="atlas-footer-bottom">
+        <div className="atlas-footer-statement"><span>{t.community}</span><strong>{t.footerCost.replace('{place}', lgu.name)}</strong></div>
+        <a href={lgu.repository}>GitHub</a>
+      </div>
     </footer> : <footer><p>{t.community}</p><nav aria-label={t.footer}>
       {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads'] as MessageKey[]).map(key => <a key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</a>)}
       <a href={lgu.repository}>GitHub</a>
