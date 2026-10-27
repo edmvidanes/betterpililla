@@ -39,17 +39,17 @@ export default function Home({ locale, capturedAt, href, search }: {
       </figure>
     </section>
 
+    <section className="atlas-inner atlas-search" aria-labelledby="atlas-intro">
+      <h2 id="atlas-intro">{t.intro}</h2>
+      <p>{t.description}</p>
+      {search}
+    </section>
+
     <section className="atlas-shortcuts" aria-labelledby="atlas-shortcuts-title">
       <div className="atlas-inner">
         <h2 id="atlas-shortcuts-title">{t.atlasShortcuts}</h2>
         {links(['services', 'officials', 'legislation', 'downloads'])}
       </div>
-    </section>
-
-    <section className="atlas-inner atlas-search" aria-labelledby="atlas-intro">
-      <h2 id="atlas-intro">{t.intro}</h2>
-      <p>{t.description}</p>
-      {search}
     </section>
 
     <section className="atlas-inner atlas-browse" aria-labelledby="atlas-browse-title">
