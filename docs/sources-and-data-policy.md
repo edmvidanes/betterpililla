@@ -11,6 +11,7 @@ Source register entries preserve original source names, URLs, tiers, capture not
 ## Evidence quality and limits
 
 - Primary direct retrieval, primary search-index-only leads, secondary values, unreviewed machine extraction, conflicts and unreviewed claims remain distinguishable.
+- The homepage history is a selected chronology, not a complete community history. Church-history entries rely partly on secondary accounts; the 2024 population is a dated census count and the 2026 data turnover is separately sourced.
 - Availability and freshness do not upgrade verification. `current-at-capture` describes capture availability, not the present legal validity of a law, current term of office or present operation of a hotline.
 - Unknown role/term dates remain unknown. Do not infer a title from an honorific, directory order or committee label.
 - Source-specific barangay lists remain competing claims. Do not merge similarly named places or declare a canonical roster until dated authoritative evidence resolves the conflict.
@@ -32,7 +33,7 @@ Review successful source-response changes before committing and deployment. Do n
 
 ## Rights and safe exports
 
-CC0 applies only to project-authored material, not third-party source content or dependencies. Unknown source terms are not permission to mirror full PDFs, photographs, posts or map tiles. Link to official documents; archive bounded evidence only where useful and permitted. The initial publication exports captured metadata with source-specific rights notices; it does not grant reuse rights to the full linked source documents.
+Project-authored code is licensed under MIT, and project-authored documentation under CC BY 4.0; see [LICENSE](../LICENSE) and [LICENSE-DOCS](../LICENSE-DOCS). These licenses do not cover upstream source content or third-party dependencies. Unknown source terms are not permission to mirror full PDFs, photographs, posts or map tiles. Link to official documents; archive bounded evidence only where useful and permitted. The initial publication exports captured metadata with source-specific rights notices; it does not grant reuse rights to the full linked source documents.
 
 CSV retains source spelling, quotes, units and nested evidence. Nested columns contain JSON and are named in `csvNestedColumns`. Import CSV as text: exact source strings may begin spreadsheet formula characters. Do not use CSV exports as executable spreadsheet input.
 

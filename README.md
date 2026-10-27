@@ -28,7 +28,7 @@ SITE_BASE=/bettercavinti/ npm run preview
 
 ## Landing page, photographs and map
 
-The Community Atlas homepage uses a fluid place-name masthead, a three-photo strip, search, quick links, grouped browsing, a history timeline, service highlights, a map and source transparency. Quick links sit immediately below search. Components and responsive styles live in `src/features/home/`; global navigation and search remain shared with the rest of the portal.
+The Community Atlas homepage uses a fluid place-name masthead, a three-photo strip, search with service-office badges, quick links, grouped browsing, a history timeline, a map and source transparency. Quick links sit immediately below search. Components and responsive styles live in `src/features/home/`; global navigation and search remain shared with the rest of the portal.
 
 Photographs are real Cavinti images hosted locally under `public/images/cavinti/`, not AI-generated scenery. Configure their paths, dimensions, bilingual alternative text, source URLs, authors and licenses in `lgu.homepagePhotos`. The native photo-credit disclosure links to each source and license and identifies resizing, WebP conversion and display cropping.
 
@@ -42,7 +42,7 @@ Generated design proposals under `.impeccable/proposals/` are development refere
 
 The history layout pairs a chronological timeline with contextual notes. Its claims link to the [NHCP Church of Cavinti marker](https://philhistoricsites.nhcp.gov.ph/registry_database/church-of-cavinti/), [Act No. 1240](https://issuances-library.senate.gov.ph/legislative-issuance/act-no-1240) and [Act No. 1712](https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/28/16606). The 1619 ecclesiastical date is not presented as a verified municipal founding date.
 
-Service highlights are icon-led links to offices actually present in `emergency-contacts.json`. They do not invent Citizens’ Charter procedures, requirements, fees or current availability. Source, capture date and the live-validation limitation remain visible.
+Service badges beneath search link to offices actually present in `emergency-contacts.json`. They do not invent Citizens’ Charter procedures, requirements, fees or current availability. Source and live-validation limitations remain available on the linked office pages.
 
 The interactive map uses MapLibre GL and [OpenFreeMap](https://openfreemap.org/quick_start/) vector tiles. It loads the map engine only when approaching the viewport, uses cobalt water and pale-blue land, retains provider attribution and supports zoom/reset without hijacking ordinary page scrolling. Its heading and geographic description remain accessible but are visually hidden. WebGL and an internet connection are required; failures display a localized message rather than a fake map.
 
@@ -91,6 +91,6 @@ Semantic landmarks, skip navigation, native labeled controls, visible keyboard f
 
 Use the public [GitHub issue forms](https://github.com/klnwlks/bettercavinti/issues/new/choose). Corrections require record ID, field, proposed value and evidence. Missing records and project observations have separate forms. Project observations require ID, date/time, public location and evidence URL, and never mutate published progress. A GitHub account is required. Public issue review and repository merge remain the publication boundary.
 
-Code and project-authored schema/normalization/documentation: **CC0-1.0**. Upstream content keeps its own terms and attribution; unknown rights do not become CC0. See [the operational data policy](docs/sources-and-data-policy.md), [LICENSE](LICENSE) and each generated dataset manifest.
+Project-authored code is licensed under [MIT](LICENSE); project-authored documentation is licensed under [CC BY 4.0](LICENSE-DOCS). These licenses do not cover upstream source records, government documents, photographs, map layers, dependencies or other third-party content; their source-specific terms and attribution requirements remain in force. Unknown source terms do not grant reuse rights. See the [operational data policy](docs/sources-and-data-policy.md) and each generated dataset manifest.
 
 The scope and original acceptance criteria are in [CAVINTI_TEMPLATE_PLAN.md](docs/CAVINTI_TEMPLATE_PLAN.md).
