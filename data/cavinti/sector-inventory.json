@@ -5,8 +5,47 @@
   "sectors": [
     {
       "sector": "education",
-      "availability": "partial-secondary-directory-leads",
-      "verifiedLocalRecords": [],
+      "availability": "partial-dated-school-garden-evidence-and-directory-leads",
+      "verifiedLocalRecords": [
+        { "schoolNameAsPublished": "Sumucab Elementary School", "evidence": "Winner, small school category and home gardens evaluation." },
+        { "schoolNameAsPublished": "Layasin Elementary School", "evidence": "First place, medium school category." },
+        { "schoolNameAsPublished": "Lumot Elementary School", "evidence": "Winner, large school category." },
+        { "schoolNameAsPublished": "Calminue Integrated National High School", "evidence": "First among secondary schools and winner of the home gardens evaluation." },
+        { "schoolNameAsPublished": "Cavinti Elementary School", "evidence": "Received gardening tools as Hall of Famer." }
+      ],
+      "schoolGardenEvidence": {
+        "sourceId": "searca-school-gardens",
+        "sourceUrl": "https://www.searca.org/news/searca-partners-deped-cavinti-laguna-district-wide-school-home-gardens-evaluation",
+        "publishedAt": "2024-04-15",
+        "capturedAt": "2026-10-27",
+        "scope": "SEARCA reports the Cavinti district-wide school and home gardens evaluation on 25–26 March 2024, with 15 primary and four secondary schools visited. The named schools above are not a complete or current roster."
+      },
+      "allocationListEvidence": {
+        "sourceId": "deped-school-identifiers",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List-4.pdf",
+        "capturedAt": "2026-10-27",
+        "scope": "DepEd lapel voice amplifiers allocation list by school; the rows identify region and division, not municipality. Laguna-division rows do not establish a Cavinti location or a current roster. Names below retain PDF spelling and are not inferred reconciliations with other sources.",
+        "records": [
+          { "schoolId": "108270", "division": "Laguna", "schoolNameAsPublished": "BUKAL ES" },
+          { "schoolId": "108271", "division": "Laguna", "schoolNameAsPublished": "Bulajo ES" },
+          { "schoolId": "108272", "division": "Laguna", "schoolNameAsPublished": "Burol Elementary School" },
+          { "schoolId": "108273", "division": "Laguna", "schoolNameAsPublished": "Calminue ES" },
+          { "schoolId": "108274", "division": "Laguna", "schoolNameAsPublished": "Cansuso ES" },
+          { "schoolId": "108275", "division": "Laguna", "schoolNameAsPublished": "Cavinti Elementary" },
+          { "schoolId": "108276", "division": "Laguna", "schoolNameAsPublished": "Inao-Awan ES" },
+          { "schoolId": "108277", "division": "Laguna", "schoolNameAsPublished": "Layug ES" },
+          { "schoolId": "108278", "division": "Laguna", "schoolNameAsPublished": "LUMOT ELEM" },
+          { "schoolId": "108279", "division": "Laguna", "schoolNameAsPublished": "Paowin ES" },
+          { "schoolId": "108280", "division": "Laguna", "schoolNameAsPublished": "Sumucab ES" },
+          { "schoolId": "108281", "division": "Laguna", "schoolNameAsPublished": "Talaongan East ES" },
+          { "schoolId": "108282", "division": "Laguna", "schoolNameAsPublished": "Talaongan West ES" },
+          { "schoolId": "164508", "division": "Laguna", "schoolNameAsPublished": "Sisilmin ES" },
+          { "schoolId": "164526", "division": "Binan City", "schoolNameAsPublished": "Southville 5A ES - Langkiwa" },
+          { "schoolId": "307911", "division": "Laguna", "schoolNameAsPublished": "Cavinti Integrated National High School" },
+          { "schoolId": "307926", "division": "Laguna", "schoolNameAsPublished": "Calminue Integrated National High School" }
+        ],
+        "discrepancies": "The PDF lists ID 164508 as Sisilmin ES, not the search lead's Silsimin ES; ID 164526 is Southville 5A ES - Langkiwa in Binan City, not Layasin ES. These discrepancies do not establish the correct IDs or identities of the search leads."
+      },
       "directoryLeads": [
         {
           "schoolNameAsPublished": "Calminue Integrated National High School",
@@ -27,7 +66,7 @@
       ],
       "searchOnlyElementaryLeads": {
         "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List-4.pdf",
-        "verificationStatus": "search-result-leads-only; direct PDF table not checked",
+        "verificationStatus": "search-result-leads; PDF inspected separately; discrepancies remain unresolved",
         "publicationDisposition": "research-only; do-not-publish-as-current-school-roster",
         "records": [
           { "schoolNameAsPublished": "Bukal ES", "schoolId": "108270" },
@@ -46,7 +85,7 @@
           { "schoolNameAsPublished": "Silsimin ES", "schoolId": "164508" },
           { "schoolNameAsPublished": "Layasin ES", "schoolId": "164526" }
         ],
-        "notes": "Names/IDs are discovery leads from search results, not a verified current DepEd masterlist. Do not reconcile spelling variants by guess."
+        "notes": "These names/IDs are retained as search-result discovery leads, not a verified current DepEd masterlist. The separately recorded PDF rows use their own published spellings and include discrepancies for IDs 164508 and 164526. Do not reconcile spelling variants or identities by guess."
       },
       "missingData": ["dated authoritative complete school roster", "enrollment", "staffing", "facilities", "performance series"]
     },

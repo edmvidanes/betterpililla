@@ -94,6 +94,30 @@
       "amountUsableAsVerifiedFinanceFact": false
     }
   ],
+  "bspProposedBorrowingOpinions": [
+    {
+      "sourceId": "bsp-lgu-borrowings",
+      "jurisdiction": "Municipality of Cavinti, Laguna, Region IV-A (CALABARZON)",
+      "reportPeriod": "First semester 2020",
+      "resolutionNumber": "295",
+      "resolutionDate": "2020-02-27",
+      "proposedLoanAmountPhpMillion": 11.00,
+      "purposeAsReported": "Acquisition of lot in Brgy Road, Udia, Cavinti",
+      "sourceUrl": "https://www.bsp.gov.ph/Regulations/Guidelines%20and%20other%20Regulations/LGU_1S2020.pdf",
+      "sourcePage": 2
+    },
+    {
+      "sourceId": "bsp-lgu-borrowings",
+      "jurisdiction": "Municipality of Cavinti, Laguna, Region IV-A (CALABARZON)",
+      "reportPeriod": "Second semester 2022",
+      "resolutionNumber": "1759",
+      "resolutionDate": "2022-12-09",
+      "proposedLoanAmountPhpMillion": 13.00,
+      "purposeAsReported": "To finance the acquisition of 63,402-square meter lot located in Barangay Anglas for the construction of District Hospital, Tertiary School and Sports Complex.",
+      "sourceUrl": "https://www.bsp.gov.ph/Regulations/Guidelines%20and%20other%20Regulations/LGU_2S2022.pdf",
+      "sourcePage": 3
+    }
+  ],
   "procurementAndProjectCoverage": {
     "philgeps": {
       "completeCavintiQueryCaptured": false,

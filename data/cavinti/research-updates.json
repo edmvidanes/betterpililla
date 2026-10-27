@@ -646,6 +646,30 @@
         21,
         22
       ]
+    },
+    {
+      "recordId": "research:2026-10-27:pd759-lumban-caliraya-cavinti-road",
+      "sourceId": "supreme-court-pd759",
+      "sourceUrl": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/26/59358",
+      "retrievedAt": "2026-10-27",
+      "availabilityStatus": "available",
+      "verificationStatus": "primary-direct",
+      "freshnessStatus": "not-applicable",
+      "notes": "Presidential Decree No. 759, dated July 31, 1975, section 1, Title A, highways item 17 appropriates PHP 15,000,000 for the Lumban-Caliraya-Cavinti Road, Laguna, as a national public-works appropriation. The item concerns a road spanning places in Laguna, not an appropriation exclusively for the municipality of Cavinti. The decree does not establish disbursement, actual expenditure, completion, current road condition, or municipal borrowing.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": null
+      },
+      "findings": [
+        {
+          "sourceOriginalText": "17. Lumban-Caliraya-Cavinti Road, Laguna 15,000,000",
+          "hashAlgorithm": "sha256",
+          "hash": "99ba0b54680bbdd55c7011fd9c317e31f63a95a3135721d696f90a909df08097",
+          "hashScope": "UTF-8 sourceOriginalText excerpt, not source-response bytes",
+          "extractionMethod": "web-reader",
+          "verificationStatus": "source-text-reviewed"
+        }
+      ]
     }
   ],
   "discoveryAttempts": [

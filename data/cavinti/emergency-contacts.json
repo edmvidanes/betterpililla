@@ -42,6 +42,17 @@
       "category": "coast-guard",
       "numbersAsPublished": ["0905-376-7148"],
       "verificationStatus": "official-source-published; freshness-unverified"
+    },
+    {
+      "service": "Sangguniang Bayan of Cavinti",
+      "category": "sangguniang-bayan",
+      "addressAsPublished": "Rizal St., Poblacion, Municipal Hall",
+      "emailsAsPublished": ["info@cavinti.gov.ph", "omad@cavinti.gov.ph", "sbcavinti@gmail.com"],
+      "numbersAsPublished": ["+63 (049) 523 0152; 523 0102; 523 0129 local 100"],
+      "sourceId": "cavinti-contact",
+      "sourceUrl": "https://cavinti-egov.com/contact",
+      "capturedAt": "2026-10-27",
+      "verificationStatus": "official-source-published; freshness-unverified"
     }
   ],
   "publicUseWarning": "Do not label these numbers current or suitable for emergency reliance until the municipal office confirms them. Show the source and last-check date; keep a national emergency fallback separately sourced and independently validated."

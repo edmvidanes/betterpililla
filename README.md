@@ -63,6 +63,8 @@ The current barangay roster is unresolved. Population has separately labeled sec
 
 Additional primary-source collection attempts and bounded, unreviewed PDF transcription are in `research-updates.json`; they do not replace established facts. No PDF archive, social comments, household CBMS or patient records are mirrored.
 
+The 2026-10-27 research adds the legislative office's published contact details, a dated school-garden evaluation, two BSP opinions on proposed municipal borrowing, and a historical national road appropriation. Contact details are not live-validated; borrowing proposals do not establish loan drawdown or debt, and an appropriation does not establish spending or construction. None of these records is a complete directory, budget, debt register, school roster, or project inventory.
+
 ## Manual refresh
 
 ```sh

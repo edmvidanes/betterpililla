@@ -63,7 +63,7 @@ export function buildSearch(data: Record<string, Document>): SearchRow[] {
   for (const [name, sources] of names) add(barangayId(name), name, `/government/barangays/${encodeURIComponent(barangayId(name))}`,
     [...sources], 'Source-specific barangay name; current canonical roster unresolved', 'barangay');
   for (const contact of data['emergency-contacts'].records) add(`contact:${contact.category}`, contact.service, `/government/offices/${encodeURIComponent(contact.category)}`,
-    [data['emergency-contacts'].sourceId], `${contact.numbersAsPublished.join(' ')} ${contact.verificationStatus}`, 'contact');
+    [contact.sourceId ?? data['emergency-contacts'].sourceId], [contact.numbersAsPublished.join(' '), contact.addressAsPublished, ...(contact.emailsAsPublished ?? []), contact.capturedAt ?? data['emergency-contacts'].capturedAt, contact.verificationStatus].filter(Boolean).join(' '), 'contact');
   for (const service of data.services.services) add(service.recordId, service.name, `/services/${encodeURIComponent(service.recordId)}`, collectSourceIds(service), service.office ?? '', 'service');
   const routes: Record<string, string> = { municipality: '/about', services: '/services', transparency: '/transparency/finance', 'sector-inventory': '/places' };
   for (const [id, path] of Object.entries(routes)) add(`dataset:${id}`, id === 'municipality' ? data.municipality.name : id,
