@@ -6,6 +6,46 @@
   "refreshMode": "manual-on-demand",
   "sources": [
     {
+      "id": "bsp-lgu-borrowings",
+      "name": "Bangko Sentral ng Pilipinas LGU proposed domestic borrowing opinions",
+      "tier": "primary-government",
+      "url": "https://www.bsp.gov.ph/Regulations/Guidelines%20and%20other%20Regulations/LGU_2S2022.pdf",
+      "formats": ["PDF"],
+      "retrievalStatus": "2020 and 2022 tables read on 2026-10-27",
+      "lastCheckedAt": "2026-10-27",
+      "coverage": "Semester reports list opinions on proposed borrowings, not loan drawdowns, debt balances or completed projects. Individual records link to their respective reports."
+    },
+    {
+      "id": "supreme-court-pd759",
+      "name": "Supreme Court E-Library Presidential Decree No. 759",
+      "tier": "primary-government",
+      "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/26/59358",
+      "formats": ["HTML"],
+      "retrievalStatus": "readable on 2026-10-27",
+      "lastCheckedAt": "2026-10-27",
+      "coverage": "Historical national infrastructure appropriations; appropriation is not proof of release, spending or completed construction."
+    },
+    {
+      "id": "cavinti-contact",
+      "name": "Cavinti Sangguniang Bayan contact page",
+      "tier": "primary-lgu",
+      "url": "https://cavinti-egov.com/contact",
+      "formats": ["HTML"],
+      "retrievalStatus": "readable on 2026-10-27; contacts not live-validated",
+      "lastCheckedAt": "2026-10-27",
+      "coverage": "Municipal hall address and grouped public legislative contact emails and telephone numbers; no publication date or per-number office assignment."
+    },
+    {
+      "id": "searca-school-gardens",
+      "name": "SEARCA Cavinti district school and home gardens evaluation",
+      "tier": "secondary-reference",
+      "url": "https://www.searca.org/news/searca-partners-deped-cavinti-laguna-district-wide-school-home-gardens-evaluation",
+      "formats": ["HTML"],
+      "retrievalStatus": "readable on 2026-10-27",
+      "lastCheckedAt": "2026-10-27",
+      "coverage": "Participant account of the March 2024 Cavinti district evaluation and named winning schools; not a current complete school roster."
+    },
+    {
       "id": "betterlgu-directory",
       "name": "BetterLGU directory",
       "tier": "community-directory",
