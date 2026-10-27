@@ -68,4 +68,4 @@ The header uses `public/logo.webp` (192px); the browser tab uses `public/favicon
 - Do expose coverage gaps and last checks next to the affected content.
 - Do keep native keyboard interactions and visible focus.
 - Don't display an unavailable dataset as a zero-value metric.
-- Don't add branding, animation or decorative visual systems beyond the approved restrained interface.
+- The homepage introduces its place name and photo atlas, with scroll-linked motion on photography and the map. Keep text and controls still, respect reduced-motion preferences, and keep content usable without animation.

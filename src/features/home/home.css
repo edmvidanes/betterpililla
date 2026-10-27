@@ -9,6 +9,11 @@
 .atlas-photo-strip img { display: block; width: 100%; height: clamp(240px, 29.5vw, 425px); object-fit: cover; }
 .atlas-photo-strip img:nth-child(2) { object-position: 55% center; }
 .atlas-photo-strip img:nth-child(3) { object-position: 55% center; }
+@media (prefers-reduced-motion: no-preference) {
+  .atlas-links a > svg { transition: transform 300ms cubic-bezier(.16, 1, .3, 1); }
+  .atlas-links a:hover > svg, .atlas-links a:focus-visible > svg { transform: translateX(4px); }
+  .atlas-service-badges a { transition: background-color 250ms ease, border-color 250ms ease; }
+}
 .atlas-credits { margin-top: .6rem; color: #4c5e78; font-size: .8rem; }
 .atlas-credits summary { cursor: pointer; width: fit-content; padding-block: .25rem; text-underline-offset: .2em; }
 .atlas-credits summary:hover { color: #1747ab; text-decoration: underline; }

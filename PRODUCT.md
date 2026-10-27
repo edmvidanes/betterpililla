@@ -16,7 +16,7 @@ Implement the route inventory and phases A–F in docs/CAVINTI_TEMPLATE_PLAN.md.
 
 ## Brand Commitments
 
-User selected a restrained Kapwa-style interface with Tailwind. No bespoke redesign or animations.
+User selected a restrained Kapwa-style interface with Tailwind. The landing page uses limited, accessible motion without a bespoke redesign.
 
 ## Evidence on Hand
 

@@ -1,4 +1,6 @@
-import type { ReactNode } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import type { DataRecord } from '../../data/loaders'
 import { lgu } from '../../config/lgu'
 import { catalogs, formatDate, type Locale, type MessageKey } from '../../i18n/locales'
@@ -39,12 +41,39 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
   contacts: DataRecord
   municipality: DataRecord
 }) {
+  const atlasRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const atlas = atlasRef.current
+    if (!atlas) return
+    gsap.registerPlugin(ScrollTrigger)
+    const motion = gsap.matchMedia()
+    motion.add('(prefers-reduced-motion: no-preference)', () => {
+      const intro = gsap.timeline()
+      intro.fromTo(atlas.querySelector('h1'), { y: 20, opacity: .7 }, { y: 0, opacity: 1, duration: 1.4, ease: 'power3.out' })
+        .fromTo(atlas.querySelector('.atlas-photo-strip'), { clipPath: 'inset(0 0 0 12%)' }, { clipPath: 'inset(0)', duration: 1.8, ease: 'power3.out' }, 0)
+
+      atlas.querySelectorAll<HTMLElement>('.demographics-photo-strip img').forEach(image => {
+        gsap.fromTo(image, { scale: 1.12 }, {
+          scale: 1, ease: 'none', immediateRender: false,
+          scrollTrigger: { trigger: image.parentElement, start: 'top bottom', end: 'bottom top', scrub: 1.2 },
+        })
+      })
+      const map = atlas.querySelector<HTMLElement>('.atlas-map-frame')
+      if (map) {
+        gsap.fromTo(map, { clipPath: 'inset(0 4% 0 4%)' }, {
+          clipPath: 'inset(0)', ease: 'none', immediateRender: false,
+          scrollTrigger: { trigger: map, start: 'top bottom', end: 'top 40%', scrub: 1.2 },
+        })
+      }
+    })
+    return () => motion.revert()
+  }, [])
   const t = catalogs[locale]
   const links = (keys: MessageKey[], icons = false) => <ul className="atlas-links">{keys.map(key =>
     <li key={key}><a href={href(routes.find(([, label]) => label === key)![0])}><span className="atlas-link-label">{icons && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={browseIcons[key]} /></svg>}{t[key]}</span><Arrow /></a></li>,
   )}</ul>
 
-  return <div className="atlas">
+  return <div className="atlas" ref={atlasRef}>
     <section className="atlas-place" aria-labelledby="place-title">
       <div className="atlas-inner"><h1 id="place-title">{lgu.name}, {lgu.province}</h1></div>
       <figure className="atlas-photos">
