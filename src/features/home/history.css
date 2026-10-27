@@ -81,8 +81,9 @@
 .atlas-history-event summary::-webkit-details-marker { display: none; }
 .atlas-history-event summary:hover { color: #1747ab; }
 .atlas-history-event summary:focus-visible { outline: 3px solid #1d4ed8; outline-offset: 4px; }
-.atlas-history-chevron { width: 1.2rem; height: 1.2rem; margin-top: .15rem; color: #1747ab; }
-.atlas-history-event[open] .atlas-history-chevron { transform: rotate(180deg); }
+.atlas-history-toggle { color: #1747ab; text-align: center; }
+.atlas-history-toggle::before { content: '+'; }
+.atlas-history-event[open] .atlas-history-toggle::before { content: '−'; }
 .atlas-history-detail { margin: 0 0 .75rem calc(6.5rem + .65rem); }
 
 .atlas-history-icon {
