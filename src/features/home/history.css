@@ -97,7 +97,7 @@
 .atlas-history-note a:hover { color: #1d4ed8; }
 .atlas-history-event a:focus-visible,
 .atlas-history-note a:focus-visible { outline: 3px solid #1d4ed8; outline-offset: 4px; }
-.atlas-history-external { width: 1em; height: 1em; margin-left: .4em; vertical-align: middle; }
+.atlas-history-external { display: inline-block; width: 1em; height: 1em; margin-left: .4em; vertical-align: middle; }
 
 .atlas-history-notes {
   display: grid;
