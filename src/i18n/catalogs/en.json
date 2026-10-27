@@ -1,6 +1,8 @@
 {
   "menuLabel": "Menu", "joinInitiative": "Join the BetterLGU initiative",
   "quickAccess": "Quick access", "viewCoverage": "View sources and data limits", "projectLinks": "Project and language links", "officialWebsite": "Official website", "hotlines": "Hotlines", "communityPortal": "Community portal", "closeMenu": "Close menu",
+  "footerDescription": "An open-source initiative providing access to municipal information, local legislation, and public data for the people of {place}.",
+  "footerOpenSource": "Open-source project",
   "atlasBrowse": "Explore public information",
   "atlasGovernment": "Government & community",
   "atlasRecords": "Spending & records",

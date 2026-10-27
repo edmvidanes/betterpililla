@@ -176,13 +176,14 @@ function App() {
       <div className="atlas-footer-main">
         <div className="atlas-footer-intro">
           <a className="atlas-footer-brand" href={href('')}>Better{lgu.name}<small>{t.communityPortal} · {lgu.name}, {lgu.province}</small></a>
-          <p>{t.description}</p>
+          <p>{t.footerDescription.replace('{place}', lgu.name)}</p>
         </div>
         <nav aria-label={t.footer}>
           {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads'] as MessageKey[]).map(key => <a key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</a>)}
         </nav>
       </div>
-      <div className="atlas-footer-bottom"><p>{t.community}</p><a href={lgu.repository}>GitHub</a></div>
+      <div className="atlas-footer-statement"><span>{t.community}</span><strong>{t.footerOpenSource}</strong></div>
+      <div className="atlas-footer-bottom"><a href={lgu.repository}>GitHub</a></div>
     </footer> : <footer><p>{t.community}</p><nav aria-label={t.footer}>
       {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads'] as MessageKey[]).map(key => <a key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</a>)}
       <a href={lgu.repository}>GitHub</a>
