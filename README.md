@@ -26,9 +26,9 @@ SITE_BASE=/bettercavinti/ npm run build
 SITE_BASE=/bettercavinti/ npm run preview
 ```
 
-## Landing page and photographs
+## Landing page, photographs and map
 
-The Community Atlas homepage uses a fluid place-name masthead, a three-photo strip, grouped topic browsing, quick links and a source-transparency section. Its component and responsive styles live in `src/features/home/`; the existing global navigation and search remain shared with the rest of the portal.
+The Community Atlas homepage uses a fluid place-name masthead, a three-photo strip, search, quick links, grouped browsing, a history timeline, service highlights, a map and source transparency. Quick links sit immediately below search. Components and responsive styles live in `src/features/home/`; global navigation and search remain shared with the rest of the portal.
 
 Photographs are real Cavinti images hosted locally under `public/images/cavinti/`, not AI-generated scenery. Configure their paths, dimensions, bilingual alternative text, source URLs, authors and licenses in `lgu.homepagePhotos`. The native photo-credit disclosure links to each source and license and identifies resizing, WebP conversion and display cropping.
 
@@ -37,6 +37,16 @@ Photographs are real Cavinti images hosted locally under `public/images/cavinti/
 - [Cavinti Bridge II in Tibatib](https://commons.wikimedia.org/wiki/File:38Tibatib_Poblacion,_Cavinti,_Laguna_08.jpg), Judgefloro — [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
 
 Generated design proposals under `.impeccable/proposals/` are development references only and are not deployed. Another municipality must supply its own licensed photographs and credits alongside its data pack.
+
+### History, public services and geography
+
+The history layout pairs a chronological timeline with contextual notes. Its claims link to the [NHCP Church of Cavinti marker](https://philhistoricsites.nhcp.gov.ph/registry_database/church-of-cavinti/), [Act No. 1240](https://issuances-library.senate.gov.ph/legislative-issuance/act-no-1240) and [Act No. 1712](https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/28/16606). The 1619 ecclesiastical date is not presented as a verified municipal founding date.
+
+Service highlights are icon-led links to offices actually present in `emergency-contacts.json`. They do not invent Citizens’ Charter procedures, requirements, fees or current availability. Source, capture date and the live-validation limitation remain visible.
+
+The interactive map uses MapLibre GL and [OpenFreeMap](https://openfreemap.org/quick_start/) vector tiles. It loads the map engine only when approaching the viewport, uses cobalt water and pale-blue land, retains provider attribution and supports zoom/reset without hijacking ordinary page scrolling. Its heading and geographic description remain accessible but are visually hidden. WebGL and an internet connection are required; failures display a localized message rather than a fake map.
+
+Set the approximate town center and initial zoom in `lgu.mapView`. The basemap is OpenStreetMap geographic context, not verified official municipal geometry. Third-party style, font and tile requests expose the visitor’s IP address to OpenFreeMap; the privacy page discloses this behavior.
 
 ## Evidence and downloads
 
