@@ -84,7 +84,7 @@ function App() {
   let content: ReactNode
   if (error) content = <><h1>{t.loadError}</h1><Button onClick={() => location.reload()}>{t.retry}</Button><p><ExternalDocumentLink url={lgu.officialUrl} /></p></>
   else if (!data) content = <p role="status">{t.loading}</p>
-  else if (route === '') content = <Home locale={locale} capturedAt={data.portal.capturedAt} href={href} search={<SearchForm locale={locale} href={href} />} />
+  else if (route === '') content = <Home locale={locale} capturedAt={data.portal.capturedAt} href={href} search={<SearchForm locale={locale} href={href} />} contacts={data.contacts} />
   else if (route === 'services') {
     const query = new URLSearchParams(location.search).get('q') || ''
     const serviceRows = records(data.services.services)

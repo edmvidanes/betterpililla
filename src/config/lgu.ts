@@ -8,6 +8,7 @@ export interface MunicipalityConfig {
   officialUrl: string
   defaultLocale: 'en' | 'fil'
   sourceIds: Record<'about' | 'charter' | 'executive' | 'legislative' | 'psgc' | 'population' | 'competitiveness' | 'fdp' | 'fiscal' | 'audit' | 'procurement', string>
+  mapView: { center: readonly [number, number]; zoom: number }
   homepagePhotos: {
     src: string
     width: number
@@ -25,6 +26,8 @@ export const lgu: MunicipalityConfig = {
   slug: 'cavinti', name: 'Cavinti', province: 'Laguna', recordId: 'ph:laguna:cavinti',
   dataPath: 'data', repository: 'https://github.com/klnwlks/bettercavinti',
   officialUrl: 'https://www.cavinti-egov.com/', defaultLocale: 'en',
+  // Approximate OSM town center; map orientation only, not an official boundary.
+  mapView: { center: [121.5070018, 14.2453833], zoom: 11 },
   sourceIds: {
     about: 'cavinti-about', charter: 'cavinti-citizens-charter',
     executive: 'cavinti-executive-directory', legislative: 'cavinti-legislative-directory',

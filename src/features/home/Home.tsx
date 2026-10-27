@@ -1,18 +1,23 @@
 import type { ReactNode } from 'react'
+import type { DataRecord } from '../../data/loaders'
 import { lgu } from '../../config/lgu'
 import { catalogs, formatDate, type Locale, type MessageKey } from '../../i18n/locales'
 import { routes } from '../../app/route-manifest'
+import History from './History'
+import ServiceHighlights from './ServiceHighlights'
+import CavintiMap from './CavintiMap'
 import './home.css'
 
 function Arrow() {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
 }
 
-export default function Home({ locale, capturedAt, href, search }: {
+export default function Home({ locale, capturedAt, href, search, contacts }: {
   locale: Locale
   capturedAt: string
   href: (path: string) => string
   search: ReactNode
+  contacts: DataRecord
 }) {
   const t = catalogs[locale]
   const links = (keys: MessageKey[]) => <ul className="atlas-links">{keys.map(key =>
@@ -60,6 +65,10 @@ export default function Home({ locale, capturedAt, href, search }: {
         <section className="atlas-local"><h3>{t.atlasLocal}</h3>{links(['demographics', 'competitiveness', 'map', 'places', 'advisories'])}</section>
       </div>
     </section>
+
+    <History locale={locale} />
+    <ServiceHighlights locale={locale} href={href} contacts={contacts} capturedAt={capturedAt} />
+    <CavintiMap locale={locale} center={lgu.mapView.center} zoom={lgu.mapView.zoom} />
 
     <section className="atlas-inner atlas-sources" aria-labelledby="atlas-sources-title">
       <div><h2 id="atlas-sources-title">{t.atlasSources}</h2><p>{t.atlasLimits}</p></div>
