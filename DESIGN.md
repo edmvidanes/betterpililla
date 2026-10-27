@@ -38,7 +38,7 @@ The portal uses restrained Kapwa styling with Tailwind. Following the user's Bet
 
 ## Colors
 
-Primary blue identifies actions and navigation; dark foreground and muted evidence labels sit on white. Pale blue indicates the active topic. Amber notices identify coverage or verification limits, not live emergency alerts. Palette values are recorded in frontmatter; `src/index.css` and Kapwa are the implementation authorities.
+Primary blue identifies actions and navigation; dark foreground and muted evidence labels sit on white. Pale blue indicates the active topic. The homepage sources section uses the map's primary blue with light text, followed by a dark navy footer. Amber notices identify coverage or verification limits, not live emergency alerts. Palette values are recorded in frontmatter; `src/index.css` and Kapwa are the implementation authorities.
 
 ## Typography
 
