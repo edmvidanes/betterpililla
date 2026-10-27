@@ -153,7 +153,10 @@ function App() {
       </nav>
     </div></div>
     <header className={`site-header${route === '' ? ' atlas-header' : ''}`}><div className="header-inner">
-      <a className="brand" href={href('')} aria-label={`Better${lgu.name} · ${t.home}`}>Better<span>{lgu.name}</span><small>{t.communityPortal} · {lgu.name}, {lgu.province}</small></a>
+      <a className="brand" href={href('')} aria-label={`Better${lgu.name} · ${t.home}`}>
+        <img className="brand-mark" src={`${base}logo.svg`} width="48" height="48" alt="" />
+        <div className="brand-wordmark">Better<span>{lgu.name}</span><small>{t.communityPortal} · {lgu.name}, {lgu.province}</small></div>
+      </a>
       <button className="menu-toggle" aria-expanded={menuOpen} aria-controls="primary-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? t.closeMenu : t.menuLabel}</button>
       <nav id="primary-navigation" className={`primary-navigation${menuOpen ? ' is-open' : ''}`} aria-label={t.navigation}>
         {navigationGroups.map(group => <details key={group.label} className="nav-group" name="primary-navigation">
@@ -182,10 +185,8 @@ function App() {
           {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads'] as MessageKey[]).map(key => <a key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</a>)}
         </nav>
       </div>
-      <div className="atlas-footer-bottom">
-        <div className="atlas-footer-statement"><span>{t.community}</span><strong>{t.footerCost.replace('{place}', lgu.name)}</strong></div>
-        <a href={lgu.repository}>GitHub</a>
-      </div>
+      <div className="atlas-footer-statement"><span>{t.footerCommunity}</span><strong>{t.footerCost.replace('{place}', lgu.name)} <span>₱0</span></strong></div>
+      <div className="atlas-footer-bottom"><a href={lgu.repository}>GitHub</a></div>
     </footer> : <footer><p>{t.community}</p><nav aria-label={t.footer}>
       {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads'] as MessageKey[]).map(key => <a key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</a>)}
       <a href={lgu.repository}>GitHub</a>

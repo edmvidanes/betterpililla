@@ -38,7 +38,7 @@ The portal uses restrained Kapwa styling with Tailwind. Following the user's Bet
 
 ## Colors
 
-Primary blue identifies actions and navigation; dark foreground and muted evidence labels sit on white. Pale blue indicates the active topic. The homepage sources section uses the map's primary blue with light text, followed by a dark navy footer. Amber notices identify coverage or verification limits, not live emergency alerts. Palette values are recorded in frontmatter; `src/index.css` and Kapwa are the implementation authorities.
+Primary blue identifies actions and navigation; dark foreground and muted evidence labels sit on white. Pale blue indicates the active topic. The homepage sources section uses the map's primary blue with light text, followed by a charcoal footer with a green cost accent. Amber notices identify coverage or verification limits, not live emergency alerts. Palette values are recorded in frontmatter; `src/index.css` and Kapwa are the implementation authorities.
 
 ## Typography
 
@@ -46,7 +46,7 @@ Use the body stack and responsive headline scale above. No font is downloaded by
 
 ## Layout
 
-The header has a maximum width of 1440px; content has a maximum width of 1320px with no global sidebar. The utility strip includes the independent/nonofficial notice, BetterLGU initiative link, project information, official municipal site, public contacts and language switch. Primary navigation groups Services, Government, Statistics, OpenLGU and Transparency. At 1150px and below, a Menu button reveals stacked disclosure groups. The homepage pairs search and introductory content with quick-access links; at 700px and below these stack, as do topic and filter grids. Detailed coverage warnings stay on the affected routes; a compact homepage summary links to sources. The homepage footer places the portal identity and project description alongside project links, with a centered independence and cost statement below; it does not include a sitemap. Source tables scroll within their own region.
+The header has a maximum width of 1440px; content has a maximum width of 1320px with no global sidebar. The utility strip includes the independent/nonofficial notice, BetterLGU initiative link, project information, official municipal site, public contacts and language switch. Primary navigation groups Services, Government, Statistics, OpenLGU and Transparency. At 1150px and below, a Menu button reveals stacked disclosure groups. The homepage pairs search and introductory content with quick-access links; at 700px and below these stack, as do topic and filter grids. Detailed coverage warnings stay on the affected routes; a compact homepage summary links to sources. The homepage footer places the portal identity and project description alongside project links, with a centered community and cost statement below; it does not include a sitemap. Source tables scroll within their own region.
 
 ## Elevation & Depth
 
