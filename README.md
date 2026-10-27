@@ -73,6 +73,8 @@ Demographics offers a keyboard-operable population chart with year selection and
 
 Legislation keeps search, type and year visible; number, author, topic, date-range and source filters expand under “More filters”. Active advanced URL filters open that section automatically; reload and locale switching preserve them. Open data and sources have local search, compact records, downloads and expandable provenance. Source citations retain separate localized verification, access and freshness states.
 
+Barangays provides searchable population bars with 2015/2020 selection, name/population sorting and linked detail pages. Municipal and secondary roster claims remain separate: Mahipon and Mahipon-Lumot are not aliases, and a name without a population record never inherits another entry’s value. Map & geography reuses the homepage’s styled MapLibre map, alongside published neighbors, coordinate ranges and the official-boundary limitation.
+
 Page components live in `src/features/` with shared styles in `civic.css`. New interface copy belongs in the typed `civic-en.json` / `civic-fil.json` catalogs; legislative messages stay in their existing catalogs. Source-original wording remains unchanged and language-marked. `e2e/civic.spec.ts` covers population/evidence selection, intersecting directory filters and advanced legislative deep links.
 
 ## Manual refresh
