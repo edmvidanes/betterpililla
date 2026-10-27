@@ -168,6 +168,28 @@
     {"contractId":"25DH0052","description":"PREVENTIVE MAINTENANCE-SECONDARY ROADS PAGSANJAN-LUCBAN RD K0096+230-K0098+193, CAVINTI, LAGUNA","status":"On-Going","budget":93583817.58,"location":{"province":"Laguna 1st DEO","region":"Region IV-A"},"infraYear":"2025","sourceId":"dpwh-bettergov-snapshot"},
     {"contractId":"25DH0064","description":"CONCRETING OF BRGY. SISILMIN TO BRGY. TIBATIB FMR, BRGY. SISILMIN TO BRGY. TIBATIB, CAVINTI, LAGUNA","status":"On-Going","budget":14541043.98,"location":{"province":"Laguna 1st DEO","region":"Region IV-A"},"infraYear":"2025","sourceId":"dpwh-bettergov-snapshot"}
   ],
+  "betterGovProcurementLeads": [
+    {"sourceId":"bettergov-cavinti-procurement","id":"Infra 2019-01","title":"Road Construction","awardee":"POWER K CONSTRUCTION SUPPLY & SERVICES","amountDisplayed":"₱447,110","dateDisplayed":"February 26, 2019","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"infra 2016-12a","title":"Infra 2016-12a","awardee":"JOBEL ENTERPRISES","amountDisplayed":"₱159,878","dateDisplayed":"March 8, 2017","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"PRDP-IB-R04A-LAG-001-2014-R1","title":"Construction of Level II Cavinti Potable Water Sys","awardee":"ARDC CONSTRUCTION & SUPPLIES","amountDisplayed":"₱2,644,997","dateDisplayed":"February 22, 2017","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Infra 2016-13a","title":"Infra 2016-13a","awardee":"R'CEL GENERAL CONTRACTOR & GENERAL MERCHANDISE","amountDisplayed":"₱498,109","dateDisplayed":"January 19, 2017","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Infra 2016-11a","title":"Infra 2016-11a","awardee":"JOBEL ENTERPRISES","amountDisplayed":"₱101,327","dateDisplayed":"January 19, 2017","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Infra 2016-06","title":"Rehabilitation of Drainage Canal","awardee":"JOBEL ENTERPRISES","amountDisplayed":"₱755,536","dateDisplayed":"November 18, 2016","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Infra 2016-09","title":"Rehabilitation / Improvement of Oflaria Street","awardee":"R'CEL GENERAL CONTRACTOR & GENERAL MERCHANDISE","amountDisplayed":"₱569,878","dateDisplayed":"November 18, 2016","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Infra 2016-10","title":"Rehabilitation / Improvement of Oliveros Street","awardee":"R'CEL GENERAL CONTRACTOR & GENERAL MERCHANDISE","amountDisplayed":"₱524,514","dateDisplayed":"November 18, 2016","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","title":"Procurement of Medicines and Medical Supplies","awardee":"SEAMMED PHARMA","amountDisplayed":"₱438,052","dateDisplayed":"November 18, 2016","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Goods 2016-07","title":"Procurement of Plumbing Materials","awardee":"UP-TOWN INDUSTRIAL SALES, INC.","amountDisplayed":"₱394,429","dateDisplayed":"November 18, 2016","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Infra 2016-07","title":"Rehabilitation of Drainage Canal","awardee":"ROSVAR ENTERPRISES & GENERAL CONTRACTOR","amountDisplayed":"₱236,487","dateDisplayed":"November 18, 2016","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Infra 2016-03","title":"Infra 2016-03","awardee":"R'CEL GENERAL CONTRACTOR & GENERAL MERCHANDISE","amountDisplayed":"₱2,471,987","dateDisplayed":"September 6, 2016","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Infra 2016-01","title":"Infra 2016-01","awardee":"CALIRAYA BUILDERS","amountDisplayed":"₱5,495,313","dateDisplayed":"March 17, 2016","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Infra 2016-02","title":"Infra 2016-02","awardee":"LYNKONSTRUCT, INC.","amountDisplayed":"₱2,143,856","dateDisplayed":"March 17, 2016","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Goods 2016-03","title":"Goods 2016-03","awardee":"LYNKONSTRUCT, INC.","amountDisplayed":"₱1,733,281","dateDisplayed":"March 17, 2016","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Goods 2016-02","title":"Goods 2016-02","awardee":"GOD'S HEALING PHARMACY & PHARMA TRADING","amountDisplayed":"₱630,874","dateDisplayed":"March 17, 2016","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Goods 2015-08","title":"Goods 2015-08","awardee":"GEORDAN COMMERCIAL","amountDisplayed":"₱396,000","dateDisplayed":"March 17, 2016","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Goods 2015-07","title":"Goods 2015-07","awardee":"LYNKONSTRUCT, INC.","amountDisplayed":"₱243,000","dateDisplayed":"March 17, 2016","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Goods 2015-09","title":"Goods 2015-09","awardee":"GEORGE B. PADILLA & ASSOCIATES","amountDisplayed":"₱145,000","dateDisplayed":"March 17, 2016","statusDisplayed":"active"},
+    {"sourceId":"bettergov-cavinti-procurement","id":"Goods 2016-01","title":"Goods 2016-01","awardee":"JEMA MULTI TRADING INCORPORATED","amountDisplayed":"₱136,611","dateDisplayed":"March 17, 2016","statusDisplayed":"active"}
+  ],
   "bspProposedBorrowingOpinions": [
     {
       "sourceId": "bsp-lgu-borrowings",

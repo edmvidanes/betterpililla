@@ -67,9 +67,9 @@
       "id": "transparency",
       "canonicalJson": "transparency.json",
       "schemaVersion": "civic-transparency-evidence/v1",
-      "recordCount": 80,
-      "sourceIds": ["dilg-fdp", "blgf-fiscal-data", "bettergov-blgf-mirror", "philgeps-cavinti-award-lead", "coa-annual-audits", "cavinti-ordinances-index", "cavinti-resolutions-index", "bsp-lgu-borrowings", "dpwh-bettergov-snapshot"],
-      "status": "partial historical project snapshot and document leads; no complete financial, procurement, or project totals"
+      "recordCount": 100,
+      "sourceIds": ["dilg-fdp", "blgf-fiscal-data", "bettergov-blgf-mirror", "philgeps-cavinti-award-lead", "coa-annual-audits", "cavinti-ordinances-index", "cavinti-resolutions-index", "bsp-lgu-borrowings", "dpwh-bettergov-snapshot", "bettergov-cavinti-procurement"],
+      "status": "partial historical project and procurement snapshots and document leads; no complete financial, procurement, or project totals"
     },
     {
       "id": "ordinances",

@@ -11,6 +11,20 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
   const [query, setQuery] = useState('')
   const projects = rows(data.transparency.dpwhProjectSnapshot)
   const matching = projects.filter(row => [row.description, row.contractId, row.infraYear, row.status, row.budget].join(' ').toLocaleLowerCase().includes(query.toLocaleLowerCase()))
+  const [procurementQuery, setProcurementQuery] = useState('')
+  const procurement = rows(data.transparency.betterGovProcurementLeads)
+  const matchingProcurement = procurement.filter(row => [row.title, row.id, row.awardee, row.amountDisplayed, row.dateDisplayed, row.statusDisplayed].join(' ').toLocaleLowerCase().includes(procurementQuery.toLocaleLowerCase()))
+  const procurementLabels = locale === 'fil' ? {
+    heading: 'Mga procurement lead mula sa BetterGov PH',
+    note: 'Dalawampung nakikitang hanay mula sa pangalawang PhilGEPS Contract Browser ng BetterGov PH, nakuha noong Oktubre 27, 2026. Hindi alam ang kahulugan ng petsa; ang halagang ipinakita sa buong piso ay rounded at hindi eksaktong halaga. Hindi napatunayan sa pangunahing notice ang mga rekord. Ang status ay mula sa source at maaaring luma na; hindi ito patunay ng pagbabayad o pagkumpleto, at hindi ito kumpletong talaan.',
+    search: 'Hanapin ang pamagat, ID, awardee, halaga, petsa o status', title: 'Pamagat sa source', id: 'ID sa source', awardee: 'Awardee', amount: 'Halagang ipinakita', date: 'Petsa sa source (hindi alam ang kahulugan)', status: 'Status sa source', source: 'Tingnan ang pahina ng BetterGov PH'
+  } : {
+    heading: 'Procurement leads from BetterGov PH',
+    note: 'Twenty visible rows from BetterGov PH’s secondary PhilGEPS Contract Browser, retrieved October 27, 2026. The meaning of the date is unknown; displayed whole-peso amounts are rounded, not exact. The records have not been verified against primary notices. Source statuses may be stale; these leads are not proof of payment or completion and are not a complete register.',
+    search: 'Search title, ID, awardee, amount, date or status', title: 'Source title', id: 'Source ID', awardee: 'Awardee', amount: 'Displayed amount', date: 'Source date (meaning unknown)', status: 'Source status', source: 'View BetterGov PH page'
+  }
+  const procurementSource = data.portal.sources.find(source => source.id === procurement[0]?.sourceId)
+  const procurementUrl = procurementSource?.url || procurementSource?.canonicalUrl || ''
   const labels = locale === 'fil' ? {
     heading: 'Mga proyektong DPWH sa sekundaryang snapshot',
     note: 'Mga rekord na may “Cavinti” sa paglalarawan mula sa sekundaryang snapshot ng BetterGov PH, na na-download noong Oktubre 27, 2026. Hindi alam ang petsa ng orihinal na pagkuha; maaaring luma na ang mga status. Hindi kumpleto ang paghahanap sa teksto, at may mga proyektong sumasaklaw sa maraming munisipalidad. Ang badyet ay hindi katumbas ng paggasta para lamang sa Cavinti. Hindi ito independiyenteng napatunayan o kumpletong talaan.',
@@ -33,6 +47,15 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
       {!matching.length && <p>{t.noResults}</p>}
       <div className="table-wrap"><table className="coverage-table"><thead><tr><th scope="col">{labels.title}</th><th scope="col">{labels.contract}</th><th scope="col">{labels.year}</th><th scope="col">{labels.budget}</th><th scope="col">{labels.status}</th></tr></thead><tbody>
         {matching.map(row => <tr key={String(row.contractId)}><td lang="en"><a href={datasetUrl}>{String(row.description)}</a></td><td>{String(row.contractId)}</td><td>{String(row.infraYear)}</td><td>{typeof row.budget === 'number' ? new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(row.budget) : '—'}</td><td lang="en">{String(row.status)}</td></tr>)}
+      </tbody></table></div>
+    </section>}
+    {procurement.length > 0 && <section><h2>{procurementLabels.heading}</h2><p className="measure">{procurementLabels.note}</p>
+      <p><a href={procurementUrl}>{procurementLabels.source}</a></p><SourceNote {...props} id={String(procurement[0].sourceId)} />
+      <div className="directory-tools"><label htmlFor="procurement-query">{procurementLabels.search}<input id="procurement-query" type="search" value={procurementQuery} onChange={event => setProcurementQuery(event.target.value)} /></label></div>
+      <p className="civic-meta" role="status">{formatNumber(matchingProcurement.length, locale)} / {formatNumber(procurement.length, locale)} {t.records}</p>
+      {!matchingProcurement.length && <p>{t.noResults}</p>}
+      <div className="table-wrap"><table className="coverage-table"><thead><tr><th scope="col">{procurementLabels.title}</th><th scope="col">{procurementLabels.id}</th><th scope="col">{procurementLabels.awardee}</th><th scope="col">{procurementLabels.amount}</th><th scope="col">{procurementLabels.date}</th><th scope="col">{procurementLabels.status}</th></tr></thead><tbody>
+        {matchingProcurement.map((row, index) => <tr key={`${String(row.id || row.title)}-${index}`}><td lang="en">{String(row.title)}</td><td lang="en">{row.id ? String(row.id) : '—'}</td><td lang="en">{String(row.awardee)}</td><td>{String(row.amountDisplayed)}</td><td lang="en">{String(row.dateDisplayed)}</td><td lang="en">{String(row.statusDisplayed)}</td></tr>)}
       </tbody></table></div>
     </section>}
     <section lang="en"><h2>BSP opinions on proposed municipal borrowing</h2>

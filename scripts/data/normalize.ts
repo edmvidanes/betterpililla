@@ -21,7 +21,8 @@ export function datasetRows(id: string, data: Document): Document[] {
       ...(data.historicalElectionWinners ?? []).map((row: Document) => ({ rowType: 'historical-election-winner', sourceId: data.historicalElectionSource.sourceId, ...row }))];
     case 'transparency': return [...data.sourceChecks.map((row: Document) => ({ rowType: 'source-check', ...row })),
       ...data.officialLocalDocumentLeads.map((row: Document) => ({ rowType: 'document-lead', ...row })),
-      ...(data.dpwhProjectSnapshot ?? []).map((row: Document) => ({ rowType: 'project-snapshot', ...row }))];
+      ...(data.dpwhProjectSnapshot ?? []).map((row: Document) => ({ rowType: 'project-snapshot', ...row })),
+      ...(data.betterGovProcurementLeads ?? []).map((row: Document) => ({ rowType: 'procurement-lead', ...row }))];
     case 'services': return data.services;
     default: return Array.isArray(data.records) ? data.records : [data];
   }
