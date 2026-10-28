@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import type { DataRecord } from '../../data/loaders'
@@ -46,6 +46,7 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
 }) {
   const atlasRef = useRef<HTMLDivElement>(null)
   const [photosVisible, setPhotosVisible] = useState(false)
+  const [photosPaused, setPhotosPaused] = useState(false)
   const photos = [...lgu.homepagePhotos, ...lgu.demographicsPhotos.slice(1)]
   useEffect(() => {
     const strip = atlasRef.current?.querySelector('.atlas-photo-strip')
@@ -60,13 +61,26 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
       document.removeEventListener('visibilitychange', sync)
     }
   }, [])
-  useEffect(() => {
+  useLayoutEffect(() => {
     const atlas = atlasRef.current
     if (!atlas) return
     gsap.registerPlugin(ScrollTrigger)
     const motion = gsap.matchMedia()
     motion.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.fromTo(atlas.querySelector('.atlas-photo-strip'), { clipPath: 'inset(0 0 0 12%)' }, { clipPath: 'inset(0)', duration: 1.8, ease: 'power3.out' })
+      // One atlas-opening sequence; the ribbon moves only after the shutters settle.
+      const opening = gsap.timeline({ defaults: { ease: 'expo.out' } })
+      opening.fromTo(atlas.querySelectorAll('.atlas-title-letter'),
+        { yPercent: 115, rotationX: -80, transformOrigin: '50% 100%' },
+        { yPercent: 0, rotationX: 0, duration: 1.1, stagger: .035 }, 0)
+      opening.fromTo(atlas.querySelector('.atlas-photo-strip'),
+        { clipPath: 'inset(0 50% 0 50%)' },
+        { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.25 }, .2)
+      opening.fromTo(atlas.querySelectorAll('.atlas-photo-group:first-child .atlas-photo-frame'),
+        { clipPath: 'inset(100% 0 0 0)' },
+        { clipPath: 'inset(0% 0% 0% 0%)', duration: 1, stagger: .12 }, .35)
+      opening.fromTo(atlas.querySelectorAll('.atlas-photo-group:first-child img'),
+        { scale: 1.32, yPercent: -8 },
+        { scale: 1, yPercent: 0, duration: 1.5, stagger: .08 }, .35)
       atlas.querySelectorAll<HTMLElement>('.atlas-index > section').forEach(group => {
         gsap.fromTo(group, { y: 36, opacity: .65 }, {
           y: 0, opacity: 1, ease: 'none', immediateRender: false,
@@ -112,18 +126,31 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
 
   return <div className="atlas" ref={atlasRef}>
     <section className="atlas-place" aria-labelledby="place-title">
-      <div className="atlas-inner"><h1 id="place-title">{lgu.name}, {lgu.province}</h1></div>
+      <div className="atlas-inner"><h1 id="place-title" aria-label={`${lgu.name}, ${lgu.province}`}>
+        {`${lgu.name}, ${lgu.province}`.split(' ').map((word, index) =>
+          <span key={index} aria-hidden="true">{index > 0 && ' '}<span className="atlas-title-word">
+            {[...word].map((letter, position) => <span className="atlas-title-letter" key={position}>{letter}</span>)}
+          </span></span>,
+        )}
+      </h1></div>
       <figure className="atlas-photos">
-        <div className={`atlas-photo-strip${photosVisible ? ' is-visible' : ''}`}><div className="atlas-photo-track"
+        <div className={`atlas-photo-strip${photosVisible && !photosPaused ? ' is-visible' : ''}`}><div className="atlas-photo-track"
           style={{ animationDuration: `${photos.length * 5}s` }}>
           {[0, 1].map(copy => <div className="atlas-photo-group" key={copy} aria-hidden={copy === 1}>
             {photos.map((photo, index) =>
-              <img key={photo.src} src={`${import.meta.env.BASE_URL}${photo.src}`} alt={copy ? '' : photo.alt[locale]}
-                width={photo.width} height={photo.height} fetchPriority={index === 0 && copy === 0 ? 'high' : 'auto'} />,
+              <span className="atlas-photo-frame" key={photo.src}>
+                <img src={`${import.meta.env.BASE_URL}${photo.src}`} alt={copy ? '' : photo.alt[locale]}
+                  width={photo.width} height={photo.height} fetchPriority={index === 0 && copy === 0 ? 'high' : 'auto'} />
+              </span>,
             )}
           </div>)}
         </div></div>
         <figcaption className="atlas-inner">
+          <button className="atlas-photo-toggle" type="button" onClick={() => setPhotosPaused(paused => !paused)}>
+            {photosPaused
+              ? (locale === 'fil' ? 'Ipagpatuloy ang mga larawan' : 'Resume photos')
+              : (locale === 'fil' ? 'I-pause ang mga larawan' : 'Pause photos')}
+          </button>
           <details className="atlas-credits">
             <summary>{t.photoCredits}</summary>
             <p>{t.photoChanges}</p>
