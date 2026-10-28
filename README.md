@@ -30,6 +30,14 @@ React 19, TypeScript, Vite, Tailwind CSS 4 and Kapwa. MapLibre GL provides the m
 
 `data/cavinti/` holds the reviewed source data. `public/data/` is generated during development and builds; do not edit it. Data schemas and validation live in `data/schemas/` and `src/domain/`. Sources, capture dates, evidence and coverage gaps are part of the data—keep them with each dataset, and do not treat missing information as zero or verified fact.
 
+### For agents adapting the data to another LGU
+
+Treat `data/cavinti/` as an example, not as target-LGU data. Read its `dataset-manifest.json`, `source-register.json`, dataset schemas and [data policy](docs/sources-and-data-policy.md). Create the target pack under `data/{slug}/` using the same contracts. Replace its municipality-specific records, source IDs, URLs, capture dates, manifest identity, coverage and known limitations; set the target identity and source-role IDs in `src/config/lgu.ts`. Keep evidence with each claim, represent unknowns honestly, and never relabel Cavinti facts as another LGU's.
+
+Also audit data outside the canonical pack: `src/data/cavinti-news.json` and `src/data/cavinti-other-documents.json` are separate snapshots, and the refresh command updates neither. Replace them only with reviewed target-LGU records; do not copy Cavinti records over.
+
+After editing, run the data validation/build commands below, then run `npm run build` and review the generated changes before publishing.
+
 To update the public data files after editing canonical data:
 
 ```sh
