@@ -4,7 +4,7 @@ import { gsap } from 'gsap'
 // Animate actual entries, not controls, nested evidence or the landing page's existing choreography.
 const entries = '.record-list > li, .directory-grid > li, .service-grid > li, .dataset-list > li, .news-list > li, .barangay-bars > li, .latest-news-grid > article, .atlas-links > li, .atlas-service-badges > li, .atlas-history-timeline > li, .atlas-history-notes > article'
 
-export default function PageMotion({ ready, home }: { ready: boolean; home: boolean }) {
+export default function PageMotion({ ready }: { ready: boolean }) {
   useEffect(() => {
     if (!ready) return
     const main = document.querySelector<HTMLElement>('#main')
@@ -14,10 +14,6 @@ export default function PageMotion({ ready, home }: { ready: boolean; home: bool
       const seen = new WeakSet<Element>()
       let frame = 0
       let pending: Element[] = []
-      if (!home) {
-        const heading = main.querySelector('h1')
-        if (heading) gsap.fromTo(heading, { opacity: .8, y: 6 }, { opacity: 1, y: 0, duration: .5, ease: 'power2.out', clearProps: 'opacity,transform' })
-      }
       const observer = new IntersectionObserver(changes => {
         for (const change of changes) {
           if (!change.isIntersecting) continue
@@ -54,6 +50,6 @@ export default function PageMotion({ ready, home }: { ready: boolean; home: bool
       }
     })
     return () => media.revert()
-  }, [ready, home])
+  }, [ready])
   return null
 }

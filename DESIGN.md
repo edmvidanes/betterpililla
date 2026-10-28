@@ -75,4 +75,4 @@ The header uses `public/logo.webp` (192px); the browser tab uses `public/favicon
 - Do keep native keyboard interactions and visible focus.
 - Don't display an unavailable dataset as a zero-value metric.
 - The homepage uses scroll-linked motion for the information index, demographics, photography and map, plus a history entrance. Keep search controls still, respect reduced-motion preferences, and keep content usable without animation.
-- Page headings and visible record, directory, and homepage list entries use subtle 500ms GSAP entrances with a capped stagger. Newly filtered entries follow the same treatment; reduced-motion preferences leave them still and content remains visible without scripts.
+- Visible record, directory, and homepage list entries use subtle 500ms GSAP entrances with a capped stagger. Newly filtered entries follow the same treatment; reduced-motion preferences leave them still and content remains visible without scripts.

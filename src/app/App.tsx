@@ -195,7 +195,7 @@ function App() {
     </div></header>
     <SearchPalette dialog={searchDialog} data={data} error={error} locale={locale} href={href} />
     <div className={`site-layout${route === '' ? ' home-layout' : ''}`}>
-      <main id="main" tabIndex={-1}><PageMotion ready={!!data || error} home={route === ''} />{content}</main>
+      <main id="main" tabIndex={-1}><PageMotion ready={!!data || error} />{content}</main>
     </div>
     {route === '' ? <footer className="atlas-footer">
       <div className="atlas-footer-main">

@@ -66,9 +66,7 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
     gsap.registerPlugin(ScrollTrigger)
     const motion = gsap.matchMedia()
     motion.add('(prefers-reduced-motion: no-preference)', () => {
-      const intro = gsap.timeline()
-      intro.fromTo(atlas.querySelector('h1'), { y: 20, opacity: .7 }, { y: 0, opacity: 1, duration: 1.4, ease: 'power3.out' })
-        .fromTo(atlas.querySelector('.atlas-photo-strip'), { clipPath: 'inset(0 0 0 12%)' }, { clipPath: 'inset(0)', duration: 1.8, ease: 'power3.out' }, 0)
+      gsap.fromTo(atlas.querySelector('.atlas-photo-strip'), { clipPath: 'inset(0 0 0 12%)' }, { clipPath: 'inset(0)', duration: 1.8, ease: 'power3.out' })
       atlas.querySelectorAll<HTMLElement>('.atlas-index > section').forEach(group => {
         gsap.fromTo(group, { y: 36, opacity: .65 }, {
           y: 0, opacity: 1, ease: 'none', immediateRender: false,
