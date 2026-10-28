@@ -8,10 +8,10 @@ import SearchPalette from '../components/SearchPalette'
 import type { LegislationIndexRecord, LegislationRecord } from '../features/legislation/Legislation'
 import { routes } from './route-manifest'
 import PageMotion from './PageMotion'
+import Home from '../features/home/Home'
 import { searchPortal } from './search'
 
 const Legislation = lazy(() => import('../features/legislation/Legislation'))
-const Home = lazy(() => import('../features/home/Home'))
 const History = lazy(() => import('../features/home/History'))
 const Services = lazy(() => import('../features/Services'))
 const ServiceDetail = lazy(() => import('../features/ServiceDetail'))
