@@ -46,7 +46,6 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
 }) {
   const atlasRef = useRef<HTMLDivElement>(null)
   const [photosVisible, setPhotosVisible] = useState(false)
-  const [photosPaused, setPhotosPaused] = useState(false)
   const photos = [...lgu.homepagePhotos, ...lgu.demographicsPhotos.slice(1)]
   useEffect(() => {
     const strip = atlasRef.current?.querySelector('.atlas-photo-strip')
@@ -75,10 +74,10 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
       opening.fromTo(atlas.querySelector('.atlas-photo-strip'),
         { clipPath: 'inset(0 50% 0 50%)' },
         { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.25 }, .2)
-      opening.fromTo(atlas.querySelectorAll('.atlas-photo-group:first-child .atlas-photo-frame'),
+      opening.fromTo(atlas.querySelectorAll('.atlas-photo-track:not(.atlas-photo-track-second) .atlas-photo-group:first-child .atlas-photo-frame'),
         { clipPath: 'inset(100% 0 0 0)' },
         { clipPath: 'inset(0% 0% 0% 0%)', duration: 1, stagger: .12 }, .35)
-      opening.fromTo(atlas.querySelectorAll('.atlas-photo-group:first-child img'),
+      opening.fromTo(atlas.querySelectorAll('.atlas-photo-track:not(.atlas-photo-track-second) .atlas-photo-group:first-child img'),
         { scale: 1.32, yPercent: -8 },
         { scale: 1, yPercent: 0, duration: 1.5, stagger: .08 }, .35)
       atlas.querySelectorAll<HTMLElement>('.atlas-index > section').forEach(group => {
@@ -134,23 +133,20 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
         )}
       </h1></div>
       <figure className="atlas-photos">
-        <div className={`atlas-photo-strip${photosVisible && !photosPaused ? ' is-visible' : ''}`}><div className="atlas-photo-track"
-          style={{ animationDuration: `${photos.length * 5}s` }}>
-          {[0, 1].map(copy => <div className="atlas-photo-group" key={copy} aria-hidden={copy === 1}>
-            {photos.map((photo, index) =>
-              <span className="atlas-photo-frame" key={photo.src}>
-                <img src={`${import.meta.env.BASE_URL}${photo.src}`} alt={copy ? '' : photo.alt[locale]}
-                  width={photo.width} height={photo.height} fetchPriority={index === 0 && copy === 0 ? 'high' : 'auto'} />
-              </span>,
-            )}
+        <div className={`atlas-photo-strip${photosVisible ? ' is-visible' : ''}`}>
+          {[0, 1].map(row => <div className={`atlas-photo-track${row ? ' atlas-photo-track-second' : ''}`}
+            style={{ animationDuration: `${photos.length * 5}s` }} key={row} aria-hidden={row === 1 ? true : undefined}>
+            {[0, 1].map(copy => <div className="atlas-photo-group" key={copy} aria-hidden={copy === 1 ? true : undefined}>
+              {(row ? [...photos.slice(Math.ceil(photos.length / 2)), ...photos.slice(0, Math.ceil(photos.length / 2))] : photos).map((photo, index) =>
+                <span className="atlas-photo-frame" key={photo.src}>
+                  <img src={`${import.meta.env.BASE_URL}${photo.src}`} alt={copy || row ? '' : photo.alt[locale]}
+                    width={photo.width} height={photo.height} fetchPriority={index === 0 && copy === 0 && row === 0 ? 'high' : 'auto'} />
+                </span>,
+              )}
+            </div>)}
           </div>)}
-        </div></div>
+        </div>
         <figcaption className="atlas-inner">
-          <button className="atlas-photo-toggle" type="button" onClick={() => setPhotosPaused(paused => !paused)}>
-            {photosPaused
-              ? (locale === 'fil' ? 'Ipagpatuloy ang mga larawan' : 'Resume photos')
-              : (locale === 'fil' ? 'I-pause ang mga larawan' : 'Pause photos')}
-          </button>
           <details className="atlas-credits">
             <summary>{t.photoCredits}</summary>
             <p>{t.photoChanges}</p>

@@ -191,6 +191,12 @@ function App() {
           })}</div>
         </details>)}
         <a className="header-search" href={href('search')} aria-label={t.search} aria-keyshortcuts="Control+K Meta+K" onClick={event => { event.preventDefault(); openSearch() }}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg><span>{t.search}</span></a>
+        <div className="mobile-project-links">
+          <a href={href('about')}>{t.about}</a>
+          <a href={lgu.officialUrl}>{t.officialWebsite}</a>
+          <a href={href('government/offices')}>{t.hotlines}</a>
+          <a href={`${base}${locale === 'en' ? 'fil' : 'en'}/${route.split('/').map(encodeURIComponent).join('/')}${location.search}${location.hash}`} lang={locale === 'en' ? 'fil' : 'en'} hrefLang={locale === 'en' ? 'fil' : 'en'}>{locale === 'en' ? 'Filipino' : 'English'}</a>
+        </div>
       </nav>
     </div></header>
     <SearchPalette dialog={searchDialog} data={data} error={error} locale={locale} href={href} />

@@ -18,6 +18,7 @@ input { caret-color: #1747ab; }
 .utility-inner nav { display: flex; align-items: center; gap: 1.4rem; flex-shrink: 0; }
 .utility-inner a { color: inherit; font-weight: 600; }
 .utility-inner .initiative-link { color: var(--portal-blue); font-weight: 700; }
+.mobile-project-links { display: none; }
 .site-header { border-bottom: 1px solid var(--portal-border); position: relative; z-index: 5; background: white; }
 .header-inner { max-width: 1440px; margin: auto; display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding: 1.25rem 2rem; }
 .brand { display: flex; align-items: center; gap: .75rem; min-width: 0; font-size: 1.5rem; line-height: 1.2; font-weight: 750; color: #1d4ed8; text-decoration: none; letter-spacing: -.035em; }
@@ -103,14 +104,16 @@ footer nav { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; }
   .nav-dropdown { position: static; width: 100%; border: 0; padding: 0 0 .7rem .5rem; }
   .header-search { padding: 1rem .25rem; }
   .header-search span { display: inline; }
-  .utility-inner { align-items: flex-start; flex-wrap: wrap; gap: .3rem 1rem; }
+  .utility-inner { justify-content: flex-start; overflow-x: auto; white-space: nowrap; }
 }
 @media (max-width: 700px) {
   .site-layout, .header-inner, .utility-inner, footer { padding-inline: 1.25rem; }
-  .utility-inner { padding-block: .6rem; }
-  .utility-inner nav { gap: .4rem 1rem; flex-wrap: wrap; flex-shrink: 1; }
-  .utility-inner a { display: inline-flex; align-items: center; min-height: 32px; }
-  .header-inner { padding-block: 1rem; }
+  .utility-inner { padding-block: .4rem; }
+  .utility-inner p, .utility-inner nav a:not(.initiative-link) { display: none; }
+  .mobile-project-links { display: flex; flex-direction: column; }
+  .mobile-project-links a { padding: .75rem .25rem; }
+  .utility-inner a { display: inline-flex; align-items: center; min-height: 28px; }
+  .header-inner { padding-block: .6rem; }
   .brand { gap: .6rem; font-size: 1.35rem; }
   .brand-mark { width: 40px; height: 40px; }
   .brand small { max-width: 28ch; font-size: .65rem; }
