@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import type { DataRecord } from '../../data/loaders'
+import type { DataPack } from '../../data/loaders'
 import { lgu } from '../../config/lgu'
 import { catalogs, formatDate, type Locale, type MessageKey } from '../../i18n/locales'
 import { routes } from '../../app/route-manifest'
@@ -36,13 +36,12 @@ const browseIcons: Partial<Record<MessageKey, string>> = {
 }
 
 
-export default function Home({ locale, capturedAt, href, search, contacts, municipality }: {
+export default function Home({ locale, data, href, search, dataStatus }: {
   locale: Locale
-  capturedAt: string
+  data: DataPack | null
   href: (path: string) => string
   search: ReactNode
-  contacts: DataRecord
-  municipality: DataRecord
+  dataStatus: ReactNode
 }) {
   const atlasRef = useRef<HTMLDivElement>(null)
   const [photosVisible, setPhotosVisible] = useState(false)
@@ -86,6 +85,14 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
           scrollTrigger: { trigger: group, start: 'top 95%', end: 'top 55%', scrub: 1.2 },
         })
       })
+    })
+    return () => motion.revert()
+  }, [])
+  useLayoutEffect(() => {
+    const atlas = atlasRef.current
+    if (!atlas || !data) return
+    const motion = gsap.matchMedia()
+    motion.add('(prefers-reduced-motion: no-preference)', () => {
       const demographics = atlas.querySelector<HTMLElement>('.atlas-demographics-data')
       if (demographics) {
         gsap.fromTo(demographics, { x: -36, opacity: .7 }, {
@@ -117,7 +124,7 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
       }
     })
     return () => motion.revert()
-  }, [])
+  }, [data])
   const t = catalogs[locale]
   const links = (keys: MessageKey[], icons = false) => <ul className="atlas-links">{keys.map(key =>
     <li key={key}><a href={href(routes.find(([, label]) => label === key)![0])}><span className="atlas-link-label">{icons && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={browseIcons[key]} /></svg>}{t[key]}</span><Arrow /></a></li>,
@@ -160,7 +167,7 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
 
     <section className="atlas-inner atlas-search" aria-label={t.query}>
       {search}
-      <ServiceHighlights locale={locale} href={href} contacts={contacts} />
+      <ServiceHighlights locale={locale} href={href} />
     </section>
 
     <section className="atlas-shortcuts" aria-labelledby="atlas-shortcuts-title">
@@ -185,7 +192,8 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
       </div>
     </section>
 
-    <Demographics locale={locale} href={href} municipality={municipality} />
+    {data ? <>
+    <Demographics locale={locale} href={href} municipality={data.municipality} />
 
     <LatestNews locale={locale} href={href} />
     <CavintiMap locale={locale} center={lgu.mapView.center} zoom={lgu.mapView.zoom} />
@@ -199,8 +207,9 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
           <li><a href={href('sources')}><span>{t.viewCoverage}</span><Arrow /></a></li>
           <li><a href={href('report-data')}><span>{t.corrections}</span><Arrow /></a></li>
         </ul>
-        <p>{t.capture}: <time dateTime={capturedAt}>{formatDate(capturedAt, locale)}</time></p>
+        <p>{t.capture}: <time dateTime={data.portal.capturedAt}>{formatDate(data.portal.capturedAt, locale)}</time></p>
       </div>
     </section>
+    </> : <section className="atlas-inner" aria-label={t.sources}>{dataStatus}</section>}
   </div>
 }

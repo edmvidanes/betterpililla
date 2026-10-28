@@ -50,6 +50,8 @@ The header has a maximum width of 1440px; content has a maximum width of 1320px 
 
 On the homepage, the main header slides into a sticky position after the photo hero has passed; reduced-motion preferences disable the entrance animation. The mobile utility strip shows the BetterLGU initiative link; its other links are in the menu, which scrolls within the viewport. The mobile place-name masthead scales with its container, above two stacked photo carousels that fill most of the viewport height.
 
+The homepage hero, search form with four curated service-office links, shortcut band and public-information index render before the fetched data pack resolves. Loading and retry states appear below the index, without replacing those static sections. Demographics and the remaining homepage sections render when the data arrives; their motion initializes separately so the hero entrance never replays. The place-name masthead uses 12.15cqw with 20–24px side gutters to fill the available width.
+
 The public-information index places a 2013 photograph of Cavinti Municipal Hall beneath its heading, with a linked photographer and license credit.
 
 On narrow screens, official profiles stack, long record titles wrap, and population charts and data tables retain readable widths inside keyboard-accessible scrolling regions. News links include their article titles in accessible names.

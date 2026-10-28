@@ -86,7 +86,7 @@ function App() {
   }, [])
   useEffect(() => { loadData().then(setData).catch(() => setError(true)) }, [])
   useEffect(() => {
-    if (route !== '' || !data) return
+    if (route !== '') return
     const update = () => setPastHero((document.querySelector('.atlas-place')?.getBoundingClientRect().bottom ?? 1) <= 0)
     update()
     window.addEventListener('scroll', update, { passive: true })
@@ -95,7 +95,7 @@ function App() {
       window.removeEventListener('scroll', update)
       window.removeEventListener('resize', update)
     }
-  }, [route, data])
+  }, [route])
   useEffect(() => {
     document.documentElement.lang = locale
     const heading = document.querySelector('#main h1')?.textContent?.trim()
@@ -115,9 +115,12 @@ function App() {
   const officialRows = data ? records(data.officials.records) : []
   const allLegislation: LegislationRecord[] = data ? [data.ordinances, data.resolutions].flatMap(feed => records(feed.records).map(row => ({ ...row, sourceIndexUrl: feed.sourceIndexUrl, sourceFeedUrl: feed.sourceFeedUrl, retrievedAt: feed.retrievedAt, sourceFeedSha256: feed.sourceFeedSha256 } as unknown as LegislationRecord))) : []
   let content: ReactNode
-  if (error) content = <><h1>{t.loadError}</h1><Button onClick={() => location.reload()}>{t.retry}</Button><p><ExternalDocumentLink url={lgu.officialUrl} /></p></>
+  const dataStatus = error
+    ? <><h2>{t.loadError}</h2><Button onClick={() => location.reload()}>{t.retry}</Button><p><ExternalDocumentLink url={lgu.officialUrl} /></p></>
+    : <p role="status">{t.loading}</p>
+  if (route === '') content = <Home locale={locale} data={data} href={href} search={<SearchForm locale={locale} href={href} />} dataStatus={dataStatus} />
+  else if (error) content = <><h1>{t.loadError}</h1><Button onClick={() => location.reload()}>{t.retry}</Button><p><ExternalDocumentLink url={lgu.officialUrl} /></p></>
   else if (!data) content = <p role="status">{t.loading}</p>
-  else if (route === '') content = <Home locale={locale} capturedAt={data.portal.capturedAt} href={href} search={<SearchForm locale={locale} href={href} />} contacts={data.contacts} municipality={data.municipality} />
   else if (route === 'services') content = <Services data={data} locale={locale} href={href} />
   else if (route.startsWith('services/')) {
     const recordId = route.slice('services/'.length)
