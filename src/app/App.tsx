@@ -10,13 +10,14 @@ import Home from '../features/home/Home'
 import Services from '../features/Services'
 import ServiceDetail from '../features/ServiceDetail'
 import { Places, Advisories } from '../features/Places'
-import { Government, Officials, Contacts } from '../features/Government'
+import { Government, Officials, OfficialDetail, Contacts } from '../features/Government'
 import Demographics from '../features/Demographics'
 import Competitiveness from '../features/Competitiveness'
 import Finance from '../features/Finance'
 import ProjectProcurement from '../features/ProjectProcurement'
 import { Downloads, Sources } from '../features/Catalogues'
 import Barangays from '../features/Barangays'
+import News, { NewsDetail } from '../features/News'
 import Geography from '../features/Geography'
 import { routes } from './route-manifest'
 import { searchPortal } from './search'
@@ -43,7 +44,7 @@ function App() {
     searchDialog.current?.querySelector<HTMLInputElement>('input')?.focus()
   }
   const navigationGroups: { label: string; keys: MessageKey[] }[] = [
-    { label: t.services, keys: ['services', 'places', 'advisories'] },
+    { label: t.services, keys: ['services', 'places', 'advisories', 'news'] },
     { label: t.government, keys: ['government', 'officials', 'offices', 'committees', 'barangays', 'map'] },
     { label: t.statistics, keys: ['demographics', 'competitiveness', 'income'] },
     { label: 'OpenLGU', keys: ['legislation', 'terms', 'downloads'] },
@@ -126,7 +127,7 @@ function App() {
   else if (route === 'government/officials') content = <Officials data={data} locale={locale} href={href} />
   else if (route.startsWith('government/officials/')) {
     const row = officialRows.find(r => r.recordId === route.slice('government/officials/'.length))
-    content = row ? <><h1>{String(row.displayName)}</h1>{tree(row)}<a href={correctionLink(String(row.recordId))}>{t.correction}</a>{cite(String(row.sourceId || row.profileSourceId))}</> : notFound()
+    content = row ? <OfficialDetail data={data} locale={locale} href={href} recordId={String(row.recordId)} correctionLink={correctionLink} /> : notFound()
   }
   else if (route === 'government/offices' || route.startsWith('government/offices/')) content = <Contacts data={data} locale={locale} href={href} officeId={route === 'government/offices' ? undefined : route.slice('government/offices/'.length)} />
   else if (route === 'government/committees') content = <><h1>{t.committees}</h1>{original}<ul className="record-list">{officialRows.filter(row => row.committeeLabel).map(row => <li key={String(row.recordId)}><h2>{String(row.committeeLabel)}</h2><a href={href(`government/officials/${encodeURIComponent(String(row.recordId))}`)}>{String(row.displayName)}</a>{cite(String(row.sourceId))}</li>)}</ul></>
@@ -141,6 +142,8 @@ function App() {
   else if (route === 'map') content = <Geography data={data} locale={locale} href={href} />
   else if (route === 'places') content = <Places data={data} locale={locale} href={href} />
   else if (route === 'advisories') content = <Advisories data={data} locale={locale} href={href} />
+  else if (route === 'news') content = <News data={data} locale={locale} href={href} />
+  else if (route.startsWith('news/')) content = <NewsDetail data={data} locale={locale} href={href} recordId={route.slice('news/'.length)} />
   else if (route === 'open-data') content = <Downloads data={data} locale={locale} href={href} />
   else if (route === 'sources') content = <Sources data={data} locale={locale} href={href} />
   else if (route.startsWith('sources/')) {

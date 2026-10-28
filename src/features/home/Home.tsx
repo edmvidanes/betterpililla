@@ -9,6 +9,7 @@ import History from './History'
 import ServiceHighlights from './ServiceHighlights'
 import CavintiMap from './CavintiMap'
 import Demographics from './Demographics'
+import OfficialChannels from './OfficialChannels'
 import './home.css'
 
 function Arrow() {
@@ -29,6 +30,7 @@ const browseIcons: Partial<Record<MessageKey, string>> = {
   competitiveness: 'M4 20V12h4v8M10 20V8h4v12M16 20V4h4v16M3 20h18',
   map: 'M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3V6Zm6-3v15m6-12v15',
   places: 'M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0ZM12 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z',
+  news: 'M4 4h16v16H4zM7 8h10M7 12h10M7 16h6',
   advisories: 'M12 3 2 20h20L12 3Zm0 6v5m0 3h.01',
 }
 
@@ -163,7 +165,7 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
       <div className="atlas-index">
         <section><h3>{t.atlasGovernment}</h3>{links(['government', 'officials', 'barangays', 'services'], true)}</section>
         <section><h3>{t.atlasRecords}</h3>{links(['finance', 'procurement', 'projects', 'legislation', 'downloads'], true)}</section>
-        <section className="atlas-local"><h3>{t.atlasLocal}</h3>{links(['demographics', 'competitiveness', 'map', 'places', 'advisories'], true)}</section>
+        <section className="atlas-local"><h3>{t.atlasLocal}</h3>{links(['demographics', 'competitiveness', 'map', 'places', 'advisories', 'news'], true)}</section>
       </div>
     </section>
 
@@ -171,6 +173,7 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
 
     <History locale={locale} />
     <CavintiMap locale={locale} center={lgu.mapView.center} zoom={lgu.mapView.zoom} />
+    <OfficialChannels locale={locale} />
 
     <section className="atlas-inner atlas-sources" aria-labelledby="atlas-sources-title">
       <div><h2 id="atlas-sources-title">{t.atlasSources}</h2><p>{t.atlasLimits}</p></div>

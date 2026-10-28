@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { catalogs, formatDate, formatNumber } from '../i18n/locales'
 import { civicCatalogs } from '../i18n/civic'
 import { PageIntro, RawRecord, SourceNote, type CivicProps } from './Civic'
+import OtherDocuments from './OtherDocuments'
 
 export function Downloads(props: CivicProps) {
   const { data, locale } = props
@@ -16,6 +17,7 @@ export function Downloads(props: CivicProps) {
       <div className="download-links">{(['jsonUrl', 'csvUrl', 'schemaUrl'] as const).map(key => <a key={key} href={downloadUrl(dataset[key])} download aria-label={`${dataset.id} · ${key === 'schemaUrl' ? 'JSON Schema' : key === 'csvUrl' ? 'CSV' : 'JSON'}`}>{key === 'schemaUrl' ? 'JSON Schema' : key === 'csvUrl' ? 'CSV' : 'JSON'}</a>)}</div>
       <details className="civic-disclosure"><summary>{c.technicalDetails}</summary><h3>{t.rights}</h3><p lang="en">{dataset.rights}</p><p className="hash">SHA-256: {dataset.sha256}</p>{dataset.sourceIds.map(id => <SourceNote {...props} key={id} id={id} />)}</details>
     </li>)}</ul>
+    <OtherDocuments locale={locale} />
   </>
 }
 

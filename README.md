@@ -45,6 +45,8 @@ npm run data:refresh -- --lgu cavinti
 
 Review the resulting changes before publishing.
 
+The municipal news archive and public Other Documents catalog are captured separately in `src/data/cavinti-news.json` and `src/data/cavinti-other-documents.json`; the legislation refresh does not update them. Their source links, capture dates and response hashes describe the snapshot, not present availability or verified attachment contents. Official portraits load from the municipal website, whose site-wide rights statement is linked on each profile.
+
 ## project files
 
 ```text

@@ -3,6 +3,7 @@ import type { DataRecord } from '../data/loaders'
 import { catalogs } from '../i18n/locales'
 import { civicCatalogs } from '../i18n/civic'
 import CavintiMap from './home/CavintiMap'
+import AboutCavinti from './AboutCavinti'
 import { PageIntro, RawRecord, SourceNote, type CivicProps } from './Civic'
 
 export default function Geography(props: CivicProps) {
@@ -31,6 +32,7 @@ export default function Geography(props: CivicProps) {
       </div>
       <SourceNote {...props} id={lgu.sourceIds.about} />
     </section>
+    <AboutCavinti locale={locale} href={href} />
     <RawRecord {...props} value={geography} />
   </>
 }
