@@ -2,8 +2,8 @@
 .atlas { --atlas-gutter: clamp(1.25rem, 8vw, 8rem); }
 .atlas-inner { width: 100%; margin-inline: auto; padding-inline: var(--atlas-gutter); }
 .atlas-place { padding-top: 2.5rem; }
-.atlas-place .atlas-inner { container-type: inline-size; padding-inline: clamp(1.25rem, 1.5vw, 1.5rem); }
-.atlas-place h1 { font-size: 12.15cqw; font-weight: 800; line-height: 1.04; letter-spacing: -.04em; margin: 0 0 1.5rem; text-wrap: initial; }
+.atlas-place .atlas-inner { container-type: inline-size; padding-inline: .5rem; }
+.atlas-place h1 { font-size: 12.2cqw; font-weight: 800; line-height: 1.04; letter-spacing: -.04em; margin: 0 0 1.5rem; text-wrap: initial; }
 .atlas-title-word { display: inline-block; overflow: clip; vertical-align: top; padding-block: .08em; margin-block: -.08em; perspective: 900px; white-space: nowrap; }
 .atlas-title-letter { display: inline-block; }
 .atlas-photos { margin: 0; }
