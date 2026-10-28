@@ -6,7 +6,7 @@ import { staticEntryPath } from './static-path.ts'
 
 const root = process.cwd()
 const publicData = join(root, 'public', lgu.dataPath)
-const portal = JSON.parse(await readFile(join(publicData, 'portal.json'), 'utf8'))
+const search = JSON.parse(await readFile(join(publicData, 'search-index.json'), 'utf8'))
 const offices = JSON.parse(await readFile(join(publicData, 'emergency-contacts.json'), 'utf8'))
 const services = JSON.parse(await readFile(join(publicData, 'services.json'), 'utf8'))
 const ordinances = JSON.parse(await readFile(join(publicData, 'legislation', 'ordinances.json'), 'utf8'))
@@ -19,7 +19,7 @@ type Locale = keyof typeof catalogs
 type Metadata = { title: string | Record<Locale, string>; text?: string | Record<Locale, string> }
 const pages = new Map<string, Metadata>()
 for (const [path, key] of routes) pages.set(path, { title: { en: catalogs.en[key], fil: catalogs.fil[key] } })
-for (const record of portal.search) {
+for (const record of search) {
   const path = record.path?.replace(/^\//, '')
   if (path && !pages.has(path)) pages.set(path, { title: record.title, text: record.text })
 }

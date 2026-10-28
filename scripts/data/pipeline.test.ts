@@ -9,7 +9,7 @@ import { refresh } from './refresh.ts';
 import { buildSearch, collectSourceIds, sha256, toCsv } from './normalize.ts';
 import { normalizeSource } from '../../src/domain/evidence.ts';
 import { normalizeStatus } from '../../src/domain/status.ts';
-import type { SourceRecord, LegislationSet } from '../../src/domain/types.ts';
+import type { SourceRecord, LegislationSet, SearchRow } from '../../src/domain/types.ts';
 import { SourceClient } from './sources/http.ts';
 import type { Capture } from './sources/http.ts';
 import { parseLegislationRow, refreshLegislation } from './sources/legislation.ts';
@@ -35,10 +35,28 @@ test('full reviewed snapshot publishes every JSON byte, all 4898 legislative row
   const directory = await mkdtemp(join(tmpdir(), 'civic-publication-'));
   try {
     const portal = await publish(pack, join(directory, 'data'));
-    const legislation = portal.search.filter((row) => row.type === 'legislation');
+    const search: SearchRow[] = JSON.parse(await readFile(join(directory, 'data', 'search-index.json'), 'utf8'));
+    assert.equal('search' in portal, false);
+    const legislation = search.filter((row) => row.type === 'legislation');
     assert.equal(legislation.length, 4898);
     assert.equal(new Set(legislation.map((row) => row.id)).size, 4898);
     for (const row of legislation) assert.equal(row.path, `/open-lgu/legislation/${encodeURIComponent(row.id)}`);
+    const index = JSON.parse(await readFile(join(directory, 'data', 'legislation', 'index.json'), 'utf8')).records;
+    const serviceIndex = JSON.parse(await readFile(join(directory, 'data', 'legislation', 'service-index.json'), 'utf8')).records;
+    const feeds = [pack.documents.ordinances, pack.documents.resolutions];
+    assert.equal(index.length, feeds.reduce((count, feed) => count + feed.records.length, 0));
+    for (const feed of feeds) {
+      const row = feed.records[0];
+      const compact = index.find((item: { recordId: string }) => item.recordId === row.recordId);
+      assert.equal(compact.title, row.title);
+      assert.equal(compact.documentUrl, row.documentUrl);
+      assert.equal('rawSourceCells' in compact, false);
+      const detail = JSON.parse(await readFile(join(directory, 'data', 'legislation', 'records', `${row.documentType}-${row.sourceRecordOrder}.json`), 'utf8'));
+      assert.deepEqual(detail, { ...row, sourceIndexUrl: feed.sourceIndexUrl, sourceFeedUrl: feed.sourceFeedUrl, retrievedAt: feed.retrievedAt, sourceFeedSha256: feed.sourceFeedSha256 });
+    }
+    const leads = pack.documents.services.serviceLegislationLeads ?? [];
+    const expectedLeads = pack.documents.ordinances.records.filter((row: { recordId: string; sourceId: string }) => leads.some((lead: { recordId: string; sourceId: string }) => lead.recordId === row.recordId && lead.sourceId === row.sourceId));
+    assert.deepEqual(serviceIndex.map((row: { recordId: string }) => row.recordId), expectedLeads.map((row: { recordId: string }) => row.recordId));
     for (const entry of portal.datasets) {
       const relative = entry.jsonUrl.slice('data/'.length);
       const original = await readFile(join(pack.root, relative));
@@ -49,8 +67,8 @@ test('full reviewed snapshot publishes every JSON byte, all 4898 legislative row
       assert.ok((await readFile(join(directory, entry.csvUrl))).length > 0);
     }
     assert.equal(portal.sources[0].id, pack.documents['source-register'].sources[0].id);
-    assert.ok(portal.search.some((row) => row.path.includes('barangay%3Amahipon-lumot')));
-    assert.ok(portal.search.some((row) => row.path.includes('barangay%3Amahipon') && !row.path.includes('lumot')));
+    assert.ok(search.some((row) => row.path.includes('barangay%3Amahipon-lumot')));
+    assert.ok(search.some((row) => row.path.includes('barangay%3Amahipon') && !row.path.includes('lumot')));
   } finally { await rm(directory, { recursive: true, force: true }); }
 });
 
@@ -181,15 +199,15 @@ test('public refresh failure metadata marks stale sources without changing captu
     const destination = join(directory, 'data');
     const portal = await publish(pack, destination);
     const canonicalBefore = await readFile(join(destination, 'legislation/ordinances.json'));
-    await saveRefreshStatus({ schemaVersion: 'refresh-report/v1', checkedAt: '2026-10-22T12:00:00Z', outcome: 'retained-last-good',
-      checks: [{ sourceId: 'cavinti-ordinances-index', retrievedAt: '2026-10-22T12:00:00Z', availabilityStatus: 'access-blocked', freshnessStatus: 'stale', note: 'Structured capture blocked; previous complete feed retained' }] },
+    await saveRefreshStatus({ schemaVersion: 'refresh-report/v1', checkedAt: '2099-10-22T12:00:00Z', outcome: 'retained-last-good',
+      checks: [{ sourceId: 'cavinti-ordinances-index', retrievedAt: '2099-10-22T12:00:00Z', availabilityStatus: 'access-blocked', freshnessStatus: 'stale', note: 'Structured capture blocked; previous complete feed retained' }] },
     join(directory, 'cache/report.json'), destination);
     const refreshed = JSON.parse(await readFile(join(destination, 'portal.json'), 'utf8'));
     const checkedSource = refreshed.sources.find((entry: { sourceId: string }) => entry.sourceId === 'cavinti-ordinances-index');
     assert.equal(checkedSource.status.freshnessStatus, 'stale');
     assert.equal(checkedSource.status.availabilityStatus, 'access-blocked');
-    assert.equal(checkedSource.lastCheckedAt, '2026-10-22T12:00:00Z');
-    assert.deepEqual(refreshed.search, portal.search);
+    assert.equal(checkedSource.lastCheckedAt, '2099-10-22T12:00:00Z');
+    assert.equal('search' in refreshed, false);
     assert.deepEqual(refreshed.datasets, portal.datasets);
     assert.deepEqual(await readFile(join(destination, 'legislation/ordinances.json')), canonicalBefore);
     assert.equal(JSON.parse(await readFile(join(destination, 'refresh-status.json'), 'utf8')).outcome, 'retained-last-good');

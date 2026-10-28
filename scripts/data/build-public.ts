@@ -7,6 +7,7 @@ import { buildSearch, collectSourceIds, datasetRows, schemaName, sha256, toCsv }
 import { loadDataPack, validatePack } from './validate.ts';
 import type { DataPack } from './validate.ts';
 import { applyRefreshStatus, readRefreshStatus } from './refresh-status.ts';
+import { writeLegislationData } from './build-legislation.ts';
 
 /** Validate before touching publication; a failed build leaves the last good directory intact. */
 export async function publish(pack: DataPack, destination = resolve('public/data')): Promise<Portal> {
@@ -48,7 +49,7 @@ export async function publish(pack: DataPack, destination = resolve('public/data
     entries.sort((a, b) => a.id.localeCompare(b.id));
     const capturedAt = Object.values(documents).map((data) => data.capturedAt ?? data.retrievedAt ?? data.asOf ?? data.generatedAt).sort().at(-1);
     const search = buildSearch(documents);
-    const portal: Portal = { schemaVersion: 'portal/v1', capturedAt, sources, datasets: entries, search };
+    const portal: Portal = { schemaVersion: 'portal/v1', capturedAt, sources, datasets: entries };
     const refreshStatus = await readRefreshStatus(basename(pack.root));
     if (refreshStatus) {
       applyRefreshStatus(portal, refreshStatus);
@@ -61,6 +62,7 @@ export async function publish(pack: DataPack, destination = resolve('public/data
     await writeFile(join(staging, 'download-index.json'), JSON.stringify(downloadIndex, null, 2) + '\n');
     await writeFile(join(staging, 'portal.json'), JSON.stringify(portal) + '\n');
     await writeFile(join(staging, 'search-index.json'), JSON.stringify(search) + '\n');
+    await writeLegislationData(documents, staging);
     try { await rename(destination, backup); movedPrevious = true; } catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; }
     try { await rename(staging, destination); } catch (error) { if (movedPrevious) await rename(backup, destination); throw error; }
     if (movedPrevious) await rm(backup, { recursive: true, force: true });
@@ -70,5 +72,5 @@ export async function publish(pack: DataPack, destination = resolve('public/data
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const portal = await publish(await loadDataPack(process.argv[2] ? resolve(process.argv[2]) : undefined));
-  console.log(`Published ${portal.datasets.length} datasets and ${portal.search.length} local search rows to public/data.`);
+  console.log(`Published ${portal.datasets.length} datasets to public/data.`);
 }

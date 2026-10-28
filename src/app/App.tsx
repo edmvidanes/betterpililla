@@ -2,10 +2,10 @@ import { lazy, Suspense, useEffect, useRef, useState, type ReactNode } from 'rea
 import { Button } from '@bettergov/kapwa/button'
 import { lgu } from '../config/lgu'
 import { catalogs, formatDate, formatNumber, type Locale, type MessageKey } from '../i18n/locales'
-import { loadData, type DataPack, type DataRecord, type EvidenceValue } from '../data/loaders'
+import { loadData, loadSearch, type DataPack, type DataRecord, type EvidenceValue } from '../data/loaders'
 import { EvidenceTree, ExternalDocumentLink, SourceCitation } from '../components/Evidence'
 import SearchPalette from '../components/SearchPalette'
-import type { LegislationRecord } from '../features/legislation/Legislation'
+import type { LegislationIndexRecord, LegislationRecord } from '../features/legislation/Legislation'
 import { routes } from './route-manifest'
 import PageMotion from './PageMotion'
 import { searchPortal } from './search'
@@ -46,10 +46,14 @@ function App() {
   const correctionLink = (id: string, template = 'data-correction.yml') => `${lgu.repository}/issues/new?${new URLSearchParams({ template, record: id, title: `[Data] ${id}`, 'source-page': location.href })}`
   const [data, setData] = useState<DataPack | null>(null)
   const [error, setError] = useState(false)
+  const [paletteSearch, setPaletteSearch] = useState<DataPack['search'] | null>(null)
+  const [paletteError, setPaletteError] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [pastHero, setPastHero] = useState(false)
   const searchDialog = useRef<HTMLDialogElement>(null)
   const openSearch = () => {
+    setPaletteError(false)
+    loadSearch().then(setPaletteSearch).catch(() => setPaletteError(true))
     if (!searchDialog.current?.open) searchDialog.current?.showModal()
     searchDialog.current?.querySelector<HTMLInputElement>('input')?.focus()
   }
@@ -119,7 +123,7 @@ function App() {
   const records = (value: EvidenceValue | undefined): DataRecord[] => Array.isArray(value) ? value as DataRecord[] : []
   const notFound = () => <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><code className="requested-url">{location.pathname}</code><p><a href={href('search')}>{t.search}</a></p></>
   const officialRows = data ? records(data.officials.records) : []
-  const allLegislation: LegislationRecord[] = data && (route === 'open-lgu/legislation' || route.startsWith('open-lgu/legislation/')) ? [data.ordinances, data.resolutions].flatMap(feed => records(feed.records).map(row => ({ ...row, sourceIndexUrl: feed.sourceIndexUrl, sourceFeedUrl: feed.sourceFeedUrl, retrievedAt: feed.retrievedAt, sourceFeedSha256: feed.sourceFeedSha256 } as unknown as LegislationRecord))) : []
+  const allLegislation = data ? records(data.legislationIndex.records) as unknown as LegislationIndexRecord[] : []
   let content: ReactNode
   const dataStatus = error
     ? <><h2>{t.loadError}</h2><Button onClick={() => location.reload()}>{t.retry}</Button><p><ExternalDocumentLink url={lgu.officialUrl} /></p></>
@@ -143,7 +147,7 @@ function App() {
   else if (route === 'government/offices' || route.startsWith('government/offices/')) content = <Contacts data={data} locale={locale} href={href} officeId={route === 'government/offices' ? undefined : route.slice('government/offices/'.length)} />
   else if (route === 'government/committees') content = <><h1>{t.committees}</h1>{original}<ul className="record-list">{officialRows.filter(row => row.committeeLabel).map(row => <li key={String(row.recordId)}><h2>{String(row.committeeLabel)}</h2><a href={href(`government/officials/${encodeURIComponent(String(row.recordId))}`)}>{String(row.displayName)}</a>{cite(String(row.sourceId))}</li>)}</ul></>
   else if (route === 'government/barangays' || route.startsWith('government/barangays/')) content = <Barangays data={data} locale={locale} href={href} recordId={route === 'government/barangays' ? undefined : route.slice('government/barangays/'.length)} correctionLink={correctionLink} />
-  else if (route === 'open-lgu/legislation' || route.startsWith('open-lgu/legislation/')) content = <Legislation locale={locale} records={allLegislation} recordId={route === 'open-lgu/legislation' ? undefined : route.slice('open-lgu/legislation/'.length)} href={href} sourceLink={sourceHref} correctionLink={correctionLink} />
+  else if (route === 'open-lgu/legislation' || route.startsWith('open-lgu/legislation/')) content = <Legislation locale={locale} records={allLegislation} detail={data.legislationDetail as unknown as LegislationRecord | null} recordId={route === 'open-lgu/legislation' ? undefined : route.slice('open-lgu/legislation/'.length)} href={href} sourceLink={sourceHref} correctionLink={correctionLink} />
   else if (route === 'open-lgu/terms') content = <><h1>{t.terms}</h1>{cite(lgu.sourceIds.legislative)}</>
   else if (route.startsWith('open-lgu/terms/')) content = notFound()
   else if (route === 'statistics/demographics') content = <Demographics data={data} locale={locale} href={href} />
@@ -161,7 +165,7 @@ function App() {
   else if (route.startsWith('sources/')) {
     const id = route.slice('sources/'.length)
     const source = data.portal.sources.find(s => (s.id || s.sourceId) === id)
-    const related = data.portal.search.filter(row => row.sourceIds?.includes(id) && row.type !== 'source')
+    const related = data.search.filter(row => row.sourceIds?.includes(id) && row.type !== 'source')
     content = source ? <><h1>{source.name || source.publisher}</h1>{cite(id)}{tree(source as unknown as EvidenceValue)}<h2>{t.affected}</h2><SearchResults rows={related} href={href} locale={locale} /><p><a href={correctionLink(id)}>{t.correction}</a></p></> : notFound()
   }
   else if (route === 'search') content = <SearchPage data={data} locale={locale} href={href} />
@@ -224,7 +228,7 @@ function App() {
         </div>
       </nav>
     </div></header>
-    <SearchPalette dialog={searchDialog} data={data} error={error} locale={locale} href={href} />
+    <SearchPalette dialog={searchDialog} search={paletteSearch} error={paletteError} locale={locale} href={href} />
     <div className={`site-layout${route === '' ? ' home-layout' : ''}`}>
       <main id="main" tabIndex={-1}><PageMotion ready={!!data || error} /><Suspense fallback={<p role="status">{t.loading}</p>}><PageContent locale={locale} route={route} error={error} ready={!!data || error} officeName={data && route.startsWith('government/offices/') ? String(records(data.contacts.records).find(row => row.category === route.slice('government/offices/'.length))?.service || '') : ''}>{content}</PageContent></Suspense></main>
     </div>
@@ -264,7 +268,7 @@ function SearchForm({ locale, href, initial = '' }: { locale: Locale; href: (pat
   const t = catalogs[locale]
   return <form className="search-form" action={href('search')}><label htmlFor="portal-search">{t.query}</label><div><input id="portal-search" name="q" type="search" defaultValue={initial} /><Button type="submit">{t.submit}</Button></div></form>
 }
-function SearchResults({ rows, href, locale }: { rows: DataPack['portal']['search']; href: (path: string) => string; locale: Locale }) {
+function SearchResults({ rows, href, locale }: { rows: DataPack['search']; href: (path: string) => string; locale: Locale }) {
   const [page, setPage] = useState(0)
   const pageCount = Math.ceil(rows.length / 25)
   const t = catalogs[locale]
@@ -272,7 +276,7 @@ function SearchResults({ rows, href, locale }: { rows: DataPack['portal']['searc
 }
 function SearchPage({ data, locale, href }: { data: DataPack; locale: Locale; href: (path: string) => string }) {
   const query = new URLSearchParams(location.search).get('q') || ''
-  const matching = searchPortal(data.portal.search, query, locale)
+  const matching = searchPortal(data.search, query, locale)
   return <><h1>{catalogs[locale].search}</h1><SearchForm locale={locale} href={href} initial={query} /><SearchResults key={query} rows={matching} href={href} locale={locale} /></>
 }
 export default App

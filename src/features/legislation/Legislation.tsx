@@ -3,11 +3,10 @@ import { Button } from '@bettergov/kapwa/button'
 import en from '../../i18n/catalogs/legislation-en.json'
 import fil from '../../i18n/catalogs/legislation-fil.json'
 
-export interface LegislationRecord {
+export interface LegislationIndexRecord {
   recordId: string
   documentType: string
   documentNumber: string
-  publicationStatus: string | null
   title: string
   authorText: string
   committeeText: string | null
@@ -16,6 +15,10 @@ export interface LegislationRecord {
   documentUrl: string
   sourceRecordOrder: number
   sourceId: string
+}
+
+export interface LegislationRecord extends LegislationIndexRecord {
+  publicationStatus: string | null
   verificationStatus: string
   sourceIndexUrl?: string
   sourceFeedUrl?: string
@@ -25,7 +28,8 @@ export interface LegislationRecord {
 
 interface LegislationProps {
   locale: 'en' | 'fil'
-  records: LegislationRecord[]
+  records: LegislationIndexRecord[]
+  detail?: LegislationRecord | null
   recordId?: string
   href: (path: string) => string
   sourceLink: (sourceId: string) => string
@@ -57,11 +61,11 @@ function typeGroup(type: string): string {
   return 'other'
 }
 
-function matchingIndex(records: LegislationRecord[]) {
-  const titles = new Map<string, LegislationRecord[]>()
-  const numbers = new Map<string, LegislationRecord[]>()
-  const attachments = new Map<string, LegislationRecord[]>()
-  function add(map: Map<string, LegislationRecord[]>, key: string, record: LegislationRecord) {
+function matchingIndex(records: LegislationIndexRecord[]) {
+  const titles = new Map<string, LegislationIndexRecord[]>()
+  const numbers = new Map<string, LegislationIndexRecord[]>()
+  const attachments = new Map<string, LegislationIndexRecord[]>()
+  function add(map: Map<string, LegislationIndexRecord[]>, key: string, record: LegislationIndexRecord) {
     const bucket = map.get(key)
     if (bucket) bucket.push(record)
     else map.set(key, [record])
@@ -71,8 +75,8 @@ function matchingIndex(records: LegislationRecord[]) {
     if (record.documentNumber) add(numbers, JSON.stringify([record.documentType, record.documentNumber]), record)
     if (record.documentUrl) add(attachments, record.documentUrl, record)
   }
-  return (record: LegislationRecord) => {
-    const matches = new Map<string, LegislationRecord>()
+  return (record: LegislationIndexRecord) => {
+    const matches = new Map<string, LegislationIndexRecord>()
     const groups = [titles.get(record.title), numbers.get(JSON.stringify([record.documentType, record.documentNumber])), attachments.get(record.documentUrl)]
     for (const group of groups) {
       for (const candidate of group ?? []) {
@@ -83,7 +87,7 @@ function matchingIndex(records: LegislationRecord[]) {
   }
 }
 
-function matchDescription(record: LegislationRecord, candidate: LegislationRecord, text: Labels) {
+function matchDescription(record: LegislationIndexRecord, candidate: LegislationIndexRecord, text: Labels) {
   const title = Boolean(record.title) && record.title === candidate.title
   const number = Boolean(record.documentNumber) && record.documentNumber === candidate.documentNumber && record.documentType === candidate.documentType
   const attachment = Boolean(record.documentUrl) && record.documentUrl === candidate.documentUrl
@@ -91,7 +95,7 @@ function matchDescription(record: LegislationRecord, candidate: LegislationRecor
   return [title && text.sharedTitle, number && text.sharedNumber, attachment && text.sharedAttachment].filter(Boolean).join(' · ')
 }
 
-function RelatedRows({ record, matches, text, href }: { record: LegislationRecord; matches: LegislationRecord[]; text: Labels; href: LegislationProps['href'] }) {
+function RelatedRows({ record, matches, text, href }: { record: LegislationIndexRecord; matches: LegislationIndexRecord[]; text: Labels; href: LegislationProps['href'] }) {
   return (
     <ul className="record-list">
       {matches.map((candidate) => (
@@ -266,10 +270,10 @@ function LegislationIndex({ locale, records, href, sourceLink }: LegislationProp
 }
 
 export default function Legislation(props: LegislationProps) {
-  const { locale, records, recordId, href, sourceLink, correctionLink } = props
+  const { locale, records, detail, recordId, href, sourceLink, correctionLink } = props
   const text = legislationLabels[locale]
   if (recordId === undefined) return <LegislationIndex {...props} />
-  const record = records.find((candidate) => candidate.recordId === recordId)
+  const record = detail?.recordId === recordId ? detail : undefined
   if (!record) {
     return (
       <section className="panel">
