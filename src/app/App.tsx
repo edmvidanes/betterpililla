@@ -21,6 +21,7 @@ import Barangays from '../features/Barangays'
 import News, { NewsDetail } from '../features/News'
 import Geography from '../features/Geography'
 import { routes } from './route-manifest'
+import PageMotion from './PageMotion'
 import { searchPortal } from './search'
 
 const base = import.meta.env.BASE_URL
@@ -194,7 +195,7 @@ function App() {
     </div></header>
     <SearchPalette dialog={searchDialog} data={data} error={error} locale={locale} href={href} />
     <div className={`site-layout${route === '' ? ' home-layout' : ''}`}>
-      <main id="main" tabIndex={-1}>{content}</main>
+      <main id="main" tabIndex={-1}><PageMotion ready={!!data || error} home={route === ''} />{content}</main>
     </div>
     {route === '' ? <footer className="atlas-footer">
       <div className="atlas-footer-main">
