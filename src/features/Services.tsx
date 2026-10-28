@@ -14,7 +14,8 @@ export default function Services(props: CivicProps) {
   const ordinances = rows(data.ordinances.records)
   const leads = rows(data.services.serviceLegislationLeads).flatMap(lead => {
     const record = ordinances.find(row => row.recordId === lead.recordId && row.sourceId === lead.sourceId)
-    return record ? [record] : []
+    const topic = lead.topic && typeof lead.topic === 'object' && !Array.isArray(lead.topic) ? lead.topic[locale] : null
+    return record ? [{ record, topic: typeof topic === 'string' ? topic : String(record.title) }] : []
   })
   return <>
     <PageIntro title={t.services}>{c.servicesIntro}</PageIntro>
@@ -45,7 +46,7 @@ export default function Services(props: CivicProps) {
       <ul className="civic-links"><li><a href={String(data.services.sourceUrl)}>{c.officialCharter}<LinkArrow /></a></li><li><a href={href('government/offices')}>{c.contactOffice}<LinkArrow /></a></li></ul>
       <p className="civic-meta">{t.capture}: {formatDate(String(data.services.capturedAt), locale)}</p>
       <SourceNote {...props} id={lgu.sourceIds.charter} />
-      {leads.length > 0 && <section aria-labelledby="service-legislation-leads"><h2 id="service-legislation-leads">{c.serviceLegislationLeads}</h2><p>{c.serviceLegislationLeadsText}</p><ul className="record-list">{leads.map(row => <li key={String(row.recordId)}><a href={href(`open-lgu/legislation/${encodeURIComponent(String(row.recordId))}`)} lang="en">{String(row.title)}</a><p className="civic-meta">{String(row.documentNumber)} · {formatDate(String(row.sourceDate), locale)}</p></li>)}</ul><SourceNote {...props} id={String(leads[0].sourceId)} /></section>}
+      {leads.length > 0 && <section aria-labelledby="service-legislation-leads"><h2 id="service-legislation-leads">{c.serviceLegislationLeads}</h2><p>{c.serviceLegislationLeadsText}</p><ul className="record-list">{leads.map(({ record, topic }) => <li key={String(record.recordId)}><h3>{topic}</h3><p><a href={href(`open-lgu/legislation/${encodeURIComponent(String(record.recordId))}`)} lang="en">{String(record.title)}</a></p><p className="civic-meta">{String(record.documentNumber)} · {formatDate(String(record.sourceDate), locale)} · <a href={String(record.documentUrl)}>{locale === 'fil' ? 'Opisyal na dokumento' : 'Official document'}<LinkArrow /></a></p></li>)}</ul><SourceNote {...props} id={String(leads[0].record.sourceId)} /></section>}
     </section><aside className="civic-aside"><h2>{c.beforeVisit}</h2><p>{c.beforeVisitText}</p><h3>{c.publishedContacts}</h3><ul className="civic-links">{rows(data.contacts.records).map(row => <li key={String(row.category)}><a href={href(`government/offices/${row.category}`)} lang="en">{String(row.service)}<LinkArrow /></a></li>)}</ul></aside></div>
     <RawRecord {...props} value={data.services} />
   </>

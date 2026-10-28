@@ -10,12 +10,12 @@
   "catalogueStatus": "no-rows-rendered; coverage-gap-not-empty-service-catalogue",
   "services": [],
   "serviceLegislationLeads": [
-    { "recordId": "ordinance:02ca40baebb120be7b4e:31", "sourceId": "cavinti-ordinances-index" },
-    { "recordId": "ordinance:f0e35e3195a09f57fb0a:42", "sourceId": "cavinti-ordinances-index" },
-    { "recordId": "ordinance:8dc9f6035c1dc342cad3:146", "sourceId": "cavinti-ordinances-index" },
-    { "recordId": "ordinance:0105c84ea96d687b1987:165", "sourceId": "cavinti-ordinances-index" },
-    { "recordId": "ordinance:744a71d323042503ce4a:71", "sourceId": "cavinti-ordinances-index" },
-    { "recordId": "ordinance:4eb7edc450d6200207a2:29", "sourceId": "cavinti-ordinances-index" }
+    { "recordId": "ordinance:02ca40baebb120be7b4e:31", "sourceId": "cavinti-ordinances-index", "topic": { "en": "Request municipal records", "fil": "Humiling ng mga rekord ng munisipalidad" } },
+    { "recordId": "ordinance:f0e35e3195a09f57fb0a:42", "sourceId": "cavinti-ordinances-index", "topic": { "en": "Explore YAKAP health care", "fil": "Tingnan ang pangangalagang pangkalusugan sa YAKAP" } },
+    { "recordId": "ordinance:8dc9f6035c1dc342cad3:146", "sourceId": "cavinti-ordinances-index", "topic": { "en": "Explore scholarships", "fil": "Tingnan ang mga scholarship" } },
+    { "recordId": "ordinance:0105c84ea96d687b1987:165", "sourceId": "cavinti-ordinances-index", "topic": { "en": "Explore senior health testing", "fil": "Tingnan ang mga pagsusuri sa kalusugan ng mga nakatatanda" } },
+    { "recordId": "ordinance:744a71d323042503ce4a:71", "sourceId": "cavinti-ordinances-index", "topic": { "en": "Explore PhilHealth Konsulta", "fil": "Tingnan ang PhilHealth Konsulta" } },
+    { "recordId": "ordinance:4eb7edc450d6200207a2:29", "sourceId": "cavinti-ordinances-index", "topic": { "en": "Explore academic incentives", "fil": "Tingnan ang mga insentibo sa pag-aaral" } }
   ],
   "notes": [
     "The checked page rendered the table headings but no service records. This does not mean Cavinti offers no services.",
