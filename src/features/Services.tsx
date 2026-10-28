@@ -17,10 +17,17 @@ export default function Services(props: CivicProps) {
     const topic = lead.topic && typeof lead.topic === 'object' && !Array.isArray(lead.topic) ? lead.topic[locale] : null
     return record ? [{ record, topic: typeof topic === 'string' ? topic : String(record.title) }] : []
   })
+  const matchingLeads = leads.filter(({ record, topic }) => `${topic} ${record.title}`.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
   return <>
     <PageIntro title={t.services}>{c.servicesIntro}</PageIntro>
     <div className="civic-split"><section>
-      {services.length ? <><label>{c.filterDirectory}<input type="search" value={query} onChange={event => setQuery(event.target.value)} /></label><ul className="record-list">{matching.map(row => <li key={String(row.recordId)}><h2><a href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{String(row.name)}</a></h2><SourceNote {...props} id={String(row.sourceId)} /></li>)}</ul>{!matching.length && <p role="status">{t.noResults}</p>}</> : <div className="civic-empty"><h2>{c.serviceMissing}</h2><p>{c.serviceMissingText}</p></div>}
+      {services.length || leads.length ? <>
+        <label>{c.filterDirectory}<input type="search" value={query} onChange={event => setQuery(event.target.value)} /></label>
+        {!services.length && <p className="civic-meta">{c.serviceMissingText}</p>}
+        {services.length > 0 && <ul className="record-list">{matching.map(row => <li key={String(row.recordId)}><h2><a href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{String(row.name)}</a></h2><SourceNote {...props} id={String(row.sourceId)} /></li>)}</ul>}
+        {leads.length > 0 && <section aria-labelledby="service-legislation-leads"><h2 id="service-legislation-leads">{c.serviceLegislationLeads}</h2><p>{c.serviceLegislationLeadsText}</p><ul className="record-list">{matchingLeads.map(({ record, topic }) => <li key={String(record.recordId)}><h3><a href={href(`open-lgu/legislation/${encodeURIComponent(String(record.recordId))}`)}>{topic}</a></h3><p lang="en">{String(record.title)}</p><p className="civic-meta">{String(record.documentNumber)} · {formatDate(String(record.sourceDate), locale)} · <a href={String(record.documentUrl)}>{locale === 'fil' ? 'Opisyal na dokumento' : 'Official document'}<LinkArrow /></a></p></li>)}</ul><SourceNote {...props} id={String(leads[0].record.sourceId)} /></section>}
+        {!matching.length && !matchingLeads.length && <p role="status">{t.noResults}</p>}
+      </> : <div className="civic-empty"><h2>{c.serviceMissing}</h2><p>{c.serviceMissingText}</p></div>}
       <section aria-labelledby="service-guidance">
         <h2 id="service-guidance">{locale === 'fil' ? 'Mga praktikal na gabay' : 'Practical guidance'}</h2>
         <p>{locale === 'fil' ? 'Mga pambansang gabay at inilathalang kontak ito, hindi kumpletong listahan ng serbisyo ng Cavinti. Tingnan ang mga link at kumpirmahin ang kasalukuyang detalye bago pumunta.' : 'These are national guidance and published contacts, not a complete Cavinti service catalogue. Check the links and confirm current details before visiting.'}</p>
@@ -46,7 +53,6 @@ export default function Services(props: CivicProps) {
       <ul className="civic-links"><li><a href={String(data.services.sourceUrl)}>{c.officialCharter}<LinkArrow /></a></li><li><a href={href('government/offices')}>{c.contactOffice}<LinkArrow /></a></li></ul>
       <p className="civic-meta">{t.capture}: {formatDate(String(data.services.capturedAt), locale)}</p>
       <SourceNote {...props} id={lgu.sourceIds.charter} />
-      {leads.length > 0 && <section aria-labelledby="service-legislation-leads"><h2 id="service-legislation-leads">{c.serviceLegislationLeads}</h2><p>{c.serviceLegislationLeadsText}</p><ul className="record-list">{leads.map(({ record, topic }) => <li key={String(record.recordId)}><h3>{topic}</h3><p><a href={href(`open-lgu/legislation/${encodeURIComponent(String(record.recordId))}`)} lang="en">{String(record.title)}</a></p><p className="civic-meta">{String(record.documentNumber)} · {formatDate(String(record.sourceDate), locale)} · <a href={String(record.documentUrl)}>{locale === 'fil' ? 'Opisyal na dokumento' : 'Official document'}<LinkArrow /></a></p></li>)}</ul><SourceNote {...props} id={String(leads[0].record.sourceId)} /></section>}
     </section><aside className="civic-aside"><h2>{c.beforeVisit}</h2><p>{c.beforeVisitText}</p><h3>{c.publishedContacts}</h3><ul className="civic-links">{rows(data.contacts.records).map(row => <li key={String(row.category)}><a href={href(`government/offices/${row.category}`)} lang="en">{String(row.service)}<LinkArrow /></a></li>)}</ul></aside></div>
     <RawRecord {...props} value={data.services} />
   </>
