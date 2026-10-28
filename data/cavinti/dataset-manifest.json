@@ -7,7 +7,7 @@
     "psgcCode": "0403407000",
     "psgcCodeStatus": "indexed-primary-direct-fetch-blocked"
   },
-  "generatedAt": "2026-10-21",
+  "generatedAt": "2026-10-28T12:34:27.238Z",
   "license": {
     "projectCode": "CC0",
     "projectAuthoredMetadata": "CC0 where project-authored",
@@ -19,7 +19,12 @@
       "canonicalJson": "municipality.json",
       "schemaVersion": "civic-municipality/v1",
       "recordCount": 1,
-      "sourceIds": ["cavinti-official-home", "cavinti-about", "psa-psgc-cavinti", "philatlas-cavinti"],
+      "sourceIds": [
+        "cavinti-official-home",
+        "cavinti-about",
+        "psa-psgc-cavinti",
+        "philatlas-cavinti"
+      ],
       "status": "contains primary source claims, indexed-primary leads, and separately labeled secondary values"
     },
     {
@@ -27,7 +32,11 @@
       "canonicalJson": "barangays.json",
       "schemaVersion": "civic-barangay-roster-evidence/v1",
       "recordCount": 19,
-      "sourceIds": ["cavinti-about", "cavinti-barangay-count-ordinance", "philatlas-cavinti"],
+      "sourceIds": [
+        "cavinti-about",
+        "cavinti-barangay-count-ordinance",
+        "philatlas-cavinti"
+      ],
       "status": "source-specific roster claims and a secondary population table; canonical current roster unresolved"
     },
     {
@@ -35,7 +44,12 @@
       "canonicalJson": "officials.json",
       "schemaVersion": "civic-official-directory-evidence/v1",
       "recordCount": 94,
-      "sourceIds": ["cavinti-executive-directory", "cavinti-legislative-directory", "cavinti-resolutions-index", "openhalalan-winners"],
+      "sourceIds": [
+        "cavinti-executive-directory",
+        "cavinti-legislative-directory",
+        "cavinti-resolutions-index",
+        "openhalalan-winners"
+      ],
       "rights": "OpenHalalan election records: ODbL 1.0, https://opendatacommons.org/licenses/odbl/1-0/; Leung et al. (2026), https://doi.org/10.5281/zenodo.17783099.",
       "status": "directory-card evidence and separately attributed historical election winner claims; election results do not establish current tenure"
     },
@@ -44,7 +58,10 @@
       "canonicalJson": "emergency-contacts.json",
       "schemaVersion": "civic-emergency-contact-evidence/v1",
       "recordCount": 7,
-      "sourceIds": ["cavinti-about", "cavinti-contact"],
+      "sourceIds": [
+        "cavinti-about",
+        "cavinti-contact"
+      ],
       "status": "official page values; freshness unverified"
     },
     {
@@ -52,7 +69,10 @@
       "canonicalJson": "services.json",
       "schemaVersion": "civic-service-catalogue-evidence/v1",
       "recordCount": 0,
-      "sourceIds": ["cavinti-citizens-charter", "cavinti-ordinances-index"],
+      "sourceIds": [
+        "cavinti-citizens-charter",
+        "cavinti-ordinances-index"
+      ],
       "status": "zero Charter rows observed; separately listed ordinance title leads are not verified current services"
     },
     {
@@ -60,7 +80,24 @@
       "canonicalJson": "sector-inventory.json",
       "schemaVersion": "civic-sector-coverage/v1",
       "recordCount": 9,
-      "sourceIds": ["deped-laguna-directory", "deped-elementary-allocation-leads", "deped-school-identifiers", "searca-school-gardens", "psa-cbms-cavinti", "dti-cmci-cavinti", "dilg-fdp", "blgf-fiscal-data", "bettergov-blgf-mirror", "philgeps-cavinti-award-lead", "coa-annual-audits", "cavinti-about", "cavinti-rhu-channel", "doh-calabarzon-facilities", "cavinti-official-home", "cavinti-ordinances-index"],
+      "sourceIds": [
+        "deped-laguna-directory",
+        "deped-elementary-allocation-leads",
+        "deped-school-identifiers",
+        "searca-school-gardens",
+        "psa-cbms-cavinti",
+        "dti-cmci-cavinti",
+        "dilg-fdp",
+        "blgf-fiscal-data",
+        "bettergov-blgf-mirror",
+        "philgeps-cavinti-award-lead",
+        "coa-annual-audits",
+        "cavinti-about",
+        "cavinti-rhu-channel",
+        "doh-calabarzon-facilities",
+        "cavinti-official-home",
+        "cavinti-ordinances-index"
+      ],
       "status": "source coverage and candidate leads, not complete sector datasets"
     },
     {
@@ -68,7 +105,18 @@
       "canonicalJson": "transparency.json",
       "schemaVersion": "civic-transparency-evidence/v1",
       "recordCount": 100,
-      "sourceIds": ["dilg-fdp", "blgf-fiscal-data", "bettergov-blgf-mirror", "philgeps-cavinti-award-lead", "coa-annual-audits", "cavinti-ordinances-index", "cavinti-resolutions-index", "bsp-lgu-borrowings", "dpwh-bettergov-snapshot", "bettergov-cavinti-procurement"],
+      "sourceIds": [
+        "dilg-fdp",
+        "blgf-fiscal-data",
+        "bettergov-blgf-mirror",
+        "philgeps-cavinti-award-lead",
+        "coa-annual-audits",
+        "cavinti-ordinances-index",
+        "cavinti-resolutions-index",
+        "bsp-lgu-borrowings",
+        "dpwh-bettergov-snapshot",
+        "bettergov-cavinti-procurement"
+      ],
       "status": "partial historical project and procurement snapshots and document leads; no complete financial, procurement, or project totals"
     },
     {
@@ -78,9 +126,12 @@
       "schemaVersion": "civic-legislation-record-set/v1",
       "recordCount": 406,
       "sourceId": "cavinti-ordinances-index",
-      "sourceFeedUrl": "https://cavinti-egov.com/ordinancesData?draw=1&start=0&length=5000",
-      "sourceFeedSha256": "e761b27947616b5a7de1ac4930a56bc708cba4825a79c8f6ba0a1cb52cbb2ed8",
-      "dateRange": { "from": "1992-07-24", "to": "2026-09-28" },
+      "sourceFeedUrl": "https://cavinti-egov.com/ordinancesData?draw=1&start=0&length=250",
+      "sourceFeedSha256": "fa182934587123345353cc28eb07c3100831596128aa5f49df1955565bec586d",
+      "dateRange": {
+        "from": "1992-07-24",
+        "to": "2026-09-28"
+      },
       "status": "all returned index rows captured; PDF attachments not fully reviewed"
     },
     {
@@ -88,7 +139,32 @@
       "canonicalJson": "research-updates.json",
       "schemaVersion": "civic-research-updates/v1",
       "recordCount": 30,
-      "sourceIds": ["blgf-fiscal-data", "cavinti-about", "cavinti-barangay-count-ordinance", "cavinti-citizens-charter", "cavinti-official-home", "cavinti-ordinances-index", "cavinti-other-documents", "coa-annual-audits", "deped-school-identifiers", "dilg-fdp", "doh-calabarzon-facilities", "dti-cmci-cavinti", "hazardhunterph", "namria-emapa", "pagasa-flood-maps", "philgeps-cavinti-award-lead", "phivolcs-hazard-maps", "psa-2024-openstat", "psa-2024-popcen-release", "psa-classification-api", "psa-openstat-2020", "psa-psgc-cavinti", "tieza-pagsanjan-gorge", "supreme-court-pd759"],
+      "sourceIds": [
+        "blgf-fiscal-data",
+        "cavinti-about",
+        "cavinti-barangay-count-ordinance",
+        "cavinti-citizens-charter",
+        "cavinti-official-home",
+        "cavinti-ordinances-index",
+        "cavinti-other-documents",
+        "coa-annual-audits",
+        "deped-school-identifiers",
+        "dilg-fdp",
+        "doh-calabarzon-facilities",
+        "dti-cmci-cavinti",
+        "hazardhunterph",
+        "namria-emapa",
+        "pagasa-flood-maps",
+        "philgeps-cavinti-award-lead",
+        "phivolcs-hazard-maps",
+        "psa-2024-openstat",
+        "psa-2024-popcen-release",
+        "psa-classification-api",
+        "psa-openstat-2020",
+        "psa-psgc-cavinti",
+        "tieza-pagsanjan-gorge",
+        "supreme-court-pd759"
+      ],
       "status": "supplemental incomplete priority research; native PDF text blank; bounded budget page-1 visual transcription unreviewed; no canonical domain fact replacement"
     },
     {
@@ -98,9 +174,12 @@
       "schemaVersion": "civic-legislation-record-set/v1",
       "recordCount": 4492,
       "sourceId": "cavinti-resolutions-index",
-      "sourceFeedUrl": "https://cavinti-egov.com/resolutionsData?draw=1&start=0&length=5000",
-      "sourceFeedSha256": "3fcdac1fef6c7c293ba70731d0c68db58c9cd9e3fad48ede28d0155fcf23a053",
-      "dateRange": { "from": "1992-07-17", "to": "2026-10-12" },
+      "sourceFeedUrl": "https://cavinti-egov.com/resolutionsData?draw=1&start=0&length=250",
+      "sourceFeedSha256": "a488d6a40f3819dea0fc623902c2be709306b3c41d33fc10c964760998fc66ee",
+      "dateRange": {
+        "from": "1992-07-17",
+        "to": "2026-10-12"
+      },
       "status": "all returned index rows captured; PDF attachments not fully reviewed"
     }
   ],

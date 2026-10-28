@@ -10,144 +10,573 @@
       "name": "OpenHalalan Philippine election winners",
       "tier": "secondary-reference",
       "url": "https://github.com/RobertRLeung/OpenHalalan/releases/download/data-latest/NLE_Winners_2004-2025.csv",
-      "formats": ["CSV"],
+      "formats": [
+        "CSV"
+      ],
       "retrievalStatus": "downloaded 2026-10-27; historical winner claims are not current officeholder verification",
-      "lastCheckedAt": "2026-10-27",
+      "lastCheckedAt": "2026-10-28T12:34:27.238Z",
       "sourceContentHash": "d82cf9b08bdbe07f6041835385f93f33d2828d32c860b61fef773702b9f2b99f",
-      "coverage": "Leung et al. (2026), OpenHalalan, https://doi.org/10.5281/zenodo.17783099; ODbL 1.0, https://opendatacommons.org/licenses/odbl/1-0/. Selected Cavinti rows include incomplete cycles; 2004–2013 upstream provenance is undocumented."
+      "coverage": "Leung et al. (2026), OpenHalalan, https://doi.org/10.5281/zenodo.17783099; ODbL 1.0, https://opendatacommons.org/licenses/odbl/1-0/. Selected Cavinti rows include incomplete cycles; 2004–2013 upstream provenance is undocumented.",
+      "refreshCheck": {
+        "sourceId": "openhalalan-winners",
+        "adapter": "reference-documentation-coverage",
+        "requestedUrl": "https://github.com/RobertRLeung/OpenHalalan/releases/download/data-latest/NLE_Winners_2004-2025.csv",
+        "retrievedAt": "2026-10-28T12:34:27.238Z",
+        "finalUrl": null,
+        "httpStatus": null,
+        "contentType": null,
+        "sourceDate": null,
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "stale",
+        "note": "Coverage request failed; existing capture retained. robots.txt disallows https://github.com/RobertRLeung/OpenHalalan/releases/download/data-latest/NLE_Winners_2004-2025.csv; access controls not bypassed"
+      }
     },
     {
       "id": "bettergov-cavinti-procurement",
       "name": "BetterGov Cavinti PhilGEPS organization listing",
       "tier": "secondary-reference",
       "url": "https://transparency.bettergov.ph/organizations/MUNICIPALITY%20OF%20CAVINTI%2C%20LAGUNA",
-      "formats": ["HTML"],
+      "formats": [
+        "HTML"
+      ],
       "retrievalStatus": "first 20 displayed rows observed 2026-10-27 through public reader; primary notices not checked",
-      "lastCheckedAt": "2026-10-27",
-      "coverage": "A partial historical listing attributed to PhilGEPS. Displayed whole-peso amounts are rounded; displayed status and date meanings are not verified. Not proof of payment or completion."
+      "lastCheckedAt": "2026-10-28T12:34:27.749Z",
+      "coverage": "A partial historical listing attributed to PhilGEPS. Displayed whole-peso amounts are rounded; displayed status and date meanings are not verified. Not proof of payment or completion.",
+      "refreshCheck": {
+        "sourceId": "bettergov-cavinti-procurement",
+        "adapter": "reference-documentation-coverage",
+        "requestedUrl": "https://transparency.bettergov.ph/organizations/MUNICIPALITY%20OF%20CAVINTI%2C%20LAGUNA",
+        "retrievedAt": "2026-10-28T12:34:27.749Z",
+        "finalUrl": "https://transparency.bettergov.ph/organizations/MUNICIPALITY%20OF%20CAVINTI%2C%20LAGUNA",
+        "httpStatus": 200,
+        "contentType": "text/html",
+        "sourceDate": null,
+        "responseSha256": "2c63d33dfb54792ecc14c7a29ff422f5dc0275197a0fb95e4396289a310afd14",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "BetterGov Transparency Dashboard - Search Government Procurement, Tax, and Budget Records",
+          "headings": [],
+          "linkCount": 0,
+          "tableCount": 0
+        }
+      }
     },
     {
       "id": "dpwh-bettergov-snapshot",
       "name": "BetterGov DPWH transparency dataset snapshot",
       "tier": "secondary-reference",
       "url": "https://huggingface.co/datasets/bettergovph/dpwh-transparency-data/tree/648ea96af4f7625d606fda0b78803917913a26b7",
-      "formats": ["Parquet"],
+      "formats": [
+        "Parquet"
+      ],
       "retrievalStatus": "public dataset downloaded on 2026-10-27; upstream project capture date unknown",
-      "lastCheckedAt": "2026-10-27",
+      "lastCheckedAt": "2026-10-28T12:34:28.878Z",
       "sourceContentHash": "5b411cf3f112fabd1913c70681791e5e2b78b43a8393f489f48bd882f154e123",
-      "coverage": "CC0-labeled BetterGov compilation attributed to DPWH transparency data. Text matches for Cavinti are incomplete, may cover multiple municipalities and do not verify present status or municipal expenditure."
+      "coverage": "CC0-labeled BetterGov compilation attributed to DPWH transparency data. Text matches for Cavinti are incomplete, may cover multiple municipalities and do not verify present status or municipal expenditure.",
+      "refreshCheck": {
+        "sourceId": "dpwh-bettergov-snapshot",
+        "adapter": "reference-documentation-coverage",
+        "requestedUrl": "https://huggingface.co/datasets/bettergovph/dpwh-transparency-data/tree/648ea96af4f7625d606fda0b78803917913a26b7",
+        "retrievedAt": "2026-10-28T12:34:28.878Z",
+        "finalUrl": "https://huggingface.co/datasets/bettergovph/dpwh-transparency-data/tree/648ea96af4f7625d606fda0b78803917913a26b7",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sourceDate": null,
+        "responseSha256": "c2431338dbb39c86d78e405c6b41a775d42d1124c1cb42d42f4d54c3ac4f6be1",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "bettergovph/dpwh-transparency-data at 648ea96af4f7625d606fda0b78803917913a26b7",
+          "headings": [
+            "Datasets: bettergovph / dpwh-transparency-data Like 3 Follow BetterGov.PH 29"
+          ],
+          "linkCount": 69,
+          "tableCount": 0
+        }
+      }
     },
     {
       "id": "bsp-lgu-borrowings",
       "name": "Bangko Sentral ng Pilipinas LGU proposed domestic borrowing opinions",
       "tier": "primary-government",
       "url": "https://www.bsp.gov.ph/Regulations/Guidelines%20and%20other%20Regulations/LGU_2S2022.pdf",
-      "formats": ["PDF"],
+      "formats": [
+        "PDF"
+      ],
       "retrievalStatus": "2020 and 2022 tables read on 2026-10-27",
-      "lastCheckedAt": "2026-10-27",
-      "coverage": "Semester reports list opinions on proposed borrowings, not loan drawdowns, debt balances or completed projects. Individual records link to their respective reports."
+      "lastCheckedAt": "2026-10-28T12:34:28.904Z",
+      "coverage": "Semester reports list opinions on proposed borrowings, not loan drawdowns, debt balances or completed projects. Individual records link to their respective reports.",
+      "refreshCheck": {
+        "sourceId": "bsp-lgu-borrowings",
+        "adapter": "document-metadata-head-only",
+        "requestedUrl": "https://www.bsp.gov.ph/Regulations/Guidelines%20and%20other%20Regulations/LGU_2S2022.pdf",
+        "retrievedAt": "2026-10-28T12:34:28.904Z",
+        "finalUrl": null,
+        "httpStatus": null,
+        "contentType": null,
+        "sourceDate": null,
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "stale",
+        "note": "Coverage request failed; existing capture retained. robots.txt disallows https://www.bsp.gov.ph/Regulations/Guidelines%20and%20other%20Regulations/LGU_2S2022.pdf; access controls not bypassed"
+      }
     },
     {
       "id": "supreme-court-pd759",
       "name": "Supreme Court E-Library Presidential Decree No. 759",
       "tier": "primary-government",
       "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/26/59358",
-      "formats": ["HTML"],
+      "formats": [
+        "HTML"
+      ],
       "retrievalStatus": "readable on 2026-10-27",
-      "lastCheckedAt": "2026-10-27",
-      "coverage": "Historical national infrastructure appropriations; appropriation is not proof of release, spending or completed construction."
+      "lastCheckedAt": "2026-10-28T12:34:31.042Z",
+      "coverage": "Historical national infrastructure appropriations; appropriation is not proof of release, spending or completed construction.",
+      "refreshCheck": {
+        "sourceId": "supreme-court-pd759",
+        "adapter": "reference-documentation-coverage",
+        "requestedUrl": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/26/59358",
+        "retrievedAt": "2026-10-28T12:34:31.042Z",
+        "finalUrl": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/26/59358",
+        "httpStatus": 200,
+        "contentType": "text/html",
+        "sourceDate": null,
+        "responseSha256": "5c21ac5383d6e4fb6e9ca1b3e1f93d7192834e5eabdc877d46eda19b4f37b9f0",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "PRESIDENTIAL DECREE NO. 759 - APPROPRIATING FUNDS FOR PUBLIC WORKS, SYNCHRONIZING THE SAME WITH PREVIOUS PUBLIC WORKS APPROPRIATIONS - Supreme Court E-Library",
+          "headings": [
+            "Supreme Court E-Library Information At Your Fingertips",
+            "[ PRESIDENTIAL DECREE NO. 759, July 31, 1975 ]",
+            "APPROPRIATING FUNDS FOR PUBLIC WORKS, SYNCHRONIZING THE SAME WITH PREVIOUS PUBLIC WORKS APPROPRIATIONS"
+          ],
+          "linkCount": 28,
+          "tableCount": 4
+        }
+      }
     },
     {
       "id": "cavinti-contact",
       "name": "Cavinti Sangguniang Bayan contact page",
       "tier": "primary-lgu",
       "url": "https://cavinti-egov.com/contact",
-      "formats": ["HTML"],
+      "formats": [
+        "HTML"
+      ],
       "retrievalStatus": "readable on 2026-10-27; contacts not live-validated",
-      "lastCheckedAt": "2026-10-27",
-      "coverage": "Municipal hall address and grouped public legislative contact emails and telephone numbers; no publication date or per-number office assignment."
+      "lastCheckedAt": "2026-10-28T12:34:31.641Z",
+      "coverage": "Municipal hall address and grouped public legislative contact emails and telephone numbers; no publication date or per-number office assignment.",
+      "refreshCheck": {
+        "sourceId": "cavinti-contact",
+        "adapter": "reference-documentation-coverage",
+        "requestedUrl": "https://cavinti-egov.com/contact",
+        "retrievedAt": "2026-10-28T12:34:31.641Z",
+        "finalUrl": "https://cavinti-egov.com/contact",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sourceDate": null,
+        "responseSha256": "3a08367ff2641e5806b2c0353b2008f56d876e88cb7389119977d88eb9dba56f",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "Contact Us | Portal",
+          "headings": [
+            "Cavinti Laguna",
+            "Get In Touch",
+            "Office Information",
+            "Send a Message"
+          ],
+          "linkCount": 24,
+          "tableCount": 0
+        }
+      }
     },
     {
       "id": "searca-school-gardens",
       "name": "SEARCA Cavinti district school and home gardens evaluation",
       "tier": "secondary-reference",
       "url": "https://www.searca.org/news/searca-partners-deped-cavinti-laguna-district-wide-school-home-gardens-evaluation",
-      "formats": ["HTML"],
+      "formats": [
+        "HTML"
+      ],
       "retrievalStatus": "readable on 2026-10-27",
-      "lastCheckedAt": "2026-10-27",
-      "coverage": "Participant account of the March 2024 Cavinti district evaluation and named winning schools; not a current complete school roster."
+      "lastCheckedAt": "2026-10-28T12:34:32.827Z",
+      "coverage": "Participant account of the March 2024 Cavinti district evaluation and named winning schools; not a current complete school roster.",
+      "refreshCheck": {
+        "sourceId": "searca-school-gardens",
+        "adapter": "reference-documentation-coverage",
+        "requestedUrl": "https://www.searca.org/news/searca-partners-deped-cavinti-laguna-district-wide-school-home-gardens-evaluation",
+        "retrievedAt": "2026-10-28T12:34:32.827Z",
+        "finalUrl": "https://www.searca.org/news/searca-partners-deped-cavinti-laguna-district-wide-school-home-gardens-evaluation",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sourceDate": "2024-04-15T03:14:22.000Z",
+        "responseSha256": "2017c458c6281343f8ba203456f728f84847c998b5619b432a9f657e4e49b167",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "SEARCA partners with DepEd Cavinti, Laguna in district-wide school and home gardens evaluation - SEARCA",
+          "headings": [
+            "SEARCA partners with DepEd Cavinti, Laguna in district-wide school and home gardens evaluation",
+            "News",
+            "Latest News",
+            "Southeast Asian Regional Center for Graduate Study and Research in Agriculture",
+            "Southeast Asian Regional Center for Graduate Study and Research in Agriculture",
+            "Call Us",
+            "Visit Us",
+            "Email Us",
+            "Mailing Address",
+            "Get in Touch",
+            "Connect With Us"
+          ],
+          "linkCount": 211,
+          "tableCount": 0
+        }
+      }
     },
     {
       "id": "betterlgu-directory",
       "name": "BetterLGU directory",
       "tier": "community-directory",
       "url": "https://lgu.bettergov.ph/",
-      "formats": ["HTML"],
+      "formats": [
+        "HTML"
+      ],
       "retrievalStatus": "readable",
-      "coverage": "Directory purpose, existing portal listings, project/repository links, and portal statuses. Directory counts are its own claims."
+      "coverage": "Directory purpose, existing portal listings, project/repository links, and portal statuses. Directory counts are its own claims.",
+      "lastCheckedAt": "2026-10-28T12:34:33.580Z",
+      "refreshCheck": {
+        "sourceId": "betterlgu-directory",
+        "adapter": "reference-documentation-coverage",
+        "requestedUrl": "https://lgu.bettergov.ph/",
+        "retrievedAt": "2026-10-28T12:34:33.580Z",
+        "finalUrl": "https://lgu.bettergov.ph/",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sourceDate": "2026-10-28T07:29:09.000Z",
+        "responseSha256": "aed4793d0881aa5f6c11a796d1045dda9e715a6837d0cfe2a12e7e1ed3ce012b",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "BetterLGU Directory by BetterGov.ph Home | BetterLGU Directory by BetterGov.ph",
+          "headings": [
+            "The Official BetterLGU Directory",
+            "Mapandan, Pangasinan",
+            "BetterGov.ph — LGU Directory",
+            "📋 Directory",
+            "No LGUs found",
+            "🚦 Status Legend",
+            "Secondary Tags",
+            "🧩 Community Templates",
+            "🚀 Getting Started",
+            "🤝 Contributing",
+            "📄 License",
+            "Resources",
+            "Community"
+          ],
+          "linkCount": 694,
+          "tableCount": 4
+        }
+      }
     },
     {
       "id": "betterlgu-guide",
       "name": "BetterLGU portal starter guide",
       "tier": "community-guidance",
       "url": "https://lgu.bettergov.ph/GUIDE",
-      "formats": ["HTML"],
+      "formats": [
+        "HTML"
+      ],
       "retrievalStatus": "readable",
-      "coverage": "Describes the purpose of public LGU portals, finding or contributing to existing work, gathering public data, and listing a new portal."
+      "coverage": "Describes the purpose of public LGU portals, finding or contributing to existing work, gathering public data, and listing a new portal.",
+      "lastCheckedAt": "2026-10-28T12:34:33.967Z",
+      "refreshCheck": {
+        "sourceId": "betterlgu-guide",
+        "adapter": "reference-documentation-coverage",
+        "requestedUrl": "https://lgu.bettergov.ph/GUIDE",
+        "retrievedAt": "2026-10-28T12:34:33.967Z",
+        "finalUrl": "https://lgu.bettergov.ph/GUIDE",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sourceDate": "2026-10-28T07:29:09.000Z",
+        "responseSha256": "7af1b5a848961e70136f339f6b45f9f43faa8ba4ea0078adfa5d0179d20815c6",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "Guide | BetterLGU Directory by BetterGov.ph Guide | BetterLGU Directory by BetterGov.ph",
+          "headings": [
+            "Guide",
+            "How to Start Your Better LGU Portal",
+            "What Is a Better LGU Portal?",
+            "Before You Start",
+            "Step 1 — Search the Directory First",
+            "Register Your Intent",
+            "Step 2 — Pick a Template",
+            "Step 3 — Set Up Your Repository",
+            "Step 4 — Gather and Publish Data",
+            "Step 5 — Choose a Domain",
+            "Step 6 — Deploy",
+            "Step 7 — Update Your Directory Entry",
+            "Keeping It Maintained",
+            "Funnel Reports to the Community Discord",
+            "Need Help?",
+            "Resources",
+            "Community"
+          ],
+          "linkCount": 39,
+          "tableCount": 0
+        }
+      }
     },
     {
       "id": "betterlb-readme",
       "name": "BetterLB public feature and implementation documentation",
       "tier": "project-documentation",
       "url": "https://raw.githubusercontent.com/BetterLosBanos/betterlb/main/README.md",
-      "formats": ["Markdown"],
+      "formats": [
+        "Markdown"
+      ],
       "retrievalStatus": "readable",
-      "coverage": "Advertises service directory/Citizens' Charter, government and barangay directory, legislation, transparency, statistics, search, localization, open data, maps, accessibility, contribution, and weather/API capabilities. Live-site rendering was not reliably verified."
+      "coverage": "Advertises service directory/Citizens' Charter, government and barangay directory, legislation, transparency, statistics, search, localization, open data, maps, accessibility, contribution, and weather/API capabilities. Live-site rendering was not reliably verified.",
+      "lastCheckedAt": "2026-10-28T12:34:34.877Z",
+      "refreshCheck": {
+        "sourceId": "betterlb-readme",
+        "adapter": "reference-documentation-coverage",
+        "requestedUrl": "https://raw.githubusercontent.com/BetterLosBanos/betterlb/main/README.md",
+        "retrievedAt": "2026-10-28T12:34:34.877Z",
+        "finalUrl": "https://raw.githubusercontent.com/BetterLosBanos/betterlb/main/README.md",
+        "httpStatus": 200,
+        "contentType": "text/plain; charset=utf-8",
+        "sourceDate": null,
+        "responseSha256": "570bb9e77d9fac863753ca0b4bf44ebb89f610043e6e986c8c309560fc850ff6",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced."
+      }
     },
     {
       "id": "cavinti-official-home",
       "name": "Municipality of Cavinti official portal",
       "tier": "primary-lgu",
       "url": "https://www.cavinti-egov.com/",
-      "formats": ["HTML", "PDF links", "social links"],
+      "formats": [
+        "HTML",
+        "PDF links",
+        "social links"
+      ],
       "retrievalStatus": "readable",
-      "coverage": "Official municipal portal entry point and links to ordinances, resolutions, Citizens' Charter, officials, and official channels."
+      "coverage": "Official municipal portal entry point and links to ordinances, resolutions, Citizens' Charter, officials, and official channels.",
+      "lastCheckedAt": "2026-10-28T12:34:35.454Z",
+      "refreshCheck": {
+        "sourceId": "cavinti-official-home",
+        "adapter": "reference-documentation-coverage",
+        "requestedUrl": "https://www.cavinti-egov.com/",
+        "retrievedAt": "2026-10-28T12:34:35.454Z",
+        "finalUrl": "https://www.cavinti-egov.com/",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sourceDate": null,
+        "responseSha256": "49cd81d728f15a5dd5b9b54a2d544c90e8b8a48dd414a17ccf02168634b7162d",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "Cavinti Laguna | Portal",
+          "headings": [
+            "Cavinti Laguna",
+            "Municipality of Cavinti",
+            "Latest News",
+            "Sangguniang Bayan 61st Regular Session on October 12, 2026",
+            "Official Channels"
+          ],
+          "linkCount": 46,
+          "tableCount": 0
+        }
+      }
     },
     {
       "id": "cavinti-about",
       "name": "Cavinti geographic profile and barangay page",
       "tier": "primary-lgu",
       "url": "https://www.cavinti-egov.com/aboutUs",
-      "formats": ["HTML"],
+      "formats": [
+        "HTML"
+      ],
       "retrievalStatus": "readable",
-      "coverage": "Geographic description, bounds expressed as coordinates, neighboring municipalities, a list of 17 barangay headings, municipal mission, and emergency hotline directory. Page has no visible publication/update date."
+      "coverage": "Geographic description, bounds expressed as coordinates, neighboring municipalities, a list of 17 barangay headings, municipal mission, and emergency hotline directory. Page has no visible publication/update date.",
+      "lastCheckedAt": "2026-10-28T12:34:35.689Z",
+      "refreshCheck": {
+        "sourceId": "cavinti-about",
+        "adapter": "municipal-geography-coverage",
+        "requestedUrl": "https://www.cavinti-egov.com/aboutUs",
+        "retrievedAt": "2026-10-28T12:34:35.689Z",
+        "finalUrl": "https://www.cavinti-egov.com/aboutUs",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sourceDate": null,
+        "responseSha256": "08f8bd9c1662476bed66992de650fae5e180080fa3bb61837d1e70eda9b80426",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "About Cavinti | Portal",
+          "headings": [
+            "Cavinti Laguna",
+            "About Cavinti Laguna",
+            "Geographical Profile",
+            "List of Barangays",
+            "Barangay Anglas",
+            "Barangay Sumucab",
+            "Barangay Poblacion",
+            "Barangay Bulajo",
+            "Barangay Bukal",
+            "barangay cansuso",
+            "Barangay Duhat",
+            "Barangay kanluran Talaongan",
+            "barangay Mahipon-Lumot",
+            "Barangay Bangco",
+            "Barangay paowin",
+            "barangay Silangan Talaongan",
+            "Barangay udia",
+            "Barangay Layug",
+            "Barangay Sisilmin",
+            "barangay Inao-awan",
+            "barangay Tibatib"
+          ],
+          "linkCount": 25,
+          "tableCount": 0
+        }
+      }
     },
     {
       "id": "cavinti-citizens-charter",
       "name": "Cavinti Citizens' Charter page",
       "tier": "primary-lgu",
       "url": "https://www.cavinti-egov.com/citizenscharter",
-      "formats": ["HTML", "document links if present"],
+      "formats": [
+        "HTML",
+        "document links if present"
+      ],
       "retrievalStatus": "readable",
-      "coverage": "The current rendered search table exposes Service Name/Document, Office & Contact, and Document headings but no service rows were observed. This is a coverage gap, not evidence that the LGU offers no services."
+      "coverage": "The current rendered search table exposes Service Name/Document, Office & Contact, and Document headings but no service rows were observed. This is a coverage gap, not evidence that the LGU offers no services.",
+      "lastCheckedAt": "2026-10-28T12:34:35.873Z",
+      "refreshCheck": {
+        "sourceId": "cavinti-citizens-charter",
+        "adapter": "municipal-charter-coverage",
+        "requestedUrl": "https://www.cavinti-egov.com/citizenscharter",
+        "retrievedAt": "2026-10-28T12:34:35.873Z",
+        "finalUrl": "https://www.cavinti-egov.com/citizenscharter",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sourceDate": null,
+        "responseSha256": "b7ed9b239aa51ef1fc57dc1b8ed846a5ec7bbb0d87bb608ae3fdafe36b8970e1",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "Citizen's Charter | Portal",
+          "headings": [
+            "Cavinti Laguna",
+            "Citizen's Charter"
+          ],
+          "linkCount": 25,
+          "tableCount": 1
+        }
+      }
     },
     {
       "id": "cavinti-executive-directory",
       "name": "Cavinti Executive Office directory",
       "tier": "primary-lgu",
       "url": "https://cavinti-egov.com/executive",
-      "formats": ["HTML", "profile image links"],
+      "formats": [
+        "HTML",
+        "profile image links"
+      ],
       "retrievalStatus": "readable",
-      "coverage": "Lists HON. ARRANTLEE ROMULO ARROYO under Executive Office; the page does not itself specify a complete role/term/contact profile. Official resolutions identify him as Municipal Mayor."
+      "coverage": "Lists HON. ARRANTLEE ROMULO ARROYO under Executive Office; the page does not itself specify a complete role/term/contact profile. Official resolutions identify him as Municipal Mayor.",
+      "lastCheckedAt": "2026-10-28T12:34:36.284Z",
+      "refreshCheck": {
+        "sourceId": "cavinti-executive-directory",
+        "adapter": "municipal-directory-coverage",
+        "requestedUrl": "https://cavinti-egov.com/executive",
+        "retrievedAt": "2026-10-28T12:34:36.284Z",
+        "finalUrl": "https://cavinti-egov.com/executive",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sourceDate": null,
+        "responseSha256": "49d516dd2db6a827c1d5d0cdd84c3bf06a2734a7ae6bd4a31f301de4a2ec35ab",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "Executive Department | Portal",
+          "headings": [
+            "Cavinti Laguna",
+            "Executive Office",
+            "HON. ARRANTLEE ROMULO ARROYO"
+          ],
+          "linkCount": 27,
+          "tableCount": 0
+        }
+      }
     },
     {
       "id": "cavinti-legislative-directory",
       "name": "Cavinti Sangguniang Bayan directory",
       "tier": "primary-lgu",
       "url": "https://cavinti-egov.com/legislative",
-      "formats": ["HTML", "profile image links"],
+      "formats": [
+        "HTML",
+        "profile image links"
+      ],
       "retrievalStatus": "readable",
-      "coverage": "12 profile cards, including committee/expertise labels and authored/co-authored counts. The page does not provide complete term dates or a clear office title for every listed person."
+      "coverage": "12 profile cards, including committee/expertise labels and authored/co-authored counts. The page does not provide complete term dates or a clear office title for every listed person.",
+      "lastCheckedAt": "2026-10-28T12:34:36.483Z",
+      "refreshCheck": {
+        "sourceId": "cavinti-legislative-directory",
+        "adapter": "municipal-directory-coverage",
+        "requestedUrl": "https://cavinti-egov.com/legislative",
+        "retrievedAt": "2026-10-28T12:34:36.483Z",
+        "finalUrl": "https://cavinti-egov.com/legislative",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sourceDate": null,
+        "responseSha256": "031991fa45cbf6604350229dc91cb36c2f18e45b3d47e8d7f9aadea724e11633",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "Sangguniang Bayan Officials | Portal",
+          "headings": [
+            "Cavinti Laguna",
+            "The Council",
+            "HON. MILBERT L. OLIVEROS",
+            "HON. DR. JOVENIL T. GORDULA",
+            "HON. GLENN HAZE M. CABUHAT",
+            "HON. GODFREY L. LUBUGUIN",
+            "HON. HABSHAN DAVE D. BLASTIQUE",
+            "HON. DR. JOSE MARI L. ESGUERRA",
+            "HON. JOSEPH P. BALTAZAR",
+            "HON. ROMEL J. VILLANUEVA",
+            "HON. LIMRON O. SANCHEZ",
+            "HON. MANUEL A. DELA ROCA",
+            "HON. MELANDRO B. LOPE",
+            "NITZSHELL TORRES-DELA TORRE J.D.",
+            "SANGGUNIANG BAYAN"
+          ],
+          "linkCount": 51,
+          "tableCount": 0
+        }
+      }
     },
     {
       "id": "cavinti-ordinances-index",
@@ -156,9 +585,28 @@
       "url": "https://cavinti-egov.com/ordinances",
       "dataUrl": "https://cavinti-egov.com/ordinancesData",
       "adapter": "municipal-legislation-datatables/v1",
-      "formats": ["HTML", "JSON", "PDF"],
+      "formats": [
+        "HTML",
+        "JSON",
+        "PDF"
+      ],
       "retrievalStatus": "public endpoint returned HTTP 200",
-      "coverage": "406 rows captured from the public endpoint; 401 distinct displayed document-number strings and 399 distinct PDF URLs; no rows missing titles, displayed dates, or PDF links. Displayed dates range from 1992-07-24 to 2026-09-28. The attached documents have not been parsed or validated."
+      "coverage": "406 rows captured from the public endpoint; 401 distinct displayed document-number strings and 399 distinct PDF URLs; no rows missing titles, displayed dates, or PDF links. Displayed dates range from 1992-07-24 to 2026-09-28. The attached documents have not been parsed or validated.",
+      "lastCheckedAt": "2026-10-28T12:34:37.436Z",
+      "refreshCheck": {
+        "sourceId": "cavinti-ordinances-index",
+        "adapter": "municipal-legislation-datatables/v1",
+        "requestedUrl": "https://cavinti-egov.com/ordinancesData",
+        "finalUrl": "https://cavinti-egov.com/ordinancesData?draw=1&start=0&length=250",
+        "retrievedAt": "2026-10-28T12:34:37.436Z",
+        "httpStatus": 200,
+        "contentType": "application/json",
+        "sourceDate": null,
+        "responseSha256": "fa182934587123345353cc28eb07c3100831596128aa5f49df1955565bec586d",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "Complete metadata capture: 406 rows; previous capture 406. Attachment contents not reviewed."
+      }
     },
     {
       "id": "cavinti-resolutions-index",
@@ -167,324 +615,1053 @@
       "url": "https://cavinti-egov.com/resolutions",
       "dataUrl": "https://cavinti-egov.com/resolutionsData",
       "adapter": "municipal-legislation-datatables/v1",
-      "formats": ["HTML", "JSON", "PDF"],
+      "formats": [
+        "HTML",
+        "JSON",
+        "PDF"
+      ],
       "retrievalStatus": "public endpoint returned HTTP 200",
-      "coverage": "4,492 rows captured from the public endpoint; 4,436 distinct displayed document-number strings and 4,456 distinct PDF URLs; no rows missing titles, displayed dates, or PDF links. Displayed dates range from 1992-07-17 to 2026-10-12. The endpoint exposes no stable source record ID; do not deduplicate by title or number. The attached documents have not been parsed or validated."
+      "coverage": "4,492 rows captured from the public endpoint; 4,436 distinct displayed document-number strings and 4,456 distinct PDF URLs; no rows missing titles, displayed dates, or PDF links. Displayed dates range from 1992-07-17 to 2026-10-12. The endpoint exposes no stable source record ID; do not deduplicate by title or number. The attached documents have not been parsed or validated.",
+      "lastCheckedAt": "2026-10-28T12:34:49.140Z",
+      "refreshCheck": {
+        "sourceId": "cavinti-resolutions-index",
+        "adapter": "municipal-legislation-datatables/v1",
+        "requestedUrl": "https://cavinti-egov.com/resolutionsData",
+        "finalUrl": "https://cavinti-egov.com/resolutionsData?draw=1&start=0&length=250",
+        "retrievedAt": "2026-10-28T12:34:49.140Z",
+        "httpStatus": 200,
+        "contentType": "application/json",
+        "sourceDate": null,
+        "responseSha256": "a488d6a40f3819dea0fc623902c2be709306b3c41d33fc10c964760998fc66ee",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "Complete metadata capture: 4492 rows; previous capture 4492. Attachment contents not reviewed."
+      }
     },
     {
       "id": "cavinti-other-documents",
       "name": "Cavinti other documents page",
       "tier": "primary-lgu",
       "url": "https://cavinti-egov.com/otherDocuments",
-      "formats": ["HTML", "document links"],
-      "retrievalStatus": "page reachable; full catalog not audited",
-      "coverage": "Additional municipal documents may be published here; complete record count and date coverage remain to be audited."
+      "formats": [
+        "HTML",
+        "document links"
+      ],
+      "retrievalStatus": "33 public-filtered rows captured 2026-10-28",
+      "lastCheckedAt": "2026-10-28T12:34:56.754Z",
+      "coverage": "33 public catalog titles, publication dates, access labels and source-published links captured. Attachments and link availability were not verified.",
+      "refreshCheck": {
+        "sourceId": "cavinti-other-documents",
+        "adapter": "municipal-document-coverage",
+        "requestedUrl": "https://cavinti-egov.com/otherDocuments",
+        "retrievedAt": "2026-10-28T12:34:56.754Z",
+        "finalUrl": "https://cavinti-egov.com/otherDocuments",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sourceDate": null,
+        "responseSha256": "52c8bc8ea123a6b95be9e501e63209fb548c27a44093cb993899d7e9983b38a6",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "Other Documents | Portal",
+          "headings": [
+            "Cavinti Laguna",
+            "Other Documents"
+          ],
+          "linkCount": 25,
+          "tableCount": 1
+        }
+      }
     },
     {
       "id": "cavinti-barangay-count-ordinance",
       "name": "Municipal Ordinance No. 051-2026 on barangay legislative procedure",
       "tier": "primary-lgu",
       "url": "https://cavinti-egov.com/uploads/documents/municipal-ordinance-no-051-2026-an-ordinance-institutionalizing-the-rules-and-procedure-for-the-nineteen-19-barangays-1790765813.pdf",
-      "formats": ["PDF", "catalog metadata"],
+      "formats": [
+        "PDF",
+        "catalog metadata"
+      ],
       "retrievalStatus": "catalog title and PDF link observed",
-      "coverage": "The published title states nineteen (19) barangays. The PDF contents and official PSGC roster were not fully reconciled in this research."
+      "coverage": "The published title states nineteen (19) barangays. The PDF contents and official PSGC roster were not fully reconciled in this research.",
+      "lastCheckedAt": "2026-10-28T12:34:56.872Z",
+      "refreshCheck": {
+        "sourceId": "cavinti-barangay-count-ordinance",
+        "adapter": "document-metadata-head-only",
+        "requestedUrl": "https://cavinti-egov.com/uploads/documents/municipal-ordinance-no-051-2026-an-ordinance-institutionalizing-the-rules-and-procedure-for-the-nineteen-19-barangays-1790765813.pdf",
+        "retrievedAt": "2026-10-28T12:34:56.872Z",
+        "finalUrl": "https://cavinti-egov.com/uploads/documents/municipal-ordinance-no-051-2026-an-ordinance-institutionalizing-the-rules-and-procedure-for-the-nineteen-19-barangays-1790765813.pdf",
+        "httpStatus": 200,
+        "contentType": "application/pdf",
+        "sourceDate": "2026-09-30T10:56:53.000Z",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HEAD metadata only. Attachment text, social posts, completeness, legal correctness and current operation were not verified."
+      }
     },
     {
       "id": "psa-psgc-cavinti",
       "name": "PSA PSGC Cavinti municipality/barangay record",
       "tier": "primary-government",
       "url": "https://psa.gov.ph/classification/psgc/barangays/0403407000",
-      "formats": ["HTML"],
+      "formats": [
+        "HTML"
+      ],
       "retrievalStatus": "direct reader returned 403; search index exposed the Cavinti record",
-      "coverage": "Search-index evidence reports PSGC municipality code 0403407000 and 2024 population 24,740. Direct retrieval of the full official row/list failed; treat the population as indexed-primary, not independently extracted from the source table."
+      "coverage": "Search-index evidence reports PSGC municipality code 0403407000 and 2024 population 24,740. Direct retrieval of the full official row/list failed; treat the population as indexed-primary, not independently extracted from the source table.",
+      "lastCheckedAt": "2026-10-28T12:34:57.151Z",
+      "refreshCheck": {
+        "sourceId": "psa-psgc-cavinti",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://psa.gov.ph/classification/psgc/barangays/0403407000",
+        "retrievedAt": "2026-10-28T12:34:57.151Z",
+        "finalUrl": "https://psa.gov.ph/classification/psgc/barangays/0403407000",
+        "httpStatus": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "responseSha256": "5aceb4aacaae8942732624a2866d28b640633760994ab1588c648b8708e45c9f",
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced."
+      }
     },
     {
       "id": "psa-classification-api",
       "name": "PSA classification API",
       "tier": "primary-government",
       "url": "https://classification.psa.gov.ph/psgc/Q3_2026",
-      "formats": ["JSON API"],
+      "formats": [
+        "JSON API"
+      ],
       "retrievalStatus": "endpoint reports access token required",
-      "coverage": "Potential canonical PSGC roster and codes; no token was available in this research."
+      "coverage": "Potential canonical PSGC roster and codes; no token was available in this research.",
+      "lastCheckedAt": "2026-10-28T12:34:57.677Z",
+      "refreshCheck": {
+        "sourceId": "psa-classification-api",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://classification.psa.gov.ph/psgc/Q3_2026",
+        "retrievedAt": "2026-10-28T12:34:57.677Z",
+        "finalUrl": "https://classification.psa.gov.ph/psgc/Q3_2026/",
+        "httpStatus": 200,
+        "contentType": "application/json",
+        "sourceDate": null,
+        "responseSha256": "6e6b0ea438a5346eca04058ba553777b2e6baa5abb47d48da5f010cf59b6e2a2",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced."
+      }
     },
     {
       "id": "psa-2024-popcen-release",
       "name": "PSA 2024 POPCEN population counts declared official",
       "tier": "primary-government",
       "url": "https://psa.gov.ph/content/2024-census-population-popcen-population-counts-declared-official-president",
-      "formats": ["HTML", "tables/attachments via PSA"],
+      "formats": [
+        "HTML",
+        "tables/attachments via PSA"
+      ],
       "retrievalStatus": "reader access blocked; release discoverable through search",
-      "coverage": "Official source for 2024 counts; the Cavinti municipal value should be confirmed from the downloadable PSA table before being treated as directly verified."
+      "coverage": "Official source for 2024 counts; the Cavinti municipal value should be confirmed from the downloadable PSA table before being treated as directly verified.",
+      "lastCheckedAt": "2026-10-28T12:34:57.828Z",
+      "refreshCheck": {
+        "sourceId": "psa-2024-popcen-release",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://psa.gov.ph/content/2024-census-population-popcen-population-counts-declared-official-president",
+        "retrievedAt": "2026-10-28T12:34:57.828Z",
+        "finalUrl": "https://psa.gov.ph/content/2024-census-population-popcen-population-counts-declared-official-president",
+        "httpStatus": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "responseSha256": "54cfaf1065eb8840f0316175fd8611f5bba97160dbf0a2a3e033984b835c4ee3",
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced."
+      }
     },
     {
       "id": "psa-openstat-2020",
       "name": "PSA OpenSTAT 2020 CPH tables",
       "tier": "primary-government",
       "url": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__PO_2020?rxid=0c98a039-222d-403f-b284-434d529eff6e&tablelist=true",
-      "formats": ["PXWeb tables/export"],
+      "formats": [
+        "PXWeb tables/export"
+      ],
       "retrievalStatus": "Cloudflare challenge blocked direct browser/reader access",
-      "coverage": "Official source for 2020 demographic tables; exact municipal/barangay values were not directly exported in this run."
+      "coverage": "Official source for 2020 demographic tables; exact municipal/barangay values were not directly exported in this run.",
+      "lastCheckedAt": "2026-10-28T12:34:58.107Z",
+      "refreshCheck": {
+        "sourceId": "psa-openstat-2020",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__PO_2020?rxid=0c98a039-222d-403f-b284-434d529eff6e&tablelist=true",
+        "retrievedAt": "2026-10-28T12:34:58.107Z",
+        "finalUrl": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__PO_2020?rxid=0c98a039-222d-403f-b284-434d529eff6e&tablelist=true",
+        "httpStatus": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "responseSha256": "28906c9e443e6f3016370103d9b83da7106116302382b0ecf1e44ae2e6bc98d5",
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced."
+      }
     },
     {
       "id": "psa-2024-openstat",
       "name": "PSA OpenSTAT 2024 POPCEN tables",
       "tier": "primary-government",
       "url": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__PO_2024?tablelist=true",
-      "formats": ["PXWeb tables/export"],
+      "formats": [
+        "PXWeb tables/export"
+      ],
       "retrievalStatus": "Cloudflare challenge blocked direct browser/reader access",
-      "coverage": "Official population tables; direct Cavinti query/export remains outstanding."
+      "coverage": "Official population tables; direct Cavinti query/export remains outstanding.",
+      "lastCheckedAt": "2026-10-28T12:34:58.265Z",
+      "refreshCheck": {
+        "sourceId": "psa-2024-openstat",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__PO_2024?tablelist=true",
+        "retrievedAt": "2026-10-28T12:34:58.265Z",
+        "finalUrl": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__PO_2024?tablelist=true",
+        "httpStatus": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "responseSha256": "1d57eae54b661081b50f6ec2ae5bde654de39f81b561b5220807ebc642819508",
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced."
+      }
     },
     {
       "id": "psa-cbms-cavinti",
       "name": "PSA CALABARZON 2024 CBMS data turnover in Cavinti",
       "tier": "primary-government",
       "url": "https://rsso04a.psa.gov.ph/content/2024-community-based-monitoring-system-cbms-data-turnover-cavinti-laguna",
-      "formats": ["HTML", "PDF/event report"],
+      "formats": [
+        "HTML",
+        "PDF/event report"
+      ],
       "retrievalStatus": "event/report surfaced; underlying CBMS data not publicly downloadable in the inspected source",
-      "coverage": "The event is evidence that local CBMS data exists, not permission or evidence that household-level or restricted data is public. Request aggregate, publishable tables through the proper LGU/PSA channel."
+      "coverage": "The event is evidence that local CBMS data exists, not permission or evidence that household-level or restricted data is public. Request aggregate, publishable tables through the proper LGU/PSA channel.",
+      "lastCheckedAt": "2026-10-28T12:34:58.666Z",
+      "refreshCheck": {
+        "sourceId": "psa-cbms-cavinti",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://rsso04a.psa.gov.ph/content/2024-community-based-monitoring-system-cbms-data-turnover-cavinti-laguna",
+        "retrievedAt": "2026-10-28T12:34:58.666Z",
+        "finalUrl": "https://rsso04a.psa.gov.ph/content/2024-community-based-monitoring-system-cbms-data-turnover-cavinti-laguna",
+        "httpStatus": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "responseSha256": "ae5be26e30ca20afa24c6aaea42766a57d8c7abeda9dcb7a063f42193970b597",
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced."
+      }
     },
     {
       "id": "philatlas-cavinti",
       "name": "PhilAtlas Cavinti profile and 2015/2020 barangay table",
       "tier": "secondary-reference",
       "url": "https://www.philatlas.com/luzon/r04a/laguna/cavinti.html",
-      "formats": ["HTML table"],
+      "formats": [
+        "HTML table"
+      ],
       "retrievalStatus": "readable; full 19-row table extracted",
-      "coverage": "Publishes population series and 2015/2020 barangay counts, percentages, changes, and growth rates attributed to census sources. Use as a separately labeled secondary dataset until cross-checked against PSA tables."
+      "coverage": "Publishes population series and 2015/2020 barangay counts, percentages, changes, and growth rates attributed to census sources. Use as a separately labeled secondary dataset until cross-checked against PSA tables.",
+      "lastCheckedAt": "2026-10-28T12:34:59.082Z",
+      "refreshCheck": {
+        "sourceId": "philatlas-cavinti",
+        "adapter": "reference-documentation-coverage",
+        "requestedUrl": "https://www.philatlas.com/luzon/r04a/laguna/cavinti.html",
+        "retrievedAt": "2026-10-28T12:34:59.082Z",
+        "finalUrl": "https://www.philatlas.com/luzon/r04a/laguna/cavinti.html",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sourceDate": "2026-07-18T03:44:53.000Z",
+        "responseSha256": "680e10485f147487fc57fef8f948f5e1a898d68332efff7617d70a3d7ca4a2df",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "Cavinti, Laguna Profile – PhilAtlas",
+          "headings": [
+            "Cavinti , Province of Laguna",
+            "Contents",
+            "Barangays",
+            "Economy",
+            "Historical annual regular income data",
+            "Demographics",
+            "Households",
+            "Population by age group",
+            "Historical population",
+            "Location",
+            "Distances",
+            "Nearest towns",
+            "Nearest cities",
+            "Notes"
+          ],
+          "linkCount": 118,
+          "tableCount": 6
+        }
+      }
     },
     {
       "id": "blgf-fiscal-data",
       "name": "BLGF Local Government Unit Fiscal Data",
       "tier": "primary-government",
       "url": "https://blgf.gov.ph/lgu-fiscal-data/",
-      "formats": ["HTML", "spreadsheet/report downloads"],
+      "formats": [
+        "HTML",
+        "spreadsheet/report downloads"
+      ],
       "retrievalStatus": "direct reader returned 403; search index described latest annual SRE and historical data",
-      "coverage": "Source of SRE, income, expenditure, debt, property assessment, and SEF indicators; no Cavinti row was extracted."
+      "coverage": "Source of SRE, income, expenditure, debt, property assessment, and SEF indicators; no Cavinti row was extracted.",
+      "lastCheckedAt": "2026-10-28T12:34:59.088Z",
+      "refreshCheck": {
+        "sourceId": "blgf-fiscal-data",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://blgf.gov.ph/lgu-fiscal-data/",
+        "retrievedAt": "2026-10-28T12:34:59.088Z",
+        "finalUrl": null,
+        "httpStatus": null,
+        "contentType": null,
+        "sourceDate": null,
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "stale",
+        "note": "Coverage request failed; existing capture retained. robots.txt unavailable (403); source not requested"
+      }
     },
     {
       "id": "bettergov-blgf-mirror",
       "name": "BetterGov mirror of BLGF local fiscal datasets",
       "tier": "secondary-aggregator",
       "url": "https://data.bettergov.ph/datasets/9",
-      "formats": ["dataset listing and resource downloads"],
+      "formats": [
+        "dataset listing and resource downloads"
+      ],
       "retrievalStatus": "listing readable; resource data not downloaded",
-      "coverage": "Lists 43 resources, 13.35 MB total, last updated 2025-08-01; describes SRE, regular income, disaster-risk funds, debt, property assessment, and SEF. Dataset listing did not expose a verified Cavinti row."
+      "coverage": "Lists 43 resources, 13.35 MB total, last updated 2025-08-01; describes SRE, regular income, disaster-risk funds, debt, property assessment, and SEF. Dataset listing did not expose a verified Cavinti row.",
+      "lastCheckedAt": "2026-10-28T12:34:59.643Z",
+      "refreshCheck": {
+        "sourceId": "bettergov-blgf-mirror",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://data.bettergov.ph/datasets/9",
+        "retrievedAt": "2026-10-28T12:34:59.643Z",
+        "finalUrl": "https://data.bettergov.ph/datasets/9",
+        "httpStatus": 200,
+        "contentType": "text/html",
+        "sourceDate": null,
+        "responseSha256": "0fe5d0fa7d7ea0a2336c0676e22ba952664263bf3b13b0a8ab55b5a869bf179a",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "Open Data Portal · BetterGov.ph",
+          "headings": [],
+          "linkCount": 0,
+          "tableCount": 0
+        }
+      }
     },
     {
       "id": "dilg-fdp",
       "name": "DILG Full Disclosure Policy Portal",
       "tier": "primary-government",
       "url": "https://fdpp.dilg.gov.ph/",
-      "formats": ["web portal", "PDF/spreadsheet reports"],
+      "formats": [
+        "web portal",
+        "PDF/spreadsheet reports"
+      ],
       "retrievalStatus": "TLS certificate verification failed in reader; no municipality-filtered records retrieved",
-      "coverage": "Do not interpret search absence or connection failure as zero reporting."
+      "coverage": "Do not interpret search absence or connection failure as zero reporting.",
+      "lastCheckedAt": "2026-10-28T12:34:59.643Z",
+      "refreshCheck": {
+        "sourceId": "dilg-fdp",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://fdpp.dilg.gov.ph/",
+        "retrievedAt": "2026-10-28T12:34:59.643Z",
+        "finalUrl": null,
+        "httpStatus": null,
+        "contentType": null,
+        "sourceDate": null,
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "stale",
+        "note": "Coverage request failed; existing capture retained. fetch failed"
+      }
     },
     {
       "id": "philgeps-cavinti-award-lead",
       "name": "PhilGEPS Cavinti award-notice lead AwardID 5917411",
       "tier": "primary-government-platform",
       "url": "https://notices.philgeps.gov.ph/GEPS/R4/R3_AwardNotice_AwardAbstract.html?AwardID=5917411&LineItemID=1&OrgID=297358",
-      "formats": ["HTML notice"],
+      "formats": [
+        "HTML notice"
+      ],
       "retrievalStatus": "notice page readable; publication and award dates conflict",
-      "coverage": "The record shows a publication date in January 2026 and an award date of 2026-12-02, later than the 2026-10-21 retrieval date. Preserve as a disputed source record; do not report it as a completed award or infer procurement totals."
+      "coverage": "The record shows a publication date in January 2026 and an award date of 2026-12-02, later than the 2026-10-21 retrieval date. Preserve as a disputed source record; do not report it as a completed award or infer procurement totals.",
+      "lastCheckedAt": "2026-10-28T12:35:00.426Z",
+      "refreshCheck": {
+        "sourceId": "philgeps-cavinti-award-lead",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://notices.philgeps.gov.ph/GEPS/R4/R3_AwardNotice_AwardAbstract.html?AwardID=5917411&LineItemID=1&OrgID=297358",
+        "retrievedAt": "2026-10-28T12:35:00.426Z",
+        "finalUrl": "https://notices.philgeps.gov.ph/GEPS/R4/R3_AwardNotice_AwardAbstract.html?AwardID=5917411&LineItemID=1&OrgID=297358",
+        "httpStatus": 200,
+        "contentType": "text/html",
+        "sourceDate": "2018-02-28T09:55:56.000Z",
+        "responseSha256": "3bf7b279a369d6635bff199b553510b319f5e32610c15a43ba3fd3657d74e385",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "PhilGEPS",
+          "headings": [],
+          "linkCount": 0,
+          "tableCount": 0
+        }
+      }
     },
     {
       "id": "coa-annual-audits",
       "name": "Commission on Audit annual audit report index",
       "tier": "primary-government",
       "url": "https://www.coa.gov.ph/reports/annual-audit-reports",
-      "formats": ["HTML", "Word/Excel/PDF reports"],
+      "formats": [
+        "HTML",
+        "Word/Excel/PDF reports"
+      ],
       "retrievalStatus": "403 for direct read; indexed page describes CY 2014-2024 annual reports",
-      "coverage": "No accessible Cavinti-specific audit report or values were verified. Secondary audit summaries remain leads only."
+      "coverage": "No accessible Cavinti-specific audit report or values were verified. Secondary audit summaries remain leads only.",
+      "lastCheckedAt": "2026-10-28T12:35:00.428Z",
+      "refreshCheck": {
+        "sourceId": "coa-annual-audits",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://www.coa.gov.ph/reports/annual-audit-reports",
+        "retrievedAt": "2026-10-28T12:35:00.428Z",
+        "finalUrl": null,
+        "httpStatus": null,
+        "contentType": null,
+        "sourceDate": null,
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "stale",
+        "note": "Coverage request failed; existing capture retained. robots.txt unavailable (403); source not requested"
+      }
     },
     {
       "id": "deped-school-identifiers",
       "name": "DepEd school allocation/identifier list",
       "tier": "primary-government",
       "url": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List-4.pdf",
-      "formats": ["PDF"],
+      "formats": [
+        "PDF"
+      ],
       "retrievalStatus": "Cavinti school names/IDs surfaced in indexed search; source PDF not fully audited here",
-      "coverage": "Use school IDs as candidate administrative identifiers; verify with the current DepEd masterlist before treating names/statuses as current."
+      "coverage": "Use school IDs as candidate administrative identifiers; verify with the current DepEd masterlist before treating names/statuses as current.",
+      "lastCheckedAt": "2026-10-28T12:35:00.629Z",
+      "refreshCheck": {
+        "sourceId": "deped-school-identifiers",
+        "adapter": "document-metadata-head-only",
+        "requestedUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List-4.pdf",
+        "retrievedAt": "2026-10-28T12:35:00.629Z",
+        "finalUrl": null,
+        "httpStatus": null,
+        "contentType": null,
+        "sourceDate": null,
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "stale",
+        "note": "Coverage request failed; existing capture retained. robots.txt unavailable (502); source not requested"
+      }
     },
     {
       "id": "deped-laguna-directory",
       "name": "DepEd Laguna school directory mirror",
       "tier": "regional-directory-lead",
       "url": "https://depedlaguna.com/schools/senior-high-school/",
-      "formats": ["HTML"],
+      "formats": [
+        "HTML"
+      ],
       "retrievalStatus": "readable/indexed; page update date not visible",
-      "coverage": "Lists Cavinti Integrated National High School (307911) and Calminue Integrated National High School (307926); cross-check against the official DepEd masterlist."
+      "coverage": "Lists Cavinti Integrated National High School (307911) and Calminue Integrated National High School (307926); cross-check against the official DepEd masterlist.",
+      "lastCheckedAt": "2026-10-28T12:35:07.087Z",
+      "refreshCheck": {
+        "sourceId": "deped-laguna-directory",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://depedlaguna.com/schools/senior-high-school/",
+        "retrievedAt": "2026-10-28T12:35:07.087Z",
+        "finalUrl": "https://depedlaguna.com/schools/senior-high-school/",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "responseSha256": "2b8e19fa74489608dbba95768f9b33beb2373ecb8606c054f06f0fc80111e1db",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "Integrated School | Deped Laguna",
+          "headings": [
+            "",
+            "Integrated School",
+            "Integrated School",
+            "GET IN TOUCH",
+            "Like us on",
+            "WEBSITE VISITORS"
+          ],
+          "linkCount": 244,
+          "tableCount": 1
+        }
+      }
     },
     {
       "id": "doh-calabarzon-facilities",
       "name": "DOH CALABARZON rural health unit / licensing sources",
       "tier": "primary-government",
       "url": "https://ro4a.doh.gov.ph/rural-health-units",
-      "formats": ["HTML"],
+      "formats": [
+        "HTML"
+      ],
       "retrievalStatus": "direct reader access failed; no facility-level listing was confirmed",
-      "coverage": "The municipal portal identifies RHU Cavinti and publishes hotline numbers; facility accreditation, services, hours, and staffing remain unverified."
+      "coverage": "The municipal portal identifies RHU Cavinti and publishes hotline numbers; facility accreditation, services, hours, and staffing remain unverified.",
+      "lastCheckedAt": "2026-10-28T12:35:07.094Z",
+      "refreshCheck": {
+        "sourceId": "doh-calabarzon-facilities",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://ro4a.doh.gov.ph/rural-health-units",
+        "retrievedAt": "2026-10-28T12:35:07.094Z",
+        "finalUrl": null,
+        "httpStatus": null,
+        "contentType": null,
+        "sourceDate": null,
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "stale",
+        "note": "Coverage request failed; existing capture retained. robots.txt unavailable (403); source not requested"
+      }
     },
     {
       "id": "cavinti-rhu-channel",
       "name": "Cavinti RHU official channel linked by the municipal portal",
       "tier": "primary-lgu-social",
       "url": "https://www.facebook.com/cavinti.rhu",
-      "formats": ["public social posts"],
+      "formats": [
+        "public social posts"
+      ],
       "retrievalStatus": "linked from official municipal portal; post archive not collected",
-      "coverage": "Use dated public advisories only; do not ingest comments, reactions, or user profiles."
+      "coverage": "Use dated public advisories only; do not ingest comments, reactions, or user profiles.",
+      "lastCheckedAt": "2026-10-28T12:35:07.806Z",
+      "refreshCheck": {
+        "sourceId": "cavinti-rhu-channel",
+        "adapter": "official-channel-metadata-head-only",
+        "requestedUrl": "https://www.facebook.com/cavinti.rhu",
+        "retrievedAt": "2026-10-28T12:35:07.806Z",
+        "finalUrl": null,
+        "httpStatus": null,
+        "contentType": null,
+        "sourceDate": null,
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "stale",
+        "note": "Coverage request failed; existing capture retained. robots.txt disallows https://www.facebook.com/cavinti.rhu; access controls not bypassed"
+      }
     },
     {
       "id": "deped-elementary-allocation-leads",
       "name": "DepEd allocation-list PDF surfaced in search",
       "tier": "primary-government",
       "url": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List-4.pdf",
-      "formats": ["PDF"],
+      "formats": [
+        "PDF"
+      ],
       "retrievalStatus": "search-result leads observed; direct school-table extraction not verified",
-      "coverage": "Elementary school-name/ID leads are kept separately as research-only candidates, not as a current complete roster."
+      "coverage": "Elementary school-name/ID leads are kept separately as research-only candidates, not as a current complete roster.",
+      "lastCheckedAt": "2026-10-28T12:35:08.265Z",
+      "refreshCheck": {
+        "sourceId": "deped-elementary-allocation-leads",
+        "adapter": "document-metadata-head-only",
+        "requestedUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List-4.pdf",
+        "retrievedAt": "2026-10-28T12:35:08.265Z",
+        "finalUrl": null,
+        "httpStatus": null,
+        "contentType": null,
+        "sourceDate": null,
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "stale",
+        "note": "Coverage request failed; existing capture retained. robots.txt unavailable (502); source not requested"
+      }
     },
     {
       "id": "psa-caf-resources",
       "name": "PSA 2022 Census of Agriculture and Fisheries resources",
       "tier": "primary-government",
       "url": "https://psa.gov.ph/taxonomy/term/1709",
-      "formats": ["HTML", "PDF"],
+      "formats": [
+        "HTML",
+        "PDF"
+      ],
       "retrievalStatus": "catalogued as an official discovery source",
-      "coverage": "Indicator and resource discovery; no Cavinti-specific published table was extracted."
+      "coverage": "Indicator and resource discovery; no Cavinti-specific published table was extracted.",
+      "lastCheckedAt": "2026-10-28T12:35:08.931Z",
+      "refreshCheck": {
+        "sourceId": "psa-caf-resources",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://psa.gov.ph/taxonomy/term/1709",
+        "retrievedAt": "2026-10-28T12:35:08.931Z",
+        "finalUrl": "https://psa.gov.ph/taxonomy/term/1709",
+        "httpStatus": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "responseSha256": "1fc9b91e8c0254283627d1d6303b284bf72226715b93d8d1f95cb7d168c109eb",
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced."
+      }
     },
     {
       "id": "psa-caf-data-items",
       "name": "PSA 2022 Census of Agriculture and Fisheries data items",
       "tier": "primary-government",
       "url": "https://psa.gov.ph/sites/default/files/kmcd/files/2022-CAF-Data-Items.pdf",
-      "formats": ["PDF"],
+      "formats": [
+        "PDF"
+      ],
       "retrievalStatus": "catalogued as an official discovery source",
-      "coverage": "Describes census items; it is not a Cavinti observation dataset."
+      "coverage": "Describes census items; it is not a Cavinti observation dataset.",
+      "lastCheckedAt": "2026-10-28T12:35:09.732Z",
+      "refreshCheck": {
+        "sourceId": "psa-caf-data-items",
+        "adapter": "document-metadata-head-only",
+        "requestedUrl": "https://psa.gov.ph/sites/default/files/kmcd/files/2022-CAF-Data-Items.pdf",
+        "retrievedAt": "2026-10-28T12:35:09.732Z",
+        "finalUrl": "https://psa.gov.ph/sites/default/files/kmcd/files/2022-CAF-Data-Items.pdf",
+        "httpStatus": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "not-checked",
+        "note": "HEAD metadata only. Attachment text, social posts, completeness, legal correctness and current operation were not verified."
+      }
     },
     {
       "id": "psa-agriculture-statistics",
       "name": "PSA Selected Statistics on Agriculture and Fisheries",
       "tier": "primary-government",
       "url": "https://psa.gov.ph/publication/selected-statistics-on-agriculture-and-fisheries",
-      "formats": ["HTML", "PDF"],
+      "formats": [
+        "HTML",
+        "PDF"
+      ],
       "retrievalStatus": "catalogued as an official discovery source",
-      "coverage": "Regional/national statistical source; no municipal Cavinti series was verified."
+      "coverage": "Regional/national statistical source; no municipal Cavinti series was verified.",
+      "lastCheckedAt": "2026-10-28T12:35:10.767Z",
+      "refreshCheck": {
+        "sourceId": "psa-agriculture-statistics",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://psa.gov.ph/publication/selected-statistics-on-agriculture-and-fisheries",
+        "retrievedAt": "2026-10-28T12:35:10.767Z",
+        "finalUrl": "https://psa.gov.ph/publication/selected-statistics-on-agriculture-and-fisheries",
+        "httpStatus": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "responseSha256": "1a423e261ec57e882c44584bb485dfc412997bcb31542c6f59cbd87cab553bdc",
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced."
+      }
     },
     {
       "id": "psa-laguna-fisheries-2024",
       "name": "PSA CALABARZON Laguna fisheries production release",
       "tier": "primary-government",
       "url": "https://rsso04a.psa.gov.ph/sites/default/files/attachment-dir/Fisheries%20Production_Fourth%20Qtr%202024%20and%20Annual%202024.pdf",
-      "formats": ["PDF"],
+      "formats": [
+        "PDF"
+      ],
       "retrievalStatus": "regional release catalogued",
-      "coverage": "Laguna-level 2024 fisheries data; do not attribute provincial values to Cavinti."
+      "coverage": "Laguna-level 2024 fisheries data; do not attribute provincial values to Cavinti.",
+      "lastCheckedAt": "2026-10-28T12:35:11.709Z",
+      "refreshCheck": {
+        "sourceId": "psa-laguna-fisheries-2024",
+        "adapter": "document-metadata-head-only",
+        "requestedUrl": "https://rsso04a.psa.gov.ph/sites/default/files/attachment-dir/Fisheries%20Production_Fourth%20Qtr%202024%20and%20Annual%202024.pdf",
+        "retrievedAt": "2026-10-28T12:35:11.709Z",
+        "finalUrl": "https://rsso04a.psa.gov.ph/sites/default/files/attachment-dir/Fisheries%20Production_Fourth%20Qtr%202024%20and%20Annual%202024.pdf",
+        "httpStatus": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "not-checked",
+        "note": "HEAD metadata only. Attachment text, social posts, completeness, legal correctness and current operation were not verified."
+      }
     },
     {
       "id": "ati-farm-tourism-guide",
       "name": "ATI-4A regional farm-tourism guide",
       "tier": "primary-government",
       "url": "https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/Agriculturally%20Awesome%20A%20Regional%20Farm%20Tourism%20Travel%20Guide%20vol.1.pdf",
-      "formats": ["PDF"],
+      "formats": [
+        "PDF"
+      ],
       "retrievalStatus": "regional publication catalogued",
-      "coverage": "Regional discovery reference, not a complete Cavinti attraction inventory."
+      "coverage": "Regional discovery reference, not a complete Cavinti attraction inventory.",
+      "lastCheckedAt": "2026-10-28T12:35:12.364Z",
+      "refreshCheck": {
+        "sourceId": "ati-farm-tourism-guide",
+        "adapter": "document-metadata-head-only",
+        "requestedUrl": "https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/Agriculturally%20Awesome%20A%20Regional%20Farm%20Tourism%20Travel%20Guide%20vol.1.pdf",
+        "retrievedAt": "2026-10-28T12:35:12.364Z",
+        "finalUrl": "https://ati2.da.gov.ph/ati-4a/content/sites/default/files/2022-09/Agriculturally%20Awesome%20A%20Regional%20Farm%20Tourism%20Travel%20Guide%20vol.1.pdf",
+        "httpStatus": 200,
+        "contentType": "application/pdf",
+        "sourceDate": "2022-09-19T03:06:53.000Z",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HEAD metadata only. Attachment text, social posts, completeness, legal correctness and current operation were not verified."
+      }
     },
     {
       "id": "tieza-pagsanjan-gorge",
       "name": "TIEZA Pagsanjan Garden Resort / Pagsanjan Gorge document",
       "tier": "primary-government",
       "url": "https://tieza.gov.ph/wp-content/uploads/2015/11/Pagsanjan-Garden-Resort.pdf",
-      "formats": ["PDF"],
+      "formats": [
+        "PDF"
+      ],
       "retrievalStatus": "historical tourism reference catalogued",
-      "coverage": "Establishes a source lead for Pagsanjan Gorge National Park; not a current tourism inventory."
+      "coverage": "Establishes a source lead for Pagsanjan Gorge National Park; not a current tourism inventory.",
+      "lastCheckedAt": "2026-10-28T12:35:14.491Z",
+      "refreshCheck": {
+        "sourceId": "tieza-pagsanjan-gorge",
+        "adapter": "document-metadata-head-only",
+        "requestedUrl": "https://tieza.gov.ph/wp-content/uploads/2015/11/Pagsanjan-Garden-Resort.pdf",
+        "retrievedAt": "2026-10-28T12:35:14.491Z",
+        "finalUrl": "https://tieza.gov.ph/wp-content/uploads/2015/11/Pagsanjan-Garden-Resort.pdf",
+        "httpStatus": 200,
+        "contentType": "application/pdf",
+        "sourceDate": "2020-08-03T00:26:38.000Z",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HEAD metadata only. Attachment text, social posts, completeness, legal correctness and current operation were not verified."
+      }
     },
     {
       "id": "phivolcs-hazard-maps",
       "name": "PHIVOLCS GIS hazard maps",
       "tier": "primary-government",
       "url": "https://www.phivolcs.dost.gov.ph/gis-web-hazard-maps",
-      "formats": ["web map"],
+      "formats": [
+        "web map"
+      ],
       "retrievalStatus": "official map product catalogued",
-      "coverage": "No Cavinti-specific layer export, edition, or barangay exposure table was extracted."
+      "coverage": "No Cavinti-specific layer export, edition, or barangay exposure table was extracted.",
+      "lastCheckedAt": "2026-10-28T12:35:15.075Z",
+      "refreshCheck": {
+        "sourceId": "phivolcs-hazard-maps",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://www.phivolcs.dost.gov.ph/gis-web-hazard-maps",
+        "retrievedAt": "2026-10-28T12:35:15.075Z",
+        "finalUrl": "https://www.phivolcs.dost.gov.ph/gis-web-hazard-maps/",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "responseSha256": "a3febd74ceabd52c7645a4b4cc67562b69ef62ecaeff29273a0f29db5d7cb8c2",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "Hazard Maps | PHIVOLCS",
+          "headings": [
+            "",
+            "Hazard Maps",
+            "Download hazard maps"
+          ],
+          "linkCount": 202,
+          "tableCount": 2
+        }
+      }
     },
     {
       "id": "hazardhunterph",
       "name": "HazardHunterPH",
       "tier": "primary-government",
       "url": "https://hazardhunter.georisk.gov.ph/map",
-      "formats": ["interactive web map"],
+      "formats": [
+        "interactive web map"
+      ],
       "retrievalStatus": "official multi-agency tool catalogued",
-      "coverage": "Location-based assessment; no Cavinti query output archived in this dataset."
+      "coverage": "Location-based assessment; no Cavinti query output archived in this dataset.",
+      "lastCheckedAt": "2026-10-28T12:35:15.085Z",
+      "refreshCheck": {
+        "sourceId": "hazardhunterph",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://hazardhunter.georisk.gov.ph/map",
+        "retrievedAt": "2026-10-28T12:35:15.085Z",
+        "finalUrl": null,
+        "httpStatus": null,
+        "contentType": null,
+        "sourceDate": null,
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "stale",
+        "note": "Coverage request failed; existing capture retained. fetch failed"
+      }
     },
     {
       "id": "pagasa-flood-maps",
       "name": "PAGASA flood hazard maps",
       "tier": "primary-government",
       "url": "https://www.pagasa.dost.gov.ph/products-and-services/flood-hazard-maps",
-      "formats": ["web map"],
+      "formats": [
+        "web map"
+      ],
       "retrievalStatus": "official map product catalogued",
-      "coverage": "No Cavinti-specific map layer extracted."
+      "coverage": "No Cavinti-specific map layer extracted.",
+      "lastCheckedAt": "2026-10-28T12:35:18.546Z",
+      "refreshCheck": {
+        "sourceId": "pagasa-flood-maps",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://www.pagasa.dost.gov.ph/products-and-services/flood-hazard-maps",
+        "retrievedAt": "2026-10-28T12:35:18.546Z",
+        "finalUrl": "https://www.pagasa.dost.gov.ph/products-and-services/flood-hazard-maps",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "responseSha256": "8738aaf08e6ffa1767f6c3132462cd1e693ee65f11186712f2f193795a4a6c26",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "PAGASA",
+          "headings": [
+            "GOVPH"
+          ],
+          "linkCount": 316,
+          "tableCount": 0
+        }
+      }
     },
     {
       "id": "pagasa-risk-maps",
       "name": "PAGASA risk analysis maps",
       "tier": "primary-government",
       "url": "https://pagasa.dost.gov.ph/products-and-services/risk-analysis-maps",
-      "formats": ["web map"],
+      "formats": [
+        "web map"
+      ],
       "retrievalStatus": "official map product catalogued",
-      "coverage": "No Cavinti-specific layer export or indicator table extracted."
+      "coverage": "No Cavinti-specific layer export or indicator table extracted.",
+      "lastCheckedAt": "2026-10-28T12:35:19.922Z",
+      "refreshCheck": {
+        "sourceId": "pagasa-risk-maps",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://pagasa.dost.gov.ph/products-and-services/risk-analysis-maps",
+        "retrievedAt": "2026-10-28T12:35:19.922Z",
+        "finalUrl": "https://pagasa.dost.gov.ph/products-and-services/risk-analysis-maps",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "responseSha256": "e5e1127d84651636844dd25933f141cccf905b74585f46d8ec39e68e02028ecf",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "PAGASA",
+          "headings": [
+            "GOVPH",
+            "Flood Risk Map",
+            "Tropical Cyclone Severe Wind Risk Maps"
+          ],
+          "linkCount": 323,
+          "tableCount": 0
+        }
+      }
     },
     {
       "id": "pagasa-climate-normals",
       "name": "PAGASA climatological normals",
       "tier": "primary-government",
       "url": "https://www.pagasa.dost.gov.ph/climate/climatological-normals",
-      "formats": ["HTML", "tables"],
+      "formats": [
+        "HTML",
+        "tables"
+      ],
       "retrievalStatus": "official indicator source catalogued",
-      "coverage": "PAGASA describes 30-year normals; no Cavinti station series or municipal normal was verified."
+      "coverage": "PAGASA describes 30-year normals; no Cavinti station series or municipal normal was verified.",
+      "lastCheckedAt": "2026-10-28T12:35:20.472Z",
+      "refreshCheck": {
+        "sourceId": "pagasa-climate-normals",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://www.pagasa.dost.gov.ph/climate/climatological-normals",
+        "retrievedAt": "2026-10-28T12:35:20.472Z",
+        "finalUrl": "https://www.pagasa.dost.gov.ph/climate/climatological-normals",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "responseSha256": "35dd9eaaee62201ee48028b8469970b826899a558c3a3a767e771da2ca4a70b8",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "PAGASA",
+          "headings": [
+            "GOVPH"
+          ],
+          "linkCount": 316,
+          "tableCount": 1
+        }
+      }
     },
     {
       "id": "pagasa-climgrid-rainfall",
       "name": "PAGASA ClimGridPh historical rainfall",
       "tier": "primary-government",
       "url": "https://climgridph.pagasa.dost.gov.ph/ClimGridPh/historical_rainfall.php",
-      "formats": ["interactive map"],
+      "formats": [
+        "interactive map"
+      ],
       "retrievalStatus": "official gridded product catalogued",
-      "coverage": "No Cavinti grid-cell extract was created; do not describe a gridded estimate as a station observation."
+      "coverage": "No Cavinti grid-cell extract was created; do not describe a gridded estimate as a station observation.",
+      "lastCheckedAt": "2026-10-28T12:35:24.275Z",
+      "refreshCheck": {
+        "sourceId": "pagasa-climgrid-rainfall",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://climgridph.pagasa.dost.gov.ph/ClimGridPh/historical_rainfall.php",
+        "retrievedAt": "2026-10-28T12:35:24.275Z",
+        "finalUrl": "https://climgridph.pagasa.dost.gov.ph/ClimGridPh/historical_rainfall.php",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "responseSha256": "efacf9c4dc0d2c8e3cdaeb1d2957d1e373d0b99ac14b415fb0b309e9c68ad4ec",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "ClimGridPh Rainfall",
+          "headings": [],
+          "linkCount": 5,
+          "tableCount": 0
+        }
+      }
     },
     {
       "id": "namria-emapa",
       "name": "NAMRIA eMapa",
       "tier": "primary-government",
       "url": "https://isportal.namria.gov.ph/eMapa/",
-      "formats": ["interactive map"],
+      "formats": [
+        "interactive map"
+      ],
       "retrievalStatus": "official mapping service catalogued",
-      "coverage": "No official Cavinti polygon or downloadable layer was verified."
+      "coverage": "No official Cavinti polygon or downloadable layer was verified.",
+      "lastCheckedAt": "2026-10-28T12:35:25.464Z",
+      "refreshCheck": {
+        "sourceId": "namria-emapa",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://isportal.namria.gov.ph/eMapa/",
+        "retrievedAt": "2026-10-28T12:35:25.464Z",
+        "finalUrl": "https://isportal.namria.gov.ph/eMapa/",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=utf-8",
+        "sourceDate": null,
+        "responseSha256": "3a340936bdb6df66a01113107ec038b95867dc0706450ee73d8c4e531e6ad21c",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "NAMRIA-eMapa",
+          "headings": [
+            "NAMRIA Products",
+            ""
+          ],
+          "linkCount": 40,
+          "tableCount": 2
+        }
+      }
     },
     {
       "id": "napocor-watershed-2023",
       "name": "NAPOCOR Watershed Management Department 2023 activities",
       "tier": "primary-government",
       "url": "https://www.napocor.gov.ph/wp-content/uploads/NPC_Corporate_Governance/2023/2023_Watershed_Management_Activities.pdf",
-      "formats": ["PDF"],
+      "formats": [
+        "PDF"
+      ],
       "retrievalStatus": "official regional context source catalogued",
-      "coverage": "Names the Caliraya-Lumot watershed; no Cavinti environmental measurement series."
+      "coverage": "Names the Caliraya-Lumot watershed; no Cavinti environmental measurement series.",
+      "lastCheckedAt": "2026-10-28T12:35:26.716Z",
+      "refreshCheck": {
+        "sourceId": "napocor-watershed-2023",
+        "adapter": "document-metadata-head-only",
+        "requestedUrl": "https://www.napocor.gov.ph/wp-content/uploads/NPC_Corporate_Governance/2023/2023_Watershed_Management_Activities.pdf",
+        "retrievedAt": "2026-10-28T12:35:26.716Z",
+        "finalUrl": "https://www.napocor.gov.ph/wp-content/uploads/NPC_Corporate_Governance/2023/2023_Watershed_Management_Activities.pdf",
+        "httpStatus": 403,
+        "contentType": "text/html; charset=iso-8859-1",
+        "sourceDate": null,
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "not-checked",
+        "note": "HEAD metadata only. Attachment text, social posts, completeness, legal correctness and current operation were not verified."
+      }
     },
     {
       "id": "llda-caliraya-subbasin",
       "name": "LLDA Caliraya sub-basin planning document",
       "tier": "primary-government",
       "url": "https://llda.gov.ph/wp-content/uploads/2019/09/Vol_12.Caliraya-SB.pdf",
-      "formats": ["PDF"],
+      "formats": [
+        "PDF"
+      ],
       "retrievalStatus": "official regional context source catalogued",
-      "coverage": "Names Cavinti in the Caliraya sub-basin; no current municipality-level measurement series."
+      "coverage": "Names Cavinti in the Caliraya sub-basin; no current municipality-level measurement series.",
+      "lastCheckedAt": "2026-10-28T12:35:27.029Z",
+      "refreshCheck": {
+        "sourceId": "llda-caliraya-subbasin",
+        "adapter": "document-metadata-head-only",
+        "requestedUrl": "https://llda.gov.ph/wp-content/uploads/2019/09/Vol_12.Caliraya-SB.pdf",
+        "retrievedAt": "2026-10-28T12:35:27.029Z",
+        "finalUrl": "https://llda.gov.ph/wp-content/uploads/2019/09/Vol_12.Caliraya-SB.pdf",
+        "httpStatus": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "availabilityStatus": "access-blocked",
+        "freshnessStatus": "not-checked",
+        "note": "HEAD metadata only. Attachment text, social posts, completeness, legal correctness and current operation were not verified."
+      }
     },
     {
       "id": "dti-cmci-cavinti",
       "name": "DTI Cities and Municipalities Competitiveness Index, Cavinti profile",
       "tier": "primary-government",
       "url": "https://cmci.dti.gov.ph/lgu-profile.php?lgu=Cavinti&year=2024",
-      "formats": ["HTML", "ranking and indicator tables"],
+      "formats": [
+        "HTML",
+        "ranking and indicator tables"
+      ],
       "retrievalStatus": "HTTP 403 on direct reader access; search results surfaced the 2024 profile but did not expose a complete labelled table",
-      "coverage": "Official source lead for competitiveness rankings and indicators. Do not publish a rank or score from the partial search snippet; retrieve and preserve the labelled annual table."
+      "coverage": "Official source lead for competitiveness rankings and indicators. Do not publish a rank or score from the partial search snippet; retrieve and preserve the labelled annual table.",
+      "lastCheckedAt": "2026-10-28T12:35:29.325Z",
+      "refreshCheck": {
+        "sourceId": "dti-cmci-cavinti",
+        "adapter": "government-reference-coverage",
+        "requestedUrl": "https://cmci.dti.gov.ph/lgu-profile.php?lgu=Cavinti&year=2024",
+        "retrievedAt": "2026-10-28T12:35:29.325Z",
+        "finalUrl": "https://cmci.dti.gov.ph/lgu-profile.php?lgu=Cavinti&year=2024",
+        "httpStatus": 200,
+        "contentType": "text/html; charset=UTF-8",
+        "sourceDate": null,
+        "responseSha256": "3882094ce21b8172a1cb5d81706501457389d226a6840d7f8beee5c9367d858e",
+        "availabilityStatus": "available",
+        "freshnessStatus": "not-checked",
+        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "observed": {
+          "title": "Cavinti Profile - Cities and Municipalities Competitive Index",
+          "headings": [
+            "ECONOMIC DYNAMISM - 20%",
+            "GOVERNMENT EFFICIENCY - 20%",
+            "INFRASTRUCTURE - 20%",
+            "RESILIENCY - 20%",
+            "INNOVATION - 20%",
+            "Cities and Municipalities Competitive Index"
+          ],
+          "linkCount": 54,
+          "tableCount": 12
+        }
+      }
     }
   ],
   "knownGaps": [
