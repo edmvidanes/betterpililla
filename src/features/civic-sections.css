@@ -1,0 +1,50 @@
+.other-documents,
+.about-cavinti { margin-block: 3rem; }
+
+.other-documents > h2,
+.about-cavinti > h2 { margin-bottom: .75rem; }
+
+.other-documents > p,
+.about-cavinti > p { max-width: 75ch; }
+
+.other-documents-source {
+  padding: 1rem 1.25rem;
+  background: #f3f6fb;
+  border-radius: .5rem;
+  line-height: 1.6;
+}
+
+.other-documents .directory-tools { border-radius: .5rem; }
+.other-documents .directory-tools label { max-width: 42rem; font-weight: 650; }
+.other-documents .directory-tools p { color: #4c5e78; font-variant-numeric: tabular-nums; }
+.other-documents-list { border-top: 1px solid var(--portal-border); }
+.other-documents-list > li { display: flex; flex-direction: column; align-items: start; gap: .5rem; }
+.other-documents-list h3 { line-height: 1.4; overflow-wrap: anywhere; }
+.other-documents-list p { margin: 0; }
+.other-documents-list a { margin-top: auto; padding-block: .35rem; font-weight: 650; }
+
+.about-cavinti-profile { max-width: 75ch; margin-top: 2rem; }
+.about-cavinti-profile h3 { margin: 2rem 0 .6rem; font-size: 1.25rem; }
+.about-cavinti-profile h3:first-child { margin-top: 0; }
+.about-cavinti-profile p { margin: 0 0 1rem; }
+.about-cavinti-evidence {
+  margin-top: 2rem;
+  padding: 1.25rem;
+  background: #fffaeb;
+  border-radius: .5rem;
+  color: #5c420b;
+}
+
+.official-channels { padding-block: 3rem; }
+.official-channels > h2 { margin: 0 0 .65rem; font-size: clamp(1.6rem, 3vw, 2.6rem); line-height: 1.15; letter-spacing: -.025em; }
+.official-channels > p { max-width: 75ch; }
+.official-channels-list { margin-top: 1.5rem; border-top: 1px solid var(--portal-border); }
+.official-channels-list h3 a { display: inline-block; padding-block: .25rem; text-underline-offset: .2em; }
+.official-channels-list p { color: #4c5e78; }
+
+@media (max-width: 700px) {
+  .other-documents, .about-cavinti { margin-block: 2rem; }
+  .official-channels { padding-block: 2.5rem; }
+  .other-documents .directory-tools { align-items: stretch; }
+  .other-documents .directory-tools label { flex-basis: 100%; }
+}
