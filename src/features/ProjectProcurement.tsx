@@ -17,17 +17,14 @@ export default function ProjectProcurement(props: CivicProps & { projects: boole
   const sourceUrl = source?.url || source?.canonicalUrl
   const labels = locale === 'fil' ? {
     intro: projects ? 'Mga proyektong may “Cavinti” sa paglalarawan sa snapshot ng BetterGov PH.' : 'Mga procurement lead mula sa PhilGEPS Contract Browser ng BetterGov PH.',
-    note: projects ? 'Na-download ang sekundaryang snapshot noong Oktubre 27, 2026; hindi alam ang orihinal na petsa ng pagkuha at maaaring luma na ang mga status. Hindi kumpleto ang paghahanap sa teksto, at may mga proyektong sumasaklaw sa maraming munisipalidad. Ang badyet ay hindi katumbas ng paggasta para lamang sa Cavinti. Hindi ito independiyenteng napatunayan o kumpletong talaan.' : 'Dalawampung nakikitang hanay ang nakuha noong Oktubre 27, 2026. Hindi alam ang kahulugan ng petsa; ang halagang ipinakita sa buong piso ay rounded at hindi eksaktong halaga. Hindi napatunayan sa pangunahing notice ang mga rekord. Maaaring luma na ang status; hindi ito patunay ng pagbabayad o pagkumpleto, at hindi ito kumpletong talaan.',
-    source: 'Tingnan ang pinagmulang BetterGov PH dataset', search: 'Hanapin sa mga rekord', contract: 'Contract ID', year: 'Taon ng imprastraktura', budget: 'Badyet', status: 'Status sa snapshot', id: 'ID sa source', awardee: 'Awardee', amount: 'Halagang ipinakita', date: 'Petsa sa source (hindi alam ang kahulugan)', empty: 'Walang snapshot na available.'
+    source: 'Tingnan ang pinagmulang BetterGov PH dataset', search: 'Hanapin sa mga rekord', contract: 'Contract ID', year: 'Taon ng imprastraktura', budget: 'Badyet', status: 'Status sa snapshot', id: 'ID sa source', awardee: 'Awardee', amount: 'Halagang ipinakita', date: 'Petsa sa source', empty: 'Walang snapshot na available.'
   } : {
     intro: projects ? 'Projects with “Cavinti” in their descriptions in the BetterGov PH snapshot.' : 'Procurement leads from BetterGov PH’s PhilGEPS Contract Browser.',
-    note: projects ? 'The secondary snapshot was downloaded October 27, 2026; its original capture date is unknown and statuses may be stale. Text matching is incomplete, and some projects span multiple municipalities. Budgets are not Cavinti-only expenditure. This is not an independently verified or complete register.' : 'Twenty visible rows were retrieved October 27, 2026. The meaning of the date is unknown; displayed whole-peso amounts are rounded, not exact. The records have not been verified against primary notices. Source statuses may be stale; these leads are not proof of payment or completion and are not a complete register.',
-    source: 'View the BetterGov PH source dataset', search: 'Search records', contract: 'Contract ID', year: 'Infrastructure year', budget: 'Budget', status: 'Snapshot-reported status', id: 'Source ID', awardee: 'Awardee', amount: 'Displayed amount', date: 'Source date (meaning unknown)', empty: 'No snapshot is available.'
+    source: 'View the BetterGov PH source dataset', search: 'Search records', contract: 'Contract ID', year: 'Infrastructure year', budget: 'Budget', status: 'Snapshot-reported status', id: 'Source ID', awardee: 'Awardee', amount: 'Displayed amount', date: 'Source date', empty: 'No snapshot is available.'
   }
   const currency = new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { style: 'currency', currency: 'PHP' })
   return <>
     <PageIntro title={projects ? t.projects : t.procurement}>{labels.intro}</PageIntro>
-    <p className="measure">{labels.note}</p>
     {sourceUrl && <p><a href={sourceUrl}>{labels.source}</a></p>}
     <SourceNote {...props} id={sourceId} />
     {records.length > 0 ? <>

@@ -21,7 +21,7 @@ export default function Demographics(props: CivicProps) {
   const x = (year: number) => 65 + (year - minYear) / (maxYear - minYear || 1) * 660
   const y = (value: number) => 240 - value / (ceiling || 1) * 210
   const points = visible.map(row => `${x(Number(row.referenceYear))},${y(Number(row.value))}`).join(' ')
-  return <><PageIntro title={t.demographics}>{c.demographicsIntro}</PageIntro>
+  return <><PageIntro title={t.demographics} />
     {selected && <section className="population-chart" aria-labelledby="population-title">
       <header><div><h2 id="population-title">{c.populationTrend}</h2><p className="civic-meta">{c.populationUnit} · {t.geography}: {lgu.name}</p></div><label htmlFor="population-range">{t.period}<select id="population-range" value={String(allYears)} onChange={event => setAllYears(event.target.value === 'true')}><option value="false">{c.recentYears}</option><option value="true">{c.allYears}</option></select></label></header>
       <svg className="chart-plot" viewBox="0 0 760 280" role="img" aria-labelledby="population-chart-description"><title id="population-chart-description">{c.chartDescription}</title>

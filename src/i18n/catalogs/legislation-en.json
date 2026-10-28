@@ -1,6 +1,5 @@
 {
   "title": "Legislation",
-  "introduction": "Search captured source rows from the legislative indexes. Each published row is retained, including repeated records. These are index metadata, not legal summaries or reviewed attachment contents.",
   "coverage": "The captured ordinance and resolution indexes do not establish complete coverage of executive orders or other documents. No matching rows does not mean no legislation exists.",
   "filters": "Search and filter records",
   "coverageTitle": "Coverage and source limitations",

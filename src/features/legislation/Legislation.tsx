@@ -167,7 +167,6 @@ function LegislationIndex({ locale, records, href, sourceLink }: LegislationProp
   return (
     <>
       <h1>{text.title}</h1>
-      <p className="civic-intro">{text.introduction}</p>
       <section className="legislation-search" aria-labelledby="legislation-filters">
         <h2 id="legislation-filters">{text.filters}</h2>
         <form onSubmit={(event) => event.preventDefault()}>

@@ -15,7 +15,7 @@ export function Government(props: CivicProps) {
     ['government/barangays', t.barangays, c.barangaysDescription],
     ['open-lgu/terms', t.terms, c.termsDescription],
   ]
-  return <><PageIntro title={t.government}>{c.governmentIntro}</PageIntro><ul className="directory-grid">{links.map(([path, title, description]) => <li key={path}><h2><a className="government-link" href={href(path)}>{title}<LinkArrow /></a></h2><p className="muted">{description}</p></li>)}</ul><SourceNote {...props} id={lgu.sourceIds.executive} /><SourceNote {...props} id={lgu.sourceIds.legislative} /></>
+  return <><PageIntro title={t.government} /><ul className="directory-grid">{links.map(([path, title, description]) => <li key={path}><h2><a className="government-link" href={href(path)}>{title}<LinkArrow /></a></h2><p className="muted">{description}</p></li>)}</ul><SourceNote {...props} id={lgu.sourceIds.executive} /><SourceNote {...props} id={lgu.sourceIds.legislative} /></>
 }
 
 export function Officials(props: CivicProps) {
@@ -31,7 +31,7 @@ export function Officials(props: CivicProps) {
   const winners = rows(data.officials.historicalElectionWinners)
   const years = [...new Set(winners.map(row => String(row.Year)))].sort().reverse()
   const matchingWinners = winners.filter(row => (!winnerYear || row.Year === winnerYear) && [row['Full Name'], row.Position, row.Party, row.Year, row['Middle Name Source']].join(' ').toLocaleLowerCase().includes(winnerQuery.toLocaleLowerCase()))
-  return <><PageIntro title={t.officials}>{c.officialsIntro}</PageIntro>
+  return <><PageIntro title={t.officials} />
     <div className="directory-tools"><label htmlFor="official-query">{c.filterDirectory}<input id="official-query" type="search" placeholder={c.directoryPlaceholder} value={query} onChange={event => setQuery(event.target.value)} /></label><label htmlFor="official-section">{c.directorySection}<select id="official-section" value={section} onChange={event => setSection(event.target.value)}><option value="">{c.allGroups}</option>{sections.map(value => <option key={value} value={value} lang="en">{value}</option>)}</select></label></div>
     <p className="civic-meta" role="status">{formatNumber(matching.length, locale)} {t.records}</p>
     {!matching.length && <p>{t.noResults}</p>}<ul className="directory-grid">{matching.map(row => <li key={String(row.recordId)}><p className="civic-meta" lang="en">{String(row.directorySection)}</p><h2><a lang="en" href={href(`government/officials/${encodeURIComponent(String(row.recordId))}`)}>{String(row.displayName)}</a></h2>{row.roleLabel && <p className="directory-role" lang="en">{String(row.roleLabel)}</p>}{row.committeeLabel && <p lang="en">{String(row.committeeLabel)}</p>}<SourceNote {...props} id={String(row.sourceId || row.profileSourceId)} /></li>)}</ul>
@@ -55,8 +55,7 @@ export function Contacts(props: CivicProps & { officeId?: string }) {
   const { data, locale, href, officeId } = props
   const t = catalogs[locale], c = civicCatalogs[locale]
   const contacts = rows(data.contacts.records).filter(row => !officeId || row.category === officeId)
-  return <><PageIntro title={t.offices}>{c.contactIntro}</PageIntro>
-    <p className="civic-meta">{c.contactLimit}</p>
+  return <><PageIntro title={t.offices} />
     {!contacts.length && <><h2>{t.notFound}</h2><a href={href('government/offices')}>{c.publishedContacts}</a></>}
     <ul className="directory-grid">{contacts.map(row => <li key={String(row.category)}><h2><a lang="en" href={href(`government/offices/${row.category}`)}>{String(row.service)}</a></h2>
       {row.addressAsPublished && <p lang="en">{String(row.addressAsPublished)}</p>}

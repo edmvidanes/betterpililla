@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { barangayId } from '../domain/ids'
 import { rows, type DataRecord } from '../data/loaders'
-import { catalogs, formatDate, formatNumber } from '../i18n/locales'
+import { catalogs, formatNumber } from '../i18n/locales'
 import { civicCatalogs } from '../i18n/civic'
 import { PageIntro, RawRecord, SourceNote, type CivicProps } from './Civic'
 
@@ -27,8 +27,7 @@ export default function Barangays(props: CivicProps & { recordId?: string; corre
 
   return <>
     {name && <p><a href={href('government/barangays')}>{c.backBarangays}</a></p>}
-    <PageIntro title={name || t.barangays}>{name ? c.barangayDetailIntro : c.barangayIntro}</PageIntro>
-    <p className="civic-meta">{c.rosterUnresolved} · {t.capture}: {formatDate(String(data.barangays.capturedAt), locale)}</p>
+    <PageIntro title={name || t.barangays} />
     <div className="barangay-layout">
       <section aria-labelledby="barangay-population-title">
         <h2 id="barangay-population-title">{c.barangayPopulation}</h2>
@@ -66,15 +65,6 @@ export default function Barangays(props: CivicProps & { recordId?: string; corre
           <SourceNote {...props} id={String(population.sourceId)} />
         </>}
       </section>
-      <aside className="civic-aside barangay-evidence">
-        <h2>{c.rosterComparison}</h2><p>{c.rosterExplanation}</p>
-        <p><a href="https://psa.gov.ph/classification/psgc/barangays/0403407000">{locale === 'fil' ? 'PSA: 19 barangay noong Hulyo 31, 2025' : 'PSA: 19 barangays as of July 31, 2025'}</a></p>
-        {claims.map(claim => <div className="barangay-claim" key={String(claim.sourceId)}>
-          <p className="civic-meta">{c.reportedCount}: <strong>{formatNumber(Number(claim.count), locale)}</strong></p>
-          <SourceNote {...props} id={String(claim.sourceId)} />
-        </div>)}
-        <p>{c.rosterNamesNote}</p>
-      </aside>
     </div>
     <RawRecord {...props} value={name ? { sourceClaims: claims.filter(claim => (claim.namesAsPublished as string[] | null)?.includes(name)), population: populationRows.find(row => row.sourceName === name) ?? null } : data.barangays} />
   </>

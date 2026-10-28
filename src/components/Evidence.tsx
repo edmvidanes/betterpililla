@@ -28,7 +28,7 @@ export function DataStatus({ children }: { children: ReactNode }) {
   return <div className="notice" role="note">{children}</div>
 }
 export function EvidenceTree({ value, locale, sources, sourceHref }: { value: EvidenceValue; locale: Locale; sources: SourceRecord[]; sourceHref: (id: string) => string }) {
-  if (value == null) return <span className="muted">{catalogs[locale].unknown}</span>
+  if (value == null) return <span className="muted">{locale === 'fil' ? 'Hindi alam' : 'Unknown'}</span>
   if (typeof value === 'boolean') return <span lang="en">{String(value)}</span>
   if (typeof value === 'string') {
     const source = sources.find(s => s.id === value || s.sourceId === value)

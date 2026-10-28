@@ -21,47 +21,39 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
   const matchingProcurement = procurement.filter(row => [row.title, row.id, row.awardee, row.amountDisplayed, row.dateDisplayed, row.statusDisplayed].join(' ').toLocaleLowerCase().includes(procurementQuery.toLocaleLowerCase()))
   const procurementLabels = locale === 'fil' ? {
     heading: 'Mga procurement lead mula sa BetterGov PH',
-    note: 'Dalawampung nakikitang hanay mula sa pangalawang PhilGEPS Contract Browser ng BetterGov PH, nakuha noong Oktubre 27, 2026. Hindi alam ang kahulugan ng petsa; ang halagang ipinakita sa buong piso ay rounded at hindi eksaktong halaga. Hindi napatunayan sa pangunahing notice ang mga rekord. Ang status ay mula sa source at maaaring luma na; hindi ito patunay ng pagbabayad o pagkumpleto, at hindi ito kumpletong talaan.',
-    search: 'Hanapin ang pamagat, ID, awardee, halaga, petsa o status', title: 'Pamagat sa source', id: 'ID sa source', awardee: 'Awardee', amount: 'Halagang ipinakita', date: 'Petsa sa source (hindi alam ang kahulugan)', status: 'Status sa source', source: 'Tingnan ang pahina ng BetterGov PH'
+    search: 'Hanapin ang pamagat, ID, awardee, halaga, petsa o status', title: 'Pamagat sa source', id: 'ID sa source', awardee: 'Awardee', amount: 'Halagang ipinakita', date: 'Petsa sa source', status: 'Status sa source', source: 'Tingnan ang pahina ng BetterGov PH'
   } : {
     heading: 'Procurement leads from BetterGov PH',
-    note: 'Twenty visible rows from BetterGov PH’s secondary PhilGEPS Contract Browser, retrieved October 27, 2026. The meaning of the date is unknown; displayed whole-peso amounts are rounded, not exact. The records have not been verified against primary notices. Source statuses may be stale; these leads are not proof of payment or completion and are not a complete register.',
-    search: 'Search title, ID, awardee, amount, date or status', title: 'Source title', id: 'Source ID', awardee: 'Awardee', amount: 'Displayed amount', date: 'Source date (meaning unknown)', status: 'Source status', source: 'View BetterGov PH page'
+    search: 'Search title, ID, awardee, amount, date or status', title: 'Source title', id: 'Source ID', awardee: 'Awardee', amount: 'Displayed amount', date: 'Source date', status: 'Source status', source: 'View BetterGov PH page'
   }
   const procurementSource = data.portal.sources.find(source => source.id === procurement[0]?.sourceId)
   const procurementUrl = procurementSource?.url || procurementSource?.canonicalUrl || ''
   const labels = locale === 'fil' ? {
     heading: 'Mga proyektong DPWH sa sekundaryang snapshot',
-    note: 'Mga rekord na may “Cavinti” sa paglalarawan mula sa sekundaryang snapshot ng BetterGov PH, na na-download noong Oktubre 27, 2026. Hindi alam ang petsa ng orihinal na pagkuha; maaaring luma na ang mga status. Hindi kumpleto ang paghahanap sa teksto, at may mga proyektong sumasaklaw sa maraming munisipalidad. Ang badyet ay hindi katumbas ng paggasta para lamang sa Cavinti. Hindi ito independiyenteng napatunayan o kumpletong talaan.',
     search: 'Hanapin ang pamagat, contract ID, taon, badyet o status', title: 'Orihinal na pamagat', contract: 'Contract ID', year: 'Taon', budget: 'Badyet (₱)', status: 'Status sa snapshot', source: 'Tingnan ang pinagmulang dataset'
   } : {
     heading: 'DPWH projects in a secondary snapshot',
-    note: 'Records whose descriptions contain “Cavinti” from a BetterGov PH secondary snapshot downloaded October 27, 2026. The underlying capture date is unknown and statuses may be stale. Text matching is incomplete, and some projects span multiple municipalities. Budgets are not Cavinti-only expenditure. This is not an independently verified or complete register.',
     search: 'Search title, contract ID, year, budget or status', title: 'Original title', contract: 'Contract ID', year: 'Year', budget: 'Budget (₱)', status: 'Snapshot-reported status', source: 'View source dataset'
   }
   const projectSource = data.portal.sources.find(source => source.id === projects[0]?.sourceId)
   const datasetUrl = projectSource?.url || projectSource?.canonicalUrl || ''
   const incomeLabels = locale === 'fil' ? {
     heading: 'Makasaysayang regular na kita ng munisipyo',
-    note: 'Regular na kita ng Cavinti para sa 2009–2016, ayon sa PhilAtlas, na tumutukoy sa Bureau of Local Government Finance bilang pinagmulan. Kasama rito ang lokal na kita, kasalukuyang Internal Revenue Allotment at iba pang bahagi sa pambansang buwis. Hindi ito badyet o paggasta, at hindi nito ipinapakita ang kasalukuyang pananalapi. Hindi pa nasuri rito ang orihinal na datos ng BLGF.',
-    year: 'Taong pinansyal', amount: 'Regular na kita (₱)', source: 'Tingnan ang datos at depinisyon sa PhilAtlas', updated: 'Tiningnan noong Oktubre 28, 2026; hindi nakasaad ang petsa ng pag-update ng source.',
-    coverage: 'Makasaysayang regular na kita para sa 2009–2016 lamang; walang kumpletong kasalukuyang serye.'
+    year: 'Taong pinansyal', amount: 'Regular na kita (₱)', source: 'Tingnan ang datos at depinisyon sa PhilAtlas'
   } : {
     heading: 'Historical municipal regular income',
-    note: 'Cavinti’s regular income for 2009–2016, as reported by PhilAtlas, which attributes the data to the Bureau of Local Government Finance. It includes locally sourced revenue, the current-year Internal Revenue Allotment and other shares from national tax collections. It is not a budget or expenditure figure and does not describe current finances. The original BLGF data has not been checked here.',
-    year: 'Fiscal year', amount: 'Regular income (₱)', source: 'View the data and definition on PhilAtlas', updated: 'Checked October 28, 2026; source update date not stated.',
-    coverage: 'Historical regular income for 2009–2016 only; no complete current series.'
+    year: 'Fiscal year', amount: 'Regular income (₱)', source: 'View the data and definition on PhilAtlas'
   }
-  return <><PageIntro title={income ? t.income : t.finance}>{locale === 'fil' ? 'Tingnan ang makasaysayang kita, mga dokumento at iba pang tala sa pananalapi ng Cavinti.' : 'Explore Cavinti’s historical income, financial documents and related records.'}</PageIntro>
-    <section><h2>{incomeLabels.heading}</h2><p className="measure">{incomeLabels.note}</p>
-      <p><a href="https://www.philatlas.com/luzon/r04a/laguna/cavinti.html">{incomeLabels.source}</a> · {incomeLabels.updated}</p>
+  return <><PageIntro title={income ? t.income : t.finance} />
+    <section><h2>{incomeLabels.heading}</h2>
+      <p><a href="https://www.philatlas.com/luzon/r04a/laguna/cavinti.html">{incomeLabels.source}</a></p>
       <div className="table-wrap"><table className="coverage-table"><thead><tr><th scope="col">{incomeLabels.year}</th><th scope="col">{incomeLabels.amount}</th></tr></thead><tbody>
         {regularIncome.map(([year, amount]) => <tr key={year}><td>{year}</td><td>{new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount)}</td></tr>)}
       </tbody></table></div>
     </section>
     <div className="civic-split"><section><h2>{c.documentLeads}</h2><p className="measure">{c.documentLimit}</p><ul className="record-list">{rows(data.transparency.officialLocalDocumentLeads).map(row => <li key={String(row.documentNumber)}><p className="civic-meta" lang="en">{String(row.documentNumber)}</p><h3><a lang="en" href={String(row.documentUrl)}>{String(row.titleAsIndexed)}</a></h3>{row.scopeWarning && <p lang="en">{String(row.scopeWarning)}</p>}<SourceNote {...props} id={String(row.sourceId)} /></li>)}</ul></section>
-      <aside className="civic-aside"><h2>{c.coverageHeading}</h2><dl>{categories.map((category, index) => <div key={category}><dt className="directory-role">{category}</dt><dd style={{ margin: '0 0 1rem' }}>{index === 0 ? incomeLabels.coverage : c.coverageMissing}</dd></div>)}</dl></aside></div>
-    {projects.length > 0 && <section><h2>{labels.heading}</h2><p className="measure">{labels.note}</p>
+      <aside className="civic-aside"><h2>{c.coverageHeading}</h2><dl>{categories.map((category, index) => <div key={category}><dt className="directory-role">{category}</dt><dd style={{ margin: '0 0 1rem' }}>{index === 0 ? '2009–2016' : c.coverageMissing}</dd></div>)}</dl></aside></div>
+    {projects.length > 0 && <section><h2>{labels.heading}</h2>
       <p><a href={datasetUrl}>{labels.source}</a></p><SourceNote {...props} id={String(projects[0].sourceId)} />
       <div className="directory-tools"><label htmlFor="dpwh-query">{labels.search}<input id="dpwh-query" type="search" value={query} onChange={event => setQuery(event.target.value)} /></label></div>
       <p className="civic-meta" role="status">{formatNumber(matching.length, locale)} / {formatNumber(projects.length, locale)} {t.records}</p>
@@ -70,7 +62,7 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
         {matching.map(row => <tr key={String(row.contractId)}><td lang="en"><a href={datasetUrl}>{String(row.description)}</a></td><td>{String(row.contractId)}</td><td>{String(row.infraYear)}</td><td>{typeof row.budget === 'number' ? new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(row.budget) : '—'}</td><td lang="en">{String(row.status)}</td></tr>)}
       </tbody></table></div>
     </section>}
-    {procurement.length > 0 && <section><h2>{procurementLabels.heading}</h2><p className="measure">{procurementLabels.note}</p>
+    {procurement.length > 0 && <section><h2>{procurementLabels.heading}</h2>
       <p><a href={procurementUrl}>{procurementLabels.source}</a></p><SourceNote {...props} id={String(procurement[0].sourceId)} />
       <div className="directory-tools"><label htmlFor="procurement-query">{procurementLabels.search}<input id="procurement-query" type="search" value={procurementQuery} onChange={event => setProcurementQuery(event.target.value)} /></label></div>
       <p className="civic-meta" role="status">{formatNumber(matchingProcurement.length, locale)} / {formatNumber(procurement.length, locale)} {t.records}</p>

@@ -12,8 +12,7 @@ export default function Geography(props: CivicProps) {
   const coordinates = geography.officialAboutPageCoordinatesText as DataRecord
   const neighbors = geography.neighborsAsPublished as string[]
   return <>
-    <PageIntro title={t.map}>{c.geographyIntro}</PageIntro>
-    <p className="civic-meta">{t.noGeometry}</p>
+    <PageIntro title={t.map} />
     <div className="geography-map">
       <CavintiMap locale={locale} center={lgu.mapView.center} zoom={lgu.mapView.zoom} />
     </div>
