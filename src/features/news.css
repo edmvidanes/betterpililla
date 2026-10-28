@@ -16,8 +16,9 @@
 .news-header { max-width: 850px; margin: 2rem 0; }
 .news-header h1 { text-wrap: balance; }
 .news-hero, .news-body-image { margin: 0; }
-.news-hero img { display: block; max-width: 100%; max-height: 620px; width: auto; height: auto; }
+.news-hero img { display: block; max-width: 100%; max-height: 620px; width: auto; height: auto; margin-inline: auto; }
 .news-hero figcaption, .news-body-image figcaption { color: #4c5e78; font-size: .875rem; margin-top: .5rem; }
+.news-hero figcaption { text-align: center; }
 .news-body { max-width: 75ch; margin-top: 2rem; }
 .news-paragraph { white-space: pre-line; }
 .news-body-image { margin: 2rem 0; }
