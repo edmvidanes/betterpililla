@@ -52,6 +52,8 @@ On the homepage, the main header slides into a sticky position after the photo h
 
 The public-information index places a 2013 photograph of Cavinti Municipal Hall beneath its heading, with a linked photographer and license credit.
 
+On narrow screens, official profiles stack, long record titles wrap, and population charts and data tables retain readable widths inside keyboard-accessible scrolling regions. News links include their article titles in accessible names.
+
 ## Elevation & Depth
 
 Flat surfaces with subtle borders and tonal notices. No decorative shadows, gradients or hero metrics.

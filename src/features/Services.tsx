@@ -3,6 +3,7 @@ import { lgu } from '../config/lgu'
 import { catalogs, formatDate } from '../i18n/locales'
 import { civicCatalogs } from '../i18n/civic'
 import { LinkArrow, PageIntro, RawRecord, SourceNote, type CivicProps } from './Civic'
+import './records-polish.css'
 import { rows } from '../data/loaders'
 
 export default function Services(props: CivicProps) {
@@ -23,7 +24,7 @@ export default function Services(props: CivicProps) {
     <section className="service-directory" aria-label={t.services}>
       {services.length || leads.length ? <>
         <div className="service-directory-tools"><label>{c.filterDirectory}<input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder={locale === 'fil' ? 'Hal. scholarship o kalusugan' : 'e.g. scholarship or health'} /></label>
-          <p role="status">{matching.length + matchingLeads.length} {locale === 'fil' ? 'resulta' : matching.length + matchingLeads.length === 1 ? 'result' : 'results'}</p></div>
+          <p role="status" aria-atomic="true">{matching.length + matchingLeads.length} {locale === 'fil' ? 'resulta' : matching.length + matchingLeads.length === 1 ? 'result' : 'results'}</p></div>
         {services.length > 0 && <ul className="service-grid">{matching.map(row => <li key={String(row.recordId)} className="service-card"><h2><a href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{String(row.name)}</a></h2><SourceNote {...props} id={String(row.sourceId)} /></li>)}</ul>}
         {leads.length > 0 && <section aria-labelledby="service-legislation-leads"><h2 id="service-legislation-leads">{c.serviceLegislationLeads}</h2><p className="service-evidence">{!services.length && (locale === 'fil' ? 'Walang nakuhang tala ng serbisyo sa Citizens’ Charter. ' : 'No service entries were captured from the Citizens’ Charter. ')}{c.serviceLegislationLeadsText}</p><ul className="service-grid">{matchingLeads.map(({ record, topic }) => <li key={String(record.recordId)} className="service-card">
           <h3><a href={href(`services/${encodeURIComponent(String(record.recordId))}`)}>{topic}</a></h3>
@@ -31,7 +32,7 @@ export default function Services(props: CivicProps) {
           <p className="civic-meta">{String(record.documentNumber)} · {formatDate(String(record.sourceDate), locale)}</p>
           <div className="service-card-footer"><a href={href(`services/${encodeURIComponent(String(record.recordId))}`)}>{locale === 'fil' ? 'Tingnan ang serbisyo' : 'View service'} <span aria-hidden="true">→</span></a><a href={String(record.documentUrl)}>{locale === 'fil' ? 'Opisyal na dokumento' : 'Official document'}</a></div>
         </li>)}</ul><SourceNote {...props} id={String(leads[0].record.sourceId)} /></section>}
-        {!matching.length && !matchingLeads.length && <p role="status">{t.noResults}</p>}
+        {!matching.length && !matchingLeads.length && <p>{t.noResults}</p>}
       </> : <div className="civic-empty"><h2>{c.serviceMissing}</h2><p>{c.serviceMissingText}</p></div>}
     </section>
     <div className="civic-split"><section>

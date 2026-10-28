@@ -7,4 +7,9 @@
 .official-detail h1 { margin-top: 0; }
 .official-facts dt { color: #4c5e78; font-size: .9rem; margin-top: 1rem; }
 .official-facts dd { margin: .2rem 0 0; }
-@media (max-width: 500px) { .official-detail { gap: 1rem; } .official-card .official-portrait { width: 76px; } }
+.official-card h2, .official-card p, .official-detail h1, .official-facts dd { overflow-wrap: anywhere; }
+@media (max-width: 500px) {
+  .official-detail { flex-direction: column; gap: 1rem; }
+  .official-detail > .official-portrait { width: min(160px, 100%); }
+  .official-card .official-portrait { width: 76px; }
+}

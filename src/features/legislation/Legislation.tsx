@@ -155,7 +155,11 @@ function LegislationIndex({ locale, records, href, sourceLink }: LegislationProp
   }, [filters, currentPage])
 
   useEffect(() => {
-    const update = () => setQuery(readQuery())
+    const update = () => {
+      const next = readQuery()
+      setQuery(next)
+      setAdvancedOpen(['number', 'author', 'topic', 'from', 'to', 'source'].some(key => Boolean(next.filters[key as FilterKey])))
+    }
     window.addEventListener('popstate', update)
     return () => window.removeEventListener('popstate', update)
   }, [])

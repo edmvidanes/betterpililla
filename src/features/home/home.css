@@ -46,7 +46,7 @@
 .atlas-links a:hover span, .atlas-links a:focus-visible span { text-decoration: underline; }
 .atlas-links svg { width: 20px; height: 20px; flex-shrink: 0; }
 .atlas-local { grid-column: 1 / -1; }
-.atlas-local .atlas-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2.5rem; grid-auto-flow: column; grid-template-rows: repeat(3, auto); }
+.atlas-local .atlas-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2.5rem; }
 .atlas-shortcuts { background: #1d4ed8; color: white; padding-block: 2rem; }
 .atlas-shortcuts h2 { font-size: clamp(1.5rem, 3.3vw, 2.75rem); line-height: 1.2; letter-spacing: -.025em; margin: 0 0 1rem; }
 .atlas-shortcuts .atlas-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem 2.5rem; }

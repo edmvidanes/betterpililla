@@ -16,7 +16,7 @@ export default function News({ locale, href }: CivicProps) {
       <div className="news-item-content"><p className="civic-meta">{article.date} · {article.category}</p>
         <h2><a href={href(`news/${encodeURIComponent(article.id)}`)}>{article.title}</a></h2>
         {article.paragraphs[0] && <p lang="fil">{article.paragraphs[0].length > 240 ? `${article.paragraphs[0].slice(0, 240).trimEnd()}…` : article.paragraphs[0]}</p>}
-        <a className="news-read" href={href(`news/${encodeURIComponent(article.id)}`)}>{fil ? 'Basahin ang balita' : 'Read article'} <LinkArrow /></a>
+        <a className="news-read" href={href(`news/${encodeURIComponent(article.id)}`)} aria-label={`${fil ? 'Basahin ang balita' : 'Read article'}: ${article.title}`}>{fil ? 'Basahin ang balita' : 'Read article'} <LinkArrow /></a>
       </div>
     </li>)}</ul>
   </div>

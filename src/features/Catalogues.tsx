@@ -8,8 +8,8 @@ export function Downloads(props: CivicProps) {
   const { data, locale } = props
   const t = catalogs[locale], c = civicCatalogs[locale]
   const [query, setQuery] = useState('')
-  const matching = data.portal.datasets.filter(row => `${row.id} ${row.coverage}`.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
   const titles: Record<string, string> = { municipality: t.demographics, barangays: t.barangays, officials: t.officials, 'emergency-contacts': t.offices, services: t.services, 'sector-inventory': t.places, transparency: t.finance, ordinances: c.ordinances, resolutions: c.resolutions, 'source-register': c['source-register'], 'research-updates': c['research-updates'], 'dataset-manifest': c['dataset-manifest'] }
+  const matching = data.portal.datasets.filter(row => `${titles[row.id] || ''} ${row.id} ${row.coverage}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()))
   const downloadUrl = (url: string) => `${import.meta.env.BASE_URL}${url.replace(/^\//, '')}`
   return <><PageIntro title={t.downloads} />
     <div className="directory-tools"><label htmlFor="dataset-query">{c.datasetSearch}<input id="dataset-query" type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder={c.datasetPlaceholder} /></label><p role="status">{formatNumber(matching.length, locale)} {t.records}</p></div>

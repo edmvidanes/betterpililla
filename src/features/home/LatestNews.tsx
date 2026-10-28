@@ -12,7 +12,7 @@ export default function LatestNews({ locale, href }: { locale: Locale; href: (pa
       <a href={href('news')}>{fil ? 'Lahat ng balita' : 'All news'} <span aria-hidden="true">→</span></a>
     </div>
     <div className="latest-news-grid">
-      {articles.map(article => <article className="latest-news-card" key={article.id}>
+      {articles.map(article => <article className={`latest-news-card${newsImages[article.id]?.cover ? '' : ' latest-news-card-text'}`} key={article.id}>
         <a href={href(`news/${encodeURIComponent(article.id)}`)}>
           {newsImages[article.id]?.cover && <img src={`${import.meta.env.BASE_URL}${newsImages[article.id].cover}`} alt="" loading="lazy" />}
           <div className="latest-news-copy"><p>{article.date} · {article.category}</p><h3>{article.title}</h3><span>{fil ? 'Basahin ang balita' : 'Read article'} <span aria-hidden="true">→</span></span></div>

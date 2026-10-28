@@ -42,8 +42,8 @@ export function OfficialDetail(props: CivicProps & { recordId: string; correctio
           ? (fil ? 'Hindi malinaw ang eksaktong katungkulan o pagiging kasapi; hindi ito patunay ng kasalukuyan o nahalal na katungkulan.' : 'Exact office or membership status is unclear; this card does not establish an elected or current office.')
           : (fil ? 'Hindi itinatatag ng direktoryong ito ang kasalukuyang termino o panunungkulan.' : 'This directory does not establish current tenure or term dates.')}</p>
         <dl className="official-facts">
-          <dt>{fil ? 'Katungkulan' : 'Role'}</dt><dd lang="en">{row.roleLabel ? String(row.roleLabel) : (fil ? 'Hindi natukoy' : 'Not established')}</dd>
-          <dt>{fil ? 'Komite ayon sa direktoryo' : 'Committee as listed'}</dt><dd lang="en">{row.committeeLabel ? String(row.committeeLabel) : (fil ? 'Hindi nakasaad' : 'Not stated')}</dd>
+          <dt>{fil ? 'Katungkulan' : 'Role'}</dt><dd>{row.roleLabel ? <span lang="en">{String(row.roleLabel)}</span> : (fil ? 'Hindi natukoy' : 'Not established')}</dd>
+          <dt>{fil ? 'Komite ayon sa direktoryo' : 'Committee as listed'}</dt><dd>{row.committeeLabel ? <span lang="en">{String(row.committeeLabel)}</span> : (fil ? 'Hindi nakasaad' : 'Not stated')}</dd>
           {row.expertiseLabel && <><dt>{fil ? 'Expertise ayon sa direktoryo' : 'Expertise as listed'}</dt><dd lang="en">{String(row.expertiseLabel)}</dd></>}
           {typeof row.authoredCountAsDisplayed === 'number' && <><dt>{fil ? 'Authored / Co-authored ayon sa direktoryo' : 'Authored / co-authored as displayed'}</dt><dd>{formatNumber(row.authoredCountAsDisplayed, locale)} / {formatNumber(Number(row.coauthoredCountAsDisplayed), locale)}</dd></>}
           <dt>{fil ? 'Termino' : 'Term dates'}</dt><dd>{fil ? 'Hindi natukoy' : 'Not established'}</dd>

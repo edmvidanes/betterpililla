@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { rows } from '../data/loaders'
 import { catalogs, formatNumber } from '../i18n/locales'
 import { PageIntro, SourceNote, type CivicProps } from './Civic'
+import './records-polish.css'
 
 export default function ProjectProcurement(props: CivicProps & { projects: boolean; correctionLink: (recordId: string, template?: string) => string }) {
   const { data, locale, projects, correctionLink } = props
@@ -31,7 +32,7 @@ export default function ProjectProcurement(props: CivicProps & { projects: boole
       <div className="directory-tools"><label htmlFor="project-procurement-query">{labels.search}<input id="project-procurement-query" type="search" value={query} onChange={event => setQuery(event.target.value)} /></label></div>
       <p className="civic-meta" role="status">{formatNumber(matching.length, locale)} / {formatNumber(records.length, locale)} {t.records}</p>
       {!matching.length && <p>{t.noResults}</p>}
-      <ul className="record-list">{matching.map((row, index) => <li key={`${String(projects ? row.contractId : row.id || row.title)}-${index}`}>
+      <ul className="record-list project-procurement-list">{matching.map((row, index) => <li key={`${String(projects ? row.contractId : row.id || row.title)}-${index}`}>
         <h2 lang="en">{String((projects ? row.description : row.title) || '—')}</h2>
         <dl>
           {projects ? <>

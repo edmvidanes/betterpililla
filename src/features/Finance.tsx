@@ -47,7 +47,7 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
   return <><PageIntro title={income ? t.income : t.finance} />
     <section><h2>{incomeLabels.heading}</h2>
       <p><a href="https://www.philatlas.com/luzon/r04a/laguna/cavinti.html">{incomeLabels.source}</a></p>
-      <div className="table-wrap"><table className="coverage-table"><thead><tr><th scope="col">{incomeLabels.year}</th><th scope="col">{incomeLabels.amount}</th></tr></thead><tbody>
+      <div className="table-wrap" role="region" aria-label={incomeLabels.heading} tabIndex={0}><table className="coverage-table"><thead><tr><th scope="col">{incomeLabels.year}</th><th scope="col">{incomeLabels.amount}</th></tr></thead><tbody>
         {regularIncome.map(([year, amount]) => <tr key={year}><td>{year}</td><td>{new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount)}</td></tr>)}
       </tbody></table></div>
     </section>
@@ -58,7 +58,7 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
       <div className="directory-tools"><label htmlFor="dpwh-query">{labels.search}<input id="dpwh-query" type="search" value={query} onChange={event => setQuery(event.target.value)} /></label></div>
       <p className="civic-meta" role="status">{formatNumber(matching.length, locale)} / {formatNumber(projects.length, locale)} {t.records}</p>
       {!matching.length && <p>{t.noResults}</p>}
-      <div className="table-wrap"><table className="coverage-table"><thead><tr><th scope="col">{labels.title}</th><th scope="col">{labels.contract}</th><th scope="col">{labels.year}</th><th scope="col">{labels.budget}</th><th scope="col">{labels.status}</th></tr></thead><tbody>
+      <div className="table-wrap" role="region" aria-label={labels.heading} tabIndex={0}><table className="coverage-table"><thead><tr><th scope="col">{labels.title}</th><th scope="col">{labels.contract}</th><th scope="col">{labels.year}</th><th scope="col">{labels.budget}</th><th scope="col">{labels.status}</th></tr></thead><tbody>
         {matching.map(row => <tr key={String(row.contractId)}><td lang="en"><a href={datasetUrl}>{String(row.description)}</a></td><td>{String(row.contractId)}</td><td>{String(row.infraYear)}</td><td>{typeof row.budget === 'number' ? new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(row.budget) : '—'}</td><td lang="en">{String(row.status)}</td></tr>)}
       </tbody></table></div>
     </section>}
@@ -67,7 +67,7 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
       <div className="directory-tools"><label htmlFor="procurement-query">{procurementLabels.search}<input id="procurement-query" type="search" value={procurementQuery} onChange={event => setProcurementQuery(event.target.value)} /></label></div>
       <p className="civic-meta" role="status">{formatNumber(matchingProcurement.length, locale)} / {formatNumber(procurement.length, locale)} {t.records}</p>
       {!matchingProcurement.length && <p>{t.noResults}</p>}
-      <div className="table-wrap"><table className="coverage-table"><thead><tr><th scope="col">{procurementLabels.title}</th><th scope="col">{procurementLabels.id}</th><th scope="col">{procurementLabels.awardee}</th><th scope="col">{procurementLabels.amount}</th><th scope="col">{procurementLabels.date}</th><th scope="col">{procurementLabels.status}</th></tr></thead><tbody>
+      <div className="table-wrap" role="region" aria-label={procurementLabels.heading} tabIndex={0}><table className="coverage-table"><thead><tr><th scope="col">{procurementLabels.title}</th><th scope="col">{procurementLabels.id}</th><th scope="col">{procurementLabels.awardee}</th><th scope="col">{procurementLabels.amount}</th><th scope="col">{procurementLabels.date}</th><th scope="col">{procurementLabels.status}</th></tr></thead><tbody>
         {matchingProcurement.map((row, index) => <tr key={`${String(row.id || row.title)}-${index}`}><td lang="en">{String(row.title)}</td><td lang="en">{row.id ? String(row.id) : '—'}</td><td lang="en">{String(row.awardee)}</td><td>{String(row.amountDisplayed)}</td><td lang="en">{String(row.dateDisplayed)}</td><td lang="en">{String(row.statusDisplayed)}</td></tr>)}
       </tbody></table></div>
     </section>}
@@ -81,7 +81,7 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
         <SourceNote {...props} id={String(row.sourceId)} />
       </li>)}</ul>
     </section>
-    <h2>{c.sourceChecks}</h2><div className="table-wrap"><table className="coverage-table"><thead><tr><th>{t.sources}</th><th>{c.availability}</th></tr></thead><tbody>{rows(data.transparency.sourceChecks).map(check => <tr key={String(check.sourceId)}><td><SourceNote {...props} id={String(check.sourceId)} /></td><td lang="en">{String(check.retrievalStatus)}</td></tr>)}</tbody></table></div>
+    <h2>{c.sourceChecks}</h2><div className="table-wrap" role="region" aria-label={c.sourceChecks} tabIndex={0}><table className="coverage-table"><thead><tr><th scope="col">{t.sources}</th><th scope="col">{c.availability}</th></tr></thead><tbody>{rows(data.transparency.sourceChecks).map(check => <tr key={String(check.sourceId)}><td><SourceNote {...props} id={String(check.sourceId)} /></td><td lang="en">{String(check.retrievalStatus)}</td></tr>)}</tbody></table></div>
     <RawRecord {...props} value={data.transparency} />
   </>
 }

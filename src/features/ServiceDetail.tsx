@@ -1,6 +1,7 @@
 import { rows, type DataRecord, type EvidenceValue } from '../data/loaders'
 import { formatDate } from '../i18n/locales'
 import { LinkArrow, RawRecord, SourceNote, type CivicProps } from './Civic'
+import './records-polish.css'
 
 export default function ServiceDetail(props: CivicProps & { recordId: string }) {
   const { data, locale, href, recordId } = props

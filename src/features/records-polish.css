@@ -1,0 +1,14 @@
+.service-directory-tools label { min-width: 0; }
+.service-directory-tools input { width: 100%; }
+.service-card h2, .service-card h3, .service-detail-header h1, .service-detail-layout { overflow-wrap: anywhere; }
+
+.project-procurement-list h2 { overflow-wrap: anywhere; }
+.project-procurement-list dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: .75rem 1.5rem; }
+.project-procurement-list dt { color: #4c5e78; font-size: .85rem; }
+.project-procurement-list dd { margin: .2rem 0 0; overflow-wrap: anywhere; }
+
+.population-plot-scroll { overflow-x: auto; }
+.population-plot-scroll .chart-plot { min-width: 560px; }
+@media (max-width: 500px) {
+  .population-plot-scroll .chart-plot text { font-size: 13px; }
+}

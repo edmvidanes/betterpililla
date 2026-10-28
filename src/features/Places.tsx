@@ -28,6 +28,7 @@ export function Places(props: CivicProps) {
   return <>
     <PageIntro title={t.places} />
     <div className="civic-split"><section><h2>{c.education}</h2>
+      <p className="civic-meta">{copy.directory}</p>
       <h3>{copy.elementary}</h3>
       <ul className="record-list">{rows(elementary?.records).map(school => <li key={String(school.schoolId)}><h3 lang="en">{String(school.schoolNameAsPublished)}</h3><p className="civic-meta">{c.schoolId}: {String(school.schoolId)}</p></li>)}</ul>
       <p className="civic-meta">{locale === 'fil' ? 'Ang direktoryong ito ay gumagamit ng ID 164517 para sa Layasin; ang naunang search lead na 164526 ay tumutukoy sa ibang paaralan sa hiwalay na listahan ng DepEd.' : 'This directory lists Layasin as ID 164517; an earlier search lead, 164526, identifies a different school in a separate DepEd list.'}</p>
@@ -36,6 +37,7 @@ export function Places(props: CivicProps) {
       <ul className="record-list">{rows(education?.directoryLeads).map(school => <li key={String(school.schoolId)}><h3 lang="en">{String(school.schoolNameAsPublished)}</h3><p className="civic-meta">{c.schoolId}: {String(school.schoolId)}</p><SourceNote {...props} id={String(school.sourceId)} /></li>)}</ul>
     </section><aside className="civic-aside"><h2>{c.health}</h2>{health && <ul className="civic-links"><li><a lang="en" href={href(`government/offices/${health.category}`)}>{String(health.service)}<LinkArrow /></a></li></ul>}<SourceNote {...props} id={lgu.sourceIds.about} /></aside></div>
     <h2>{c.otherCoverage}</h2>
+    <p className="civic-meta">{copy.topics}</p>
     {sectors.filter(row => row.sector !== 'education' && row.sector !== 'health').map(row => {
       const record = row.knownRecord as Record<string, unknown> | undefined
       const sources = rowsOfStrings(row.discoverySources)

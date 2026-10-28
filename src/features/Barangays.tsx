@@ -45,12 +45,17 @@ export default function Barangays(props: CivicProps & { recordId?: string; corre
         </div>}
         {!name && <p className="civic-meta" role="status">{formatNumber(matching.length, locale)} {c.barangayNames} · {year}</p>}
         {name ? <>
-          {valueFor(name) === null ? <div className="civic-empty"><h3>{c.noNamedPopulation}</h3><p>{c.noNamedPopulationNote}</p></div> : <ul className="barangay-bars" aria-label={c.barangayPopulation}>
-            {['2015', '2020'].map(referenceYear => <li key={referenceYear}>
-              <div className="barangay-bar-label"><span>{referenceYear}</span><strong>{formatNumber(valueFor(name, referenceYear)!, locale)} {c.populationUnit}</strong></div>
-              <span className="barangay-bar-track" aria-hidden="true"><span style={{ width: `${valueFor(name, referenceYear)! / Math.max(valueFor(name, '2015')!, valueFor(name, '2020')!, 1) * 100}%` }} /></span>
-            </li>)}
+          {['2015', '2020'].every(referenceYear => valueFor(name, referenceYear) === null) ? <div className="civic-empty"><h3>{c.noNamedPopulation}</h3><p>{c.noNamedPopulationNote}</p></div> : <ul className="barangay-bars" aria-label={c.barangayPopulation}>
+            {['2015', '2020'].map(referenceYear => {
+              const count = valueFor(name, referenceYear)
+              const maximumForName = Math.max(valueFor(name, '2015') ?? 0, valueFor(name, '2020') ?? 0, 1)
+              return <li key={referenceYear}>
+                <div className="barangay-bar-label"><span>{referenceYear}</span><strong>{count === null ? c.coverageMissing : `${formatNumber(count, locale)} ${c.populationUnit}`}</strong></div>
+                {count !== null && <span className="barangay-bar-track" aria-hidden="true"><span style={{ width: `${count / maximumForName * 100}%` }} /></span>}
+              </li>
+            })}
           </ul>}
+          <SourceNote {...props} id={String(population.sourceId)} />
           {claims.filter(claim => (claim.namesAsPublished as string[] | null)?.includes(name)).map(claim => <SourceNote {...props} key={String(claim.sourceId)} id={String(claim.sourceId)} />)}
           <p><a href={correctionLink(recordId!)}>{t.correction}</a></p>
         </> : <>
