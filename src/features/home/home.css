@@ -114,7 +114,8 @@ footer.atlas-footer { background: #191d21; color: white; border: 0; padding: 4re
   .atlas-photo-strip { margin-inline: .25rem; }
   .atlas-photo-track-second { display: flex; margin-top: .25rem; animation-direction: reverse; }
   .atlas-photo-frame { flex-basis: 65cqw; width: 65cqw; }
-  .atlas-photo-strip img { height: max(120px, calc((100dvh - 17rem) / 2)); }
+  .atlas-photo-strip img { height: max(72px, calc((100dvh - 17rem) * .3)); }
+  .atlas-photo-track-second img { height: max(168px, calc((100dvh - 17rem) * .7)); }
   .atlas-credits { font-size: .75rem; }
   .atlas-search { padding-block: 1.75rem 1.5rem; }
   .atlas-search .search-form > div { flex-wrap: wrap; }
