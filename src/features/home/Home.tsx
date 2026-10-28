@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import type { DataRecord } from '../../data/loaders'
@@ -42,6 +42,21 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
   municipality: DataRecord
 }) {
   const atlasRef = useRef<HTMLDivElement>(null)
+  const [photosVisible, setPhotosVisible] = useState(false)
+  const photos = [...lgu.homepagePhotos, ...lgu.demographicsPhotos.slice(1)]
+  useEffect(() => {
+    const strip = atlasRef.current?.querySelector('.atlas-photo-strip')
+    if (!strip) return
+    let visible = false
+    const sync = () => setPhotosVisible(visible && !document.hidden)
+    const observer = new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync() })
+    observer.observe(strip)
+    document.addEventListener('visibilitychange', sync)
+    return () => {
+      observer.disconnect()
+      document.removeEventListener('visibilitychange', sync)
+    }
+  }, [])
   useEffect(() => {
     const atlas = atlasRef.current
     if (!atlas) return
@@ -104,16 +119,21 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
     <section className="atlas-place" aria-labelledby="place-title">
       <div className="atlas-inner"><h1 id="place-title">{lgu.name}, {lgu.province}</h1></div>
       <figure className="atlas-photos">
-        <div className="atlas-photo-strip">{lgu.homepagePhotos.map((photo, index) =>
-          <img key={photo.src} src={`${import.meta.env.BASE_URL}${photo.src}`} alt={photo.alt[locale]}
-            width={photo.width} height={photo.height} fetchPriority={index === 0 ? 'high' : 'auto'} />,
-        )}</div>
+        <div className={`atlas-photo-strip${photosVisible ? ' is-visible' : ''}`}><div className="atlas-photo-track"
+          style={{ animationDuration: `${photos.length * 5}s` }}>
+          {[0, 1].map(copy => <div className="atlas-photo-group" key={copy} aria-hidden={copy === 1}>
+            {photos.map((photo, index) =>
+              <img key={photo.src} src={`${import.meta.env.BASE_URL}${photo.src}`} alt={copy ? '' : photo.alt[locale]}
+                width={photo.width} height={photo.height} fetchPriority={index === 0 && copy === 0 ? 'high' : 'auto'} />,
+            )}
+          </div>)}
+        </div></div>
         <figcaption className="atlas-inner">
           <details className="atlas-credits">
             <summary>{t.photoCredits}</summary>
             <p>{t.photoChanges}</p>
-            <ul>{lgu.homepagePhotos.map(photo => <li key={photo.src}>
-              <a href={photo.source}>{photo.title}</a> · {photo.author} · <a href={photo.licenseUrl}>{photo.license}</a>
+            <ul>{photos.map(photo => <li key={photo.src}>
+              <a href={photo.source}>{photo.title}</a> · {photo.author} · {photo.licenseUrl ? <a href={photo.licenseUrl}>{photo.license}</a> : t.photoPermission}
             </li>)}</ul>
           </details>
         </figcaption>

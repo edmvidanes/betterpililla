@@ -28,7 +28,7 @@ SITE_BASE=/bettercavinti/ npm run preview
 
 ## Landing page, photographs and map
 
-The Community Atlas homepage uses a fluid place-name masthead, a three-photo strip, search with service-office badges, quick links, grouped browsing, a history timeline, a map and source transparency. Quick links sit immediately below search. Components and responsive styles live in `src/features/home/`; global navigation and search remain shared with the rest of the portal.
+The Community Atlas homepage uses a fluid place-name masthead, a photo carousel, search with service-office badges, quick links, grouped browsing, a history timeline, a map and source transparency. The photo strip starts continuous motion after two seconds and pauses when offscreen or in a hidden tab; reduced-motion preferences disable the motion. It includes the credited cave and Sambalilo Festival photographs also used in the demographics section. Quick links sit immediately below search. Components and responsive styles live in `src/features/home/`; global navigation and search remain shared with the rest of the portal.
 
 GSAP ScrollSmoother adds eased desktop scrolling and integrates with the homepage's ScrollTrigger effects. Touch scrolling remains native, and reduced-motion preferences disable smoothing.
 
@@ -42,6 +42,9 @@ Photographs are real Cavinti images hosted locally under `public/images/cavinti/
 - [Caliraya Lake at Kanluran Talaongan](https://commons.wikimedia.org/wiki/File:9720Kanluran_Talaongan,_Cavinti,_Laguna_10.jpg), Judgefloro — [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
 - [Cavinti/Pagsanjan Falls](https://commons.wikimedia.org/wiki/File:Pagsanjan_Falls_-_Pagsanjan,_Laguna_1.jpg), Kathleen Mae Tugano — [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). The resized WebP derivative remains under that license.
 - [Cavinti Bridge II in Tibatib](https://commons.wikimedia.org/wiki/File:38Tibatib_Poblacion,_Cavinti,_Laguna_08.jpg), Judgefloro — [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/).
+- [Harvest Festival welcome arch](https://commons.wikimedia.org/wiki/File:Cavinti,Lagunajf7841_11.JPG) and [Bumbungan River at Cavinti Bridge I](https://commons.wikimedia.org/wiki/File:Cavinti,Lagunajf7871_01.JPG), Ramon FVelasquez — [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). Resized WebP derivatives remain under that license.
+- [Transfiguration of Our Lord Parish Church](https://commons.wikimedia.org/wiki/File:Cavinti,LagunaChurchjf8041_01.JPG) and [Cavinti Municipal Hall](https://commons.wikimedia.org/wiki/File:Cavinti,Lagunajf_8182_04.JPG), Ramon FVelasquez — [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). Resized WebP derivatives remain under that license.
+- [Lumot Lake](https://commons.wikimedia.org/wiki/File:133Lumot,_Cavinti,_Laguna_36.jpg), [Japanese Memorial Garden](https://commons.wikimedia.org/wiki/File:9812Japanese_Memorial_Garden,_Cavinti_34.jpg), [Bumbungan Eco-Park](https://commons.wikimedia.org/wiki/File:38Tibatib_Poblacion,_Cavinti,_Laguna_27.jpg), and [Caluycoy Bridge](https://commons.wikimedia.org/wiki/File:147Duhat_Poblacion,_Cavinti,_Laguna_42.jpg), Judgefloro — [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Resized and converted to WebP.
 
 Generated design proposals under `.impeccable/proposals/` are development references only and are not deployed. Another municipality must supply its own licensed photographs and credits alongside its data pack.
 
