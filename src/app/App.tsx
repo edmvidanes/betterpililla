@@ -61,6 +61,7 @@ function App() {
         group.open = false
         if (event instanceof KeyboardEvent) group.querySelector('summary')?.focus()
       })
+      if (event instanceof MouseEvent && !(event.target as Element).closest('.primary-navigation, .menu-toggle')) setMenuOpen(false)
       if (event instanceof KeyboardEvent) {
         const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle')
         if (toggle?.getAttribute('aria-expanded') === 'true') toggle.focus()
@@ -160,7 +161,23 @@ function App() {
   }
   else if (route === 'search') content = <SearchPage data={data} locale={locale} href={href} />
   else if (route === 'report-data') content = <><h1>{t.corrections}</h1><p className="measure">{t.correctionText}</p><ul className="topic-list"><li><a href={correctionLink(new URLSearchParams(location.search).get('record') || '')}>{t.correction}</a></li><li><a href={correctionLink('', 'missing-record.yml')}>{t.missing}</a></li><li><a href={correctionLink('', 'project-observation.yml')}>{t.observation}</a></li></ul></>
-  else if (route === 'about') content = <><h1>{t.about}</h1><p>{t.community}</p><p>{t.description}</p><p><a href={lgu.repository}>GitHub</a> · <a href={lgu.officialUrl}>{lgu.name}</a></p>{tree(data.municipality.publishedDescription)}<p>{t.licensePolicy}</p></>
+  else if (route === 'about') content = <article className="about-page">
+    <header className="about-intro">
+      <h1>{t.about}</h1>
+      <p className="about-statement">{t.community}</p>
+      <p className="about-description">{t.description}</p>
+      <p>{locale === 'fil' ? 'Ginawa para sa inisyatibong ' : 'Made for the ' }<a href="https://lgu.bettergov.ph/">BetterLGU{locale === 'en' ? ' initiative' : ''}</a>.</p>
+      <p>{locale === 'fil' ? 'Kredito:' : 'Credit:'} <a href="https://lukasbebis.com">@klnwlks</a></p>
+      <nav className="about-links" aria-label={t.projectLinks}>
+        <a href={lgu.repository}>GitHub</a>
+        <a href={lgu.officialUrl}>{lgu.name}</a>
+      </nav>
+    </header>
+    <div className="about-details">
+      {tree(data.municipality.publishedDescription)}
+      <p className="about-license">{t.licensePolicy}</p>
+    </div>
+  </article>
   else if (route === 'accessibility') content = <><h1>{t.accessibility}</h1><p>{t.accessibilityPolicy}</p><a href={href('report-data')}>{t.corrections}</a></>
   else if (route === 'privacy') content = <><h1>{t.privacy}</h1><p>{t.privacyPolicy}</p></>
   else content = notFound()
@@ -181,7 +198,7 @@ function App() {
         <img className="brand-mark" src={`${base}logo.webp`} width="48" height="48" alt="" />
         <div className="brand-wordmark">Better<span>{lgu.name}</span></div>
       </a>
-      <button className="menu-toggle" aria-expanded={menuOpen} aria-controls="primary-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? t.closeMenu : t.menuLabel}</button>
+      <button className="menu-toggle" aria-label={menuOpen ? t.closeMenu : t.menuLabel} aria-expanded={menuOpen} aria-controls="primary-navigation" onClick={() => setMenuOpen(!menuOpen)}><span className="menu-icon" aria-hidden="true"><span /><span /><span /></span></button>
       <nav id="primary-navigation" className={`primary-navigation${menuOpen ? ' is-open' : ''}`} aria-label={t.navigation}>
         {navigationGroups.map(group => <details key={group.label} className="nav-group" name="primary-navigation">
           <summary className={group.keys.some(key => {
