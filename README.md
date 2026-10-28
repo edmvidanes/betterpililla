@@ -102,6 +102,8 @@ News images are stored locally under `public/images/news/`; `src/data/news-image
 
 See [docs/sources-and-data-policy.md](docs/sources-and-data-policy.md) for data and source rules. The data refresh command does not run on a schedule; only publish reviewed records. Keep source wording distinct from translations, retain provenance, and label unknown, stale or unverified information honestly.
 
+Route-specific datasets are selected in `src/data/loaders.ts`; update that mapping when a page starts using another dataset. `portal.json` is shared by all routes and contains the search index.
+
 For deployment, publish all of `dist/`, including generated `data/` files, nested route pages, `sitemap.xml` and `robots.txt`. The build generates canonical URLs for `https://bettercavinti.org`, localized page metadata and crawlable summaries; React renders the full pages. Search pages and the custom 404 are marked `noindex`. For a subdirectory, set a slash-terminated base, for example `SITE_BASE=/portal/ npm run build`; configure the host to serve the generated `robots.txt` at the domain root so crawlers can find the sitemap.
 
 ## licenses

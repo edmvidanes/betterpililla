@@ -93,7 +93,7 @@ function App() {
     document.addEventListener('keydown', shortcut)
     return () => document.removeEventListener('keydown', shortcut)
   }, [])
-  useEffect(() => { loadData().then(setData).catch(() => setError(true)) }, [])
+  useEffect(() => { loadData(route).then(setData).catch(() => setError(true)) }, [route])
   useEffect(() => {
     if (route !== '') return
     const update = () => setPastHero((document.querySelector('.atlas-place')?.getBoundingClientRect().bottom ?? 1) <= 0)
