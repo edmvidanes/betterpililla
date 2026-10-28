@@ -68,6 +68,7 @@ export default function Barangays(props: CivicProps & { recordId?: string; corre
       </section>
       <aside className="civic-aside barangay-evidence">
         <h2>{c.rosterComparison}</h2><p>{c.rosterExplanation}</p>
+        <p><a href="https://psa.gov.ph/classification/psgc/barangays/0403407000">{locale === 'fil' ? 'PSA: 19 barangay noong Hulyo 31, 2025' : 'PSA: 19 barangays as of July 31, 2025'}</a></p>
         {claims.map(claim => <div className="barangay-claim" key={String(claim.sourceId)}>
           <p className="civic-meta">{c.reportedCount}: <strong>{formatNumber(Number(claim.count), locale)}</strong></p>
           <SourceNote {...props} id={String(claim.sourceId)} />

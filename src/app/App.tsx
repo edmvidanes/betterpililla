@@ -3,7 +3,7 @@ import { Button } from '@bettergov/kapwa/button'
 import { lgu } from '../config/lgu'
 import { catalogs, formatNumber, type Locale, type MessageKey } from '../i18n/locales'
 import { loadData, type DataPack, type DataRecord, type EvidenceValue } from '../data/loaders'
-import { DataStatus, EvidenceTree, ExternalDocumentLink, SourceCitation } from '../components/Evidence'
+import { EvidenceTree, ExternalDocumentLink, SourceCitation } from '../components/Evidence'
 import SearchPalette from '../components/SearchPalette'
 import Legislation, { type LegislationRecord } from '../features/legislation/Legislation'
 import Home from '../features/home/Home'
@@ -12,6 +12,7 @@ import { Places, Advisories } from '../features/Places'
 import { Government, Officials, Contacts } from '../features/Government'
 import Demographics from '../features/Demographics'
 import Finance from '../features/Finance'
+import ProjectProcurement from '../features/ProjectProcurement'
 import { Downloads, Sources } from '../features/Catalogues'
 import Barangays from '../features/Barangays'
 import Geography from '../features/Geography'
@@ -93,7 +94,7 @@ function App() {
     const source = data?.portal.sources.find(s => (s.id || s.sourceId) === id)
     return source ? <SourceCitation key={id} source={source} href={sourceHref(id)} locale={locale} /> : null
   }
-  const gap = (text = t.gapText) => <DataStatus><strong>{t.gap}</strong><p>{text}</p></DataStatus>
+  const gap = <p className="civic-meta">{t.capture}: {data?.portal.capturedAt}</p>
   const tree = (value: EvidenceValue) => <section className="panel">{original}{evidence(value)}</section>
   const records = (value: EvidenceValue | undefined): DataRecord[] => Array.isArray(value) ? value as DataRecord[] : []
   const notFound = () => <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><code className="requested-url">{location.pathname}</code><p><a href={href('search')}>{t.search}</a></p></>
@@ -112,18 +113,18 @@ function App() {
   else if (route === 'government/officials') content = <Officials data={data} locale={locale} href={href} />
   else if (route.startsWith('government/officials/')) {
     const row = officialRows.find(r => r.recordId === route.slice('government/officials/'.length))
-    content = row ? <><h1>{String(row.displayName)}</h1><DataStatus>{t.term}: {t.unknown}</DataStatus>{tree(row)}<a href={correctionLink(String(row.recordId))}>{t.correction}</a>{cite(String(row.sourceId || row.profileSourceId))}</> : notFound()
+    content = row ? <><h1>{String(row.displayName)}</h1><p className="civic-meta">{t.term}: {t.unknown} · {t.capture}: {data.portal.capturedAt}</p>{tree(row)}<a href={correctionLink(String(row.recordId))}>{t.correction}</a>{cite(String(row.sourceId || row.profileSourceId))}</> : notFound()
   }
   else if (route === 'government/offices' || route.startsWith('government/offices/')) content = <Contacts data={data} locale={locale} href={href} officeId={route === 'government/offices' ? undefined : route.slice('government/offices/'.length)} />
-  else if (route === 'government/committees') content = <><h1>{t.committees}</h1>{original}<DataStatus>{t.unknown}: {t.term}</DataStatus><ul className="record-list">{officialRows.filter(row => row.committeeLabel).map(row => <li key={String(row.recordId)}><h2>{String(row.committeeLabel)}</h2><a href={href(`government/officials/${encodeURIComponent(String(row.recordId))}`)}>{String(row.displayName)}</a>{cite(String(row.sourceId))}</li>)}</ul></>
+  else if (route === 'government/committees') content = <><h1>{t.committees}</h1>{original}<p className="civic-meta">{t.unknown}: {t.term} · {t.capture}: {data.portal.capturedAt}</p><ul className="record-list">{officialRows.filter(row => row.committeeLabel).map(row => <li key={String(row.recordId)}><h2>{String(row.committeeLabel)}</h2><a href={href(`government/officials/${encodeURIComponent(String(row.recordId))}`)}>{String(row.displayName)}</a>{cite(String(row.sourceId))}</li>)}</ul></>
   else if (route === 'government/barangays' || route.startsWith('government/barangays/')) content = <Barangays data={data} locale={locale} href={href} recordId={route === 'government/barangays' ? undefined : route.slice('government/barangays/'.length)} correctionLink={correctionLink} />
   else if (route === 'open-lgu/legislation' || route.startsWith('open-lgu/legislation/')) content = <Legislation locale={locale} records={allLegislation} recordId={route === 'open-lgu/legislation' ? undefined : route.slice('open-lgu/legislation/'.length)} href={href} sourceLink={sourceHref} correctionLink={correctionLink} />
-  else if (route === 'open-lgu/terms') content = <><h1>{t.terms}</h1>{gap()}<p>{t.term}: {t.unknown}</p>{cite(lgu.sourceIds.legislative)}</>
+  else if (route === 'open-lgu/terms') content = <><h1>{t.terms}</h1>{gap}<p>{t.term}: {t.unknown}</p>{cite(lgu.sourceIds.legislative)}</>
   else if (route.startsWith('open-lgu/terms/')) content = notFound()
   else if (route === 'statistics/demographics') content = <Demographics data={data} locale={locale} href={href} />
-  else if (route === 'statistics/competitiveness') content = <><h1>{t.competitiveness}</h1>{gap()}{cite(lgu.sourceIds.competitiveness)}</>
+  else if (route === 'statistics/competitiveness') content = <><h1>{t.competitiveness}</h1><p className="civic-intro">{locale === 'fil' ? 'Tingnan ang profile at mga ranggo ng Cavinti sa Cities and Municipalities Competitiveness Index ng DTI.' : 'Explore Cavinti’s profile and rankings in the DTI Cities and Municipalities Competitiveness Index.'}</p><p><a href="https://cmci.dti.gov.ph/lgu-profile.php?lgu=Cavinti">{locale === 'fil' ? 'Buksan ang profile ng Cavinti sa DTI' : 'Open the DTI profile for Cavinti'}</a></p><p className="civic-meta">{locale === 'fil' ? 'Hindi nakuha ang mga marka sa snapshot na ito; sumangguni sa DTI para sa mga resulta.' : 'Scores could not be retrieved for this snapshot; consult DTI for the results.'}</p>{cite(lgu.sourceIds.competitiveness)}</>
   else if (route === 'statistics/municipal-income' || route === 'transparency/finance') content = <Finance data={data} locale={locale} href={href} income={route.startsWith('statistics')} />
-  else if (route === 'transparency/procurement' || route === 'transparency/projects') content = <><h1>{route.endsWith('projects') ? t.projects : t.procurement}</h1>{gap()}{tree(data.transparency.procurementAndProjectCoverage)}{records(data.transparency.sourceChecks).filter(r => r.sourceId === lgu.sourceIds.procurement).map(r => <section key={String(r.sourceId)}>{tree(r)}</section>)}{cite(lgu.sourceIds.procurement)}{route.endsWith('projects') && <p><a href={correctionLink('', 'project-observation.yml')}>{t.observation}</a></p>}</>
+  else if (route === 'transparency/procurement' || route === 'transparency/projects') content = <ProjectProcurement data={data} locale={locale} href={href} correctionLink={correctionLink} projects={route.endsWith('projects')} />
   else if (route === 'map') content = <Geography data={data} locale={locale} href={href} />
   else if (route === 'places') content = <Places data={data} locale={locale} href={href} />
   else if (route === 'advisories') content = <Advisories data={data} locale={locale} href={href} />

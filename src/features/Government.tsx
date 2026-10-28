@@ -37,7 +37,7 @@ export function Officials(props: CivicProps) {
     {!matching.length && <p>{t.noResults}</p>}<ul className="directory-grid">{matching.map(row => <li key={String(row.recordId)}><p className="civic-meta" lang="en">{String(row.directorySection)}</p><h2><a lang="en" href={href(`government/officials/${encodeURIComponent(String(row.recordId))}`)}>{String(row.displayName)}</a></h2>{row.roleLabel && <p className="directory-role" lang="en">{String(row.roleLabel)}</p>}{row.committeeLabel && <p lang="en">{String(row.committeeLabel)}</p>}<SourceNote {...props} id={String(row.sourceId || row.profileSourceId)} /></li>)}</ul>
     {winners.length > 0 && <section aria-labelledby="historical-winners">
       <h2 id="historical-winners">{locale === 'fil' ? 'Mga nanalo sa mga nakaraang halalan' : 'Historical election winners'}</h2>
-      <div className="notice" role="note"><p>{locale === 'fil'
+      <div><p>{locale === 'fil'
         ? 'Mga makasaysayang pahayag mula sa sekundaryang dataset, hindi patunay ng panunungkulan o kasalukuyang katungkulan. Hindi kumpleto ang saklaw; dalawa lamang ang tala para sa 2010. Hindi pa napagkakasundo ang pinagmulan ng mga tala noong 2004–2013; mula 2016 pataas ay nagmula sa itinamang dataset.'
         : 'Historical secondary-source claims, not evidence of tenure or current office. Coverage is incomplete; only two records are available for 2010. Provenance for 2004–2013 is unreconciled; records from 2016 onward are derived from the corrected dataset.'}</p>
         <p>OpenHalalan: Leung et al. (2026), <a href="https://doi.org/10.5281/zenodo.17783099">DOI 10.5281/zenodo.17783099</a> · <a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL 1.0</a> · <a href="https://data.bettergov.ph/datasets/25">BetterGov</a></p>
@@ -56,7 +56,7 @@ export function Contacts(props: CivicProps & { officeId?: string }) {
   const t = catalogs[locale], c = civicCatalogs[locale]
   const contacts = rows(data.contacts.records).filter(row => !officeId || row.category === officeId)
   return <><PageIntro title={t.offices}>{c.contactIntro}</PageIntro>
-    <div className="notice" role="note"><strong>{c.contactTitle}</strong><p>{c.contactLimit}</p></div>
+    <p className="civic-meta">{c.contactLimit}</p>
     {!contacts.length && <><h2>{t.notFound}</h2><a href={href('government/offices')}>{c.publishedContacts}</a></>}
     <ul className="directory-grid">{contacts.map(row => <li key={String(row.category)}><h2><a lang="en" href={href(`government/offices/${row.category}`)}>{String(row.service)}</a></h2>
       {row.addressAsPublished && <p lang="en">{String(row.addressAsPublished)}</p>}
