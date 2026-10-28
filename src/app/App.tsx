@@ -1,28 +1,36 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState, type ReactNode } from 'react'
 import { Button } from '@bettergov/kapwa/button'
 import { lgu } from '../config/lgu'
 import { catalogs, formatDate, formatNumber, type Locale, type MessageKey } from '../i18n/locales'
 import { loadData, type DataPack, type DataRecord, type EvidenceValue } from '../data/loaders'
 import { EvidenceTree, ExternalDocumentLink, SourceCitation } from '../components/Evidence'
 import SearchPalette from '../components/SearchPalette'
-import Legislation, { type LegislationRecord } from '../features/legislation/Legislation'
-import Home from '../features/home/Home'
-import History from '../features/home/History'
-import Services from '../features/Services'
-import ServiceDetail from '../features/ServiceDetail'
-import { Places, Advisories } from '../features/Places'
-import { Government, Officials, OfficialDetail, Contacts } from '../features/Government'
-import Demographics from '../features/Demographics'
-import Competitiveness from '../features/Competitiveness'
-import Finance from '../features/Finance'
-import ProjectProcurement from '../features/ProjectProcurement'
-import { Downloads, Sources } from '../features/Catalogues'
-import Barangays from '../features/Barangays'
-import News, { NewsDetail } from '../features/News'
-import Geography from '../features/Geography'
+import type { LegislationRecord } from '../features/legislation/Legislation'
 import { routes } from './route-manifest'
 import PageMotion from './PageMotion'
 import { searchPortal } from './search'
+
+const Legislation = lazy(() => import('../features/legislation/Legislation'))
+const Home = lazy(() => import('../features/home/Home'))
+const History = lazy(() => import('../features/home/History'))
+const Services = lazy(() => import('../features/Services'))
+const ServiceDetail = lazy(() => import('../features/ServiceDetail'))
+const Places = lazy(() => import('../features/Places').then(module => ({ default: module.Places })))
+const Advisories = lazy(() => import('../features/Places').then(module => ({ default: module.Advisories })))
+const Government = lazy(() => import('../features/Government').then(module => ({ default: module.Government })))
+const Officials = lazy(() => import('../features/Government').then(module => ({ default: module.Officials })))
+const OfficialDetail = lazy(() => import('../features/Government').then(module => ({ default: module.OfficialDetail })))
+const Contacts = lazy(() => import('../features/Government').then(module => ({ default: module.Contacts })))
+const Demographics = lazy(() => import('../features/Demographics'))
+const Competitiveness = lazy(() => import('../features/Competitiveness'))
+const Finance = lazy(() => import('../features/Finance'))
+const ProjectProcurement = lazy(() => import('../features/ProjectProcurement'))
+const Downloads = lazy(() => import('../features/Catalogues').then(module => ({ default: module.Downloads })))
+const Sources = lazy(() => import('../features/Catalogues').then(module => ({ default: module.Sources })))
+const Barangays = lazy(() => import('../features/Barangays'))
+const News = lazy(() => import('../features/News'))
+const NewsDetail = lazy(() => import('../features/News').then(module => ({ default: module.NewsDetail })))
+const Geography = lazy(() => import('../features/Geography'))
 
 const base = import.meta.env.BASE_URL
 const githubIcon = <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.32-3.79-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.64 1.22 3.28.93.1-.73.39-1.22.7-1.5-2.5-.28-5.12-1.25-5.12-5.56 0-1.23.44-2.24 1.16-3.03-.12-.28-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.16a10.8 10.8 0 0 1 5.64 0c2.15-1.46 3.1-1.16 3.1-1.16.61 1.55.23 2.7.11 2.98.72.79 1.16 1.8 1.16 3.03 0 4.32-2.63 5.27-5.13 5.55.4.35.76 1.03.76 2.08v3.1c0 .3.21.65.78.54A11.25 11.25 0 0 0 12 .75Z" /></svg>
@@ -99,11 +107,8 @@ function App() {
   }, [route])
   useEffect(() => {
     document.documentElement.lang = locale
-    const heading = document.querySelector('#main h1')?.textContent?.trim()
-    const label = heading || t[routes.find(([path]) => path === route)?.[1] ?? 'notFound']
-    document.title = route === '' && !error ? `Better${lgu.name} · ${t.communityPortal}` : `${label} · Better${lgu.name}`
     if (!segments.length) location.replace(`${base}${locale}/${location.search}${location.hash}`)
-  }, [locale, route, t, segments.length, data, error])
+  }, [locale, segments.length])
   const evidence = (value: EvidenceValue) => <EvidenceTree value={value} locale={locale} sources={data?.portal.sources ?? []} sourceHref={sourceHref} />
   const original = <p className="original-label">{t.original}</p>
   const cite = (id: string) => {
@@ -114,7 +119,7 @@ function App() {
   const records = (value: EvidenceValue | undefined): DataRecord[] => Array.isArray(value) ? value as DataRecord[] : []
   const notFound = () => <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><code className="requested-url">{location.pathname}</code><p><a href={href('search')}>{t.search}</a></p></>
   const officialRows = data ? records(data.officials.records) : []
-  const allLegislation: LegislationRecord[] = data ? [data.ordinances, data.resolutions].flatMap(feed => records(feed.records).map(row => ({ ...row, sourceIndexUrl: feed.sourceIndexUrl, sourceFeedUrl: feed.sourceFeedUrl, retrievedAt: feed.retrievedAt, sourceFeedSha256: feed.sourceFeedSha256 } as unknown as LegislationRecord))) : []
+  const allLegislation: LegislationRecord[] = data && (route === 'open-lgu/legislation' || route.startsWith('open-lgu/legislation/')) ? [data.ordinances, data.resolutions].flatMap(feed => records(feed.records).map(row => ({ ...row, sourceIndexUrl: feed.sourceIndexUrl, sourceFeedUrl: feed.sourceFeedUrl, retrievedAt: feed.retrievedAt, sourceFeedSha256: feed.sourceFeedSha256 } as unknown as LegislationRecord))) : []
   let content: ReactNode
   const dataStatus = error
     ? <><h2>{t.loadError}</h2><Button onClick={() => location.reload()}>{t.retry}</Button><p><ExternalDocumentLink url={lgu.officialUrl} /></p></>
@@ -221,7 +226,7 @@ function App() {
     </div></header>
     <SearchPalette dialog={searchDialog} data={data} error={error} locale={locale} href={href} />
     <div className={`site-layout${route === '' ? ' home-layout' : ''}`}>
-      <main id="main" tabIndex={-1}><PageMotion ready={!!data || error} />{content}</main>
+      <main id="main" tabIndex={-1}><PageMotion ready={!!data || error} /><Suspense fallback={<p role="status">{t.loading}</p>}><PageContent locale={locale} route={route} error={error} ready={!!data || error} officeName={data && route.startsWith('government/offices/') ? String(records(data.contacts.records).find(row => row.category === route.slice('government/offices/'.length))?.service || '') : ''}>{content}</PageContent></Suspense></main>
     </div>
     {route === '' ? <footer className="atlas-footer">
       <div className="atlas-footer-main">
@@ -243,6 +248,16 @@ function App() {
         <a href={lgu.repository} aria-label="GitHub">{githubIcon}</a>
       </nav></footer>}
   </>
+}
+
+function PageContent({ children, locale, route, error, ready, officeName }: { children: ReactNode; locale: Locale; route: string; error: boolean; ready: boolean; officeName: string }) {
+  useEffect(() => {
+    if (!ready && route !== '') return
+    const heading = document.querySelector('#main h1')?.textContent?.trim()
+    const label = officeName || heading || catalogs[locale][routes.find(([path]) => path === route)?.[1] ?? 'notFound']
+    document.title = route === '' && !error ? `Better${lgu.name} · ${catalogs[locale].communityPortal}` : `${label} · Better${lgu.name}`
+  })
+  return children
 }
 
 function SearchForm({ locale, href, initial = '' }: { locale: Locale; href: (path: string) => string; initial?: string }) {
