@@ -9,7 +9,7 @@
   text-align: center;
 }
 
-.atlas-history-heading h2 {
+.atlas-history-heading h1 {
   margin: 0;
   color: #172b4d;
   font-size: clamp(2rem, 4vw, 3.5rem);

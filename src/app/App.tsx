@@ -7,6 +7,7 @@ import { EvidenceTree, ExternalDocumentLink, SourceCitation } from '../component
 import SearchPalette from '../components/SearchPalette'
 import Legislation, { type LegislationRecord } from '../features/legislation/Legislation'
 import Home from '../features/home/Home'
+import History from '../features/home/History'
 import Services from '../features/Services'
 import ServiceDetail from '../features/ServiceDetail'
 import { Places, Advisories } from '../features/Places'
@@ -45,7 +46,7 @@ function App() {
   }
   const navigationGroups: { label: string; keys: MessageKey[] }[] = [
     { label: t.services, keys: ['services', 'places', 'advisories', 'news'] },
-    { label: t.government, keys: ['government', 'officials', 'offices', 'committees', 'barangays', 'map'] },
+    { label: t.government, keys: ['government', 'officials', 'offices', 'committees', 'barangays', 'map', 'history'] },
     { label: t.statistics, keys: ['demographics', 'competitiveness', 'income'] },
     { label: 'OpenLGU', keys: ['legislation', 'terms', 'downloads'] },
     { label: t.transparency, keys: ['finance', 'procurement', 'projects', 'sources'] },
@@ -142,6 +143,7 @@ function App() {
   else if (route === 'map') content = <Geography data={data} locale={locale} href={href} />
   else if (route === 'places') content = <Places data={data} locale={locale} href={href} />
   else if (route === 'advisories') content = <Advisories data={data} locale={locale} href={href} />
+  else if (route === 'history') content = <History locale={locale} />
   else if (route === 'news') content = <News data={data} locale={locale} href={href} />
   else if (route.startsWith('news/')) content = <NewsDetail data={data} locale={locale} href={href} recordId={route.slice('news/'.length)} />
   else if (route === 'open-data') content = <Downloads data={data} locale={locale} href={href} />

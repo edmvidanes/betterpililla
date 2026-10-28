@@ -5,7 +5,7 @@ import type { DataRecord } from '../../data/loaders'
 import { lgu } from '../../config/lgu'
 import { catalogs, formatDate, type Locale, type MessageKey } from '../../i18n/locales'
 import { routes } from '../../app/route-manifest'
-import History from './History'
+import LatestNews from './LatestNews'
 import ServiceHighlights from './ServiceHighlights'
 import CavintiMap from './CavintiMap'
 import Demographics from './Demographics'
@@ -31,6 +31,7 @@ const browseIcons: Partial<Record<MessageKey, string>> = {
   map: 'M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3V6Zm6-3v15m6-12v15',
   places: 'M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0ZM12 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z',
   news: 'M4 4h16v16H4zM7 8h10M7 12h10M7 16h6',
+  history: 'M3 12a9 9 0 1 1 3 6.7M3 17v-5h5M12 7v5l3 2',
   advisories: 'M12 3 2 20h20L12 3Zm0 6v5m0 3h.01',
 }
 
@@ -88,12 +89,6 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
           scrollTrigger: { trigger: chart, start: 'top 90%', end: 'bottom 55%', scrub: 1.2 },
         })
       }
-      atlas.querySelectorAll<HTMLElement>('.atlas-history-heading, .atlas-history-layout').forEach(part => {
-        gsap.fromTo(part, { y: 40, opacity: .65 }, {
-          y: 0, opacity: 1, duration: 1.1, ease: 'power3.out', immediateRender: false,
-          scrollTrigger: { trigger: part, start: 'top 88%', once: true },
-        })
-      })
 
 
       atlas.querySelectorAll<HTMLElement>('.demographics-photo-strip img').forEach(image => {
@@ -165,13 +160,13 @@ export default function Home({ locale, capturedAt, href, search, contacts, munic
       <div className="atlas-index">
         <section><h3>{t.atlasGovernment}</h3>{links(['government', 'officials', 'barangays', 'services'], true)}</section>
         <section><h3>{t.atlasRecords}</h3>{links(['finance', 'procurement', 'projects', 'legislation', 'downloads'], true)}</section>
-        <section className="atlas-local"><h3>{t.atlasLocal}</h3>{links(['demographics', 'competitiveness', 'map', 'places', 'advisories', 'news'], true)}</section>
+        <section className="atlas-local"><h3>{t.atlasLocal}</h3>{links(['demographics', 'competitiveness', 'map', 'places', 'advisories', 'news', 'history'], true)}</section>
       </div>
     </section>
 
     <Demographics locale={locale} href={href} municipality={municipality} />
 
-    <History locale={locale} />
+    <LatestNews locale={locale} href={href} />
     <CavintiMap locale={locale} center={lgu.mapView.center} zoom={lgu.mapView.zoom} />
     <OfficialChannels locale={locale} />
 

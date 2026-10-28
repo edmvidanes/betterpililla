@@ -47,6 +47,8 @@ Review the resulting changes before publishing.
 
 The municipal news archive and public Other Documents catalog are captured separately in `src/data/cavinti-news.json` and `src/data/cavinti-other-documents.json`; the legislation refresh does not update them. Their source links, capture dates and response hashes describe the snapshot, not present availability or verified attachment contents. Official portraits load from the municipal website, whose site-wide rights statement is linked on each profile.
 
+The landing page shows the three most recent captured news articles; the full archive is available under News. Cavinti's sourced timeline is on the History page.
+
 News images are stored locally under `public/images/news/`; `src/data/news-image-provenance.json` records source URLs, hashes and rights review. One cover was not copied because its embedded copyright notice has not been cleared. Refreshes require reviewing each new image and its rights before adding it.
 
 ## project files

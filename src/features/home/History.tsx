@@ -80,7 +80,7 @@ export default function History({ locale }: { locale: Locale }) {
 
   return <section className="atlas-inner atlas-history" aria-labelledby="atlas-history-title">
     <header className="atlas-history-heading">
-      <h2 id="atlas-history-title">{t.historyTitle}</h2>
+      <h1 id="atlas-history-title">{t.historyTitle}</h1>
       <p>{t.historyIntro}</p>
     </header>
     <div className="atlas-history-layout">
