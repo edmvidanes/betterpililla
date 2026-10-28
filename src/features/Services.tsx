@@ -26,10 +26,10 @@ export default function Services(props: CivicProps) {
           <p role="status">{matching.length + matchingLeads.length} {locale === 'fil' ? 'resulta' : matching.length + matchingLeads.length === 1 ? 'result' : 'results'}</p></div>
         {services.length > 0 && <ul className="service-grid">{matching.map(row => <li key={String(row.recordId)} className="service-card"><h2><a href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{String(row.name)}</a></h2><SourceNote {...props} id={String(row.sourceId)} /></li>)}</ul>}
         {leads.length > 0 && <section aria-labelledby="service-legislation-leads"><h2 id="service-legislation-leads">{c.serviceLegislationLeads}</h2><p className="service-evidence">{!services.length && (locale === 'fil' ? 'Walang nakuhang tala ng serbisyo sa Citizens’ Charter. ' : 'No service entries were captured from the Citizens’ Charter. ')}{c.serviceLegislationLeadsText}</p><ul className="service-grid">{matchingLeads.map(({ record, topic }) => <li key={String(record.recordId)} className="service-card">
-          <h3><a href={href(`open-lgu/legislation/${encodeURIComponent(String(record.recordId))}`)}>{topic}</a></h3>
+          <h3><a href={href(`services/${encodeURIComponent(String(record.recordId))}`)}>{topic}</a></h3>
           <p className="service-card-status">{locale === 'fil' ? 'Batay sa indeks ng ordinansa · hindi pa beripikado' : 'Ordinance index lead · availability unverified'}</p>
           <p className="civic-meta">{String(record.documentNumber)} · {formatDate(String(record.sourceDate), locale)}</p>
-          <div className="service-card-footer"><a href={href(`open-lgu/legislation/${encodeURIComponent(String(record.recordId))}`)}>{locale === 'fil' ? 'Tingnan ang rekord' : 'View record'} <span aria-hidden="true">→</span></a><a href={String(record.documentUrl)}>{locale === 'fil' ? 'Opisyal na dokumento' : 'Official document'}</a></div>
+          <div className="service-card-footer"><a href={href(`services/${encodeURIComponent(String(record.recordId))}`)}>{locale === 'fil' ? 'Tingnan ang serbisyo' : 'View service'} <span aria-hidden="true">→</span></a><a href={String(record.documentUrl)}>{locale === 'fil' ? 'Opisyal na dokumento' : 'Official document'}</a></div>
         </li>)}</ul><SourceNote {...props} id={String(leads[0].record.sourceId)} /></section>}
         {!matching.length && !matchingLeads.length && <p role="status">{t.noResults}</p>}
       </> : <div className="civic-empty"><h2>{c.serviceMissing}</h2><p>{c.serviceMissingText}</p></div>}

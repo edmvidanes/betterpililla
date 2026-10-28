@@ -8,6 +8,7 @@ import SearchPalette from '../components/SearchPalette'
 import Legislation, { type LegislationRecord } from '../features/legislation/Legislation'
 import Home from '../features/home/Home'
 import Services from '../features/Services'
+import ServiceDetail from '../features/ServiceDetail'
 import { Places, Advisories } from '../features/Places'
 import { Government, Officials, Contacts } from '../features/Government'
 import Demographics from '../features/Demographics'
@@ -106,8 +107,10 @@ function App() {
   else if (route === '') content = <Home locale={locale} capturedAt={data.portal.capturedAt} href={href} search={<SearchForm locale={locale} href={href} />} contacts={data.contacts} municipality={data.municipality} />
   else if (route === 'services') content = <Services data={data} locale={locale} href={href} />
   else if (route.startsWith('services/')) {
-    const row = records(data.services.services).find(r => r.recordId === route.slice('services/'.length))
-    content = row ? <><h1>{String(row.name)}</h1>{tree(row)}{cite(String(row.sourceId))}<a href={correctionLink(String(row.recordId))}>{t.correction}</a></> : notFound()
+    const recordId = route.slice('services/'.length)
+    const row = records(data.services.services).find(r => r.recordId === recordId)
+    const lead = records(data.services.serviceLegislationLeads).find(r => r.recordId === recordId && records(data.ordinances.records).some(o => o.recordId === r.recordId && o.sourceId === r.sourceId))
+    content = row || lead ? <ServiceDetail data={data} locale={locale} href={href} recordId={recordId} /> : notFound()
   }
   else if (route === 'government') content = <Government data={data} locale={locale} href={href} />
   else if (route === 'government/officials') content = <Officials data={data} locale={locale} href={href} />
