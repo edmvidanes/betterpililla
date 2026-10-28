@@ -60,13 +60,14 @@ for (const locale of ['en', 'fil'] as const) {
       ? `${label}: impormasyon at mga pampublikong rekord tungkol sa Cavinti, Laguna.`
       : `${label}: public information and records about Cavinti, Laguna.`
     const canonical = url(locale, path)
+    const social = `<meta property="og:type" content="website" />\n    <meta property="og:site_name" content="Better${lgu.name}" />\n    <meta property="og:title" content="${escape(title)}" />\n    <meta property="og:description" content="${escape(description)}" />\n    <meta property="og:url" content="${escape(canonical)}" />\n    <meta property="og:image" content="${origin}${basePath}social-hero.jpg" />\n    <meta property="og:image:width" content="1200" />\n    <meta property="og:image:height" content="630" />\n    <meta property="og:image:alt" content="Cavinti, Laguna: photographs from the portal's homepage" />\n    <meta name="twitter:card" content="summary_large_image" />\n    <meta name="twitter:title" content="${escape(title)}" />\n    <meta name="twitter:description" content="${escape(description)}" />\n    <meta name="twitter:image" content="${origin}${basePath}social-hero.jpg" />`
     const metadata = `<meta name="description" content="${escape(description)}" />\n    <link rel="canonical" href="${escape(canonical)}" />\n    <link rel="alternate" hreflang="en" href="${escape(url('en', path))}" />\n    <link rel="alternate" hreflang="fil" href="${escape(url('fil', path))}" />\n    <link rel="alternate" hreflang="x-default" href="${escape(url('en', path))}" />${path === 'search' ? '\n    <meta name="robots" content="noindex, follow" />' : ''}\n    <title>${escape(title)}</title>`
     const parent = path.includes('/') ? path.slice(0, path.lastIndexOf('/')) : ''
     const localUrl = (child: string) => `${basePath}${locale}/${child}`
     const links = (children.get(path) || []).map(child => `<li><a href="${escape(localUrl(child))}">${escape(localized(pages.get(child)!.title, locale))}</a></li>`).join('')
     const fallback = `<div id="root"><main><h1>${escape(label)}</h1><p>${escape(text || description)}</p>${links ? `<ul>${links}</ul>` : ''}<p><a href="${escape(localUrl(parent))}">${escape(parent ? catalogs[locale][routes.find(([route]) => route === parent)?.[1] || 'home'] : catalogs[locale].home)}</a></p></main></div>`
     const pageHtml = html.replace('lang="en"', `lang="${locale}"`)
-      .replace(/<meta name="description"[^>]*>\s*<title>[^<]*<\/title>/, metadata)
+      .replace(/<meta name="description"[^>]*>\s*<title>[^<]*<\/title>/, `${metadata}\n    ${social}`)
       .replace('<div id="root"></div>', fallback)
     const directory = staticEntryPath(join(root, 'dist', locale), path)
     await mkdir(directory, { recursive: true })
