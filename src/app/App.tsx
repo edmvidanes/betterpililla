@@ -81,14 +81,11 @@ function App() {
   useEffect(() => { loadData().then(setData).catch(() => setError(true)) }, [])
   useEffect(() => {
     document.documentElement.lang = locale
-    let label = t.notFound
-    for (const [path, key] of routes) {
-      if (route === path || path && route.startsWith(`${path}/`)) label = t[key]
-    }
-    const record = data?.portal.search.find(row => decodeURIComponent(row.path.replace(/^\//, '')) === route)
-    document.title = `${record?.title || label} · ${lgu.name}`
+    const heading = document.querySelector('#main h1')?.textContent?.trim()
+    const label = heading || t[routes.find(([path]) => path === route)?.[1] ?? 'notFound']
+    document.title = route === '' && !error ? `Better${lgu.name} · ${t.communityPortal}` : `${label} · Better${lgu.name}`
     if (!segments.length) location.replace(`${base}${locale}/${location.search}${location.hash}`)
-  }, [locale, route, t, segments.length, data])
+  }, [locale, route, t, segments.length, data, error])
   const evidence = (value: EvidenceValue) => <EvidenceTree value={value} locale={locale} sources={data?.portal.sources ?? []} sourceHref={sourceHref} />
   const original = <p className="original-label">{t.original}</p>
   const cite = (id: string) => {
