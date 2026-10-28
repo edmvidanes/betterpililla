@@ -173,7 +173,7 @@ function App() {
     <header className={`site-header${route === '' ? ' atlas-header' : ''}${pastHero ? ' is-sticky' : ''}`}><div className="header-inner">
       <a className="brand" href={href('')} aria-label={`Better${lgu.name} · ${t.home}`}>
         <img className="brand-mark" src={`${base}logo.webp`} width="48" height="48" alt="" />
-        <div className="brand-wordmark">Better<span>{lgu.name}</span><small>{t.communityPortal} · {lgu.name}, {lgu.province}</small></div>
+        <div className="brand-wordmark">Better<span>{lgu.name}</span></div>
       </a>
       <button className="menu-toggle" aria-expanded={menuOpen} aria-controls="primary-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? t.closeMenu : t.menuLabel}</button>
       <nav id="primary-navigation" className={`primary-navigation${menuOpen ? ' is-open' : ''}`} aria-label={t.navigation}>
