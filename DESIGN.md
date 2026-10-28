@@ -58,7 +58,7 @@ Flat surfaces with subtle borders and tonal notices. No decorative shadows, grad
 
 ## Shapes
 
-Lightly rounded panels, inputs and notices use the frontmatter radii. Record lists use dividing rules instead of repeating dashboard cards.
+Lightly rounded panels, inputs and notices use the frontmatter radii. Record lists use dividing rules; the services directory uses a responsive card grid with visible evidence status and links to records and documents.
 
 ## Components
 

@@ -21,6 +21,24 @@
 .directory-tools label { flex: 1 1 260px; }
 .directory-tools input, .directory-tools select { display: block; width: 100%; margin-top: .4rem; }
 .directory-tools p { margin: .6rem 0; font-size: .9rem; }
+.service-directory { margin-bottom: 3rem; }
+.service-directory-tools { display: flex; align-items: end; gap: 1.5rem; }
+.service-directory-tools label { flex: 1; max-width: 42rem; }
+.service-directory-tools input { display: block; margin-top: .4rem; }
+.service-directory-tools p { margin: 0 0 .65rem; color: #4c5e78; font-size: .9rem; white-space: nowrap; }
+.service-directory > .civic-meta, .service-evidence { max-width: 85ch; }
+.service-directory h2 { margin-top: 1.5rem; }
+.service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; list-style: none; padding: 0; margin: 1.25rem 0; }
+.service-card { display: flex; flex-direction: column; min-width: 0; min-height: 210px; padding: 1.4rem; border: 1px solid var(--portal-border); border-radius: .75rem; }
+.service-card h2, .service-card h3 { margin: 0 0 .75rem; font-size: 1.15rem; line-height: 1.35; }
+.service-card h2 a, .service-card h3 a { color: #172b4d; text-decoration: none; }
+.service-card h2 a:hover, .service-card h3 a:hover { color: #1747ab; text-decoration: underline; }
+.service-card-status { color: #76520a; font-size: .8rem; font-weight: 650; }
+.service-card-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; border-top: 1px solid var(--portal-border); padding-top: .9rem; margin-top: auto; font-size: .85rem; font-weight: 650; }
+.service-card-footer a { text-decoration: none; }
+.service-card-footer a:hover { text-decoration: underline; }
+@media (max-width: 900px) { .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .service-grid { grid-template-columns: 1fr; } .service-directory-tools { align-items: stretch; flex-direction: column; gap: .25rem; } }
 .directory-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 2.5rem; list-style: none; padding: 0; }
 .directory-grid > li { padding: 1.5rem 0; border-bottom: 1px solid var(--portal-border); }
 .directory-grid h2, .directory-grid h3 { margin: 0 0 .5rem; font-size: 1.15rem; }
