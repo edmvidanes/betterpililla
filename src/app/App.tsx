@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { Button } from '@bettergov/kapwa/button'
 import { lgu } from '../config/lgu'
-import { catalogs, formatNumber, type Locale, type MessageKey } from '../i18n/locales'
+import { catalogs, formatDate, formatNumber, type Locale, type MessageKey } from '../i18n/locales'
 import { loadData, type DataPack, type DataRecord, type EvidenceValue } from '../data/loaders'
 import { EvidenceTree, ExternalDocumentLink, SourceCitation } from '../components/Evidence'
 import SearchPalette from '../components/SearchPalette'
@@ -12,6 +12,7 @@ import ServiceDetail from '../features/ServiceDetail'
 import { Places, Advisories } from '../features/Places'
 import { Government, Officials, Contacts } from '../features/Government'
 import Demographics from '../features/Demographics'
+import Competitiveness from '../features/Competitiveness'
 import Finance from '../features/Finance'
 import ProjectProcurement from '../features/ProjectProcurement'
 import { Downloads, Sources } from '../features/Catalogues'
@@ -21,6 +22,7 @@ import { routes } from './route-manifest'
 import { searchPortal } from './search'
 
 const base = import.meta.env.BASE_URL
+const githubIcon = <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.32-3.79-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.64 1.22 3.28.93.1-.73.39-1.22.7-1.5-2.5-.28-5.12-1.25-5.12-5.56 0-1.23.44-2.24 1.16-3.03-.12-.28-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.16a10.8 10.8 0 0 1 5.64 0c2.15-1.46 3.1-1.16 3.1-1.16.61 1.55.23 2.7.11 2.98.72.79 1.16 1.8 1.16 3.03 0 4.32-2.63 5.27-5.13 5.55.4.35.76 1.03.76 2.08v3.1c0 .3.21.65.78.54A11.25 11.25 0 0 0 12 .75Z" /></svg>
 function App() {
   const pathname = location.pathname.startsWith(base) ? location.pathname.slice(base.length) : location.pathname.slice(1)
   const segments = pathname.replace(/\/$/, '').split('/').filter(Boolean)
@@ -34,6 +36,7 @@ function App() {
   const [data, setData] = useState<DataPack | null>(null)
   const [error, setError] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [pastHero, setPastHero] = useState(false)
   const searchDialog = useRef<HTMLDialogElement>(null)
   const openSearch = () => {
     if (!searchDialog.current?.open) searchDialog.current?.showModal()
@@ -80,6 +83,17 @@ function App() {
   }, [])
   useEffect(() => { loadData().then(setData).catch(() => setError(true)) }, [])
   useEffect(() => {
+    if (route !== '' || !data) return
+    const update = () => setPastHero((document.querySelector('.atlas-place')?.getBoundingClientRect().bottom ?? 1) <= 0)
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+    window.addEventListener('resize', update)
+    return () => {
+      window.removeEventListener('scroll', update)
+      window.removeEventListener('resize', update)
+    }
+  }, [route, data])
+  useEffect(() => {
     document.documentElement.lang = locale
     const heading = document.querySelector('#main h1')?.textContent?.trim()
     const label = heading || t[routes.find(([path]) => path === route)?.[1] ?? 'notFound']
@@ -92,7 +106,6 @@ function App() {
     const source = data?.portal.sources.find(s => (s.id || s.sourceId) === id)
     return source ? <SourceCitation key={id} source={source} href={sourceHref(id)} locale={locale} /> : null
   }
-  const gap = <p className="civic-meta">{t.capture}: {data?.portal.capturedAt}</p>
   const tree = (value: EvidenceValue) => <section className="panel">{original}{evidence(value)}</section>
   const records = (value: EvidenceValue | undefined): DataRecord[] => Array.isArray(value) ? value as DataRecord[] : []
   const notFound = () => <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><code className="requested-url">{location.pathname}</code><p><a href={href('search')}>{t.search}</a></p></>
@@ -113,16 +126,16 @@ function App() {
   else if (route === 'government/officials') content = <Officials data={data} locale={locale} href={href} />
   else if (route.startsWith('government/officials/')) {
     const row = officialRows.find(r => r.recordId === route.slice('government/officials/'.length))
-    content = row ? <><h1>{String(row.displayName)}</h1><p className="civic-meta">{t.term}: {t.unknown} · {t.capture}: {data.portal.capturedAt}</p>{tree(row)}<a href={correctionLink(String(row.recordId))}>{t.correction}</a>{cite(String(row.sourceId || row.profileSourceId))}</> : notFound()
+    content = row ? <><h1>{String(row.displayName)}</h1>{tree(row)}<a href={correctionLink(String(row.recordId))}>{t.correction}</a>{cite(String(row.sourceId || row.profileSourceId))}</> : notFound()
   }
   else if (route === 'government/offices' || route.startsWith('government/offices/')) content = <Contacts data={data} locale={locale} href={href} officeId={route === 'government/offices' ? undefined : route.slice('government/offices/'.length)} />
-  else if (route === 'government/committees') content = <><h1>{t.committees}</h1>{original}<p className="civic-meta">{t.unknown}: {t.term} · {t.capture}: {data.portal.capturedAt}</p><ul className="record-list">{officialRows.filter(row => row.committeeLabel).map(row => <li key={String(row.recordId)}><h2>{String(row.committeeLabel)}</h2><a href={href(`government/officials/${encodeURIComponent(String(row.recordId))}`)}>{String(row.displayName)}</a>{cite(String(row.sourceId))}</li>)}</ul></>
+  else if (route === 'government/committees') content = <><h1>{t.committees}</h1>{original}<ul className="record-list">{officialRows.filter(row => row.committeeLabel).map(row => <li key={String(row.recordId)}><h2>{String(row.committeeLabel)}</h2><a href={href(`government/officials/${encodeURIComponent(String(row.recordId))}`)}>{String(row.displayName)}</a>{cite(String(row.sourceId))}</li>)}</ul></>
   else if (route === 'government/barangays' || route.startsWith('government/barangays/')) content = <Barangays data={data} locale={locale} href={href} recordId={route === 'government/barangays' ? undefined : route.slice('government/barangays/'.length)} correctionLink={correctionLink} />
   else if (route === 'open-lgu/legislation' || route.startsWith('open-lgu/legislation/')) content = <Legislation locale={locale} records={allLegislation} recordId={route === 'open-lgu/legislation' ? undefined : route.slice('open-lgu/legislation/'.length)} href={href} sourceLink={sourceHref} correctionLink={correctionLink} />
-  else if (route === 'open-lgu/terms') content = <><h1>{t.terms}</h1>{gap}<p>{t.term}: {t.unknown}</p>{cite(lgu.sourceIds.legislative)}</>
+  else if (route === 'open-lgu/terms') content = <><h1>{t.terms}</h1>{cite(lgu.sourceIds.legislative)}</>
   else if (route.startsWith('open-lgu/terms/')) content = notFound()
   else if (route === 'statistics/demographics') content = <Demographics data={data} locale={locale} href={href} />
-  else if (route === 'statistics/competitiveness') content = <><h1>{t.competitiveness}</h1><p className="civic-intro">{locale === 'fil' ? 'Tingnan ang profile at mga ranggo ng Cavinti sa Cities and Municipalities Competitiveness Index ng DTI.' : 'Explore Cavinti’s profile and rankings in the DTI Cities and Municipalities Competitiveness Index.'}</p><p><a href="https://cmci.dti.gov.ph/lgu-profile.php?lgu=Cavinti">{locale === 'fil' ? 'Buksan ang profile ng Cavinti sa DTI' : 'Open the DTI profile for Cavinti'}</a></p><p className="civic-meta">{locale === 'fil' ? 'Hindi nakuha ang mga marka sa snapshot na ito; sumangguni sa DTI para sa mga resulta.' : 'Scores could not be retrieved for this snapshot; consult DTI for the results.'}</p>{cite(lgu.sourceIds.competitiveness)}</>
+  else if (route === 'statistics/competitiveness') content = <Competitiveness data={data} locale={locale} href={href} />
   else if (route === 'statistics/municipal-income' || route === 'transparency/finance') content = <Finance data={data} locale={locale} href={href} income={route.startsWith('statistics')} />
   else if (route === 'transparency/procurement' || route === 'transparency/projects') content = <ProjectProcurement data={data} locale={locale} href={href} correctionLink={correctionLink} projects={route.endsWith('projects')} />
   else if (route === 'map') content = <Geography data={data} locale={locale} href={href} />
@@ -140,7 +153,7 @@ function App() {
   else if (route === 'report-data') content = <><h1>{t.corrections}</h1><p className="measure">{t.correctionText}</p><ul className="topic-list"><li><a href={correctionLink(new URLSearchParams(location.search).get('record') || '')}>{t.correction}</a></li><li><a href={correctionLink('', 'missing-record.yml')}>{t.missing}</a></li><li><a href={correctionLink('', 'project-observation.yml')}>{t.observation}</a></li></ul></>
   else if (route === 'about') content = <><h1>{t.about}</h1><p>{t.community}</p><p>{t.description}</p><p><a href={lgu.repository}>GitHub</a> · <a href={lgu.officialUrl}>{lgu.name}</a></p>{tree(data.municipality.publishedDescription)}<p>{t.licensePolicy}</p></>
   else if (route === 'accessibility') content = <><h1>{t.accessibility}</h1><p>{t.accessibilityPolicy}</p><a href={href('report-data')}>{t.corrections}</a></>
-  else if (route === 'privacy') content = <><h1>{t.privacy}</h1><p>{t.privacyPolicy}</p><p>{t.downloadDescription}</p></>
+  else if (route === 'privacy') content = <><h1>{t.privacy}</h1><p>{t.privacyPolicy}</p></>
   else content = notFound()
   return <>
     <a className="skip-link" href="#main">{t.skip}</a>
@@ -154,7 +167,7 @@ function App() {
         <a href={`${base}${locale === 'en' ? 'fil' : 'en'}/${route.split('/').map(encodeURIComponent).join('/')}${location.search}${location.hash}`} lang={locale === 'en' ? 'fil' : 'en'} hrefLang={locale === 'en' ? 'fil' : 'en'}>{locale === 'en' ? 'Filipino' : 'English'}</a>
       </nav>
     </div></div>
-    <header className={`site-header${route === '' ? ' atlas-header' : ''}`}><div className="header-inner">
+    <header className={`site-header${route === '' ? ' atlas-header' : ''}${pastHero ? ' is-sticky' : ''}`}><div className="header-inner">
       <a className="brand" href={href('')} aria-label={`Better${lgu.name} · ${t.home}`}>
         <img className="brand-mark" src={`${base}logo.webp`} width="48" height="48" alt="" />
         <div className="brand-wordmark">Better<span>{lgu.name}</span><small>{t.communityPortal} · {lgu.name}, {lgu.province}</small></div>
@@ -188,12 +201,15 @@ function App() {
           {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads'] as MessageKey[]).map(key => <a key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</a>)}
         </nav>
       </div>
+      <p>{locale === 'fil' ? 'Petsa ng pagkakatala' : 'Date recorded'}: {data ? formatDate(data.portal.capturedAt, locale) : t.loading}. {locale === 'fil' ? 'Suriin muli ang mga sanggunian; maaaring luma na ang datos mula sa mga ito.' : 'Double-check sources; sourced data may be stale.'}</p>
       <div className="atlas-footer-statement"><span>{t.footerCommunity}</span><strong>{t.footerCost.replace('{place}', lgu.name)} <span>₱0</span></strong></div>
-      <div className="atlas-footer-bottom"><a href={lgu.repository}>GitHub</a></div>
-    </footer> : <footer><p>{t.community}</p><nav aria-label={t.footer}>
-      {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads'] as MessageKey[]).map(key => <a key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</a>)}
-      <a href={lgu.repository}>GitHub</a>
-    </nav></footer>}
+      <div className="atlas-footer-bottom"><a href={lgu.repository} aria-label="GitHub">{githubIcon}</a></div>
+    </footer> : <footer><p>{t.community}</p>
+      <p>{locale === 'fil' ? 'Petsa ng pagkakatala' : 'Date recorded'}: {data ? formatDate(data.portal.capturedAt, locale) : t.loading}. {locale === 'fil' ? 'Suriin muli ang mga sanggunian; maaaring luma na ang datos mula sa mga ito.' : 'Double-check sources; sourced data may be stale.'}</p>
+      <nav aria-label={t.footer}>
+        {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads'] as MessageKey[]).map(key => <a key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</a>)}
+        <a href={lgu.repository} aria-label="GitHub">{githubIcon}</a>
+      </nav></footer>}
   </>
 }
 

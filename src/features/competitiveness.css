@@ -1,0 +1,43 @@
+.competitiveness-page { color: #172b4d; }
+.comp-header { max-width: 760px; margin-bottom: 2.5rem; }
+.comp-header h1 { margin-bottom: .7rem; }
+.comp-header p, .comp-heading p { color: #4c5e78; }
+.comp-header p { font-size: 1.15rem; line-height: 1.65; }
+.comp-index { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, .38fr); gap: 3rem; padding: clamp(1.5rem, 3vw, 2.5rem); background: #eaf1ff; }
+.comp-index h2 { max-width: 22ch; font-size: clamp(1.45rem, 2.5vw, 2rem); line-height: 1.2; margin: 0 0 .85rem; }
+.comp-index p { max-width: 65ch; margin: 0 0 1rem; }
+.comp-link { display: inline-block; font-weight: 700; text-underline-offset: .2em; }
+.comp-index-note { border-left: 1px solid #bdcce4; padding-left: 2rem; align-self: center; }
+.comp-index-note span { display: block; color: #4c5e78; font-size: .72rem; font-weight: 700; letter-spacing: .08em; }
+.comp-index-note strong { display: block; margin: .5rem 0; font-size: 1.2rem; }
+.comp-index-note p { color: #4c5e78; font-size: .9rem; margin: 0; }
+.comp-section { margin-top: 4.5rem; }
+.comp-heading { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem; margin-bottom: 1.5rem; }
+.comp-heading h2, .comp-sources h2 { font-size: clamp(1.5rem, 2.2vw, 1.9rem); line-height: 1.2; margin: 0 0 .45rem; }
+.comp-heading p { margin: 0; }
+.comp-heading > a { flex-shrink: 0; font-weight: 600; }
+.comp-pillars { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid #b9c9e2; border-bottom: 1px solid #b9c9e2; }
+.comp-pillar { padding: 1.4rem 1rem 1.5rem 0; }
+.comp-pillar + .comp-pillar { border-left: 1px solid #d6deeb; padding-left: 1rem; }
+.comp-pillar span { color: #1d4ed8; font-size: .8rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.comp-pillar h3 { font-size: 1.05rem; line-height: 1.3; margin: .8rem 0 .45rem; }
+.comp-pillar p { color: #4c5e78; font-size: .9rem; line-height: 1.45; margin: 0; }
+.comp-context { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; border-top: 2px solid #172b4d; padding-top: 1.3rem; }
+.comp-context h3 { margin: 0 0 .8rem; font-size: 1rem; }
+.comp-pop-row { display: grid; grid-template-columns: 4rem 1fr auto; align-items: baseline; gap: .5rem; padding: .65rem 0; border-bottom: 1px solid #d6deeb; }
+.comp-pop-row strong { font-size: 1.4rem; font-variant-numeric: tabular-nums; }
+.comp-pop-row small, .comp-facts small { color: #4c5e78; }
+.comp-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.comp-facts > div { display: flex; flex-direction: column; align-items: flex-start; padding: 1rem 1.2rem; background: #f3f6fb; }
+.comp-facts span { color: #4c5e78; font-size: .9rem; }
+.comp-facts strong { font-size: clamp(1.4rem, 2vw, 1.8rem); margin: .4rem 0; }
+.comp-footnote { max-width: 85ch; color: #4c5e78; font-size: .88rem; line-height: 1.55; margin: 1rem 0; }
+.comp-income-table { overflow-x: auto; border-top: 2px solid #172b4d; }
+.comp-income-table table { width: 100%; font-variant-numeric: tabular-nums; border-collapse: collapse; }
+.comp-income-table th, .comp-income-table td { padding: .75rem 1rem; border-bottom: 1px solid #d6deeb; text-align: left; }
+.comp-income-table th:last-child, .comp-income-table td:last-child { text-align: right; }
+.comp-income-table thead th { color: #4c5e78; font-size: .85rem; background: #f3f6fb; }
+.comp-sources { margin-top: 4.5rem; padding: 2rem; background: #f3f6fb; }
+.comp-sources > p { max-width: 70ch; color: #4c5e78; }
+@media (max-width: 800px) { .comp-pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); } .comp-pillar:nth-child(odd) { border-left: 0; padding-left: 0; } .comp-pillar:nth-child(n+3) { border-top: 1px solid #d6deeb; } .comp-context { grid-template-columns: 1fr; gap: 1.5rem; } }
+@media (max-width: 600px) { .comp-index { grid-template-columns: 1fr; gap: 1.5rem; } .comp-index-note { border-left: 0; border-top: 1px solid #bdcce4; padding: 1rem 0 0; } .comp-heading { align-items: start; flex-direction: column; gap: .7rem; } .comp-section, .comp-sources { margin-top: 3rem; } .comp-facts { grid-template-columns: 1fr 1fr; } .comp-pop-row { grid-template-columns: 3.5rem 1fr auto; } .comp-sources { padding: 1.3rem; } }

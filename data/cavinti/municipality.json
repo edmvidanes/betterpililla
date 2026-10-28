@@ -11,6 +11,28 @@
     "verificationStatus": "indexed-primary-direct-fetch-blocked",
     "notes": "PSA search-index evidence surfaced this code; the full official record was not retrievable in this research."
   },
+  "incomeClass": {
+    "value": 2,
+    "sourceId": "psa-psgc-cavinti",
+    "verificationStatus": "indexed-primary-direct-fetch-blocked",
+    "notes": "Second income class appeared in PSA search-index results; the classification date and direct official table have not been verified."
+  },
+  "annualRegularIncome": {
+    "sourceId": "philatlas-cavinti",
+    "verificationStatus": "published-secondary-needs-BLGF-crosscheck",
+    "unit": "PHP",
+    "notes": "PhilAtlas attributes annual regular income to BLGF; the primary tables were not directly verified. Historical figures are not current revenue or CMCI scores.",
+    "records": [
+      { "year": 2009, "value": 62148017.68 },
+      { "year": 2010, "value": 69931486.50 },
+      { "year": 2011, "value": 83392149.52 },
+      { "year": 2012, "value": 80379224.83 },
+      { "year": 2013, "value": 92741110.78 },
+      { "year": 2014, "value": 94283213.10 },
+      { "year": 2015, "value": 105721576.59 },
+      { "year": 2016, "value": 111913255.20 }
+    ]
+  },
   "populationFacts": [
     {
       "indicator": "total_population",
