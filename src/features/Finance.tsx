@@ -4,6 +4,11 @@ import { civicCatalogs } from '../i18n/civic'
 import { PageIntro, RawRecord, SourceNote, type CivicProps } from './Civic'
 import { rows } from '../data/loaders'
 
+const regularIncome = [
+  [2009, 62148017.68], [2010, 69931486.50], [2011, 83392149.52], [2012, 80379224.83],
+  [2013, 92741110.78], [2014, 94283213.10], [2015, 105721576.59], [2016, 111913255.20]
+]
+
 export default function Finance(props: CivicProps & { income?: boolean }) {
   const { data, locale, income } = props
   const t = catalogs[locale], c = civicCatalogs[locale]
@@ -36,10 +41,26 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
   }
   const projectSource = data.portal.sources.find(source => source.id === projects[0]?.sourceId)
   const datasetUrl = projectSource?.url || projectSource?.canonicalUrl || ''
-  return <><PageIntro title={income ? t.income : t.finance}>{c.financeIntro}</PageIntro>
-    <div className="civic-empty"><h2>{c.financeMissing}</h2><p>{c.financeMissingText}</p></div>
+  const incomeLabels = locale === 'fil' ? {
+    heading: 'Makasaysayang regular na kita ng munisipyo',
+    note: 'Regular na kita ng Cavinti para sa 2009–2016, ayon sa PhilAtlas, na tumutukoy sa Bureau of Local Government Finance bilang pinagmulan. Kasama rito ang lokal na kita, kasalukuyang Internal Revenue Allotment at iba pang bahagi sa pambansang buwis. Hindi ito badyet o paggasta, at hindi nito ipinapakita ang kasalukuyang pananalapi. Hindi pa nasuri rito ang orihinal na datos ng BLGF.',
+    year: 'Taong pinansyal', amount: 'Regular na kita (₱)', source: 'Tingnan ang datos at depinisyon sa PhilAtlas', updated: 'Tiningnan noong Oktubre 28, 2026; hindi nakasaad ang petsa ng pag-update ng source.',
+    coverage: 'Makasaysayang regular na kita para sa 2009–2016 lamang; walang kumpletong kasalukuyang serye.'
+  } : {
+    heading: 'Historical municipal regular income',
+    note: 'Cavinti’s regular income for 2009–2016, as reported by PhilAtlas, which attributes the data to the Bureau of Local Government Finance. It includes locally sourced revenue, the current-year Internal Revenue Allotment and other shares from national tax collections. It is not a budget or expenditure figure and does not describe current finances. The original BLGF data has not been checked here.',
+    year: 'Fiscal year', amount: 'Regular income (₱)', source: 'View the data and definition on PhilAtlas', updated: 'Checked October 28, 2026; source update date not stated.',
+    coverage: 'Historical regular income for 2009–2016 only; no complete current series.'
+  }
+  return <><PageIntro title={income ? t.income : t.finance}>{locale === 'fil' ? 'Tingnan ang makasaysayang kita, mga dokumento at iba pang tala sa pananalapi ng Cavinti.' : 'Explore Cavinti’s historical income, financial documents and related records.'}</PageIntro>
+    <section><h2>{incomeLabels.heading}</h2><p className="measure">{incomeLabels.note}</p>
+      <p><a href="https://www.philatlas.com/luzon/r04a/laguna/cavinti.html">{incomeLabels.source}</a> · {incomeLabels.updated}</p>
+      <div className="table-wrap"><table className="coverage-table"><thead><tr><th scope="col">{incomeLabels.year}</th><th scope="col">{incomeLabels.amount}</th></tr></thead><tbody>
+        {regularIncome.map(([year, amount]) => <tr key={year}><td>{year}</td><td>{new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount)}</td></tr>)}
+      </tbody></table></div>
+    </section>
     <div className="civic-split"><section><h2>{c.documentLeads}</h2><p className="measure">{c.documentLimit}</p><ul className="record-list">{rows(data.transparency.officialLocalDocumentLeads).map(row => <li key={String(row.documentNumber)}><p className="civic-meta" lang="en">{String(row.documentNumber)}</p><h3><a lang="en" href={String(row.documentUrl)}>{String(row.titleAsIndexed)}</a></h3>{row.scopeWarning && <p lang="en">{String(row.scopeWarning)}</p>}<SourceNote {...props} id={String(row.sourceId)} /></li>)}</ul></section>
-      <aside className="civic-aside"><h2>{c.coverageHeading}</h2><dl>{categories.map(category => <div key={category}><dt className="directory-role">{category}</dt><dd style={{ margin: '0 0 1rem' }}>{c.coverageMissing}</dd></div>)}</dl></aside></div>
+      <aside className="civic-aside"><h2>{c.coverageHeading}</h2><dl>{categories.map((category, index) => <div key={category}><dt className="directory-role">{category}</dt><dd style={{ margin: '0 0 1rem' }}>{index === 0 ? incomeLabels.coverage : c.coverageMissing}</dd></div>)}</dl></aside></div>
     {projects.length > 0 && <section><h2>{labels.heading}</h2><p className="measure">{labels.note}</p>
       <p><a href={datasetUrl}>{labels.source}</a></p><SourceNote {...props} id={String(projects[0].sourceId)} />
       <div className="directory-tools"><label htmlFor="dpwh-query">{labels.search}<input id="dpwh-query" type="search" value={query} onChange={event => setQuery(event.target.value)} /></label></div>

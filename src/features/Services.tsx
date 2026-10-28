@@ -20,6 +20,28 @@ export default function Services(props: CivicProps) {
     <PageIntro title={t.services}>{c.servicesIntro}</PageIntro>
     <div className="civic-split"><section>
       {services.length ? <><label>{c.filterDirectory}<input type="search" value={query} onChange={event => setQuery(event.target.value)} /></label><ul className="record-list">{matching.map(row => <li key={String(row.recordId)}><h2><a href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{String(row.name)}</a></h2><SourceNote {...props} id={String(row.sourceId)} /></li>)}</ul>{!matching.length && <p role="status">{t.noResults}</p>}</> : <div className="civic-empty"><h2>{c.serviceMissing}</h2><p>{c.serviceMissingText}</p></div>}
+      <section aria-labelledby="service-guidance">
+        <h2 id="service-guidance">{locale === 'fil' ? 'Mga praktikal na gabay' : 'Practical guidance'}</h2>
+        <p>{locale === 'fil' ? 'Mga pambansang gabay at inilathalang kontak ito, hindi kumpletong listahan ng serbisyo ng Cavinti. Tingnan ang mga link at kumpirmahin ang kasalukuyang detalye bago pumunta.' : 'These are national guidance and published contacts, not a complete Cavinti service catalogue. Check the links and confirm current details before visiting.'}</p>
+        <ul className="record-list">
+          <li>
+            <h3>{locale === 'fil' ? 'Pagpaparehistro ng kapanganakan' : 'Register a birth'}</h3>
+            <p>{locale === 'fil' ? 'Ayon sa PSA, iparehistro ang kapanganakan sa local civil registry office ng lungsod o munisipalidad kung saan ito nangyari sa loob ng 30 araw. Kung sa Cavinti ipinanganak, magtanong sa municipal civil registrar tungkol sa mga dokumento at delayed registration.' : 'The PSA says a birth should be registered within 30 days at the local civil registry office where it occurred. For a birth in Cavinti, ask the municipal civil registrar about documents and delayed registration.'}</p>
+            <a href="https://psa.gov.ph/civilregistration/facts">{locale === 'fil' ? 'Gabay ng PSA sa civil registration' : 'PSA civil registration guidance'}<LinkArrow /></a>
+          </li>
+          <li>
+            <h3>{locale === 'fil' ? 'Kopya ng birth certificate' : 'Request a birth certificate'}</h3>
+            <p>{locale === 'fil' ? 'Para sa PSA copy, tingnan ang gabay ng PSA sa pag-apply at appointment. Iba ito sa unang pagpaparehistro ng kapanganakan sa lokal na civil registry.' : 'For a PSA copy, see the PSA application and appointment guidance. This is separate from registering the birth with the local civil registry.'}</p>
+            <a href="https://psa.gov.ph/birth-certificate">{locale === 'fil' ? 'Gabay ng PSA sa birth certificate' : 'PSA birth certificate guidance'}<LinkArrow /></a>
+          </li>
+          <li>
+            <h3>{locale === 'fil' ? 'Kalusugan at tulong panlipunan' : 'Health and social welfare'}</h3>
+            <p>{locale === 'fil' ? 'Inilathala ng munisipalidad ang mga kontak ng Rural Health Unit at Municipal Social Welfare and Development Office. Magtanong sa kanila tungkol sa available na tulong, iskedyul at mga kailangan.' : 'The municipality publishes contacts for the Rural Health Unit and Municipal Social Welfare and Development Office. Ask them about available assistance, schedules and requirements.'}</p>
+            <a href={href('government/offices')}>{c.contactOffice}<LinkArrow /></a>
+          </li>
+        </ul>
+        <p className="civic-meta">{locale === 'fil' ? 'Mga sanggunian at kontak: sinaliksik noong Oktubre 27, 2026; hindi live na nakumpirma ang mga numero.' : 'Sources and contacts researched October 27, 2026; phone numbers were not live-validated.'}</p>
+      </section>
       <ul className="civic-links"><li><a href={String(data.services.sourceUrl)}>{c.officialCharter}<LinkArrow /></a></li><li><a href={href('government/offices')}>{c.contactOffice}<LinkArrow /></a></li></ul>
       <p className="civic-meta">{t.capture}: {formatDate(String(data.services.capturedAt), locale)}</p>
       <SourceNote {...props} id={lgu.sourceIds.charter} />

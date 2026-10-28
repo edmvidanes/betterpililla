@@ -46,6 +46,29 @@
         ],
         "discrepancies": "The PDF lists ID 164508 as Sisilmin ES, not the search lead's Silsimin ES; ID 164526 is Southville 5A ES - Langkiwa in Binan City, not Layasin ES. These discrepancies do not establish the correct IDs or identities of the search leads."
       },
+      "elementaryDirectory": {
+        "sourceUrl": "https://depedlaguna.com/schools/elementary-level/",
+        "capturedAt": "2026-10-27",
+        "scope": "Cavinti sub-office entries in an undated secondary directory, not a current or complete masterlist.",
+        "records": [
+          { "schoolId": "108270", "schoolNameAsPublished": "BUKAL ES" },
+          { "schoolId": "108271", "schoolNameAsPublished": "Bulajo ES" },
+          { "schoolId": "108272", "schoolNameAsPublished": "Burol Elementary School" },
+          { "schoolId": "108273", "schoolNameAsPublished": "Calminue ES" },
+          { "schoolId": "108274", "schoolNameAsPublished": "Cansuso ES" },
+          { "schoolId": "108275", "schoolNameAsPublished": "Cavinti Elementary" },
+          { "schoolId": "108276", "schoolNameAsPublished": "Inao-Awan ES" },
+          { "schoolId": "108277", "schoolNameAsPublished": "Layug ES" },
+          { "schoolId": "108278", "schoolNameAsPublished": "LUMOT ELEM" },
+          { "schoolId": "108279", "schoolNameAsPublished": "Paowin ES" },
+          { "schoolId": "108280", "schoolNameAsPublished": "Sumucab ES" },
+          { "schoolId": "108281", "schoolNameAsPublished": "Talaongan East ES" },
+          { "schoolId": "108282", "schoolNameAsPublished": "Talaongan West ES" },
+          { "schoolId": "164508", "schoolNameAsPublished": "Sisilmin ES" },
+          { "schoolId": "164517", "schoolNameAsPublished": "Layasin Elementary School" },
+          { "schoolId": "164523", "schoolNameAsPublished": "UDIA ELEMENTARY SCHOOL" }
+        ]
+      },
       "directoryLeads": [
         {
           "schoolNameAsPublished": "Calminue Integrated National High School",
