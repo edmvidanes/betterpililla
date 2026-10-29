@@ -58,6 +58,8 @@ The public-information index places a 2013 photograph of Cavinti Municipal Hall 
 
 On narrow screens, official profiles stack, long record titles wrap, and population charts and data tables retain readable widths inside keyboard-accessible scrolling regions. News links include their article titles in accessible names.
 
+Official profile details use a bounded reading measure, aligned label/value facts and ruled evidence sections; facts stack on narrow screens. Source disclosures and dated limitations remain adjacent to the claims.
+
 The homepage official channels use a four-column bento grid: PIO leads in a blue two-by-two tile, and MDRRMO closes with a wide tile. Full-tile links retain the published Facebook destinations and visible keyboard focus. The grid becomes two columns at 1000px and a single column at 500px, preserving reading order.
 
 The About page leads with the independent-portal statement and project links, then separates the source-original evidence from the licensing note. Its two-column detail area stacks on narrow screens.

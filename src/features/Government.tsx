@@ -38,7 +38,7 @@ export function OfficialDetail(props: CivicProps & { recordId: string; correctio
   const evidence = link && typeof link === 'object' && !Array.isArray(link) ? link : null
   const dilg = evidence ? rows(data.officials.dilgDirectory).find(item => item.lastName === evidence.dilg) : undefined
   const result = evidence ? rows(data.officials.electionReturns).find(item => item.candidateAsPublished === evidence.returns) : undefined
-  return <>
+  return <article className="official-profile">
     <a className="service-back" href={href('government/officials')}>{fil ? '← Lahat ng nasa direktoryo' : '← All directory profiles'}</a>
     <div className="official-detail">
       <Portrait recordId={recordId} />
@@ -91,7 +91,7 @@ export function OfficialDetail(props: CivicProps & { recordId: string; correctio
     </section>
     <RawRecord {...props} value={row} />
     <p><a href={correctionLink(recordId)}>{catalogs[locale].correction}</a></p>
-  </>
+  </article>
 }
 
 export function Officials(props: CivicProps) {
