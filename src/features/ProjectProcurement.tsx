@@ -42,26 +42,29 @@ function DpwhDetails({ details, ...props }: CivicProps & { details: DataRecord }
       ['livestreamVideoId', 'Livestream video ID', 'Livestream video ID'], ['livestreamDetectedAt', 'Livestream detected at', 'Petsa ng pagtuklas ng livestream'],
     ]],
   ]
-  return <section className="service-detail-section">
-    <h2>{fil ? 'Detalye mula sa DPWH API' : 'DPWH API details'}</h2>
-    <p>{fil ? 'Hiwalay itong capture sa makasaysayang snapshot sa itaas; maaaring magkaiba ang mga halaga at status. Hindi nito pinatutunayan ang kasalukuyang kondisyon, bayad o pagkumpleto. Ang zero ay iniulat na halaga, hindi patunay ng bayad o pagkumpleto.' : 'This capture is separate from the historical snapshot above; values and status may differ. It does not verify current conditions, payment or completion. A zero is a reported value, not proof of payment or completion.'}</p>
-    <p>{fil ? 'Nakuha noong' : 'Retrieved'}: {typeof details.retrievedAt === 'string' && details.retrievedAt ? details.retrievedAt : (fil ? 'Hindi alam' : 'Unknown')}. {typeof details.sourceUrl === 'string' && details.sourceUrl && <ExternalDocumentLink url={details.sourceUrl}>{fil ? 'Pinagmulang DPWH API' : 'DPWH API source'}</ExternalDocumentLink>}</p>
+  return <section className="project-report">
+    <header className="project-report-intro">
+      <h2>{fil ? 'Detalye ng proyekto' : 'Project details'}</h2>
+      <p>{fil ? 'Hiwalay itong capture sa makasaysayang snapshot; maaaring magkaiba ang mga halaga at status. Hindi nito pinatutunayan ang kasalukuyang kondisyon, bayad o pagkumpleto. Ang zero ay iniulat na halaga, hindi patunay ng bayad o pagkumpleto.' : 'This capture is separate from the historical snapshot; values and status may differ. It does not verify current conditions, payment or completion. A zero is a reported value, not proof of payment or completion.'}</p>
+      <p className="civic-meta">{fil ? 'Nakuha noong' : 'Retrieved'}: {typeof details.retrievedAt === 'string' && details.retrievedAt ? details.retrievedAt : (fil ? 'Hindi alam' : 'Unknown')}. {typeof details.sourceUrl === 'string' && details.sourceUrl && <ExternalDocumentLink url={details.sourceUrl}>{fil ? 'Pinagmulang DPWH API' : 'DPWH API source'}</ExternalDocumentLink>}</p>
+    </header>
     {api ? <>
-      <p>{fil ? 'Ang mga coordinate ay hindi independiyenteng beripikado; tingnan ang mga flag at detalye sa source bago gamitin bilang lokasyon.' : 'Coordinates are not independently verified; check the source flags and details before using them as a location.'}</p>
-      {groups.map(([english, filipino, fields]) => <section key={english}>
-        <h3>{fil ? filipino : english}</h3>
-        <dl>{fields.map(([key, en, tl]) => {
+      {groups.map(([english, filipino, fields], index) => {
+        const content = <dl className="project-report-facts">{fields.map(([key, en, tl]) => {
           const value = api[key]
           const missing = value == null || value === '' || (Array.isArray(value) && value.length === 0)
           const formatted = typeof value === 'number' && (key === 'budget' || key === 'amountPaid') ? currency.format(value)
             : typeof value === 'number' && key === 'progress' ? `${value.toLocaleString(fil ? 'fil-PH' : 'en-PH')}%`
             : typeof value === 'boolean' && (key === 'isVerifiedByDpwh' || key === 'isVerifiedByPublic') ? (value ? (fil ? 'Oo' : 'Yes') : (fil ? 'Hindi' : 'No'))
             : null
-          return <div key={key}><dt className="directory-role">{fil ? tl : en}</dt><dd>{missing
+          return <div key={key} className={typeof value === 'object' && value !== null ? 'project-report-complex' : undefined}><dt>{fil ? tl : en}</dt><dd>{missing
             ? (fil ? 'Hindi nakasaad / walang rekord' : 'Not stated / no records')
             : formatted ?? <EvidenceTree value={value} locale={props.locale} sources={props.data.portal.sources} sourceHref={id => props.href(`sources/${encodeURIComponent(id)}`)} />}</dd></div>
         })}</dl>
-      </section>)}
+        return index < 3 ? <section className="project-report-group" key={english}><h3>{fil ? filipino : english}</h3>{content}</section>
+          : <details className="project-report-disclosure" key={english}><summary>{fil ? filipino : english}</summary>
+            {index === 3 && <p className="civic-meta">{fil ? 'Hindi independiyenteng beripikado ang mga coordinate.' : 'Coordinates are not independently verified.'}</p>}{content}</details>
+      })}
       <RawRecord {...props} value={api} />
     </> : <p>{fil ? 'Walang detalye ng API na available.' : 'API details are unavailable.'}</p>}
   </section>
@@ -106,12 +109,14 @@ export default function ProjectProcurement(props: CivicProps & { projects: boole
     ]
     return <>
       <a className="service-back" href={href(path)}>{locale === 'fil' ? '← Lahat ng rekord' : '← All records'}</a>
-      <header className="service-detail-header"><h1 lang="en">{value(projects ? row.description : row.title)}</h1><p>{projects ? t.projects : t.procurement}</p></header>
+      <header className={`service-detail-header${projects ? ' project-detail-header' : ''}`}><h1 lang="en">{value(projects ? row.description : row.title)}</h1><p>{projects ? t.projects : t.procurement}</p></header>
       <div className="service-detail-layout"><div>
-        <section className="service-detail-section"><h2>{locale === 'fil' ? 'Mga detalye sa snapshot' : 'Snapshot details'}</h2>
-          <dl>{facts.map(([label, fact]) => <div key={label}><dt className="directory-role">{label}</dt><dd lang="en">{fact}</dd></div>)}</dl>
-        </section>
         {projects && (details ? <DpwhDetails {...props} details={details} /> : <section className="service-detail-section"><h2>{locale === 'fil' ? 'Detalye mula sa DPWH API' : 'DPWH API details'}</h2><p>{locale === 'fil' ? 'Walang nakuhang detalye mula sa DPWH API para sa rekord na ito.' : 'No DPWH API details were captured for this record.'}</p></section>)}
+        {projects ? <details className="project-report-disclosure project-report-snapshot"><summary>{locale === 'fil' ? 'Naunang BetterGov snapshot' : 'Earlier BetterGov snapshot'}</summary>
+          <dl className="project-report-facts">{facts.map(([label, fact]) => <div key={label}><dt>{label}</dt><dd lang="en">{fact}</dd></div>)}</dl>
+        </details> : <section className="service-detail-section"><h2>{locale === 'fil' ? 'Mga detalye sa snapshot' : 'Snapshot details'}</h2>
+          <dl>{facts.map(([label, fact]) => <div key={label}><dt className="directory-role">{label}</dt><dd lang="en">{fact}</dd></div>)}</dl>
+        </section>}
         <section className="service-detail-section"><h2>{locale === 'fil' ? 'Paano basahin ang rekord' : 'How to read this record'}</h2>
           <p>{projects
             ? (locale === 'fil' ? 'Sekundaryang snapshot ito ng mga proyektong may “Cavinti” sa paglalarawan. Maaaring saklaw ng isang proyekto ang ibang lugar; hindi nito pinatutunayan ang kasalukuyang status o gastos ng munisipyo.' : 'This secondary snapshot matches “Cavinti” in project descriptions. A project may cover other areas; the record does not verify its current status or municipal expenditure.')
