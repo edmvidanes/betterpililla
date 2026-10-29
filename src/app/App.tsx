@@ -157,6 +157,11 @@ function App() {
   else if (route === 'statistics/competitiveness') content = <Competitiveness data={data} locale={locale} href={href} />
   else if (route === 'statistics/municipal-income' || route === 'transparency/finance') content = <Finance data={data} locale={locale} href={href} income={route.startsWith('statistics')} />
   else if (route === 'transparency/procurement' || route === 'transparency/projects') content = <ProjectProcurement data={data} locale={locale} href={href} correctionLink={correctionLink} projects={route.endsWith('projects')} />
+  else if (route.startsWith('transparency/projects/') || route.startsWith('transparency/procurement/')) {
+    const projects = route.startsWith('transparency/projects/')
+    const recordId = route.slice(`transparency/${projects ? 'projects' : 'procurement'}/`.length)
+    content = <ProjectProcurement data={data} locale={locale} href={href} correctionLink={correctionLink} projects={projects} recordId={recordId} />
+  }
   else if (route === 'map') content = <Geography data={data} locale={locale} href={href} />
   else if (route === 'places') content = <Places data={data} locale={locale} href={href} />
   else if (route === 'advisories') content = <Advisories data={data} locale={locale} href={href} />

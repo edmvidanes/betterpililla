@@ -3,6 +3,7 @@ import { join } from 'node:path'
 import { routes } from '../src/app/route-manifest.ts'
 import { lgu } from '../src/config/lgu.ts'
 import { staticEntryPath } from './static-path.ts'
+import { transparencyRecordId } from '../src/domain/transparency-record.ts'
 
 const root = process.cwd()
 const publicData = join(root, 'public', lgu.dataPath)
@@ -11,6 +12,7 @@ const offices = JSON.parse(await readFile(join(publicData, 'emergency-contacts.j
 const services = JSON.parse(await readFile(join(publicData, 'services.json'), 'utf8'))
 const ordinances = JSON.parse(await readFile(join(publicData, 'legislation', 'ordinances.json'), 'utf8'))
 const news = JSON.parse(await readFile(join(root, 'src/data/cavinti-news.json'), 'utf8'))
+const transparency = JSON.parse(await readFile(join(publicData, 'transparency.json'), 'utf8'))
 const catalogs = {
   en: JSON.parse(await readFile(join(root, 'src/i18n/catalogs/en.json'), 'utf8')),
   fil: JSON.parse(await readFile(join(root, 'src/i18n/catalogs/fil.json'), 'utf8')),
@@ -34,6 +36,8 @@ for (const lead of services.serviceLegislationLeads || []) {
   }
 }
 for (const article of news.articles) pages.set(`news/${encodeURIComponent(article.id)}`, { title: article.title, text: article.bodyText })
+for (const record of transparency.dpwhProjectSnapshot || []) pages.set(`transparency/projects/${transparencyRecordId(record)}`, { title: record.description })
+for (const record of transparency.betterGovProcurementLeads || []) pages.set(`transparency/procurement/${transparencyRecordId(record)}`, { title: record.title })
 const children = new Map<string, string[]>()
 for (const path of pages.keys()) {
   if (!path) continue
