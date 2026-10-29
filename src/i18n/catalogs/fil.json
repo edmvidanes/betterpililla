@@ -75,5 +75,5 @@
   ,"previous": "Nakaraan", "next": "Susunod", "footer": "Impormasyon ng proyekto",
   "accessibilityPolicy": "May keyboard navigation, malinaw na focus, mga label ng form, semantikong heading at wika sa URL. Orihinal ang mga pamagat ng rekord kapag walang nasuring salin. Mag-ulat ng hadlang sa aksesibilidad sa GitHub; ilagay ang URL, browser at hakbang, hindi personal na impormasyon.",
   "privacyPolicy": "Walang account, analytics, cookie o database ang portal. Nasa URL ang wika at mga filter. Maaaring magtala ng access logs ang static host. Kapag malapit nang makita ang mapa, humihiling ang browser ng mga estilo, font at tile mula sa OpenFreeMap, na nakakatanggap ng iyong IP address. Ang mga larawan ng opisyal ay kinukuha mula sa website ng munisipyo, na nakakatanggap din ng iyong IP address. May sariling patakaran ang mga panlabas na website at GitHub; pampubliko ang mga issue. Huwag magsumite ng pribadong numero, detalye ng pasyente o sambahayan. Hindi awtomatikong inilalathala ang mga ulat.",
-  "licensePolicy": "CC0 lamang ang code, schema at normalization na likha ng proyekto. Hiwalay ang karapatan ng bawat pinagmulang sanggunian."
+  "licensePolicy": "Lisensiyado sa MIT ang code ng proyekto; lisensiyado sa CC BY 4.0 ang dokumentasyon. May sarili pa ring tuntunin ang mga materyal mula sa iba."
 }

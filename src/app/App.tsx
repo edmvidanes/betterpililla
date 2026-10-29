@@ -176,14 +176,14 @@ function App() {
       <p className="about-statement">{t.community}</p>
       <p className="about-description">{t.description}</p>
       <p>{locale === 'fil' ? 'Ginawa para sa inisyatibong ' : 'Made for the ' }<a href="https://lgu.bettergov.ph/">BetterLGU{locale === 'en' ? ' initiative' : ''}</a>.</p>
-      <p>{locale === 'fil' ? 'Kredito:' : 'Credit:'} <a href="https://lukasbebis.com">@klnwlks</a></p>
+      <p>{locale === 'fil' ? <>Kredito sa site ng BetterCavinti at sa template: <a href={lgu.repository}>@klnwlks sa GitHub</a>.</> : <>BetterCavinti site and template by <a href={lgu.repository}>@klnwlks on GitHub</a>.</>}</p>
       <nav className="about-links" aria-label={t.projectLinks}>
         <a href={lgu.repository}>GitHub</a>
         <a href={lgu.officialUrl}>{lgu.name}</a>
       </nav>
     </header>
     <div className="about-details">
-      {tree(data.municipality.publishedDescription)}
+      <section className="panel">{evidence(data.municipality.publishedDescription)}</section>
       <p className="about-license">{t.licensePolicy}</p>
     </div>
   </article>

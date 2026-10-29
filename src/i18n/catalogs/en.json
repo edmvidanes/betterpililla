@@ -75,5 +75,5 @@
   ,"previous": "Previous", "next": "Next", "footer": "Project information",
   "accessibilityPolicy": "The portal provides keyboard navigation, visible focus, labeled controls, semantic headings and language-preserving URLs. Record titles remain original when reviewed translations are unavailable. Report accessibility barriers through GitHub with the URL, browser and steps, without personal information.",
   "privacyPolicy": "The portal has no accounts, analytics, cookies or database. Language and filters are stored in URLs. The static host may retain access logs. When the map approaches the viewport, your browser requests styles, fonts and tiles from OpenFreeMap, which receives your IP address. Official portraits are loaded from the municipal website, which also receives your IP address. External sources and GitHub apply their own privacy policies; issues are public. Do not submit private phone numbers, patient or household details. Reports never update published data automatically.",
-  "licensePolicy": "CC0 applies to project code and project-authored schemas and normalization only. Upstream rights remain source-specific."
+  "licensePolicy": "Project code is MIT-licensed; project documentation is licensed under CC BY 4.0. Third-party materials retain their own terms."
 }
