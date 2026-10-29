@@ -48,7 +48,7 @@ for (const path of pages.keys()) {
   children.set(parent, siblings)
 }
 
-const origin = 'https://bettercavinti.org'
+const origin = 'https://www.bettercavinti.org'
 const basePath = new URL(process.env.SITE_BASE || '/', origin).pathname.replace(/\/*$/, '/')
 const url = (locale: Locale, path: string) => `${origin}${basePath}${locale}/${path}`
 const escape = (value: string) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
