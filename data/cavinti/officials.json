@@ -262,6 +262,18 @@
     {"Full Name": "ARROYO, ARRANTLEE ROMULO", "Position": "MAYOR", "Party": "PFP", "Year": "2025", "Middle Name Source": "dilg"},
     {"Full Name": "OLIVEROS, MILBERT DE LEON", "Position": "VICE MAYOR", "Party": "PFP", "Year": "2025", "Middle Name Source": "dilg"}
   ],
+  "profileEvidenceLinks": {
+    "cavinti-executive-arrantlee-romulo-arroyo": {"dilg": "ARROYO", "returns": "ARROYO ARRANTLEE"},
+    "cavinti-council-milbert-oliveros": {"dilg": "OLIVEROS", "returns": "OLIVEROS MILBERT"},
+    "cavinti-council-jovenil-gordula": {"dilg": "GORDULA", "returns": "GORDULA JOVENIL"},
+    "cavinti-council-glenn-cabuhat": {"dilg": "CABUHAT", "returns": "CABUHAT GLENN HAZE"},
+    "cavinti-council-godfrey-lubuguin": {"dilg": "LUBUGUIN", "returns": "LUBUGUIN GODFREY"},
+    "cavinti-council-habshan-blastique": {"dilg": "BLASTIQUE", "returns": "BLASTIQUE HABSHAN DAVE"},
+    "cavinti-council-jose-mari-esguerra": {"dilg": "ESGUERRA", "returns": "ESGUERRA JOSE MARI"},
+    "cavinti-council-joseph-baltazar": {"dilg": "BALTAZAR", "returns": "BALTAZAR JOSEPH"},
+    "cavinti-council-romel-villanueva": {"dilg": "VILLANUEVA", "returns": "VILLANUEVA OMENG"},
+    "cavinti-council-melandro-lope": {"dilg": "LOPE", "returns": "LOPE MEL"}
+  },
   "dilgDirectorySource": {
     "sourceId": "dilg-elective-officials-2025-2028",
     "retrievedAt": "2026-10-29",

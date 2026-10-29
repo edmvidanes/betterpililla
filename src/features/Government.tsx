@@ -33,6 +33,11 @@ export function OfficialDetail(props: CivicProps & { recordId: string; correctio
   const sourceId = String(row.sourceId || row.profileSourceId)
   const sourcePage = sourceId === 'cavinti-executive-directory' ? 'https://www.cavinti-egov.com/executive' : 'https://www.cavinti-egov.com/legislative'
   const roleEvidence = row.roleEvidence && typeof row.roleEvidence === 'object' && !Array.isArray(row.roleEvidence) ? row.roleEvidence : null
+  const links = data.officials.profileEvidenceLinks
+  const link = links && typeof links === 'object' && !Array.isArray(links) ? links[recordId] : null
+  const evidence = link && typeof link === 'object' && !Array.isArray(link) ? link : null
+  const dilg = evidence ? rows(data.officials.dilgDirectory).find(item => item.lastName === evidence.dilg) : undefined
+  const result = evidence ? rows(data.officials.electionReturns).find(item => item.candidateAsPublished === evidence.returns) : undefined
   return <>
     <a className="service-back" href={href('government/officials')}>{fil ? '← Lahat ng nasa direktoryo' : '← All directory profiles'}</a>
     <div className="official-detail">
@@ -42,15 +47,41 @@ export function OfficialDetail(props: CivicProps & { recordId: string; correctio
           ? (fil ? 'Hindi malinaw ang eksaktong katungkulan o pagiging kasapi; hindi ito patunay ng kasalukuyan o nahalal na katungkulan.' : 'Exact office or membership status is unclear; this card does not establish an elected or current office.')
           : (fil ? 'Hindi itinatatag ng direktoryong ito ang kasalukuyang termino o panunungkulan.' : 'This directory does not establish current tenure or term dates.')}</p>
         <dl className="official-facts">
-          <dt>{fil ? 'Katungkulan' : 'Role'}</dt><dd>{row.roleLabel ? <span lang="en">{String(row.roleLabel)}</span> : (fil ? 'Hindi natukoy' : 'Not established')}</dd>
+          <dt>{fil ? 'Katungkulan ayon sa direktoryo ng Cavinti' : 'Role in Cavinti directory'}</dt><dd>{row.roleLabel ? <span lang="en">{String(row.roleLabel)}</span> : (fil ? 'Hindi natukoy' : 'Not established')}</dd>
           <dt>{fil ? 'Komite ayon sa direktoryo' : 'Committee as listed'}</dt><dd>{row.committeeLabel ? <span lang="en">{String(row.committeeLabel)}</span> : (fil ? 'Hindi nakasaad' : 'Not stated')}</dd>
           {row.expertiseLabel && <><dt>{fil ? 'Expertise ayon sa direktoryo' : 'Expertise as listed'}</dt><dd lang="en">{String(row.expertiseLabel)}</dd></>}
           {typeof row.authoredCountAsDisplayed === 'number' && <><dt>{fil ? 'Authored / Co-authored ayon sa direktoryo' : 'Authored / co-authored as displayed'}</dt><dd>{formatNumber(row.authoredCountAsDisplayed, locale)} / {formatNumber(Number(row.coauthoredCountAsDisplayed), locale)}</dd></>}
-          <dt>{fil ? 'Termino' : 'Term dates'}</dt><dd>{fil ? 'Hindi natukoy' : 'Not established'}</dd>
+          {!dilg && <><dt>{fil ? 'Termino' : 'Term dates'}</dt><dd>{fil ? 'Hindi natukoy' : 'Not established'}</dd></>}
         </dl>
         {typeof row.authoredCountAsDisplayed === 'number' && <p className="civic-meta">{fil ? 'Hindi pa naihahambing ang bilang sa buong katalogo ng batas.' : 'Counts have not been reconciled against the full legislation catalog.'}</p>}
       </div>
     </div>
+    {dilg && <section>
+      <h2>{fil ? 'Direktoryo ng DILG' : 'DILG directory'}</h2>
+      <p>{fil ? 'Ayon sa direktoryo noong Pebrero 2026; hindi ito patunay ng kasalukuyang panunungkulan. Hindi pa nasusuri ang mga contact.' : 'Directory as of February 2026; not proof of current tenure. Contacts have not been independently validated.'}</p>
+      <dl className="official-facts">
+        <dt>{fil ? 'Pangalan ayon sa DILG' : 'Name as listed by DILG'}</dt><dd lang="en">{String(dilg.firstName)} {String(dilg.middleName)} {String(dilg.lastName)}{dilg.suffix !== 'N/A' ? ` (${String(dilg.suffix)})` : ''}</dd>
+        <dt>{fil ? 'Katungkulan' : 'Position'}</dt><dd lang="en">{String(dilg.position)}</dd>
+        <dt>{fil ? 'Termino ayon sa direktoryo' : 'Directory term'}</dt><dd>{String(dilg.term)}</dd>
+        <dt>{fil ? 'Address ng opisina' : 'Office address'}</dt><dd lang="en">{String(dilg.officeAddress)}</dd>
+        <dt>{fil ? 'Telepono ng opisina' : 'Office phone'}</dt><dd>{String(dilg.officePhone)}</dd>
+        <dt>Email</dt><dd><a href={`mailto:${String(dilg.officeEmail)}`}>{String(dilg.officeEmail)}</a></dd>
+      </dl>
+      <SourceNote {...props} id="dilg-elective-officials-2025-2028" />
+    </section>}
+    {result && <section>
+      <h2>{fil ? 'Resulta ng halalan noong 2025' : '2025 election result'}</h2>
+      <p>{fil ? 'Bahagyang, hindi opisyal na resulta mula sa Comelec Media Server, ayon sa Rappler noong Mayo 15, 2025, 2:41 PM; 100% ng presinto ang nag-ulat. Hindi ito proklamasyon o patunay ng kasalukuyang panunungkulan.' : 'Partial, unofficial Comelec Media Server results reported by Rappler on May 15, 2025, 2:41 PM, with 100% of precincts reporting. This is not a proclamation or proof of current tenure.'}</p>
+      <dl className="official-facts">
+        <dt>{fil ? 'Kandidato ayon sa Rappler' : 'Candidate as listed by Rappler'}</dt><dd lang="en">{String(result.candidateAsPublished)}</dd>
+        <dt>{fil ? 'Katungkulang tinakbuhan' : 'Position contested'}</dt><dd lang="en">{String(result.position)}</dd>
+        <dt>{fil ? 'Partido' : 'Party'}</dt><dd>{String(result.party)}</dd>
+        <dt>{fil ? 'Ranggo' : 'Rank'}</dt><dd>{String(result.rank)}</dd>
+        <dt>{fil ? 'Boto' : 'Votes'}</dt><dd>{formatNumber(Number(result.votes), locale)}</dd>
+        <dt>{fil ? 'Porsiyento ng mga rehistradong botante' : 'Percent of registered voters'}</dt><dd>{String(result.percentRegisteredVoters)}%</dd>
+      </dl>
+      <SourceNote {...props} id="rappler-cavinti-2025-returns" />
+    </section>}
     <section><h2>{fil ? 'Pinagmulan at katibayan' : 'Sources and evidence'}</h2>
       <p>{fil ? 'Direktoryo ng Cavinti E-Gov; ang tala ng direktoryo ay nakunan noong' : 'Cavinti E-Gov directory; directory record captured'} {formatDate(String(data.officials.capturedAt), locale)}. <a href={sourcePage}>{fil ? 'Buksan ang direktoryo' : 'Open directory'}</a></p>
       {portraitUrl(recordId) && <p>{fil ? 'Larawan mula sa parehong direktoryo, nakita noong' : 'Portrait from the same directory, observed'} {formatDate(portraitCaptureDate, locale)}. {fil ? 'Direktang nilo-load mula sa munisipal na site; walang nakasaad na photographer. Hindi nasuri ang naka-embed na karapatan.' : 'Loaded directly from the municipal site; photographer uncredited. Embedded rights metadata has not been reviewed.'} <a href={portraitUrl(recordId) || undefined}>{fil ? 'Orihinal na larawan' : 'Original image'}</a> · <a href={portraitRightsUrl}>{fil ? 'Pahayag ng site sa paggamit' : 'Site-wide rights statement'}</a></p>}
