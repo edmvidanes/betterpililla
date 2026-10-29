@@ -87,3 +87,7 @@ The header uses `public/logo.webp` (192px); the browser tab uses `public/favicon
 - Homepage photo credits open in a bordered, scrollable floating panel so the attribution list does not change page layout; the native disclosure remains keyboard-operable.
 
 - Visible record, directory, and homepage list entries use subtle 500ms GSAP entrances with a capped stagger. Newly filtered entries follow the same treatment; reduced-motion preferences leave them still and content remains visible without scripts.
+
+## Social preview
+
+`public/social-hero.jpg` is a 1200 × 630 HTML-rendered gallery poster: oversized blue/navy BetterCavinti lettering, three staggered photographs (Caliraya Lake, Cavinti Falls, Cavinti Bridge II), the portal emblem, and “Part of the BetterLGU movement.” The image includes photographer and license credits. Photo sources are recorded in `src/config/lgu.ts`; the temporary sample HTML and alternate exports are not shipped.
