@@ -11,7 +11,9 @@
 .atlas-photo-track { display: flex; width: max-content; animation: atlas-photo-scroll 1s linear 2s infinite; animation-play-state: paused; }
 .atlas-photo-track-second { display: none; }
 .atlas-photo-group { display: flex; }
-.atlas-photo-frame { display: block; flex: 0 0 33.333333cqw; width: 33.333333cqw; overflow: clip; border-right: .4rem solid white; }
+.atlas-photo-frame { display: block; flex: 0 0 49cqw; width: 49cqw; overflow: clip; border-right: .4rem solid white; }
+.atlas-photo-frame:nth-child(3n + 2) { flex-basis: 20cqw; width: 20cqw; }
+.atlas-photo-frame:nth-child(3n) { flex-basis: 31cqw; width: 31cqw; }
 .atlas-photo-strip img { display: block; width: 100%; height: clamp(240px, 29.5vw, 425px); object-fit: cover; }
 .atlas-photo-strip.is-visible .atlas-photo-track { animation-play-state: running; }
 @keyframes atlas-photo-scroll { to { transform: translateX(-50%); } }
@@ -116,7 +118,9 @@ footer.atlas-footer { background: #191d21; color: white; border: 0; padding: 4re
   .atlas-place h1 { margin-bottom: 1.25rem; }
   .atlas-photo-strip { margin-inline: .25rem; }
   .atlas-photo-track-second { display: flex; margin-top: .25rem; animation-direction: reverse; }
-  .atlas-photo-frame { flex-basis: 65cqw; width: 65cqw; }
+  .atlas-photo-frame { flex-basis: 75cqw; width: 75cqw; }
+  .atlas-photo-frame:nth-child(3n + 2) { flex-basis: 45cqw; width: 45cqw; }
+  .atlas-photo-frame:nth-child(3n) { flex-basis: 60cqw; width: 60cqw; }
   .atlas-photo-strip img { height: max(72px, calc((100dvh - 17rem) * .3)); }
   .atlas-photo-track-second img { height: max(156px, calc((100dvh - 17rem) * .65)); }
   .atlas-credits { font-size: .75rem; }
