@@ -3,22 +3,23 @@ import { catalogs, formatNumber } from '../i18n/locales'
 import { civicCatalogs } from '../i18n/civic'
 import { PageIntro, RawRecord, SourceNote, type CivicProps } from './Civic'
 import { rows } from '../data/loaders'
+import { transparencyRecordId } from '../domain/transparency-record'
 
 const regularIncome = [
-  [2009, 62148017.68], [2010, 69931486.50], [2011, 83392149.52], [2012, 80379224.83],
-  [2013, 92741110.78], [2014, 94283213.10], [2015, 105721576.59], [2016, 111913255.20]
+  [2016, 111913255.20], [2015, 105721576.59], [2014, 94283213.10], [2013, 92741110.78],
+  [2012, 80379224.83], [2011, 83392149.52], [2010, 69931486.50], [2009, 62148017.68]
 ]
 
 export default function Finance(props: CivicProps & { income?: boolean }) {
-  const { data, locale, income } = props
+  const { data, locale, income, href } = props
   const t = catalogs[locale], c = civicCatalogs[locale]
   const categories = [c.financeCategory, c.procurementCategory, c.projectsCategory]
   const [query, setQuery] = useState('')
   const projects = rows(data.transparency.dpwhProjectSnapshot)
-  const matching = projects.filter(row => [row.description, row.contractId, row.infraYear, row.status, row.budget].join(' ').toLocaleLowerCase().includes(query.toLocaleLowerCase()))
+  const matching = projects.filter(row => [row.description, row.contractId, row.infraYear, row.status, row.budget].join(' ').toLocaleLowerCase().includes(query.toLocaleLowerCase())).sort((a, b) => Number(b.infraYear) - Number(a.infraYear))
   const [procurementQuery, setProcurementQuery] = useState('')
   const procurement = rows(data.transparency.betterGovProcurementLeads)
-  const matchingProcurement = procurement.filter(row => [row.title, row.id, row.awardee, row.amountDisplayed, row.dateDisplayed, row.statusDisplayed].join(' ').toLocaleLowerCase().includes(procurementQuery.toLocaleLowerCase()))
+  const matchingProcurement = procurement.filter(row => [row.title, row.id, row.awardee, row.amountDisplayed, row.dateDisplayed, row.statusDisplayed].join(' ').toLocaleLowerCase().includes(procurementQuery.toLocaleLowerCase())).sort((a, b) => (Date.parse(String(b.dateDisplayed)) || 0) - (Date.parse(String(a.dateDisplayed)) || 0))
   const procurementLabels = locale === 'fil' ? {
     heading: 'Mga procurement lead mula sa BetterGov PH',
     search: 'Hanapin ang pamagat, ID, awardee, halaga, petsa o status', title: 'Pamagat sa source', id: 'ID sa source', awardee: 'Awardee', amount: 'Halagang ipinakita', date: 'Petsa sa source', status: 'Status sa source', source: 'Tingnan ang pahina ng BetterGov PH'
@@ -59,7 +60,7 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
       <p className="civic-meta" role="status">{formatNumber(matching.length, locale)} / {formatNumber(projects.length, locale)} {t.records}</p>
       {!matching.length && <p>{t.noResults}</p>}
       <div className="table-wrap" role="region" aria-label={labels.heading} tabIndex={0}><table className="coverage-table"><thead><tr><th scope="col">{labels.title}</th><th scope="col">{labels.contract}</th><th scope="col">{labels.year}</th><th scope="col">{labels.budget}</th><th scope="col">{labels.status}</th></tr></thead><tbody>
-        {matching.map(row => <tr key={String(row.contractId)}><td lang="en"><a href={datasetUrl}>{String(row.description)}</a></td><td>{String(row.contractId)}</td><td>{String(row.infraYear)}</td><td>{typeof row.budget === 'number' ? new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(row.budget) : '—'}</td><td lang="en">{String(row.status)}</td></tr>)}
+        {matching.map(row => <tr key={transparencyRecordId(row)}><td lang="en"><a href={href(`transparency/projects/${transparencyRecordId(row)}`)}>{String(row.description)}</a></td><td>{String(row.contractId)}</td><td>{String(row.infraYear)}</td><td>{typeof row.budget === 'number' ? new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(row.budget) : '—'}</td><td lang="en">{String(row.status)}</td></tr>)}
       </tbody></table></div>
     </section>}
     {procurement.length > 0 && <section><h2>{procurementLabels.heading}</h2>
@@ -68,12 +69,12 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
       <p className="civic-meta" role="status">{formatNumber(matchingProcurement.length, locale)} / {formatNumber(procurement.length, locale)} {t.records}</p>
       {!matchingProcurement.length && <p>{t.noResults}</p>}
       <div className="table-wrap" role="region" aria-label={procurementLabels.heading} tabIndex={0}><table className="coverage-table"><thead><tr><th scope="col">{procurementLabels.title}</th><th scope="col">{procurementLabels.id}</th><th scope="col">{procurementLabels.awardee}</th><th scope="col">{procurementLabels.amount}</th><th scope="col">{procurementLabels.date}</th><th scope="col">{procurementLabels.status}</th></tr></thead><tbody>
-        {matchingProcurement.map((row, index) => <tr key={`${String(row.id || row.title)}-${index}`}><td lang="en">{String(row.title)}</td><td lang="en">{row.id ? String(row.id) : '—'}</td><td lang="en">{String(row.awardee)}</td><td>{String(row.amountDisplayed)}</td><td lang="en">{String(row.dateDisplayed)}</td><td lang="en">{String(row.statusDisplayed)}</td></tr>)}
+        {matchingProcurement.map(row => <tr key={transparencyRecordId(row)}><td lang="en"><a href={href(`transparency/procurement/${transparencyRecordId(row)}`)}>{String(row.title)}</a></td><td lang="en">{row.id ? String(row.id) : '—'}</td><td lang="en">{String(row.awardee)}</td><td>{String(row.amountDisplayed)}</td><td lang="en">{String(row.dateDisplayed)}</td><td lang="en">{String(row.statusDisplayed)}</td></tr>)}
       </tbody></table></div>
     </section>}
     <section lang="en"><h2>BSP opinions on proposed municipal borrowing</h2>
       <p>These Monetary Board opinions concern proposed domestic borrowing by the Municipality of Cavinti, Laguna, Region IV-A (CALABARZON). The amounts are proposals, not loan drawdowns or outstanding debt; the records do not establish that the proposed projects were completed.</p>
-      <ul className="record-list">{rows(data.transparency.bspProposedBorrowingOpinions).map(row => <li key={String(row.resolutionNumber)}>
+      <ul className="record-list">{[...rows(data.transparency.bspProposedBorrowingOpinions)].sort((a, b) => String(b.resolutionDate).localeCompare(String(a.resolutionDate))).map(row => <li key={String(row.resolutionNumber)}>
         <h3>₱{Number(row.proposedLoanAmountPhpMillion).toFixed(2)} million proposed</h3>
         <p>{String(row.reportPeriod)} · Monetary Board resolution {String(row.resolutionNumber)}, dated {String(row.resolutionDate)}</p>
         <p>{String(row.purposeAsReported)}</p>
