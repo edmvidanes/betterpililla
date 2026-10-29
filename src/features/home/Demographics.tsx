@@ -28,7 +28,7 @@ export default function Demographics({ locale, href, municipality }: { locale: L
     </div>
     <figure className="demographics-photos">
       <div className="demographics-photo-strip">{lgu.demographicsPhotos.map(photo => <a href={photo.source} key={photo.src}><img src={`${import.meta.env.BASE_URL}${photo.src}`} alt={photo.alt[locale]} width={photo.width} height={photo.height} loading="lazy" /></a>)}</div>
-      <figcaption><details className="atlas-credits"><summary>{t.photoCredits}</summary><p>{t.photoChanges}</p><ul>{lgu.demographicsPhotos.map(photo => <li key={photo.src}><a href={photo.source}>{photo.title}</a> · {photo.author} · {photo.licenseUrl ? <a href={photo.licenseUrl}>{photo.license}</a> : t.photoPermission}</li>)}</ul></details></figcaption>
+      <figcaption><details className="atlas-credits"><summary>{t.photoCredits}</summary><div className="atlas-credits-panel"><p>{t.photoChanges}</p><ul>{lgu.demographicsPhotos.map(photo => <li key={photo.src}><a href={photo.source}>{photo.title}</a> · {photo.author} · {photo.licenseUrl ? <a href={photo.licenseUrl}>{photo.license}</a> : t.photoPermission}</li>)}</ul></div></details></figcaption>
     </figure>
   </section>
 }

@@ -24,12 +24,15 @@
   .atlas-links a:hover > svg, .atlas-links a:focus-visible > svg { transform: translateX(4px); }
   .atlas-service-badges a { transition: background-color 250ms ease, border-color 250ms ease; }
 }
-.atlas-credits { margin-top: .6rem; color: #4c5e78; font-size: .8rem; }
+.atlas-credits { position: relative; width: 100%; margin-top: .6rem; color: #4c5e78; font-size: .8rem; }
 .atlas-credits summary { cursor: pointer; width: fit-content; padding-block: .25rem; text-underline-offset: .2em; }
+.atlas-photos > figcaption .atlas-credits summary { margin-left: auto; }
 .atlas-credits summary:hover { color: #1747ab; text-decoration: underline; }
-.atlas-credits p { margin-block: .6rem .25rem; }
-.atlas-credits ul { list-style: none; padding: 0; margin: .25rem 0 1rem; }
-.atlas-credits li { padding-block: .2rem; }
+.atlas-credits-panel { position: absolute; z-index: 20; top: calc(100% + .35rem); right: 0; width: min(42rem, calc(100vw - 2.5rem)); max-height: min(70vh, 34rem); overflow: auto; padding: .9rem 1rem; border: 1px solid #d6deeb; border-radius: .5rem; background: white; }
+.atlas-credits-panel p { margin: 0 0 .4rem; }
+.atlas-credits-panel ul { list-style: none; padding: 0; margin: .25rem 0 0; }
+.atlas-credits-panel li { padding-block: .2rem; }
+.atlas-credits-panel a { overflow-wrap: anywhere; }
 .atlas-search { padding-block: 2.25rem 2rem; }
 .atlas-search .search-form { max-width: none; margin: 0; }
 .atlas-search .search-form > div { gap: .7rem; }

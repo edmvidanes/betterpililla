@@ -156,10 +156,12 @@ export default function Home({ locale, data, href, search, dataStatus }: {
         <figcaption className="atlas-inner">
           <details className="atlas-credits">
             <summary>{t.photoCredits}</summary>
-            <p>{t.photoChanges}</p>
-            <ul>{photos.map(photo => <li key={photo.src}>
-              <a href={photo.source}>{photo.title}</a> · {photo.author} · {photo.licenseUrl ? <a href={photo.licenseUrl}>{photo.license}</a> : t.photoPermission}
-            </li>)}</ul>
+            <div className="atlas-credits-panel">
+              <p>{t.photoChanges}</p>
+              <ul>{photos.map(photo => <li key={photo.src}>
+                <a href={photo.source}>{photo.title}</a> · {photo.author} · {photo.licenseUrl ? <a href={photo.licenseUrl}>{photo.license}</a> : t.photoPermission}
+              </li>)}</ul>
+            </div>
           </details>
         </figcaption>
       </figure>

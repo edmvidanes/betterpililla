@@ -84,4 +84,6 @@ The header uses `public/logo.webp` (192px); the browser tab uses `public/favicon
 - Don't display an unavailable dataset as a zero-value metric.
 - The homepage uses scroll-linked motion for the information index, demographics, photography and map, plus a history entrance. Keep search controls still, respect reduced-motion preferences, and keep content usable without animation.
 - The photo hero opens as an atlas: masked, hinged place-name letters lead into a center-out photo aperture, staggered shutters and a settling image zoom. The existing GSAP timeline owns this one entrance; search and navigation do not move. The photo ribbon has a bilingual pause/resume control in the same small-text scale as the credits, pauses offscreen or when the document is hidden, and becomes static with reduced motion. The complete heading keeps a single accessible name; duplicated photographs remain hidden from assistive technology.
+- Homepage photo credits open in a bordered, scrollable floating panel so the attribution list does not change page layout; the native disclosure remains keyboard-operable.
+
 - Visible record, directory, and homepage list entries use subtle 500ms GSAP entrances with a capped stagger. Newly filtered entries follow the same treatment; reduced-motion preferences leave them still and content remains visible without scripts.
