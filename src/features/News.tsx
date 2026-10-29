@@ -9,7 +9,7 @@ const imagePath = (path: string) => `${import.meta.env.BASE_URL}${path}`
 export default function News({ locale, href }: CivicProps) {
   const fil = locale === 'fil'
   return <div className="news-page">
-    <PageIntro title={fil ? 'Balita' : 'News'}>{fil ? 'Mga balitang inilathala sa opisyal na portal ng Cavinti. Nananatili ang orihinal na wika at petsa ng pinagmulan.' : 'News published on the official Cavinti portal, retaining the source’s original language and dates.'}</PageIntro>
+    <PageIntro title={fil ? 'Balita' : 'News'} />
     <p className="civic-meta news-source">{fil ? 'Nakuhang archive noong' : 'Archive captured'} {formatDate(news.metadata.capturedAt, locale)} · <a href={news.metadata.sourceUrl}>{fil ? 'Opisyal na archive' : 'Official archive'} <LinkArrow /></a></p>
     <ul className="news-list">{news.articles.map(article => <li key={article.id} className={`news-item${newsImages[article.id]?.cover ? '' : ' news-item-text'}`}>
       {newsImages[article.id]?.cover && <a className="news-thumbnail" href={href(`news/${encodeURIComponent(article.id)}`)} tabIndex={-1} aria-hidden="true"><img src={imagePath(newsImages[article.id].cover!)} alt="" loading="lazy" /></a>}
