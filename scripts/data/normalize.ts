@@ -18,7 +18,9 @@ export function datasetRows(id: string, data: Document): Document[] {
       sourceClaims: data.sourceClaims, discrepancies: data.discrepancies }));
     case 'sector-inventory': return data.sectors;
     case 'officials': return [...data.records.map((row: Document) => ({ rowType: 'official-directory', ...row })),
-      ...(data.historicalElectionWinners ?? []).map((row: Document) => ({ rowType: 'historical-election-winner', sourceId: data.historicalElectionSource.sourceId, ...row }))];
+      ...(data.historicalElectionWinners ?? []).map((row: Document) => ({ rowType: 'historical-election-winner', sourceId: data.historicalElectionSource.sourceId, ...row })),
+      ...(data.dilgDirectory ?? []).map((row: Document) => ({ rowType: 'dilg-directory', sourceId: data.dilgDirectorySource.sourceId, coverage: data.dilgDirectorySource.coverage, ...row })),
+      ...(data.electionReturns ?? []).map((row: Document) => ({ rowType: 'unofficial-election-return', sourceId: data.electionReturnsSource.sourceId, electionYear: 2025, reportedAt: data.electionReturnsSource.reportedAt, coverage: data.electionReturnsSource.coverage, ...row }))];
     case 'transparency': return [...data.sourceChecks.map((row: Document) => ({ rowType: 'source-check', ...row })),
       ...data.officialLocalDocumentLeads.map((row: Document) => ({ rowType: 'document-lead', ...row })),
       ...(data.dpwhProjectSnapshot ?? []).map((row: Document) => ({ rowType: 'project-snapshot', ...row })),

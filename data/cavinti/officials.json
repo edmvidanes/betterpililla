@@ -262,6 +262,46 @@
     {"Full Name": "ARROYO, ARRANTLEE ROMULO", "Position": "MAYOR", "Party": "PFP", "Year": "2025", "Middle Name Source": "dilg"},
     {"Full Name": "OLIVEROS, MILBERT DE LEON", "Position": "VICE MAYOR", "Party": "PFP", "Year": "2025", "Middle Name Source": "dilg"}
   ],
+  "dilgDirectorySource": {
+    "sourceId": "dilg-elective-officials-2025-2028",
+    "retrievedAt": "2026-10-29",
+    "coverage": "DILG directory titled as of February 2026; term labels are source-reported, not verification of current tenure. Office contacts are as published and not independently validated."
+  },
+  "dilgDirectory": [
+    {"position": "MUNICIPAL MAYOR", "term": "2025-2028", "firstName": "ARRANTLEE", "middleName": "ROMULO", "lastName": "ARROYO", "suffix": "N/A", "officeAddress": "J.P. RIZAL ST. BRGY. POBLACION CAVINTI, LAGUNA", "officePhone": "5230012", "officeEmail": "omcavinti@gmail.com"},
+    {"position": "MUNICIPAL VICE-MAYOR", "term": "2025-2028", "firstName": "MILBERT", "middleName": "DE LEON", "lastName": "OLIVEROS", "suffix": "N/A", "officeAddress": "2F ABC HALL BRGY. POBLACION CAVINTI, LAGUNA", "officePhone": "5234357", "officeEmail": "sbcavinti@gmail.com"},
+    {"position": "SANGGUNIANG BAYAN MEMBER", "term": "2025-2028", "firstName": "JOSE MARI", "middleName": "LUBUGUIN", "lastName": "ESGUERRA", "suffix": "N/A", "officeAddress": "2F ABC HALL BRGY. POBLACION CAVINTI, LAGUNA", "officePhone": "5234357", "officeEmail": "sbcavinti@gmail.com"},
+    {"position": "SANGGUNIANG BAYAN MEMBER", "term": "2025-2028", "firstName": "JOSEPH", "middleName": "PABALAT", "lastName": "BALTAZAR", "suffix": "N/A", "officeAddress": "2F ABC HALL BRGY. POBLACION CAVINTI, LAGUNA", "officePhone": "5234357", "officeEmail": "sbcavinti@gmail.com"},
+    {"position": "SANGGUNIANG BAYAN MEMBER", "term": "2025-2028", "firstName": "JOVENIL", "middleName": "TITAN", "lastName": "GORDULA", "suffix": "DR.", "officeAddress": "2F ABC HALL BRGY. POBLACION CAVINTI, LAGUNA", "officePhone": "5234357", "officeEmail": "sbcavinti@gmail.com"},
+    {"position": "SANGGUNIANG BAYAN MEMBER", "term": "2025-2028", "firstName": "HABSHAN DAVE", "middleName": "DELA TORRE", "lastName": "BLASTIQUE", "suffix": "N/A", "officeAddress": "2F ABC HALL BRGY. POBLACION CAVINTI, LAGUNA", "officePhone": "5234357", "officeEmail": "sbcavinti@gmail.com"},
+    {"position": "SANGGUNIANG BAYAN MEMBER", "term": "2025-2028", "firstName": "GODFREY", "middleName": "LUMBA", "lastName": "LUBUGUIN", "suffix": "N/A", "officeAddress": "2F ABC HALL BRGY. POBLACION CAVINTI, LAGUNA", "officePhone": "5234357", "officeEmail": "sbcavinti@gmail.com"},
+    {"position": "SANGGUNIANG BAYAN MEMBER", "term": "2025-2028", "firstName": "GLENN HAZE", "middleName": "MEJINO", "lastName": "CABUHAT", "suffix": "N/A", "officeAddress": "2F ABC HALL BRGY. POBLACION CAVINTI, LAGUNA", "officePhone": "5234357", "officeEmail": "sbcavinti@gmail.com"},
+    {"position": "SANGGUNIANG BAYAN MEMBER", "term": "2025-2028", "firstName": "MELANDRO", "middleName": "BRIGAS", "lastName": "LOPE", "suffix": "N/A", "officeAddress": "2F ABC HALL BRGY. POBLACION CAVINTI, LAGUNA", "officePhone": "5234357", "officeEmail": "sbcavinti@gmail.com"},
+    {"position": "SANGGUNIANG BAYAN MEMBER", "term": "2025-2028", "firstName": "ROMEL", "middleName": "JUANILLO", "lastName": "VILLANUEVA", "suffix": "N/A", "officeAddress": "2F ABC HALL BRGY. POBLACION CAVINTI, LAGUNA", "officePhone": "5234357", "officeEmail": "sbcavinti@gmail.com"}
+  ],
+  "electionReturnsSource": {
+    "sourceId": "rappler-cavinti-2025-returns",
+    "retrievedAt": "2026-10-29",
+    "reportedAt": "2025-05-15 14:41",
+    "coverage": "Rappler's partial, unofficial Comelec Media Server results with 100% of precincts reporting. All displayed mayor and vice-mayor candidates and the first ten displayed councilor candidates are captured; the councilor list has a Show All control and is not complete. Percentages use registered voters as denominator. Results are not proclamations or proof of present tenure."
+  },
+  "electionReturns": [
+    {"position": "Mayor", "rank": 1, "candidateAsPublished": "ARROYO ARRANTLEE", "party": "PFP", "votes": 12022, "percentRegisteredVoters": 56.73},
+    {"position": "Mayor", "rank": 2, "candidateAsPublished": "DELA TORRE BETHOVEN", "party": "IND", "votes": 2031, "percentRegisteredVoters": 9.58},
+    {"position": "Mayor", "rank": 3, "candidateAsPublished": "MATTA BINGO", "party": "LAKAS", "votes": 911, "percentRegisteredVoters": 4.30},
+    {"position": "Vice Mayor", "rank": 1, "candidateAsPublished": "OLIVEROS MILBERT", "party": "PFP", "votes": 9306, "percentRegisteredVoters": 43.92},
+    {"position": "Vice Mayor", "rank": 2, "candidateAsPublished": "OLIVEROS JIMMY JOSE", "party": "LAKAS", "votes": 5514, "percentRegisteredVoters": 26.02},
+    {"position": "Municipal Councilor", "rank": 1, "candidateAsPublished": "ESGUERRA JOSE MARI", "party": "IND", "votes": 9894, "percentRegisteredVoters": 46.69},
+    {"position": "Municipal Councilor", "rank": 2, "candidateAsPublished": "BALTAZAR JOSEPH", "party": "IND", "votes": 6855, "percentRegisteredVoters": 32.35},
+    {"position": "Municipal Councilor", "rank": 3, "candidateAsPublished": "GORDULA JOVENIL", "party": "PFP", "votes": 6583, "percentRegisteredVoters": 31.07},
+    {"position": "Municipal Councilor", "rank": 4, "candidateAsPublished": "BLASTIQUE HABSHAN DAVE", "party": "PFP", "votes": 6569, "percentRegisteredVoters": 31.00},
+    {"position": "Municipal Councilor", "rank": 5, "candidateAsPublished": "LUBUGUIN GODFREY", "party": "PFP", "votes": 6453, "percentRegisteredVoters": 30.45},
+    {"position": "Municipal Councilor", "rank": 6, "candidateAsPublished": "CABUHAT GLENN HAZE", "party": "PFP", "votes": 5619, "percentRegisteredVoters": 26.52},
+    {"position": "Municipal Councilor", "rank": 7, "candidateAsPublished": "LOPE MEL", "party": "AKAY", "votes": 5040, "percentRegisteredVoters": 23.78},
+    {"position": "Municipal Councilor", "rank": 8, "candidateAsPublished": "VILLANUEVA OMENG", "party": "IND", "votes": 5038, "percentRegisteredVoters": 23.78},
+    {"position": "Municipal Councilor", "rank": 9, "candidateAsPublished": "PINILI SARBEN", "party": "AKAY", "votes": 4530, "percentRegisteredVoters": 21.38},
+    {"position": "Municipal Councilor", "rank": 10, "candidateAsPublished": "TITAN BOYET", "party": "IND", "votes": 4331, "percentRegisteredVoters": 20.44}
+  ],
   "directoryLimitations": [
     "The legislative page displays 12 cards but does not supply complete term dates or an explicit office/role label for every card.",
     "Authored and co-authored numbers are preserved as displayed; they are not independently reconciled against the full legal catalog.",

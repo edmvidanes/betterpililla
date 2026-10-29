@@ -6,6 +6,24 @@
   "refreshMode": "manual-on-demand",
   "sources": [
     {
+      "id": "dilg-elective-officials-2025-2028",
+      "name": "DILG Directory of LGU Elective Officials for Term 2025–2028",
+      "tier": "primary-government",
+      "url": "https://docs.google.com/spreadsheets/d/1B2N5SjZEBP-29tUioFHaSk-6R_1YFGcYIkSPjuApxZw/edit",
+      "formats": ["spreadsheet"],
+      "retrievalStatus": "Cavinti rows retrieved 2026-10-29",
+      "coverage": "Directory titled as of February 2026, linked from https://www.dilg.gov.ph/key-officials. Names, roles, source-reported term and public office contacts retained separately from municipal directory profiles; contact details and present tenure not independently verified. Upstream reuse terms unknown."
+    },
+    {
+      "id": "rappler-cavinti-2025-returns",
+      "name": "Rappler 2025 Cavinti local race results",
+      "tier": "secondary-reference",
+      "url": "https://ph.rappler.com/elections/2025/local-race/embed/laguna/cavinti",
+      "formats": ["HTML"],
+      "retrievalStatus": "displayed results observed through public reader on 2026-10-29",
+      "coverage": "Partial, unofficial Comelec Media Server results as of May 15, 2025, 2:41 PM; 100% of precincts reporting. Councilor capture is limited to the first ten displayed candidates. Upstream reuse terms are unknown."
+    },
+    {
       "id": "dpwh-contract-api-capture",
       "name": "DPWH public transparency contract API",
       "tier": "primary-government",
