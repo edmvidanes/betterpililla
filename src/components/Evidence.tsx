@@ -34,7 +34,7 @@ export function EvidenceTree({ value, locale, sources, sourceHref }: { value: Ev
     const source = sources.find(s => s.id === value || s.sourceId === value)
     return source ? <a href={sourceHref(source.id || source.sourceId!)}>{source.name || source.publisher}</a> : /^https?:\/\//.test(value) ? <ExternalDocumentLink url={value} /> : <span className="source-text">{value}</span>
   }
-  if (typeof value === 'number') return <span className="tabular-nums">{value.toLocaleString(locale === 'fil' ? 'fil-PH' : 'en-PH')}</span>
+  if (typeof value === 'number') return <span className="tabular-nums">{value.toLocaleString(locale === 'fil' ? 'fil-PH' : 'en-PH', { maximumFractionDigits: 20 })}</span>
   if (Array.isArray(value)) return <ul className="evidence-list">{value.map((entry, i) => <li key={i}><EvidenceTree value={entry} locale={locale} sources={sources} sourceHref={sourceHref} /></li>)}</ul>
   const source = sources.find(s => (s.id || s.sourceId) === value.sourceId)
   const explicitStatus = typeof value.verificationStatus === 'string'

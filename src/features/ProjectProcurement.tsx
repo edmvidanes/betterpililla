@@ -1,10 +1,71 @@
 import { useState } from 'react'
-import { rows } from '../data/loaders'
+import { rows, type DataRecord } from '../data/loaders'
 import { transparencyRecordId } from '../domain/transparency-record'
 import { catalogs, formatNumber } from '../i18n/locales'
-import { PageIntro, SourceNote, type CivicProps } from './Civic'
+import { EvidenceTree, ExternalDocumentLink } from '../components/Evidence'
+import { PageIntro, RawRecord, SourceNote, type CivicProps } from './Civic'
 import './records-polish.css'
 
+function DpwhDetails({ details, ...props }: CivicProps & { details: DataRecord }) {
+  const fil = props.locale === 'fil'
+  const api = details.data && typeof details.data === 'object' && !Array.isArray(details.data) ? details.data : null
+  const currency = new Intl.NumberFormat(fil ? 'fil-PH' : 'en-PH', { style: 'currency', currency: 'PHP' })
+  const groups: [string, string, [string, string, string][]][] = [
+    ['Project and progress', 'Proyekto at progreso', [
+      ['contractId', 'Contract ID', 'Contract ID'], ['description', 'Description', 'Paglalarawan'],
+      ['category', 'Category', 'Kategorya'], ['status', 'Reported status', 'Iniulat na status'],
+      ['progress', 'Reported progress', 'Iniulat na progreso'], ['contractor', 'Contractor', 'Kontratista'],
+      ['infraType', 'Infrastructure type', 'Uri ng imprastraktura'], ['infraYear', 'Infrastructure year', 'Taon ng imprastraktura'],
+      ['nysReason', 'Not-yet-started reason', 'Dahilan kung hindi pa nasisimulan'],
+    ]],
+    ['Amounts, program and funds', 'Mga halaga, programa at pondo', [
+      ['budget', 'Budget', 'Badyet'], ['amountPaid', 'Amount paid as reported', 'Iniulat na halagang nabayaran'],
+      ['programName', 'Program', 'Programa'], ['sourceOfFunds', 'Source of funds', 'Pinagmulan ng pondo'],
+    ]],
+    ['Dates', 'Mga petsa', [
+      ['startDate', 'Start date', 'Petsa ng simula'], ['completionDate', 'Completion date', 'Petsa ng pagkumpleto'],
+      ['contractEffectivityDate', 'Contract effectivity date', 'Petsa ng bisa ng kontrata'], ['expiryDate', 'Expiry date', 'Petsa ng pagtatapos ng bisa'],
+    ]],
+    ['Location and verification', 'Lokasyon at beripikasyon', [
+      ['location', 'Location', 'Lokasyon'], ['latitude', 'Latitude', 'Latitude'], ['longitude', 'Longitude', 'Longitude'],
+      ['coordinates', 'Coordinates', 'Mga coordinate'], ['isVerifiedByDpwh', 'Verified by DPWH (as reported)', 'Beripikado ng DPWH (ayon sa source)'],
+      ['isVerifiedByPublic', 'Verified by public (as reported)', 'Beripikado ng publiko (ayon sa source)'],
+    ]],
+    ['Components', 'Mga bahagi', [['components', 'Components', 'Mga bahagi']]],
+    ['Procurement and bidders', 'Procurement at mga bidder', [
+      ['procurement', 'Procurement', 'Procurement'], ['winnerNames', 'Winner names', 'Mga pangalan ng nanalo'],
+      ['bidders', 'Bidders', 'Mga bidder'],
+    ]],
+    ['Documents and media', 'Mga dokumento at media', [
+      ['links', 'Document links', 'Mga link ng dokumento'], ['imageSummary', 'Image summary', 'Buod ng mga larawan'],
+      ['isLive', 'Live (as reported)', 'Live (ayon sa source)'], ['livestreamUrl', 'Livestream URL', 'Livestream URL'],
+      ['livestreamVideoId', 'Livestream video ID', 'Livestream video ID'], ['livestreamDetectedAt', 'Livestream detected at', 'Petsa ng pagtuklas ng livestream'],
+    ]],
+  ]
+  return <section className="service-detail-section">
+    <h2>{fil ? 'Detalye mula sa DPWH API' : 'DPWH API details'}</h2>
+    <p>{fil ? 'Hiwalay itong capture sa makasaysayang snapshot sa itaas; maaaring magkaiba ang mga halaga at status. Hindi nito pinatutunayan ang kasalukuyang kondisyon, bayad o pagkumpleto. Ang zero ay iniulat na halaga, hindi patunay ng bayad o pagkumpleto.' : 'This capture is separate from the historical snapshot above; values and status may differ. It does not verify current conditions, payment or completion. A zero is a reported value, not proof of payment or completion.'}</p>
+    <p>{fil ? 'Nakuha noong' : 'Retrieved'}: {typeof details.retrievedAt === 'string' && details.retrievedAt ? details.retrievedAt : (fil ? 'Hindi alam' : 'Unknown')}. {typeof details.sourceUrl === 'string' && details.sourceUrl && <ExternalDocumentLink url={details.sourceUrl}>{fil ? 'Pinagmulang DPWH API' : 'DPWH API source'}</ExternalDocumentLink>}</p>
+    {api ? <>
+      <p>{fil ? 'Ang mga coordinate ay hindi independiyenteng beripikado; tingnan ang mga flag at detalye sa source bago gamitin bilang lokasyon.' : 'Coordinates are not independently verified; check the source flags and details before using them as a location.'}</p>
+      {groups.map(([english, filipino, fields]) => <section key={english}>
+        <h3>{fil ? filipino : english}</h3>
+        <dl>{fields.map(([key, en, tl]) => {
+          const value = api[key]
+          const missing = value == null || value === '' || (Array.isArray(value) && value.length === 0)
+          const formatted = typeof value === 'number' && (key === 'budget' || key === 'amountPaid') ? currency.format(value)
+            : typeof value === 'number' && key === 'progress' ? `${value.toLocaleString(fil ? 'fil-PH' : 'en-PH')}%`
+            : typeof value === 'boolean' && (key === 'isVerifiedByDpwh' || key === 'isVerifiedByPublic') ? (value ? (fil ? 'Oo' : 'Yes') : (fil ? 'Hindi' : 'No'))
+            : null
+          return <div key={key}><dt className="directory-role">{fil ? tl : en}</dt><dd>{missing
+            ? (fil ? 'Hindi nakasaad / walang rekord' : 'Not stated / no records')
+            : formatted ?? <EvidenceTree value={value} locale={props.locale} sources={props.data.portal.sources} sourceHref={id => props.href(`sources/${encodeURIComponent(id)}`)} />}</dd></div>
+        })}</dl>
+      </section>)}
+      <RawRecord {...props} value={api} />
+    </> : <p>{fil ? 'Walang detalye ng API na available.' : 'API details are unavailable.'}</p>}
+  </section>
+}
 export default function ProjectProcurement(props: CivicProps & { projects: boolean; correctionLink: (recordId: string, template?: string) => string; recordId?: string }) {
   const { data, locale, projects, correctionLink, recordId, href } = props
   const t = catalogs[locale]
@@ -32,6 +93,7 @@ export default function ProjectProcurement(props: CivicProps & { projects: boole
     const row = records.find(item => transparencyRecordId(item) === recordId)
     if (!row) return <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><a href={href(path)}>{projects ? t.projects : t.procurement}</a></>
     const location = row.location && typeof row.location === 'object' && !Array.isArray(row.location) ? row.location : null
+    const details = row.dpwhDetails && typeof row.dpwhDetails === 'object' && !Array.isArray(row.dpwhDetails) ? row.dpwhDetails : null
     const value = (item: unknown) => item === null || item === undefined || item === '' ? (locale === 'fil' ? 'Hindi nakasaad' : 'Not stated') : String(item)
     const facts = projects ? [
       [labels.contract, value(row.contractId)], [labels.year, value(row.infraYear)],
@@ -49,6 +111,7 @@ export default function ProjectProcurement(props: CivicProps & { projects: boole
         <section className="service-detail-section"><h2>{locale === 'fil' ? 'Mga detalye sa snapshot' : 'Snapshot details'}</h2>
           <dl>{facts.map(([label, fact]) => <div key={label}><dt className="directory-role">{label}</dt><dd lang="en">{fact}</dd></div>)}</dl>
         </section>
+        {projects && (details ? <DpwhDetails {...props} details={details} /> : <section className="service-detail-section"><h2>{locale === 'fil' ? 'Detalye mula sa DPWH API' : 'DPWH API details'}</h2><p>{locale === 'fil' ? 'Walang nakuhang detalye mula sa DPWH API para sa rekord na ito.' : 'No DPWH API details were captured for this record.'}</p></section>)}
         <section className="service-detail-section"><h2>{locale === 'fil' ? 'Paano basahin ang rekord' : 'How to read this record'}</h2>
           <p>{projects
             ? (locale === 'fil' ? 'Sekundaryang snapshot ito ng mga proyektong may “Cavinti” sa paglalarawan. Maaaring saklaw ng isang proyekto ang ibang lugar; hindi nito pinatutunayan ang kasalukuyang status o gastos ng munisipyo.' : 'This secondary snapshot matches “Cavinti” in project descriptions. A project may cover other areas; the record does not verify its current status or municipal expenditure.')

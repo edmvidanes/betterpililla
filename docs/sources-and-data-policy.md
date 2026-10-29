@@ -19,6 +19,7 @@ Source register entries preserve original source names, URLs, tiers, capture not
 - Legislative rows retain original numbers/suffixes, dates, titles and separate duplicate occurrences. A link may be an attachment or a source-published copy-request/contact route. Neither a title nor a link verifies an enacted clause or fiscal amount.
 - Public directory contacts are time-sensitive. Page retrieval is not live validation; retain the validation limitation and do not describe them as current emergency instructions.
 - Search-index discoveries, procurement dates after capture, incomplete award queries and unreviewed OCR/transcriptions are leads, not completed awards or verified legal/financial facts.
+- DPWH project reports retain the BetterGov snapshot and a separate dated contract API capture. API status, progress, payment fields and coordinates are source-reported, not independently verified; linked documents are not reviewed. A zero payment field does not establish that no payment was made.
 - Empty inspected tables and inaccessible sources do not imply that no municipal services, spending, projects or records exist.
 - The services directory searches service records and ordinance-index leads together. Detail pages distinguish unverified leads from service records and show unavailable application details as unverified. Lead topics are navigation labels, not translated legal text or confirmation that a program currently operates. Follow the original title and official document links; confirm requirements and availability with the responsible office.
 

@@ -104,7 +104,7 @@
       "id": "transparency",
       "canonicalJson": "transparency.json",
       "schemaVersion": "civic-transparency-evidence/v1",
-      "recordCount": 100,
+      "recordCount": 101,
       "sourceIds": [
         "dilg-fdp",
         "blgf-fiscal-data",
@@ -115,9 +115,11 @@
         "cavinti-resolutions-index",
         "bsp-lgu-borrowings",
         "dpwh-bettergov-snapshot",
+        "dpwh-contract-api-capture",
         "bettergov-cavinti-procurement"
       ],
-      "status": "partial historical project and procurement snapshots and document leads; no complete financial, procurement, or project totals"
+      "rights": "DPWH contract API reuse terms are unknown; availability does not establish reuse permission.",
+      "status": "partial historical project and procurement snapshots, separate later DPWH contract API captures, and document leads; no complete financial, procurement, or project totals"
     },
     {
       "id": "ordinances",

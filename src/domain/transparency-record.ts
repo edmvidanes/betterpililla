@@ -1,7 +1,7 @@
 // Content-derived identifiers also cover procurement leads without a source ID.
 export function transparencyRecordId(record: object): string {
   let hash = 2166136261
-  for (const char of JSON.stringify(record)) {
+  for (const char of JSON.stringify(record, (key, value) => key === 'dpwhDetails' ? undefined : value)) {
     hash ^= char.codePointAt(0)!
     hash = Math.imul(hash, 16777619)
   }

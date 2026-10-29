@@ -6,6 +6,16 @@
   "refreshMode": "manual-on-demand",
   "sources": [
     {
+      "id": "dpwh-contract-api-capture",
+      "name": "DPWH public transparency contract API",
+      "tier": "primary-government",
+      "url": "https://api.transparency.dpwh.gov.ph/projects/15DH0011",
+      "formats": ["JSON"],
+      "retrievalStatus": "72 of 72 snapshot contracts retrieved through a public reader on 2026-10-29; direct requests returned HTTP 403",
+      "lastCheckedAt": "2026-10-29T15:17:39Z",
+      "coverage": "Contract-specific URLs and retrieval timestamps are retained with each response. This later capture is distinct from the historical BetterGov snapshot; source-reported coordinates and zero payment amounts are not independently verified. Upstream reuse terms are unknown."
+    },
+    {
       "id": "openhalalan-winners",
       "name": "OpenHalalan Philippine election winners",
       "tier": "secondary-reference",
