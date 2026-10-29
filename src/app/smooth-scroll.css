@@ -3,7 +3,6 @@
   top: 0;
   width: 100%;
   transform: translateY(var(--smooth-scroll-y, 0px));
-  animation: none;
 }
 
 .smooth-active .skip-link {

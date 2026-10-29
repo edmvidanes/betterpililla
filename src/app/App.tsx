@@ -49,7 +49,7 @@ function App() {
   const [paletteSearch, setPaletteSearch] = useState<DataPack['search'] | null>(null)
   const [paletteError, setPaletteError] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [pastHero, setPastHero] = useState(false)
+  const [headerState, setHeaderState] = useState<'normal' | 'sticky' | 'exiting'>('normal')
   const searchDialog = useRef<HTMLDialogElement>(null)
   const openSearch = () => {
     setPaletteError(false)
@@ -100,7 +100,10 @@ function App() {
   useEffect(() => { loadData(route).then(setData).catch(() => setError(true)) }, [route])
   useEffect(() => {
     if (route !== '') return
-    const update = () => setPastHero((document.querySelector('.atlas-place')?.getBoundingClientRect().bottom ?? 1) <= 0)
+    const update = () => {
+      const pastHero = (document.querySelector('.atlas-place')?.getBoundingClientRect().bottom ?? 1) <= 0
+      setHeaderState(state => pastHero ? 'sticky' : state === 'sticky' ? (window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'normal' : 'exiting') : state)
+    }
     update()
     window.addEventListener('scroll', update, { passive: true })
     window.addEventListener('resize', update)
@@ -202,7 +205,7 @@ function App() {
         <a href={`${base}${locale === 'en' ? 'fil' : 'en'}/${route.split('/').map(encodeURIComponent).join('/')}${location.search}${location.hash}`} lang={locale === 'en' ? 'fil' : 'en'} hrefLang={locale === 'en' ? 'fil' : 'en'}>{locale === 'en' ? 'Filipino' : 'English'}</a>
       </nav>
     </div></div>
-    <header className={`site-header${route === '' ? ' atlas-header' : ''}${pastHero ? ' is-sticky' : ''}`}><div className="header-inner">
+    <header className={`site-header${route === '' ? ' atlas-header' : ''}${headerState !== 'normal' ? ' is-sticky' : ''}${headerState === 'exiting' ? ' is-exiting' : ''}`} onAnimationEnd={event => { if (event.target === event.currentTarget && event.animationName === 'header-exit') setHeaderState(state => state === 'exiting' ? 'normal' : state) }}><div className="header-inner">
       <a className="brand" href={href('')} aria-label={`Better${lgu.name} · ${t.home}`}>
         <img className="brand-mark" src={`${base}logo.webp`} width="48" height="48" alt="" />
         <div className="brand-wordmark">Better<span>{lgu.name}</span></div>

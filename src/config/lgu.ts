@@ -131,7 +131,7 @@ export const lgu: MunicipalityConfig = {
       alt: { en: 'Rock formations and daylight inside a cave in Cavinti.', fil: 'Mga batong hugis at liwanag sa loob ng kuweba sa Cavinti.' },
       author: 'Cavinti Underground River and Caves Complex',
       source: 'https://cavintiunderground.wixsite.com/cavinticave',
-      license: 'Used with permission',
+      license: '',
     },
     {
       src: 'images/cavinti/sambalilo-festival.webp', width: 1200, height: 800,
@@ -139,7 +139,7 @@ export const lgu: MunicipalityConfig = {
       alt: { en: 'Performers dance at the Sambalilo Festival in Cavinti.', fil: 'Mga mananayaw sa Sambalilo Festival sa Cavinti.' },
       author: 'Cavinti Tourism',
       source: 'https://www.thefilipinorambler.com/2025/02/cavinti-laguna-a-journey-into-the-art-of-sambalilo-weaving-and-beyond.html',
-      license: 'Used with permission',
+      license: '',
     },
   ],
 }
