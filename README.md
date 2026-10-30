@@ -102,6 +102,13 @@ Route-specific datasets are selected in `src/data/loaders.ts`; update that mappi
 
 For deployment, publish all of `dist/`, including generated `data/` files, nested route pages, `sitemap.xml` and `robots.txt`. The build generates canonical URLs for `https://bettercavinti.org`, localized page metadata and crawlable summaries; React renders the full pages. Search pages and the custom 404 are marked `noindex`. For a subdirectory, set a slash-terminated base, for example `SITE_BASE=/portal/ npm run build`; configure the host to serve the generated `robots.txt` at the domain root so crawlers can find the sitemap.
 
+### deploy with Vercel
+
+1. Import the repository into Vercel and select Node.js 24 in the project settings.
+2. Use `npm run build` as the build command and `dist` as the output directory. The build runs `data:build` automatically.
+3. Deploy the project. To use a custom domain, add it in the Vercel project settings and configure DNS as directed by Vercel.
+4. When adapting the site, update the site origin in `scripts/build-routes.ts` and review the site settings in `src/config/lgu.ts` before deploying. Replace Cavinti data and media as described above.
+
 ## licenses
 
 Project-authored code is MIT licensed; project-authored documentation is CC BY 4.0. Third-party data, photographs, maps and other assets have separate terms. Check their attribution and reuse conditions before copying them. See [LICENSE](LICENSE) and [LICENSE-DOCS](LICENSE-DOCS).
