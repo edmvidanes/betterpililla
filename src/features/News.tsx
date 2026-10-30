@@ -1,3 +1,4 @@
+import { Pagination, usePagination } from '../components/Pagination'
 import news from '../data/cavinti-news.json'
 import { formatDate } from '../i18n/locales'
 import { LinkArrow, PageIntro, type CivicProps } from './Civic'
@@ -8,10 +9,11 @@ const imagePath = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
 export default function News({ locale, href }: CivicProps) {
   const fil = locale === 'fil'
+  const { visible, page, pages, setPage } = usePagination(news.articles)
   return <div className="news-page">
     <PageIntro title={fil ? 'Balita' : 'News'} />
     <p className="civic-meta news-source">{fil ? 'Nakuhang archive noong' : 'Archive captured'} {formatDate(news.metadata.capturedAt, locale)} · <a href={news.metadata.sourceUrl}>{fil ? 'Opisyal na archive' : 'Official archive'} <LinkArrow /></a></p>
-    <ul className="news-list">{news.articles.map(article => <li key={article.id} className={`news-item${newsImages[article.id]?.cover ? '' : ' news-item-text'}`}>
+    <ul className="news-list">{visible.map(article => <li key={article.id} className={`news-item${newsImages[article.id]?.cover ? '' : ' news-item-text'}`}>
       {newsImages[article.id]?.cover && <a className="news-thumbnail" href={href(`news/${encodeURIComponent(article.id)}`)} tabIndex={-1} aria-hidden="true"><img src={imagePath(newsImages[article.id].cover!)} alt="" loading="lazy" /></a>}
       <div className="news-item-content"><p className="civic-meta">{article.date} · {article.category}</p>
         <h2><a href={href(`news/${encodeURIComponent(article.id)}`)}>{article.title}</a></h2>
@@ -19,6 +21,7 @@ export default function News({ locale, href }: CivicProps) {
         <a className="news-read" href={href(`news/${encodeURIComponent(article.id)}`)} aria-label={`${fil ? 'Basahin ang balita' : 'Read article'}: ${article.title}`}>{fil ? 'Basahin ang balita' : 'Read article'} <LinkArrow /></a>
       </div>
     </li>)}</ul>
+    <Pagination page={page} pages={pages} setPage={setPage} locale={locale} label={fil ? 'Mga pahina ng balita' : 'News pages'} />
   </div>
 }
 

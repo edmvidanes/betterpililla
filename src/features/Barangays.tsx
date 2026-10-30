@@ -3,6 +3,7 @@ import { barangayId } from '../domain/ids'
 import { rows, type DataRecord } from '../data/loaders'
 import { catalogs, formatNumber } from '../i18n/locales'
 import { civicCatalogs } from '../i18n/civic'
+import { Pagination, usePagination } from '../components/Pagination'
 import { PageIntro, RawRecord, SourceNote, type CivicProps } from './Civic'
 
 export default function Barangays(props: CivicProps & { recordId?: string; correctionLink: (id: string) => string }) {
@@ -22,6 +23,7 @@ export default function Barangays(props: CivicProps & { recordId?: string; corre
   }
   const matching = names.filter(value => value.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()))
     .sort((a, b) => sort === 'population' ? (valueFor(b) ?? -1) - (valueFor(a) ?? -1) || a.localeCompare(b, locale) : a.localeCompare(b, locale))
+  const { visible, page, pages, setPage } = usePagination(matching, JSON.stringify([query, year, sort, recordId]))
   const maximum = Math.max(1, ...populationRows.map(row => Number(row[`population${year}`]) || 0))
   if (recordId && !name) return <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><code>{recordId}</code><p><a href={href('government/barangays')}>{c.backBarangays}</a></p></>
 
@@ -60,13 +62,14 @@ export default function Barangays(props: CivicProps & { recordId?: string; corre
           <p><a href={correctionLink(recordId!)}>{t.correction}</a></p>
         </> : <>
           {!matching.length && <p>{t.noResults}</p>}
-          <ul className="barangay-bars">{matching.map(value => {
+          <ul className="barangay-bars">{visible.map(value => {
             const count = valueFor(value)
             return <li key={value}><a href={href(`government/barangays/${encodeURIComponent(barangayId(value))}`)}>
               <span className="barangay-bar-label"><strong lang="en">{value}</strong><span>{count === null ? c.coverageMissing : formatNumber(count, locale)}</span></span>
               {count !== null && <span className="barangay-bar-track" aria-hidden="true"><span style={{ width: `${count / maximum * 100}%` }} /></span>}
             </a></li>
           })}</ul>
+          <Pagination page={page} pages={pages} setPage={setPage} locale={locale} label={locale === 'fil' ? 'Mga pahina ng mga barangay' : 'Barangay pages'} />
           <SourceNote {...props} id={String(population.sourceId)} />
         </>}
       </section>

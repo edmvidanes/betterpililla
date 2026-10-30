@@ -4,6 +4,7 @@ import { lgu } from '../config/lgu'
 import { catalogs, formatDate, formatNumber, type Locale, type MessageKey } from '../i18n/locales'
 import { loadData, loadSearch, type DataPack, type DataRecord, type EvidenceValue } from '../data/loaders'
 import { EvidenceTree, ExternalDocumentLink, SourceCitation } from '../components/Evidence'
+import { Pagination, usePagination } from '../components/Pagination'
 import SearchPalette from '../components/SearchPalette'
 import type { LegislationIndexRecord, LegislationRecord } from '../features/legislation/Legislation'
 import { routes } from './route-manifest'
@@ -126,6 +127,7 @@ function App() {
   const records = (value: EvidenceValue | undefined): DataRecord[] => Array.isArray(value) ? value as DataRecord[] : []
   const notFound = () => <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><code className="requested-url">{location.pathname}</code><p><a href={href('search')}>{t.search}</a></p></>
   const officialRows = data ? records(data.officials.records) : []
+  const { visible: visibleCommittees, page: committeePage, pages: committeePages, setPage: setCommitteePage } = usePagination(officialRows.filter(row => row.committeeLabel))
   const allLegislation = data ? records(data.legislationIndex.records) as unknown as LegislationIndexRecord[] : []
   let content: ReactNode
   const dataStatus = error
@@ -148,7 +150,7 @@ function App() {
     content = row ? <OfficialDetail data={data} locale={locale} href={href} recordId={String(row.recordId)} correctionLink={correctionLink} /> : notFound()
   }
   else if (route === 'government/offices' || route.startsWith('government/offices/')) content = <Contacts data={data} locale={locale} href={href} officeId={route === 'government/offices' ? undefined : route.slice('government/offices/'.length)} />
-  else if (route === 'government/committees') content = <><h1>{t.committees}</h1>{original}<ul className="record-list">{officialRows.filter(row => row.committeeLabel).map(row => <li key={String(row.recordId)}><h2>{String(row.committeeLabel)}</h2><a href={href(`government/officials/${encodeURIComponent(String(row.recordId))}`)}>{String(row.displayName)}</a>{cite(String(row.sourceId))}</li>)}</ul></>
+  else if (route === 'government/committees') content = <><h1>{t.committees}</h1>{original}<ul className="record-list">{visibleCommittees.map(row => <li key={String(row.recordId)}><h2>{String(row.committeeLabel)}</h2><a href={href(`government/officials/${encodeURIComponent(String(row.recordId))}`)}>{String(row.displayName)}</a>{cite(String(row.sourceId))}</li>)}</ul><Pagination page={committeePage} pages={committeePages} setPage={setCommitteePage} locale={locale} label={locale === 'fil' ? 'Mga pahina ng mga komite' : 'Committee pages'} /></>
   else if (route === 'government/barangays' || route.startsWith('government/barangays/')) content = <Barangays data={data} locale={locale} href={href} recordId={route === 'government/barangays' ? undefined : route.slice('government/barangays/'.length)} correctionLink={correctionLink} />
   else if (route === 'open-lgu/legislation' || route.startsWith('open-lgu/legislation/')) content = <Legislation locale={locale} records={allLegislation} detail={data.legislationDetail as unknown as LegislationRecord | null} recordId={route === 'open-lgu/legislation' ? undefined : route.slice('open-lgu/legislation/'.length)} href={href} sourceLink={sourceHref} correctionLink={correctionLink} />
   else if (route === 'open-lgu/terms') content = <><h1>{t.terms}</h1>{cite(lgu.sourceIds.legislative)}</>

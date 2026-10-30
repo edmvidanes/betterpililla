@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Button } from '@bettergov/kapwa/button'
+import { Pagination, usePagination } from '../../components/Pagination'
 import en from '../../i18n/catalogs/legislation-en.json'
 import fil from '../../i18n/catalogs/legislation-fil.json'
 
@@ -95,10 +96,12 @@ function matchDescription(record: LegislationIndexRecord, candidate: Legislation
   return [title && text.sharedTitle, number && text.sharedNumber, attachment && text.sharedAttachment].filter(Boolean).join(' · ')
 }
 
-function RelatedRows({ record, matches, text, href }: { record: LegislationIndexRecord; matches: LegislationIndexRecord[]; text: Labels; href: LegislationProps['href'] }) {
+function RelatedRows({ record, matches, text, href, locale }: { record: LegislationIndexRecord; matches: LegislationIndexRecord[]; text: Labels; href: LegislationProps['href']; locale: LegislationProps['locale'] }) {
+  const { visible, page, pages, setPage } = usePagination(matches, record.recordId)
   return (
+    <>
     <ul className="record-list">
-      {matches.map((candidate) => (
+      {visible.map((candidate) => (
         <li key={candidate.recordId} className="min-w-0 break-words">
           <a href={href(`${INDEX_PATH}/${encodeURIComponent(candidate.recordId)}`)}>
             {candidate.documentNumber || candidate.recordId} · {candidate.sourceId} · {text.row} {candidate.sourceRecordOrder}
@@ -107,6 +110,8 @@ function RelatedRows({ record, matches, text, href }: { record: LegislationIndex
         </li>
       ))}
     </ul>
+    <Pagination page={page} pages={pages} setPage={setPage} locale={locale} label={`${text.related}: ${record.recordId}`} />
+    </>
   )
 }
 
@@ -253,17 +258,17 @@ function LegislationIndex({ locale, records, href, sourceLink }: LegislationProp
                   <p className="whitespace-pre-wrap break-words">{text.author}: {record.authorText || text.notSupplied}</p>
                   <p className="whitespace-pre-wrap break-words">{text.committee}: {record.committeeText || text.notSupplied}</p>
                   <p className="muted break-words"><a href={sourceLink(record.sourceId)}>{record.sourceId}</a> · {text.row} {record.sourceRecordOrder}</p>
-                  {matches.length > 0 && <details><summary>{text.related} ({formatNumber.format(matches.length)})</summary><RelatedRows record={record} matches={matches} text={text} href={href} /></details>}
+                  {matches.length > 0 && <details><summary>{text.related} ({formatNumber.format(matches.length)})</summary><RelatedRows record={record} matches={matches} text={text} href={href} locale={locale} /></details>}
                 </li>
               )
             })}
           </ul>
         )}
-        <nav aria-label={text.pagination} className="mt-6 flex flex-wrap items-center gap-4">
+        {totalPages > 1 && <nav aria-label={text.pagination} className="mt-6 flex flex-wrap items-center gap-4">
           <Button type="button" variant="outline" disabled={currentPage <= 1} onClick={() => setQuery((current) => ({ ...current, page: currentPage - 1 }))}>{text.previous}</Button>
           <span>{text.page} {formatNumber.format(currentPage)} {text.of} {formatNumber.format(totalPages)}</span>
           <Button type="button" variant="outline" disabled={currentPage >= totalPages} onClick={() => setQuery((current) => ({ ...current, page: currentPage + 1 }))}>{text.next}</Button>
-        </nav>
+        </nav>}
       </section>
     </>
   )
@@ -332,7 +337,7 @@ export default function Legislation(props: LegislationProps) {
         <section className="panel" aria-labelledby="legislation-related">
           <h2 id="legislation-related">{text.related}</h2>
           <p>{text.relatedNote}</p>
-          <RelatedRows record={record} matches={matches} text={text} href={href} />
+          <RelatedRows record={record} matches={matches} text={text} href={href} locale={locale} />
         </section>
       )}
       <p><a href={correctionLink(record.recordId)}>{text.correction}</a></p>
