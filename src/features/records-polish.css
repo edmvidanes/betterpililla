@@ -15,6 +15,58 @@
 .service-steps dd { margin: .15rem 0 0; }
 .service-discrepancies { padding: 1rem 1.25rem; background: #fffaeb; border: 1px solid #ead9a3; border-radius: .5rem; }
 
+/* Service records: overview first, followed by a continuous reading flow. */
+.service-record { color: #172b4d; overflow-wrap: anywhere; }
+.service-record [lang="en"] { white-space: pre-line; }
+.service-record-header { padding: 0 0 1.5rem; border-bottom: 1px solid #d6deeb; }
+.service-record-header h1 { max-width: 24ch; margin: 0; text-wrap: balance; }
+.service-record-header p { margin: .75rem 0 0; color: #4c5e78; font-weight: 650; }
+.service-record-notice { margin: 1.5rem 0 0; }
+.service-record-overview { display: grid; grid-template-columns: minmax(0, 2fr) minmax(15rem, 1fr); gap: 2.5rem; align-items: start; padding: 2rem 0; }
+.service-record-intro h2, .service-record-office h2, .service-record-section h2 { margin: 0 0 1rem; font-size: 1.25rem; line-height: 1.3; }
+.service-record-intro > p { max-width: 70ch; margin: 0 0 1.5rem; }
+.service-record-facts { display: grid; gap: 1.25rem; }
+.service-record-facts > div { display: flex; gap: .8rem; align-items: flex-start; }
+.service-record-facts h3, .service-record-office h3 { margin: 0 0 .2rem; color: #4c5e78; font-size: .875rem; line-height: 1.4; }
+.service-record-facts p, .service-record-office p { margin: 0; }
+.service-detail-icon { flex: none; width: 1.35rem; height: 1.35rem; color: #1d4ed8; }
+.service-record-office { padding: 1.5rem; background: #f3f6fb; border-radius: .65rem; }
+.service-record-office h2, .service-record-section h2 { display: flex; align-items: center; gap: .65rem; }
+.service-record-office h3 { margin-top: 1.25rem; }
+.service-record-office a, .service-record-section a { display: inline-flex; align-items: center; gap: .35rem; margin-top: .75rem; }
+.service-record-body { max-width: 75ch; }
+.service-record-section { padding: 1.75rem 0; border-top: 1px solid #d6deeb; }
+.service-record-section > p { margin: .5rem 0; }
+.service-record-section ul, .service-record-section ol { padding-left: 1.5rem; }
+.service-record-section ul { list-style: disc; }
+.service-record-section li::marker { color: #1d4ed8; font-weight: 700; }
+.service-steps-timeline { position: relative; padding-right: 1.5rem; }
+.service-steps-track { position: absolute; top: 0; right: 0; bottom: 0; width: 3px; background: #d6deeb; border-radius: 2px; }
+.service-steps-progress { display: block; height: 100%; background: #1d4ed8; transform-origin: top; border-radius: inherit; }
+.service-record-section .service-steps { list-style: none; padding: 0; counter-reset: service-step; }
+.service-steps > li { position: relative; padding: 0 0 1.5rem 2.75rem; margin: 0 0 1.5rem; border-bottom: 1px solid #d6deeb; counter-increment: service-step; }
+.service-steps > li:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+.service-steps > li::before { content: counter(service-step); position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: #eaf0fc; color: #1747ab; font-weight: 700; }
+.service-steps dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem 1.5rem; }
+.service-steps dl > div { margin: 0; min-width: 0; }
+.service-steps .step-client, .service-steps .step-action, .service-steps .step-responsible { grid-column: 1 / -1; }
+.service-steps .step-client dd { color: #172b4d; font-weight: 650; }
+.service-steps .step-responsible { padding-top: .75rem; border-top: 1px solid #e4e9f1; }
+.service-steps .step-responsible dd { color: #4c5e78; font-size: .875rem; }
+.service-record-section.service-discrepancies { padding: 1.25rem 1.5rem; margin-bottom: 1rem; border: 1px solid #ead9a3; }
+.service-record-section.service-discrepancies h2 { color: #5c420b; }
+.service-record-source { color: #4c5e78; }
+.service-record-source h2 { color: #172b4d; }
+.service-record-source a { margin-top: 0; }
+@media (max-width: 800px) {
+  .service-record-overview { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+@media (max-width: 600px) {
+  .service-record-overview { padding: 1.5rem 0; }
+  .service-record-office { padding: 1.25rem; }
+  .service-record-section { padding: 1.5rem 0; }
+}
+
 .project-procurement-list h2 { overflow-wrap: anywhere; }
 .project-procurement-list dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: .75rem 1.5rem; }
 .project-procurement-list dt { color: #4c5e78; font-size: .85rem; }
