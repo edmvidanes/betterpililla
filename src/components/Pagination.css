@@ -1,0 +1,4 @@
+.pagination-controls { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1.5rem 0; }
+.pagination-controls button { min-height: 44px; padding: .5rem .85rem; border: 1px solid var(--portal-border); border-radius: .35rem; background: #fff; color: #172b4d; font: inherit; cursor: pointer; }
+.pagination-controls button:disabled { color: #4c5e78; cursor: not-allowed; }
+.pagination-controls span { color: #4c5e78; font-size: .9rem; font-variant-numeric: tabular-nums; }
