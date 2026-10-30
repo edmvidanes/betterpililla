@@ -6,38 +6,72 @@ import { LinkArrow, PageIntro, RawRecord, SourceNote, type CivicProps } from './
 import './records-polish.css'
 import { rows } from '../data/loaders'
 
+const topics = [
+  { id: 'civil', en: 'Civil records', fil: 'Mga rekord sibil', match: /civil registry|birth|marriage|death/i },
+  { id: 'health', en: 'Health & welfare', fil: 'Kalusugan at kapakanan', match: /health|welfare|yakap|philhealth/i },
+  { id: 'education', en: 'Education & employment', fil: 'Edukasyon at trabaho', match: /employment|human resource|scholarship|academic/i },
+  { id: 'business', en: 'Business & finance', fil: 'Negosyo at pananalapi', match: /treasurer|accountant|business/i },
+  { id: 'environment', en: 'Environment & agriculture', fil: 'Kapaligiran at agrikultura', match: /environment|agricultur/i },
+  { id: 'community', en: 'Community & infrastructure', fil: 'Komunidad at imprastraktura', match: /water office|planning|engineer|assessor|disaster|tourism/i },
+  { id: 'other', en: 'Other services', fil: 'Iba pang serbisyo', match: /$^/ },
+]
+const serviceTopic = (text: string) => topics.find(topic => topic.match.test(text))?.id ?? 'other'
+
+function ServiceIcon() {
+  return <svg className="service-directory-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M6 3.5h8l4 4V20H6z" /><path d="M14 3.5V8h4M9 12h6M9 15.5h6" /></svg>
+}
+
 export default function Services(props: CivicProps) {
   const { data, locale, href } = props
   const t = catalogs[locale], c = civicCatalogs[locale]
   const [query, setQuery] = useState(new URLSearchParams(location.search).get('q') || '')
+  const [category, setCategory] = useState('all')
   const services = rows(data.services.services)
   const normalizedQuery = query.trim().toLocaleLowerCase()
-  const matching = services.filter(row => [row.name, row.office, row.description, row.classification, row.transactionType].some(value => typeof value === 'string' && value.toLocaleLowerCase().includes(normalizedQuery)))
-  const offices = [...new Set(matching.map(row => typeof row.office === 'string' && row.office ? row.office : (locale === 'fil' ? 'Hindi nakasaad ang tanggapan' : 'Office not specified')))]
+  const matching = services.filter(row => (category === 'all' || serviceTopic(`${row.office} ${row.name}`) === category) && [row.name, row.office, row.description, row.classification, row.transactionType].some(value => typeof value === 'string' && value.toLocaleLowerCase().includes(normalizedQuery)))
   const ordinances = rows(data.ordinances.records)
   const leads = rows(data.services.serviceLegislationLeads).flatMap(lead => {
     const record = ordinances.find(row => row.recordId === lead.recordId && row.sourceId === lead.sourceId)
     const topic = lead.topic && typeof lead.topic === 'object' && !Array.isArray(lead.topic) ? lead.topic[locale] : null
     return record ? [{ record, topic: typeof topic === 'string' ? topic : String(record.title) }] : []
   })
-  const matchingLeads = leads.filter(({ record, topic }) => `${topic} ${record.title}`.toLocaleLowerCase().includes(normalizedQuery))
+  const matchingLeads = leads.filter(({ record, topic }) => (category === 'all' || serviceTopic(`${topic} ${record.title}`) === category) && `${topic} ${record.title}`.toLocaleLowerCase().includes(normalizedQuery))
   return <>
     <PageIntro title={t.services}>{locale === 'fil' ? 'Maghanap ng mga serbisyong nakatala sa Citizens’ Charter at mga kaugnay na tala sa indeks ng ordinansa.' : 'Find services recorded in the Citizens’ Charter and related leads in the ordinance index.'}</PageIntro>
     <section className="service-directory" aria-label={t.services}>
       {services.length || leads.length ? <>
-        <div className="service-directory-tools"><label>{c.filterDirectory}<input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder={locale === 'fil' ? 'Maghanap ng serbisyo o tanggapan' : 'Search services or offices'} /></label>
-          <p role="status" aria-atomic="true">{matching.length + matchingLeads.length} {locale === 'fil' ? 'resulta' : matching.length + matchingLeads.length === 1 ? 'result' : 'results'}</p></div>
-        {services.length > 0 && <section aria-labelledby="charter-services"><h2 id="charter-services">{locale === 'fil' ? 'Mga serbisyo sa Citizens’ Charter' : 'Citizens’ Charter services'}</h2>
-          {offices.map(office => <section key={office} className="service-office-group"><h3 lang="en">{office}</h3><ul className="service-grid">{matching.filter(row => (typeof row.office === 'string' && row.office ? row.office : (locale === 'fil' ? 'Hindi nakasaad ang tanggapan' : 'Office not specified')) === office).map(row => <li key={String(row.recordId)} className="service-card"><h4 lang="en"><a href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{String(row.name)}</a></h4>{typeof row.classification === 'string' && <p className="civic-meta" lang="en">{row.classification}</p>}{Array.isArray(row.discrepancies) && row.discrepancies.length > 0 && <p className="service-card-status">{locale === 'fil' ? 'May hindi tiyak na impormasyon' : 'Information needs clarification'}</p>}<div className="service-card-footer"><a href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{locale === 'fil' ? 'Tingnan ang detalye' : 'View details'} <span aria-hidden="true">→</span></a></div></li>)}</ul></section>)}
-        </section>}
-        {leads.length > 0 && <section aria-labelledby="service-legislation-leads"><h2 id="service-legislation-leads">{c.serviceLegislationLeads}</h2><p className="service-evidence">{!services.length && (locale === 'fil' ? 'Walang nakuhang tala ng serbisyo sa Citizens’ Charter. ' : 'No service entries were captured from the Citizens’ Charter. ')}{c.serviceLegislationLeadsText}</p><ul className="service-grid">{matchingLeads.map(({ record, topic }) => <li key={String(record.recordId)} className="service-card">
-          <h3><a href={href(`services/${encodeURIComponent(String(record.recordId))}`)}>{topic}</a></h3>
-          <p className="service-card-status">{locale === 'fil' ? 'Batay sa indeks ng ordinansa · hindi pa beripikado' : 'Ordinance index lead · availability unverified'}</p>
-          <p className="civic-meta">{String(record.documentNumber)} · {formatDate(String(record.sourceDate), locale)}</p>
-          <div className="service-card-footer"><a href={href(`services/${encodeURIComponent(String(record.recordId))}`)}>{locale === 'fil' ? 'Tingnan ang serbisyo' : 'View service'} <span aria-hidden="true">→</span></a><a href={String(record.documentUrl)}>{locale === 'fil' ? 'Opisyal na dokumento' : 'Official document'}</a></div>
-        </li>)}</ul><SourceNote {...props} id={String(leads[0].record.sourceId)} /></section>}
-        {!matching.length && !matchingLeads.length && <p>{t.noResults}</p>}
+        <div className="service-directory-layout">
+          <aside className="service-filters" aria-label={locale === 'fil' ? 'Mga kategorya ng serbisyo' : 'Service categories'}>
+            <h2>{locale === 'fil' ? 'Mga kategorya' : 'Categories'}</h2>
+            <div className="service-filter-list">
+              {[{ id: 'all', en: 'All services', fil: 'Lahat ng serbisyo' }, ...topics].map(topic => <button type="button" key={topic.id} aria-pressed={category === topic.id} onClick={() => setCategory(topic.id)}>{topic[locale]}</button>)}
+            </div>
+          </aside>
+          <div className="service-results">
+            <div className="service-directory-tools"><label>{c.filterDirectory}<span className="service-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.5 15.5 4.5 4.5" /></svg><input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder={locale === 'fil' ? 'Maghanap ng serbisyo o tanggapan' : 'Search services or offices'} /></span></label>
+              <p role="status" aria-atomic="true">{matching.length + matchingLeads.length} {locale === 'fil' ? 'resulta' : matching.length + matchingLeads.length === 1 ? 'result' : 'results'}</p></div>
+            {matching.length > 0 && <section aria-labelledby="charter-services"><h2 id="charter-services">{locale === 'fil' ? 'Mga serbisyo sa Citizens’ Charter' : 'Citizens’ Charter services'}</h2>
+              <ul className="service-grid">{matching.map(row => <li key={String(row.recordId)} className="service-card">
+                <div className="service-card-top"><ServiceIcon /><span className="service-badge">Citizens’ Charter</span></div>
+                <h3 lang="en"><a href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{String(row.name)}</a></h3>
+                {typeof row.office === 'string' && <p className="civic-meta" lang="en">{row.office}</p>}
+                {typeof row.classification === 'string' && row.classification && <p className="service-classification" lang="en">{row.classification}</p>}
+                {Array.isArray(row.discrepancies) && row.discrepancies.length > 0 && <p className="service-card-status">{locale === 'fil' ? 'May hindi tiyak na impormasyon' : 'Information needs clarification'}</p>}
+                <div className="service-card-footer"><a href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{locale === 'fil' ? 'Tingnan ang detalye' : 'View details'} <span aria-hidden="true">→</span></a></div>
+              </li>)}</ul>
+            </section>}
+            {matchingLeads.length > 0 && <section aria-labelledby="service-legislation-leads"><h2 id="service-legislation-leads">{c.serviceLegislationLeads}</h2><p className="service-evidence">{!services.length && (locale === 'fil' ? 'Walang nakuhang tala ng serbisyo sa Citizens’ Charter. ' : 'No service entries were captured from the Citizens’ Charter. ')}{c.serviceLegislationLeadsText}</p><ul className="service-grid">{matchingLeads.map(({ record, topic }) => <li key={String(record.recordId)} className="service-card">
+              <div className="service-card-top"><ServiceIcon /><span className="service-badge service-badge-lead">{locale === 'fil' ? 'Indeks ng ordinansa' : 'Ordinance index'}</span></div>
+              <h3><a href={href(`services/${encodeURIComponent(String(record.recordId))}`)}>{topic}</a></h3>
+              <p className="service-card-status">{locale === 'fil' ? 'Hindi pa beripikado ang availability' : 'Availability unverified'}</p>
+              <p className="civic-meta">{String(record.documentNumber)} · {formatDate(String(record.sourceDate), locale)}</p>
+              <div className="service-card-footer"><a href={href(`services/${encodeURIComponent(String(record.recordId))}`)}>{locale === 'fil' ? 'Tingnan ang serbisyo' : 'View service'} <span aria-hidden="true">→</span></a><a href={String(record.documentUrl)}>{locale === 'fil' ? 'Opisyal na dokumento' : 'Official document'}</a></div>
+            </li>)}</ul><SourceNote {...props} id={String(leads[0].record.sourceId)} /></section>}
+            {!matching.length && !matchingLeads.length && <p>{t.noResults}</p>}
+          </div>
+        </div>
       </> : <div className="civic-empty"><h2>{c.serviceMissing}</h2><p>{c.serviceMissingText}</p></div>}
+        <section className="service-report"><div><h2>{locale === 'fil' ? 'May nawawalang serbisyo?' : 'Missing a service?'}</h2><p>{locale === 'fil' ? 'Magmungkahi ng serbisyo at magbahagi ng pampublikong sanggunian para masuri. Huwag magpadala ng pribadong impormasyon.' : 'Suggest a service and share a public source for review. Please do not submit private information.'}</p></div><a href={`${lgu.repository}/issues/new?template=missing-record.yml`}>{locale === 'fil' ? 'Magmungkahi sa GitHub' : 'Suggest on GitHub'} <span aria-hidden="true">→</span></a></section>
     </section>
     <div className="civic-split"><section>
       <section aria-labelledby="service-guidance">
