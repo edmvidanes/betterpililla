@@ -3,6 +3,7 @@ import { rows, type DataRecord } from '../data/loaders'
 import { transparencyRecordId } from '../domain/transparency-record'
 import { catalogs, formatNumber } from '../i18n/locales'
 import { EvidenceTree, ExternalDocumentLink } from '../components/Evidence'
+import { Pagination, usePagination } from '../components/Pagination'
 import { PageIntro, RawRecord, SourceNote, type CivicProps } from './Civic'
 import './records-polish.css'
 
@@ -80,6 +81,7 @@ export default function ProjectProcurement(props: CivicProps & { projects: boole
   ).join(' ').toLocaleLowerCase().includes(query.toLocaleLowerCase())).sort((a, b) => projects
     ? Number(b.infraYear) - Number(a.infraYear)
     : (Date.parse(String(b.dateDisplayed)) || 0) - (Date.parse(String(a.dateDisplayed)) || 0))
+  const listingPage = usePagination(matching, JSON.stringify([projects, query]))
   const sourceId = String(records[0]?.sourceId || (projects ? 'dpwh-bettergov-snapshot' : 'bettergov-cavinti-procurement'))
   const source = data.portal.sources.find(item => (item.id || item.sourceId) === sourceId)
   const sourceUrl = source?.url || source?.canonicalUrl
@@ -137,7 +139,7 @@ export default function ProjectProcurement(props: CivicProps & { projects: boole
       <div className="directory-tools"><label htmlFor="project-procurement-query">{labels.search}<input id="project-procurement-query" type="search" value={query} onChange={event => setQuery(event.target.value)} /></label></div>
       <p className="civic-meta" role="status">{formatNumber(matching.length, locale)} / {formatNumber(records.length, locale)} {t.records}</p>
       {!matching.length && <p>{t.noResults}</p>}
-      <ul className="record-list project-procurement-list">{matching.map((row, index) => <li key={`${String(projects ? row.contractId : row.id || row.title)}-${index}`}>
+      <ul className="record-list project-procurement-list">{listingPage.visible.map((row, index) => <li key={`${String(projects ? row.contractId : row.id || row.title)}-${index}`}>
         <h2 lang="en"><a href={href(`${path}/${transparencyRecordId(row)}`)}>{String((projects ? row.description : row.title) || '—')}</a></h2>
         <dl>
           {projects ? <>
@@ -154,6 +156,7 @@ export default function ProjectProcurement(props: CivicProps & { projects: boole
           </>}
         </dl>
       </li>)}</ul>
+      <Pagination {...listingPage} locale={locale} label={projects ? t.projects : t.procurement} />
     </> : <p>{labels.empty}</p>}
     {projects && <p><a href={correctionLink('', 'project-observation.yml')}>{t.observation}</a></p>}
   </>

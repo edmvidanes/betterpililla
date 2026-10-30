@@ -5,11 +5,13 @@ import { civicCatalogs } from '../i18n/civic'
 import { PageIntro, SourceNote, type CivicProps } from './Civic'
 import './records-polish.css'
 import { rows } from '../data/loaders'
+import { Pagination, usePagination } from '../components/Pagination'
 
 export default function Demographics(props: CivicProps) {
   const { data, locale } = props
   const t = catalogs[locale], c = civicCatalogs[locale]
   const facts = rows(data.municipality.populationFacts)
+  const factPages = usePagination(facts)
   const population = facts.filter(row => row.indicator === 'total_population' && typeof row.value === 'number' && typeof row.referenceYear === 'number').sort((a, b) => Number(a.referenceYear) - Number(b.referenceYear))
   const [allYears, setAllYears] = useState(false)
   const [selectedYear, setSelectedYear] = useState(Number(population.at(-1)?.referenceYear))
@@ -36,6 +38,6 @@ export default function Demographics(props: CivicProps) {
       <p className="chart-note">{c.chartNoInterpolation}</p>
     </section>}
     {rate && <section><h2>{c.publishedRate}</h2><p><strong>{formatNumber(Number(rate.value), locale)}%</strong> · {String(rate.period)}</p><p className="muted">{c.rateNote}</p><SourceNote {...props} id={String(rate.sourceId)} /></section>}
-    <details className="civic-disclosure"><summary>{c.dataTable}</summary><div className="table-wrap" role="region" aria-label={c.dataTable} tabIndex={0}><table><thead><tr><th scope="col">{t.period}</th><th scope="col">{t.value}</th><th scope="col">{t.unit}</th><th scope="col">{t.evidence}</th></tr></thead><tbody>{facts.map((fact, index) => <tr key={index}><td>{String(fact.period || fact.referenceYear)}</td><td>{formatNumber(Number(fact.value), locale)}</td><td lang="en">{String(fact.unit)}</td><td><SourceNote {...props} id={String(fact.sourceId)} /><p lang="en">{String(fact.verificationStatus)}</p>{fact.notes && <p lang="en">{String(fact.notes)}</p>}</td></tr>)}</tbody></table></div></details>
+    <details className="civic-disclosure"><summary>{c.dataTable}</summary><div className="table-wrap" role="region" aria-label={c.dataTable} tabIndex={0}><table><thead><tr><th scope="col">{t.period}</th><th scope="col">{t.value}</th><th scope="col">{t.unit}</th><th scope="col">{t.evidence}</th></tr></thead><tbody>{factPages.visible.map((fact, index) => <tr key={index}><td>{String(fact.period || fact.referenceYear)}</td><td>{formatNumber(Number(fact.value), locale)}</td><td lang="en">{String(fact.unit)}</td><td><SourceNote {...props} id={String(fact.sourceId)} /><p lang="en">{String(fact.verificationStatus)}</p>{fact.notes && <p lang="en">{String(fact.notes)}</p>}</td></tr>)}</tbody></table></div><Pagination {...factPages} locale={locale} label={c.dataTable} /></details>
   </>
 }

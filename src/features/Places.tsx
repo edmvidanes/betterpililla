@@ -3,6 +3,7 @@ import { catalogs } from '../i18n/locales'
 import { civicCatalogs } from '../i18n/civic'
 import { LinkArrow, PageIntro, RawRecord, SourceNote, type CivicProps } from './Civic'
 import { rows, type DataRecord } from '../data/loaders'
+import { Pagination, usePagination } from '../components/Pagination'
 
 export function Places(props: CivicProps) {
   const { data, locale, href } = props
@@ -11,6 +12,8 @@ export function Places(props: CivicProps) {
   const sectorTitles: Record<string, string> = c
   const education = sectors.find(row => row.sector === 'education')
   const elementary = education?.elementaryDirectory as DataRecord | undefined
+  const elementaryPages = usePagination(rows(elementary?.records))
+  const integratedPages = usePagination(rows(education?.directoryLeads))
   const copy = locale === 'fil' ? {
     elementary: 'Mga paaralang elementarya', integrated: 'Mga integrated high school',
     directory: 'Direktoryo ng DepEd Laguna (walang petsa); tiningnan noong 27 Oktubre 2026. Sekondaryang sanggunian ito, hindi kumpletong kasalukuyang masterlist.',
@@ -30,11 +33,13 @@ export function Places(props: CivicProps) {
     <div className="civic-split"><section><h2>{c.education}</h2>
       <p className="civic-meta">{copy.directory}</p>
       <h3>{copy.elementary}</h3>
-      <ul className="record-list">{rows(elementary?.records).map(school => <li key={String(school.schoolId)}><h3 lang="en">{String(school.schoolNameAsPublished)}</h3><p className="civic-meta">{c.schoolId}: {String(school.schoolId)}</p></li>)}</ul>
+      <ul className="record-list">{elementaryPages.visible.map(school => <li key={String(school.schoolId)}><h3 lang="en">{String(school.schoolNameAsPublished)}</h3><p className="civic-meta">{c.schoolId}: {String(school.schoolId)}</p></li>)}</ul>
+      <Pagination {...elementaryPages} locale={locale} label={copy.elementary} />
       <p className="civic-meta">{locale === 'fil' ? 'Ang direktoryong ito ay gumagamit ng ID 164517 para sa Layasin; ang naunang search lead na 164526 ay tumutukoy sa ibang paaralan sa hiwalay na listahan ng DepEd.' : 'This directory lists Layasin as ID 164517; an earlier search lead, 164526, identifies a different school in a separate DepEd list.'}</p>
       {typeof elementary?.sourceUrl === 'string' && <p><a href={elementary.sourceUrl}>{copy.source}</a></p>}
       <h3>{copy.integrated}</h3>
-      <ul className="record-list">{rows(education?.directoryLeads).map(school => <li key={String(school.schoolId)}><h3 lang="en">{String(school.schoolNameAsPublished)}</h3><p className="civic-meta">{c.schoolId}: {String(school.schoolId)}</p><SourceNote {...props} id={String(school.sourceId)} /></li>)}</ul>
+      <ul className="record-list">{integratedPages.visible.map(school => <li key={String(school.schoolId)}><h3 lang="en">{String(school.schoolNameAsPublished)}</h3><p className="civic-meta">{c.schoolId}: {String(school.schoolId)}</p><SourceNote {...props} id={String(school.sourceId)} /></li>)}</ul>
+      <Pagination {...integratedPages} locale={locale} label={copy.integrated} />
     </section><aside className="civic-aside"><h2>{c.health}</h2>{health && <ul className="civic-links"><li><a lang="en" href={href(`government/offices/${health.category}`)}>{String(health.service)}<LinkArrow /></a></li></ul>}<SourceNote {...props} id={lgu.sourceIds.about} /></aside></div>
     <h2>{c.otherCoverage}</h2>
     <p className="civic-meta">{copy.topics}</p>
