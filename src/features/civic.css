@@ -123,7 +123,7 @@
   .legislation-search .field-grid { grid-template-columns: 1fr; }
   .chart-selection { font-size: 1.65rem; }
 }
-.barangay-layout { display: grid; grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr); gap: 3rem; margin-top: 1.5rem; align-items: start; }
+.barangay-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 3rem; margin-top: 1.5rem; align-items: start; }
 .barangay-layout > * { min-width: 0; }
 .barangay-layout h2:first-child { margin-top: 0; }
 .barangay-tools { gap: .75rem; }
