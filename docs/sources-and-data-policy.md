@@ -24,7 +24,7 @@ Source register entries preserve original source names, URLs, tiers, capture not
 - Search-index discoveries, procurement dates after capture, incomplete award queries and unreviewed OCR/transcriptions are leads, not completed awards or verified legal/financial facts.
 - DPWH project reports retain the BetterGov snapshot and a separate dated contract API capture. API status, progress, payment fields and coordinates are source-reported, not independently verified; linked documents are not reviewed. A zero payment field does not establish that no payment was made.
 - Empty inspected tables and inaccessible sources do not imply that no municipal services, spending, projects or records exist.
-- The services directory searches service records and ordinance-index leads together. Detail pages distinguish unverified leads from service records and show unavailable application details as unverified. Lead topics are navigation labels, not translated legal text or confirmation that a program currently operates. Follow the original title and official document links; confirm requirements and availability with the responsible office.
+- The services directory includes public-facing entries extracted from user-supplied Citizens' Charter documents, alongside separately labeled ordinance-index leads. The supplied files are not published, their provenance and current validity are not independently verified, and source discrepancies remain visible. Confirm fees, requirements and availability with the responsible office; source text is not a reviewed translation.
 
 ## Refresh behavior
 

@@ -1,6 +1,19 @@
 .service-directory-tools label { min-width: 0; }
 .service-directory-tools input { width: 100%; }
-.service-card h2, .service-card h3, .service-detail-header h1, .service-detail-layout { overflow-wrap: anywhere; }
+.service-card h2, .service-card h3, .service-card h4, .service-detail-header h1, .service-detail-layout { overflow-wrap: anywhere; }
+.service-office-group { margin-top: 2rem; }
+.service-office-group > h3 { margin-bottom: .5rem; font-size: 1.1rem; }
+.service-card h4 { margin: 0 0 .75rem; font-size: 1.15rem; line-height: 1.35; }
+.service-card h4 a { color: #172b4d; text-decoration: none; }
+.service-card h4 a:hover { color: #1747ab; text-decoration: underline; }
+.service-detail-layout [lang="en"] { white-space: pre-line; }
+.service-requirements li, .service-steps li { margin-bottom: 1rem; }
+.service-requirements li p { margin: .25rem 0 0; }
+.service-steps dl { margin: 0; }
+.service-steps dl > div { margin-bottom: .65rem; }
+.service-steps dt { color: #4c5e78; font-size: .85rem; font-weight: 650; }
+.service-steps dd { margin: .15rem 0 0; }
+.service-discrepancies { padding: 1rem 1.25rem; background: #fffaeb; border: 1px solid #ead9a3; border-radius: .5rem; }
 
 .project-procurement-list h2 { overflow-wrap: anywhere; }
 .project-procurement-list dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: .75rem 1.5rem; }

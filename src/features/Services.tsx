@@ -11,21 +11,26 @@ export default function Services(props: CivicProps) {
   const t = catalogs[locale], c = civicCatalogs[locale]
   const [query, setQuery] = useState(new URLSearchParams(location.search).get('q') || '')
   const services = rows(data.services.services)
-  const matching = services.filter(row => String(row.name).toLocaleLowerCase().includes(query.toLocaleLowerCase()))
+  const normalizedQuery = query.trim().toLocaleLowerCase()
+  const matching = services.filter(row => [row.name, row.office, row.description, row.classification, row.transactionType].some(value => typeof value === 'string' && value.toLocaleLowerCase().includes(normalizedQuery)))
+  const offices = [...new Set(matching.map(row => typeof row.office === 'string' && row.office ? row.office : (locale === 'fil' ? 'Hindi nakasaad ang tanggapan' : 'Office not specified')))]
   const ordinances = rows(data.ordinances.records)
   const leads = rows(data.services.serviceLegislationLeads).flatMap(lead => {
     const record = ordinances.find(row => row.recordId === lead.recordId && row.sourceId === lead.sourceId)
     const topic = lead.topic && typeof lead.topic === 'object' && !Array.isArray(lead.topic) ? lead.topic[locale] : null
     return record ? [{ record, topic: typeof topic === 'string' ? topic : String(record.title) }] : []
   })
-  const matchingLeads = leads.filter(({ record, topic }) => `${topic} ${record.title}`.toLocaleLowerCase().includes(query.toLocaleLowerCase()))
+  const matchingLeads = leads.filter(({ record, topic }) => `${topic} ${record.title}`.toLocaleLowerCase().includes(normalizedQuery))
   return <>
-    <PageIntro title={t.services}>{c.servicesIntro}</PageIntro>
+    <PageIntro title={t.services}>{locale === 'fil' ? 'Maghanap ng mga serbisyong nakatala sa Citizens’ Charter at mga kaugnay na tala sa indeks ng ordinansa.' : 'Find services recorded in the Citizens’ Charter and related leads in the ordinance index.'}</PageIntro>
     <section className="service-directory" aria-label={t.services}>
       {services.length || leads.length ? <>
-        <div className="service-directory-tools"><label>{c.filterDirectory}<input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder={locale === 'fil' ? 'Hal. scholarship o kalusugan' : 'e.g. scholarship or health'} /></label>
+        <p className="notice">{locale === 'fil' ? 'Mga detalye ito mula sa mga nakuhang kopya ng Citizens’ Charter, hindi kumpirmasyon ng kasalukuyang serbisyo. Makipag-ugnayan sa munisipalidad bago pumunta.' : 'These details come from captured Citizens’ Charter copies, not a verification of current services. Contact the municipality before visiting.'}</p>
+        <div className="service-directory-tools"><label>{c.filterDirectory}<input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder={locale === 'fil' ? 'Maghanap ng serbisyo o tanggapan' : 'Search services or offices'} /></label>
           <p role="status" aria-atomic="true">{matching.length + matchingLeads.length} {locale === 'fil' ? 'resulta' : matching.length + matchingLeads.length === 1 ? 'result' : 'results'}</p></div>
-        {services.length > 0 && <ul className="service-grid">{matching.map(row => <li key={String(row.recordId)} className="service-card"><h2><a href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{String(row.name)}</a></h2><SourceNote {...props} id={String(row.sourceId)} /></li>)}</ul>}
+        {services.length > 0 && <section aria-labelledby="charter-services"><h2 id="charter-services">{locale === 'fil' ? 'Mga serbisyo sa Citizens’ Charter' : 'Citizens’ Charter services'}</h2>
+          {offices.map(office => <section key={office} className="service-office-group"><h3 lang="en">{office}</h3><ul className="service-grid">{matching.filter(row => (typeof row.office === 'string' && row.office ? row.office : (locale === 'fil' ? 'Hindi nakasaad ang tanggapan' : 'Office not specified')) === office).map(row => <li key={String(row.recordId)} className="service-card"><h4 lang="en"><a href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{String(row.name)}</a></h4>{typeof row.classification === 'string' && <p className="civic-meta" lang="en">{row.classification}</p>}{Array.isArray(row.discrepancies) && row.discrepancies.length > 0 && <p className="service-card-status">{locale === 'fil' ? 'May pagkakaiba sa mga kopya' : 'Copies contain discrepancies'}</p>}<div className="service-card-footer"><a href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{locale === 'fil' ? 'Tingnan ang detalye' : 'View details'} <span aria-hidden="true">→</span></a></div></li>)}</ul></section>)}
+        </section>}
         {leads.length > 0 && <section aria-labelledby="service-legislation-leads"><h2 id="service-legislation-leads">{c.serviceLegislationLeads}</h2><p className="service-evidence">{!services.length && (locale === 'fil' ? 'Walang nakuhang tala ng serbisyo sa Citizens’ Charter. ' : 'No service entries were captured from the Citizens’ Charter. ')}{c.serviceLegislationLeadsText}</p><ul className="service-grid">{matchingLeads.map(({ record, topic }) => <li key={String(record.recordId)} className="service-card">
           <h3><a href={href(`services/${encodeURIComponent(String(record.recordId))}`)}>{topic}</a></h3>
           <p className="service-card-status">{locale === 'fil' ? 'Batay sa indeks ng ordinansa · hindi pa beripikado' : 'Ordinance index lead · availability unverified'}</p>
