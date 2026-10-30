@@ -10,6 +10,8 @@ web
 
 A reusable, static-first civic information portal, first populated for Cavinti, Laguna. Public claims link to source evidence; missing coverage and conflicts remain visible.
 
+The About page explains the need for accessible local records, connects BetterCavinti to the volunteer-driven [BetterGov.ph](https://about.bettergov.ph/) movement and [BetterLGU](https://lgu.bettergov.ph/) initiative, and retains the independent-site disclaimer. The narrative is available in English and Filipino.
+
 ## Capabilities and Constraints
 
 Implement the route inventory and phases A–F in docs/CAVINTI_TEMPLATE_PLAN.md. English and Filipino UI; source-original records remain unchanged. No runtime API, database, authentication, comments, derived civic metrics, or fabricated data. Manual refresh only. Portable static entry pages and configurable deployment base. Attempt additional primary collection without bypassing access controls.

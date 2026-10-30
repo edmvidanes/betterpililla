@@ -181,9 +181,11 @@ function App() {
   else if (route === 'about') content = <article className="about-page">
     <header className="about-intro">
       <h1>{t.about}</h1>
-      <p className="about-statement">{t.community}</p>
-      <p className="about-description">{t.description}</p>
-      <p>{locale === 'fil' ? 'Ginawa para sa inisyatibong ' : 'Made for the ' }<a href="https://lgu.bettergov.ph/">BetterLGU{locale === 'en' ? ' initiative' : ''}</a>.</p>
+      <p className="about-statement">{locale === 'fil' ? 'Dapat madaling mahanap ang impormasyon tungkol sa sarili mong bayan.' : 'Information about your own town should be easy to find.'}</p>
+      <p className="about-description">{locale === 'fil' ? 'Kapag kailangan mong mag-asikaso ng dokumento o alamin kung saan napupunta ang pondo ng bayan, mahalagang makita ang tamang impormasyon at ang pinagmulan nito. Mahirap iyon kung magkakahiwalay ang mga tala sa iba’t ibang website at PDF.' : 'When you need to apply for a document or find out how town funds are spent, you need clear information and a source you can check. That gets harder when the records are scattered across websites and PDFs.'}</p>
+      <p>{locale === 'fil' ? <>Ang <a href="https://about.bettergov.ph/">BetterGov.ph</a> ay isang kilusang pinapatakbo ng mga boluntaryo para mas madaling mahanap at maunawaan ang datos ng pamahalaan. Sa antas ng mga lungsod at munisipalidad, hinihikayat ng <a href="https://lgu.bettergov.ph/">BetterLGU</a> ang mga komunidad na gumawa at mag-ambag sa sarili nilang mga portal.</> : <><a href="https://about.bettergov.ph/">BetterGov.ph</a> is a volunteer-driven movement making government data easier to access and understand. <a href="https://lgu.bettergov.ph/">BetterLGU</a> brings that work to cities and municipalities, encouraging communities to build local portals and contribute to existing ones.</>}</p>
+      <p>{locale === 'fil' ? 'Ginawa ang BetterCavinti para sa inisyatibong ito. Dito, makikita ang mga pampublikong tala ng Cavinti kasama ang mga orihinal na dokumento at sanggunian. Nakasaad din kung may kulang o hindi pa nakukumpirma, para alam mo kung ano ang maaari mong asahan at kung ano ang kailangan pang itanong.' : 'BetterCavinti was built for that initiative. It brings Cavinti’s public records together with original documents and sources you can follow. Gaps and unresolved claims stay visible, so you can see what is known and what still needs an answer.'}</p>
+      <p>{t.community}</p>
       <p>{locale === 'fil' ? <>Kredito sa site ng BetterCavinti at sa template: <a href={lgu.repository}>@klnwlks sa GitHub</a>.</> : <>BetterCavinti site and template by <a href={lgu.repository}>@klnwlks on GitHub</a>.</>}</p>
       <nav className="about-links" aria-label={t.projectLinks}>
         <a href={lgu.repository}>GitHub</a>
