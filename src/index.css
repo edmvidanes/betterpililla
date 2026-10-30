@@ -80,11 +80,10 @@ p { margin: .65rem 0; }
 .evidence-list > li { margin: .5rem 0; }
 .source-text { white-space: pre-wrap; overflow-wrap: anywhere; }
 
-.about-page { max-width: 1080px; }
-.about-intro { max-width: 760px; padding: 1rem 0 3rem; }
+.about-intro { padding: 1rem 0 3rem; }
 .about-intro h1 { margin-bottom: 1.5rem; }
-.about-statement { max-width: 35ch; margin: 0; font-size: clamp(1.3rem, 2.2vw, 1.75rem); line-height: 1.4; font-weight: 650; letter-spacing: -.02em; }
-.about-description { max-width: 65ch; margin: 1.25rem 0 0; color: #4c5e78; }
+.about-statement { margin: 0; font-size: clamp(1.3rem, 2.2vw, 1.75rem); line-height: 1.4; font-weight: 650; letter-spacing: -.02em; }
+.about-description { margin: 1.25rem 0 0; color: #4c5e78; }
 .about-links { display: flex; flex-wrap: wrap; gap: .75rem 1.75rem; margin-top: 1.75rem; }
 .about-links a { font-weight: 650; text-decoration: underline; }
 .about-details { display: grid; grid-template-columns: minmax(0, 2fr) minmax(220px, 1fr); align-items: start; gap: 3rem; border-top: 1px solid var(--portal-border); padding-top: 2rem; }
