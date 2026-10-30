@@ -34,7 +34,7 @@
 .service-record-office h2, .service-record-section h2 { display: flex; align-items: center; gap: .65rem; }
 .service-record-office h3 { margin-top: 1.25rem; }
 .service-record-office a, .service-record-section a { display: inline-flex; align-items: center; gap: .35rem; margin-top: .75rem; }
-.service-record-body { max-width: 75ch; }
+.service-record-body > .service-record-section:not(:has(.service-steps-timeline)) { max-width: 75ch; }
 .service-record-section { padding: 1.75rem 0; border-top: 1px solid #d6deeb; }
 .service-record-section > p { margin: .5rem 0; }
 .service-record-section ul, .service-record-section ol { padding-left: 1.5rem; }
@@ -50,6 +50,7 @@
 .service-steps dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .85rem 1.5rem; }
 .service-steps dl > div { margin: 0; min-width: 0; }
 .service-steps .step-client, .service-steps .step-action, .service-steps .step-responsible { grid-column: 1 / -1; }
+.service-steps dd { max-width: 75ch; }
 .service-steps .step-client dd { color: #172b4d; font-weight: 650; }
 .service-steps .step-responsible { padding-top: .75rem; border-top: 1px solid #e4e9f1; }
 .service-steps .step-responsible dd { color: #4c5e78; font-size: .875rem; }
