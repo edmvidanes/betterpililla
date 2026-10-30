@@ -75,6 +75,8 @@ Lightly rounded panels, inputs and notices use the frontmatter radii. Record lis
 
 The services directory combines a topic filter with search and a three-column desktop card grid; filters stack above results on smaller screens. Topics are navigational groupings, not source classifications. Charter records and ordinance leads retain distinct evidence labels, and a GitHub issue link invites source-backed missing-record reports.
 
+Newly paginated record lists and tables use independent, bilingual previous/next controls, with 20 records per page. Controls appear only when needed; changing a filter returns its list to the first page.
+
 ## Components
 
 Use installed Kapwa `Button` variants for actions and explicitly labeled native inputs/selects. Grouped navigation uses native exclusive disclosures with click-outside and Escape dismissal; mobile Escape returns focus to the Menu button. Keyboard focus is a visible 3px outline with a 4px offset. Source citations expose publisher routes, direct evidence URLs, independent status dimensions and last checks. Status chips are informational, not actions. The first focusable link skips to main content.
