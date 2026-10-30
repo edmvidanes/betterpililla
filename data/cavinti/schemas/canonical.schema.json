@@ -22,19 +22,13 @@
     "emergency-contacts": {"type":"object","required":["schemaVersion","capturedAt","sourceId","sourceUrl","freshnessStatus","records","publicUseWarning"],"properties":{"schemaVersion":{"const":"civic-emergency-contact-evidence/v1"},"capturedAt":{"$ref":"#/$defs/date"},"sourceId":{"$ref":"#/$defs/text"},"sourceUrl":{"$ref":"#/$defs/url"},"freshnessStatus":{"$ref":"#/$defs/text"},"records":{"type":"array","items":{"$ref":"#/$defs/contact"}},"publicUseWarning":{"$ref":"#/$defs/text"}}},
     "service": {
       "type":"object",
-      "required":["recordId","name","office","eligibility","requirements","steps","fee","timeframe","forms","sourceId","sourceUrl","effectiveAt","reviewedAt","language","verificationStatus"],
+      "required":["recordId","sourceId","name","office","description","classification","transactionType","eligibility","requirements","steps","fees","processingTime","sourceDocument","discrepancies"],
       "properties":{
-        "recordId":{"$ref":"#/$defs/text"},"name":{"$ref":"#/$defs/text"},
-        "office":{"type":["string","null"]},
-        "eligibility":{"type":["array","null"],"items":{"$ref":"#/$defs/text"}},
-        "requirements":{"type":["array","null"],"items":{"$ref":"#/$defs/text"}},
-        "steps":{"type":["array","null"],"items":{"type":"object","required":["order","description"],"properties":{"order":{"type":"integer","minimum":1},"description":{"$ref":"#/$defs/text"}}}},
-        "fee":{"type":["object","null"],"required":["amount","currency","sourceText"],"properties":{"amount":{"type":["number","null"],"minimum":0},"currency":{"type":["string","null"]},"sourceText":{"$ref":"#/$defs/text"}}},
-        "timeframe":{"type":["string","null"]},
-        "forms":{"type":["array","null"],"items":{"type":"object","required":["title","url"],"properties":{"title":{"$ref":"#/$defs/text"},"url":{"$ref":"#/$defs/url"}}}},
-        "sourceId":{"$ref":"#/$defs/text"},"sourceUrl":{"$ref":"#/$defs/url"},
-        "effectiveAt":{"anyOf":[{"$ref":"#/$defs/date"},{"type":"null"}]},"reviewedAt":{"anyOf":[{"$ref":"#/$defs/date"},{"type":"null"}]},
-        "language":{"type":["string","null"]},"verificationStatus":{"$ref":"#/$defs/text"}
+        "recordId":{"$ref":"#/$defs/text"},"sourceId":{"$ref":"#/$defs/text"},"name":{"$ref":"#/$defs/text"},
+        "office":{"type":"string"},"description":{"type":"string"},"classification":{"type":"string"},"transactionType":{"type":"string"},"eligibility":{"type":"string"},
+        "requirements":{"type":"array","items":{"type":"object","required":["name","source"],"properties":{"name":{"type":"string"},"source":{"type":"string"}}}},
+        "steps":{"type":"array","items":{"type":"object","required":["order","client","action","fee","time","responsible"],"properties":{"order":{"type":"integer","minimum":1},"client":{"type":"string"},"action":{"type":"string"},"fee":{"type":"string"},"time":{"type":"string"},"responsible":{"type":"string"}}}},
+        "fees":{"type":"string"},"processingTime":{"type":"string"},"sourceDocument":{"$ref":"#/$defs/text"},"discrepancies":{"type":"array","items":{"$ref":"#/$defs/text"}}
       }
     },
     "services": {"type":"object","required":["schemaVersion","capturedAt","sourceId","sourceUrl","observedServiceRows","catalogueStatus","services"],"properties":{"schemaVersion":{"const":"civic-service-catalogue-evidence/v1"},"capturedAt":{"$ref":"#/$defs/date"},"sourceId":{"$ref":"#/$defs/text"},"sourceUrl":{"$ref":"#/$defs/url"},"observedServiceRows":{"type":"integer","minimum":0},"catalogueStatus":{"$ref":"#/$defs/text"},"services":{"type":"array","items":{"$ref":"#/$defs/service"}}}},

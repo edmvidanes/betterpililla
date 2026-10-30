@@ -70,12 +70,12 @@
       "id": "services",
       "canonicalJson": "services.json",
       "schemaVersion": "civic-service-catalogue-evidence/v1",
-      "recordCount": 0,
+      "recordCount": 147,
       "sourceIds": [
-        "cavinti-citizens-charter",
+        "cavinti-charter-supplied-documents",
         "cavinti-ordinances-index"
       ],
-      "status": "zero Charter rows observed; separately listed ordinance title leads are not verified current services"
+      "status": "Public-facing services extracted from locally supplied charter documents; current applicability and provenance are not independently verified. Ordinance title leads are separate."
     },
     {
       "id": "sector-inventory",

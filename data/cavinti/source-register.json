@@ -6,6 +6,16 @@
   "refreshMode": "manual-on-demand",
   "sources": [
     {
+      "id": "cavinti-charter-supplied-documents",
+      "name": "User-supplied Cavinti Citizens' Charter documents and fee annexes",
+      "tier": "primary-lgu",
+      "url": "https://www.cavinti-egov.com/citizenscharter",
+      "formats": ["DOCX", "PDF"],
+      "retrievalStatus": "Documents supplied locally; provenance and current validity not independently verified",
+      "lastCheckedAt": "2026-10-30",
+      "coverage": "Extracted service information from locally supplied charter documents and fee annexes. The URL identifies the municipal charter page for context, not a document download or evidence that these particular files were retrieved from it. Original files are not published. Two Copy of pairs were compared; their extracted service text agrees."
+    },
+    {
       "id": "dilg-elective-officials-2025-2028",
       "name": "DILG Directory of LGU Elective Officials for Term 2025–2028",
       "tier": "primary-government",

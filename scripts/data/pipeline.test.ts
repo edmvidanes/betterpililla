@@ -214,15 +214,13 @@ test('public refresh failure metadata marks stale sources without changing captu
   } finally { await rm(directory, { recursive: true, force: true }); }
 });
 
-test('populated service schema accepts explicitly unknown fields and rejects invented incomplete cards', async () => {
+test('service schema retains requirement sources and rejects incomplete steps', async () => {
   const pack = await loadDataPack();
   const validate = createValidator(pack.schema);
-  const service = { recordId: 'service:source-row', name: 'Exact published service', office: null, eligibility: null, requirements: null,
-    steps: null, fee: null, timeframe: null, forms: null, sourceId: source.id, sourceUrl: source.url,
-    effectiveAt: null, reviewedAt: null, language: null, verificationStatus: 'machine-extracted-unreviewed' };
+  const service = pack.documents.services.services[0];
   assert.doesNotThrow(() => validate('service', service));
-  assert.throws(() => validate('service', { recordId: service.recordId, name: service.name }), /required/);
-  assert.throws(() => validate('service', { ...service, forms: [{ title: 'Official form', url: 'javascript:bad' }] }), /uri|pattern/);
+  assert.throws(() => validate('service', { ...service, requirements: [{ name: 'Document' }] }), /required/);
+  assert.throws(() => validate('service', { ...service, steps: [{ order: 1, client: 'Apply' }] }), /required/);
 });
 
 test('a second LGU source uses its registered structured adapter, not Cavinti identifiers', async () => {
