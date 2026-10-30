@@ -1,11 +1,10 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import './index.css'
 import App from './app/App.tsx'
 import SmoothScroll from './app/SmoothScroll.tsx'
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <SmoothScroll><App /></SmoothScroll>
-  </StrictMode>,
-)
+const root = document.getElementById('root')!
+const app = <StrictMode><SmoothScroll><App /></SmoothScroll></StrictMode>
+if (root.hasAttribute('data-prerendered')) hydrateRoot(root, app)
+else createRoot(root).render(app)

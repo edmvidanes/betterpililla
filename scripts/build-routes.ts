@@ -1,4 +1,5 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises'
+import { createServer } from 'vite'
 import { join } from 'node:path'
 import { routes } from '../src/app/route-manifest.ts'
 import { lgu } from '../src/config/lgu.ts'
@@ -54,6 +55,14 @@ const url = (locale: Locale, path: string) => `${origin}${basePath}${locale}/${p
 const escape = (value: string) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
 const localized = (value: string | Record<Locale, string> | undefined, locale: Locale) => typeof value === 'string' ? value : value?.[locale] || ''
 const html = await readFile(join(root, 'dist/index.html'), 'utf8')
+const vite = await createServer({ server: { middlewareMode: true }, appType: 'custom' })
+let home: Record<Locale, string>
+try {
+  const { renderHome } = await vite.ssrLoadModule('/src/app/prerender.tsx')
+  home = { en: renderHome('en'), fil: renderHome('fil') }
+} finally {
+  await vite.close()
+}
 const entries: string[] = []
 for (const locale of ['en', 'fil'] as const) {
   for (const [path, page] of pages) {
@@ -69,7 +78,9 @@ for (const locale of ['en', 'fil'] as const) {
     const parent = path.includes('/') ? path.slice(0, path.lastIndexOf('/')) : ''
     const localUrl = (child: string) => `${basePath}${locale}/${child}`
     const links = (children.get(path) || []).map(child => `<li><a href="${escape(localUrl(child))}">${escape(localized(pages.get(child)!.title, locale))}</a></li>`).join('')
-    const fallback = `<div id="root"><main><h1>${escape(label)}</h1><p>${escape(text || description)}</p>${links ? `<ul>${links}</ul>` : ''}<p><a href="${escape(localUrl(parent))}">${escape(parent ? catalogs[locale][routes.find(([route]) => route === parent)?.[1] || 'home'] : catalogs[locale].home)}</a></p></main></div>`
+    const fallback = path === ''
+      ? `<div id="root" data-prerendered>${home[locale]}</div>`
+      : `<div id="root"><main><h1>${escape(label)}</h1><p>${escape(text || description)}</p>${links ? `<ul>${links}</ul>` : ''}<p><a href="${escape(localUrl(parent))}">${escape(parent ? catalogs[locale][routes.find(([route]) => route === parent)?.[1] || 'home'] : catalogs[locale].home)}</a></p></main></div>`
     const pageHtml = html.replace('lang="en"', `lang="${locale}"`)
       .replace(/<meta name="description"[^>]*>\s*<title>[^<]*<\/title>/, `${metadata}\n    ${social}`)
       .replace('<div id="root"></div>', fallback)
