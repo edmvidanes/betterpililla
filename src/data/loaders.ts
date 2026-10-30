@@ -48,7 +48,7 @@ export async function loadData(route: string): Promise<DataPack> {
   const legislationRoute = route === 'open-lgu/legislation' || route.startsWith('open-lgu/legislation/')
   const [portal, values, research, search, legislationIndex] = await Promise.all([
     fetchData('portal.json'),
-    Promise.all(needed.map(key => fetchData(files[key]))),
+    Promise.all(needed.map(key => fetchData(route === 'services' && key === 'services' ? 'services-index.json' : files[key]))),
     route === 'sources' ? fetch(`${import.meta.env.BASE_URL}${lgu.dataPath}/research-updates.json`).then(response => response.ok && response.headers.get('content-type')?.includes('json') ? response.json() : null) : null,
     route === 'search' || route.startsWith('sources/') ? loadSearch() : [],
     legislationRoute ? fetchData('legislation/index.json') as Promise<DataRecord> : Promise.resolve({} as DataRecord),

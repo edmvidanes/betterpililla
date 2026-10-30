@@ -23,3 +23,10 @@
   .official-facts dd { margin-top: .15rem; }
   .official-card .official-portrait { width: 76px; }
 }
+.official-winners { margin-top: 2rem; }
+ .official-winners > summary { min-height: 44px; padding: .85rem 0; }
+ .official-winners > summary h2 { margin: 0; font-size: 1.05rem; }
+.winner-pagination { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 1.5rem 0; }
+.winner-pagination button { min-height: 44px; padding: .5rem .85rem; border: 1px solid var(--portal-border); border-radius: .35rem; background: #fff; color: #172b4d; font: inherit; cursor: pointer; }
+.winner-pagination button:disabled { color: #4c5e78; cursor: not-allowed; }
+.winner-pagination span { color: #4c5e78; font-size: .9rem; font-variant-numeric: tabular-nums; }

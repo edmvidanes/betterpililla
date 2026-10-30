@@ -62,6 +62,16 @@ export async function publish(pack: DataPack, destination = resolve('public/data
     await writeFile(join(staging, 'download-index.json'), JSON.stringify(downloadIndex, null, 2) + '\n');
     await writeFile(join(staging, 'portal.json'), JSON.stringify(portal) + '\n');
     await writeFile(join(staging, 'search-index.json'), JSON.stringify(search) + '\n');
+    const services = documents.services;
+    await writeFile(join(staging, 'services-index.json'), JSON.stringify({
+      sourceUrl: services.sourceUrl, capturedAt: services.capturedAt,
+      serviceLegislationLeads: services.serviceLegislationLeads,
+      services: services.services.map((row: Record<string, any>) => ({
+        recordId: row.recordId, name: row.name, office: row.office, description: row.description,
+        classification: row.classification, transactionType: row.transactionType,
+        needsClarification: Array.isArray(row.discrepancies) && row.discrepancies.length > 0,
+      })),
+    }) + '\n');
     await writeLegislationData(documents, staging);
     try { await rename(destination, backup); movedPrevious = true; } catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; }
     try { await rename(staging, destination); } catch (error) { if (movedPrevious) await rename(backup, destination); throw error; }
