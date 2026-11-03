@@ -27,6 +27,7 @@ const Competitiveness = lazy(() => import('../features/Competitiveness'))
 const Finance = lazy(() => import('../features/Finance'))
 const TransparencyHub = lazy(() => import('../features/TransparencyHub'))
 const ProjectProcurement = lazy(() => import('../features/ProjectProcurement'))
+const LiveProcurement = lazy(() => import('../features/LiveProcurement'))
 const Downloads = lazy(() => import('../features/Catalogues').then(module => ({ default: module.Downloads })))
 const Sources = lazy(() => import('../features/Catalogues').then(module => ({ default: module.Sources })))
 const Barangays = lazy(() => import('../features/Barangays'))
@@ -162,11 +163,12 @@ function App({ initialPath }: { initialPath?: string }) {
   else if (route === 'statistics/competitiveness') content = <Competitiveness data={data} locale={locale} href={href} />
   else if (route === 'transparency') content = <TransparencyHub data={data} locale={locale} href={href} />
   else if (route === 'statistics/municipal-income' || route === 'transparency/finance') content = <Finance data={data} locale={locale} href={href} income={route.startsWith('statistics')} />
-  else if (route === 'transparency/procurement' || route === 'transparency/projects') content = <ProjectProcurement data={data} locale={locale} href={href} correctionLink={correctionLink} projects={route.endsWith('projects')} />
+  else if (route === 'transparency/procurement') content = <LiveProcurement data={data} locale={locale} href={href} />
+  else if (route === 'transparency/projects') content = <ProjectProcurement data={data} locale={locale} href={href} correctionLink={correctionLink} projects />
   else if (route.startsWith('transparency/projects/') || route.startsWith('transparency/procurement/')) {
     const projects = route.startsWith('transparency/projects/')
     const recordId = route.slice(`transparency/${projects ? 'projects' : 'procurement'}/`.length)
-    content = <ProjectProcurement data={data} locale={locale} href={href} correctionLink={correctionLink} projects={projects} recordId={recordId} />
+    content = projects ? <ProjectProcurement data={data} locale={locale} href={href} correctionLink={correctionLink} projects recordId={recordId} /> : <LiveProcurement data={data} locale={locale} href={href} recordId={recordId} />
   }
   else if (route === 'map') content = <Geography data={data} locale={locale} href={href} />
   else if (route === 'places') content = <Places data={data} locale={locale} href={href} />
