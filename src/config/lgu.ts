@@ -9,6 +9,13 @@ export interface MunicipalityConfig {
   defaultLocale: 'en' | 'fil'
   sourceIds: Record<'about' | 'charter' | 'executive' | 'legislative' | 'psgc' | 'population' | 'competitiveness' | 'fdp' | 'fiscal' | 'audit' | 'procurement', string>
   mapView: { center: readonly [number, number]; zoom: number }
+  transparency: {
+    searchHost: string
+    searchKey: string
+    procurementOrganization: string
+    procurementDashboard: string
+    dpwhDashboard: string
+  }
   homepagePhotos: {
     src: string
     width: number
@@ -34,6 +41,14 @@ export const lgu: MunicipalityConfig = {
     executive: 'pililla-executive-directory', legislative: 'pililla-legislative-directory',
     psgc: 'psa-psgc-pililla', population: 'philatlas-pililla', competitiveness: 'dti-cmci-pililla',
     fdp: 'dilg-fdp', fiscal: 'blgf-fiscal-data', audit: 'coa-annual-audits', procurement: 'philgeps-pililla-award-lead',
+  },
+  transparency: {
+    // BetterGov PH shared search (same public search-only key BetterLB ships).
+    searchHost: 'https://search2.bettergov.ph',
+    searchKey: '307c9f43a066a443cc37d62b45fa47fde2b39f765139dd964ea151daed65f55c',
+    procurementOrganization: 'MUNICIPALITY OF PILILLA, RIZAL',
+    procurementDashboard: 'https://transparency.bettergov.ph/organizations/',
+    dpwhDashboard: 'https://transparency.bettergov.ph/dpwh',
   },
   homepagePhotos: [], demographicsPhotos: [],
 }

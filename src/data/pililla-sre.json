@@ -1,0 +1,11 @@
+{
+  "municipality": "Pililla, Rizal, Philippines",
+  "dataset": "Statement of Receipts and Expenditures (SRE), Municipality of Pililla",
+  "records": [],
+  "notes": "No Pililla SRE period has been captured and verified yet. Each future record must carry its fiscal period, source URL (BLGF / DILG Full Disclosure Policy posting) and capture date. Missing periods are unknown, not zero.",
+  "expectedSources": [
+    { "name": "BLGF fiscal data", "url": "https://blgf.gov.ph/" },
+    { "name": "DILG Full Disclosure Policy portal", "url": "https://fdpp.dilg.gov.ph/" },
+    { "name": "COA annual audit reports", "url": "https://www.coa.gov.ph/reports/annual-audit-reports/aar-local-government-units/" }
+  ]
+}
