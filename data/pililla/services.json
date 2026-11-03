@@ -3,7 +3,7 @@
   "municipality": "Pililla, Rizal, Philippines (SCAFFOLD - source data not yet replaced; do not publish)",
   "capturedAt": "2026-11-03",
   "sourceId": "pililla-charter-supplied-documents",
-  "sourceUrl": "https://www.pililla-egov.com/citizenscharter",
+  "sourceUrl": "https://pilillarizal.gov.ph/",
   "sourceLabel": "User-supplied Citizens' Charter documents",
   "observedTableColumns": [
     "Service Name / Document",
