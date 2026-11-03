@@ -8,13 +8,13 @@ web
 
 ## Product Purpose
 
-A reusable, static-first civic information portal, first populated for Cavinti, Laguna. Public claims link to source evidence; missing coverage and conflicts remain visible.
+A reusable, static-first civic information portal, first populated for Pililla, Rizal. Public claims link to source evidence; missing coverage and conflicts remain visible.
 
-The About page explains the need for accessible local records, connects BetterCavinti to the volunteer-driven [BetterGov.ph](https://about.bettergov.ph/) movement and [BetterLGU](https://lgu.bettergov.ph/) initiative, and retains the independent-site disclaimer. The narrative is available in English and Filipino and spans the full content width.
+The About page explains the need for accessible local records, connects BetterPililla to the volunteer-driven [BetterGov.ph](https://about.bettergov.ph/) movement and [BetterLGU](https://lgu.bettergov.ph/) initiative, and retains the independent-site disclaimer. The narrative is available in English and Filipino and spans the full content width.
 
 ## Capabilities and Constraints
 
-Implement the route inventory and phases A–F in docs/CAVINTI_TEMPLATE_PLAN.md. English and Filipino UI; source-original records remain unchanged. No runtime API, database, authentication, comments, derived civic metrics, or fabricated data. Manual refresh only. Portable static entry pages and configurable deployment base. Attempt additional primary collection without bypassing access controls.
+Implement the route inventory and phases A–F in docs/Pililla_TEMPLATE_PLAN.md. English and Filipino UI; source-original records remain unchanged. No runtime API, database, authentication, comments, derived civic metrics, or fabricated data. Manual refresh only. Portable static entry pages and configurable deployment base. Attempt additional primary collection without bypassing access controls.
 
 ## Brand Commitments
 
@@ -22,7 +22,7 @@ User selected a restrained Kapwa-style interface with Tailwind. The landing page
 
 ## Evidence on Hand
 
-Canonical snapshot in data/cavinti. Legislation contains complete captured index metadata, not reviewed attachment contents. Services, finances, projects, boundaries and other datasets have explicit gaps. Contacts are not live-validated.
+Canonical snapshot in data/pililla. Legislation contains complete captured index metadata, not reviewed attachment contents. Services, finances, projects, boundaries and other datasets have explicit gaps. Contacts are not live-validated.
 
 ## Product Principles
 

@@ -1,6 +1,9 @@
-# bettercavinti
+# BetterPililla
 
-bettercavinti is an independent, bilingual public-information portal for Cavinti, Laguna. It is a static site, not an official government website. The codebase can be adapted for another municipality by replacing its data and configuration.
+BetterPililla is an independent, bilingual public-information portal for Pililla, Rizal. It is a static site, not an official government website. The codebase can be adapted for another municipality by replacing its data and configuration.
+
+
+> **Local POC status (2026-11-03):** Forked locally from BetterCavinti. Identity, config, municipality, barangay and officials packs are Pililla-specific (officials and PSGC/population marked unverified pending PSA/COMELEC/DILG primary extracts). Services, transparency, sector, news and legislation packs are still template scaffolds - do NOT publish until replaced with Pililla-sourced records. No GitHub repo, domain or deployment yet. Official LGU site: https://pilillarizal.gov.ph
 
 ## run locally
 
@@ -28,15 +31,15 @@ React 19, TypeScript, Vite, Tailwind CSS 4 and Kapwa. MapLibre GL provides the m
 
 ## data
 
-`data/cavinti/` holds the reviewed source data. `public/data/` is generated during development and builds; do not edit it. Data schemas and validation live in `data/schemas/` and `src/domain/`. Sources, capture dates, evidence and coverage gaps are part of the data—keep them with each dataset, and do not treat missing information as zero or verified fact.
+`data/pililla/` holds the reviewed source data. `public/data/` is generated during development and builds; do not edit it. Data schemas and validation live in `data/schemas/` and `src/domain/`. Sources, capture dates, evidence and coverage gaps are part of the data—keep them with each dataset, and do not treat missing information as zero or verified fact.
 
 Finance and income tables show the newest fiscal years first; project and procurement listings use the snapshot year and displayed source date, respectively. Borrowing opinions are ordered by resolution date.
 
 ### For agents adapting the data to another LGU
 
-Treat `data/cavinti/` as an example, not as target-LGU data. Read its `dataset-manifest.json`, `source-register.json`, dataset schemas and [data policy](docs/sources-and-data-policy.md). Create the target pack under `data/{slug}/` using the same contracts. Replace its municipality-specific records, source IDs, URLs, capture dates, manifest identity, coverage and known limitations; set the target identity and source-role IDs in `src/config/lgu.ts`. Keep evidence with each claim, represent unknowns honestly, and never relabel Cavinti facts as another LGU's.
+Treat `data/pililla/` as an example, not as target-LGU data. Read its `dataset-manifest.json`, `source-register.json`, dataset schemas and [data policy](docs/sources-and-data-policy.md). Create the target pack under `data/{slug}/` using the same contracts. Replace its municipality-specific records, source IDs, URLs, capture dates, manifest identity, coverage and known limitations; set the target identity and source-role IDs in `src/config/lgu.ts`. Keep evidence with each claim, represent unknowns honestly, and never relabel Pililla facts as another LGU's.
 
-Also audit data outside the canonical pack: `src/data/cavinti-news.json` and `src/data/cavinti-other-documents.json` are separate snapshots, and the refresh command updates neither. Replace them only with reviewed target-LGU records; do not copy Cavinti records over.
+Also audit data outside the canonical pack: `src/data/pililla-news.json` and `src/data/pililla-other-documents.json` are separate snapshots, and the refresh command updates neither. Replace them only with reviewed target-LGU records; do not copy Pililla records over.
 
 After editing, run the data validation/build commands below, then run `npm run build` and review the generated changes before publishing.
 
@@ -50,7 +53,7 @@ npm run data:build
 Data refresh is manual and source-specific:
 
 ```sh
-npm run data:refresh -- --lgu cavinti
+npm run data:refresh -- --lgu Pililla
 ```
 
 Review the resulting changes before publishing.
@@ -60,7 +63,7 @@ Review the resulting changes before publishing.
 ```text
 .
 ├── data/
-│   ├── cavinti/                 # canonical Cavinti data pack
+│   ├── Pililla/                 # canonical Pililla data pack
 │   │   ├── schemas/             # JSON schemas for each dataset
 │   │   ├── legislation/         # ordinance and resolution captures
 │   │   ├── dataset-manifest.json
@@ -71,7 +74,7 @@ Review the resulting changes before publishing.
 ├── e2e/                         # Playwright browser tests
 ├── public/
 │   ├── data/                    # generated data; do not edit
-│   └── images/cavinti/          # locally hosted, credited photographs
+│   └── images/Pililla/          # locally hosted, credited photographs
 ├── scripts/
 │   ├── data/                    # validation, generation and refresh
 │   └── build-routes.ts          # static route generation
@@ -90,9 +93,9 @@ Review the resulting changes before publishing.
 
 ## use as a template
 
-1. Add a complete data pack under `data/{slug}/`, following the schemas and manifest contract used by `data/cavinti/`.
+1. Add a complete data pack under `data/{slug}/`, following the schemas and manifest contract used by `data/pililla/`.
 2. Set its identity, data slug, repository, official URL, locale and source-role IDs in `src/config/lgu.ts`.
-3. Replace the data and licensed media with material for that LGU. Do not carry Cavinti facts, contact details or photographs over as if they apply elsewhere.
+3. Replace the data and licensed media with material for that LGU. Do not carry Pililla facts, contact details or photographs over as if they apply elsewhere.
 4. Add and review translations in `src/i18n/catalogs/`.
 5. Run `npm run data:validate` and `npm run build`, then review the site and run relevant tests.
 
@@ -100,14 +103,14 @@ See [docs/sources-and-data-policy.md](docs/sources-and-data-policy.md) for data 
 
 Route-specific datasets are selected in `src/data/loaders.ts`; update that mapping when a page starts using another dataset. The search index loads on demand. The services directory uses a compact generated search index, category icons and paginated results; on mobile its categories open as a dropdown. The original dataset remains available from the directory and service detail pages. Legislation listings and service leads use generated indexes; legislation detail pages fetch the selected record separately.
 
-For deployment, publish all of `dist/`, including generated `data/` files, nested route pages, `sitemap.xml` and `robots.txt`. The build generates canonical URLs for `https://bettercavinti.org`, localized page metadata and crawlable summaries; React renders the full pages. Search pages and the custom 404 are marked `noindex`. For a subdirectory, set a slash-terminated base, for example `SITE_BASE=/portal/ npm run build`; configure the host to serve the generated `robots.txt` at the domain root so crawlers can find the sitemap.
+For deployment, publish all of `dist/`, including generated `data/` files, nested route pages, `sitemap.xml` and `robots.txt`. The build generates canonical URLs for `https://betterpililla.org`, localized page metadata and crawlable summaries; React renders the full pages. Search pages and the custom 404 are marked `noindex`. For a subdirectory, set a slash-terminated base, for example `SITE_BASE=/portal/ npm run build`; configure the host to serve the generated `robots.txt` at the domain root so crawlers can find the sitemap.
 
 ### deploy with Vercel
 
 1. Import the repository into Vercel and select Node.js 24 in the project settings.
 2. Use `npm run build` as the build command and `dist` as the output directory. The build runs `data:build` automatically.
 3. Deploy the project. To use a custom domain, add it in the Vercel project settings and configure DNS as directed by Vercel.
-4. When adapting the site, update the site origin in `scripts/build-routes.ts` and review the site settings in `src/config/lgu.ts` before deploying. Replace Cavinti data and media as described above.
+4. When adapting the site, update the site origin in `scripts/build-routes.ts` and review the site settings in `src/config/lgu.ts` before deploying. Replace Pililla data and media as described above.
 
 ## licenses
 
