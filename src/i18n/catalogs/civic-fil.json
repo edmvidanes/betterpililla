@@ -75,7 +75,7 @@
   "planLimit": "May sanggunian sa plano sa opisyal na indeks. Hindi pa nakuha ang buong teksto at mga panukat nito.",
   "financeIntro": "Tingnan ang mga dokumentong maaaring suriin at ang kulang na datos bago gumawa ng konklusyon tungkol sa pananalapi ng munisipyo.",
   "financeMissing": "Makapanlilinlang ang tsart ng pananalapi rito",
-  "financeMissingText": "Walang kumpleto at direktang beripikadong serye ng pananalapi ng Cavinti sa snapshot na ito. Ang nawawalang halaga ay hindi alam—hindi zero. Hindi maaaring gamitin ang halaga sa pamagat bilang beripikadong kabuuang badyet o gastos.",
+  "financeMissingText": "Walang kumpleto at direktang beripikadong serye ng pananalapi ng Pililla sa snapshot na ito. Ang nawawalang halaga ay hindi alam—hindi zero. Hindi maaaring gamitin ang halaga sa pamagat bilang beripikadong kabuuang badyet o gastos.",
   "coverageHeading": "Ano ang matitiyak sa snapshot na ito",
   "financeCategory": "Pananalapi ng munisipyo",
   "procurementCategory": "Pagkuha ng mga produkto at serbisyo",

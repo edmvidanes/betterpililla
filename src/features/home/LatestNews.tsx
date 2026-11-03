@@ -1,4 +1,4 @@
-import news from '../../data/cavinti-news.json'
+import news from '../../data/pililla-news.json'
 import { newsImages } from '../news-images'
 import type { Locale } from '../../i18n/locales'
 import './latest-news.css'
@@ -8,7 +8,7 @@ export default function LatestNews({ locale, href }: { locale: Locale; href: (pa
   const articles = [...news.articles].sort((a, b) => Date.parse(b.date) - Date.parse(a.date)).slice(0, 3)
   return <section className="atlas-inner latest-news" aria-labelledby="latest-news-title">
     <div className="latest-news-heading">
-      <div><h2 id="latest-news-title">{fil ? 'Mga bagong balita' : 'Latest news'}</h2><p>{fil ? 'Mula sa opisyal na archive ng Cavinti' : 'From the official Cavinti archive'}</p></div>
+      <div><h2 id="latest-news-title">{fil ? 'Mga bagong balita' : 'Latest news'}</h2><p>{fil ? 'Mula sa opisyal na archive ng Pililla' : 'From the official Pililla archive'}</p></div>
       <a href={href('news')}>{fil ? 'Lahat ng balita' : 'All news'} <span aria-hidden="true">→</span></a>
     </div>
     <div className="latest-news-grid">

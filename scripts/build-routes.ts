@@ -12,7 +12,7 @@ const search = JSON.parse(await readFile(join(publicData, 'search-index.json'), 
 const offices = JSON.parse(await readFile(join(publicData, 'emergency-contacts.json'), 'utf8'))
 const services = JSON.parse(await readFile(join(publicData, 'services.json'), 'utf8'))
 const ordinances = JSON.parse(await readFile(join(publicData, 'legislation', 'ordinances.json'), 'utf8'))
-const news = JSON.parse(await readFile(join(root, 'src/data/cavinti-news.json'), 'utf8'))
+const news = JSON.parse(await readFile(join(root, 'src/data/pililla-news.json'), 'utf8'))
 const transparency = JSON.parse(await readFile(join(publicData, 'transparency.json'), 'utf8'))
 const catalogs = {
   en: JSON.parse(await readFile(join(root, 'src/i18n/catalogs/en.json'), 'utf8')),
@@ -49,7 +49,7 @@ for (const path of pages.keys()) {
   children.set(parent, siblings)
 }
 
-const origin = 'https://www.bettercavinti.org'
+const origin = 'https://www.betterpililla.org'
 const basePath = new URL(process.env.SITE_BASE || '/', origin).pathname.replace(/\/*$/, '/')
 const url = (locale: Locale, path: string) => `${origin}${basePath}${locale}/${path}`
 const escape = (value: string) => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;')
@@ -70,10 +70,10 @@ for (const locale of ['en', 'fil'] as const) {
     const title = path ? `${label} · Better${lgu.name}` : `Better${lgu.name} · ${catalogs[locale].communityPortal}`
     const text = localized(page.text, locale).replace(/\s+/g, ' ').trim()
     const description = text ? text.slice(0, 160) : locale === 'fil'
-      ? `${label}: impormasyon at mga pampublikong rekord tungkol sa Cavinti, Laguna.`
-      : `${label}: public information and records about Cavinti, Laguna.`
+      ? `${label}: impormasyon at mga pampublikong rekord tungkol sa Pililla, Rizal.`
+      : `${label}: public information and records about Pililla, Rizal.`
     const canonical = url(locale, path)
-    const social = `<meta property="og:type" content="website" />\n    <meta property="og:site_name" content="Better${lgu.name}" />\n    <meta property="og:title" content="${escape(title)}" />\n    <meta property="og:description" content="${escape(description)}" />\n    <meta property="og:url" content="${escape(canonical)}" />\n    <meta property="og:image" content="${origin}${basePath}social-hero.jpg" />\n    <meta property="og:image:width" content="1200" />\n    <meta property="og:image:height" content="630" />\n    <meta property="og:image:alt" content="Cavinti, Laguna: photographs from the portal's homepage" />\n    <meta name="twitter:card" content="summary_large_image" />\n    <meta name="twitter:title" content="${escape(title)}" />\n    <meta name="twitter:description" content="${escape(description)}" />\n    <meta name="twitter:image" content="${origin}${basePath}social-hero.jpg" />`
+    const social = `<meta property="og:type" content="website" />\n    <meta property="og:site_name" content="Better${lgu.name}" />\n    <meta property="og:title" content="${escape(title)}" />\n    <meta property="og:description" content="${escape(description)}" />\n    <meta property="og:url" content="${escape(canonical)}" />\n    <meta property="og:image" content="${origin}${basePath}social-hero.jpg" />\n    <meta property="og:image:width" content="1200" />\n    <meta property="og:image:height" content="630" />\n    <meta property="og:image:alt" content="Pililla, Rizal: photographs from the portal's homepage" />\n    <meta name="twitter:card" content="summary_large_image" />\n    <meta name="twitter:title" content="${escape(title)}" />\n    <meta name="twitter:description" content="${escape(description)}" />\n    <meta name="twitter:image" content="${origin}${basePath}social-hero.jpg" />`
     const metadata = `<meta name="description" content="${escape(description)}" />\n    <link rel="canonical" href="${escape(canonical)}" />\n    <link rel="alternate" hreflang="en" href="${escape(url('en', path))}" />\n    <link rel="alternate" hreflang="fil" href="${escape(url('fil', path))}" />\n    <link rel="alternate" hreflang="x-default" href="${escape(url('en', path))}" />${path === 'search' ? '\n    <meta name="robots" content="noindex, follow" />' : ''}\n    <title>${escape(title)}</title>`
     const parent = path.includes('/') ? path.slice(0, path.lastIndexOf('/')) : ''
     const localUrl = (child: string) => `${basePath}${locale}/${child}`

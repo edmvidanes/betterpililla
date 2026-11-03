@@ -54,7 +54,7 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
   }
   return <><PageIntro title={income ? t.income : t.finance} />
     <section><h2>{incomeLabels.heading}</h2>
-      <p><a href="https://www.philatlas.com/luzon/r04a/laguna/cavinti.html">{incomeLabels.source}</a></p>
+      <p><a href="https://www.philatlas.com/luzon/r04a/Rizal/Pililla.html">{incomeLabels.source}</a></p>
       <div className="table-wrap" role="region" aria-label={incomeLabels.heading} tabIndex={0}><table className="coverage-table"><thead><tr><th scope="col">{incomeLabels.year}</th><th scope="col">{incomeLabels.amount}</th></tr></thead><tbody>
         {incomePage.visible.map(([year, amount]) => <tr key={year}><td>{year}</td><td>{new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount)}</td></tr>)}
       </tbody></table></div>
@@ -83,7 +83,7 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
       <Pagination {...procurementPage} locale={locale} label={procurementLabels.heading} />
     </section>}
     <section lang="en"><h2>BSP opinions on proposed municipal borrowing</h2>
-      <p>These Monetary Board opinions concern proposed domestic borrowing by the Municipality of Cavinti, Laguna, Region IV-A (CALABARZON). The amounts are proposals, not loan drawdowns or outstanding debt; the records do not establish that the proposed projects were completed.</p>
+      <p>These Monetary Board opinions concern proposed domestic borrowing by the Municipality of Pililla, Rizal, Region IV-A (CALABARZON). The amounts are proposals, not loan drawdowns or outstanding debt; the records do not establish that the proposed projects were completed.</p>
       <ul className="record-list">{borrowingPage.visible.map(row => <li key={String(row.resolutionNumber)}>
         <h3>₱{Number(row.proposedLoanAmountPhpMillion).toFixed(2)} million proposed</h3>
         <p>{String(row.reportPeriod)} · Monetary Board resolution {String(row.resolutionNumber)}, dated {String(row.resolutionDate)}</p>

@@ -75,7 +75,7 @@
   "planLimit": "The official index references the plan. Its full text and indicators have not been extracted.",
   "financeIntro": "Explore the available document leads and see what is missing before drawing conclusions about municipal finances.",
   "financeMissing": "A financial chart would be misleading here",
-  "financeMissingText": "No complete, directly verified Cavinti financial series is available in this snapshot. Missing values are unknown—not zero. Document-title amounts cannot be used as verified budget or spending totals.",
+  "financeMissingText": "No complete, directly verified Pililla financial series is available in this snapshot. Missing values are unknown—not zero. Document-title amounts cannot be used as verified budget or spending totals.",
   "coverageHeading": "What this snapshot can establish",
   "financeCategory": "Municipal finances",
   "procurementCategory": "Procurement",

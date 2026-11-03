@@ -16,13 +16,13 @@ export function Places(props: CivicProps) {
   const integratedPages = usePagination(rows(education?.directoryLeads))
   const copy = locale === 'fil' ? {
     elementary: 'Mga paaralang elementarya', integrated: 'Mga integrated high school',
-    directory: 'Direktoryo ng DepEd Laguna (walang petsa); tiningnan noong 27 Oktubre 2026. Sekondaryang sanggunian ito, hindi kumpletong kasalukuyang masterlist.',
+    directory: 'Direktoryo ng DepEd Rizal (walang petsa); tiningnan noong 27 Oktubre 2026. Sekondaryang sanggunian ito, hindi kumpletong kasalukuyang masterlist.',
     source: 'Tingnan ang direktoryo ng mga paaralang elementarya',
     topics: 'Mga sanggunian at kakulangan sa bawat paksa. Ang petsa ng snapshot ay 21 Oktubre 2026; maaaring mas luma ang mga sanggunian.',
     references: 'Mga sanggunian', record: 'Naitalang dokumento', indexOnly: 'Pamagat sa opisyal na index lamang; hindi pa nasusuri ang buong dokumento.',
   } : {
     elementary: 'Elementary schools', integrated: 'Integrated high schools',
-    directory: 'DepEd Laguna directory (undated), accessed 27 October 2026. This secondary reference is not a complete current masterlist.',
+    directory: 'DepEd Rizal directory (undated), accessed 27 October 2026. This secondary reference is not a complete current masterlist.',
     source: 'View the elementary school directory',
     topics: 'References and gaps by topic. The snapshot is dated 21 October 2026; underlying sources may be older.',
     references: 'Sources', record: 'Recorded document', indexOnly: 'Official index title only; the full document has not been reviewed.',

@@ -1,7 +1,7 @@
 const titles: Record<string, string> = {
-  'CCHATTO-CC.docx': 'Cavinti Culture, History, Arts, Trade and Tourism Office',
-  'Copy of CCHATTO-CC.docx': 'Cavinti Culture, History, Arts, Trade and Tourism Office (copy)',
-  'CWO-CC.docx': 'Cavinti Water Office',
+  'CCHATTO-CC.docx': 'Pililla Culture, History, Arts, Trade and Tourism Office',
+  'Copy of CCHATTO-CC.docx': 'Pililla Culture, History, Arts, Trade and Tourism Office (copy)',
+  'CWO-CC.docx': 'Pililla Water Office',
   'GSO-CC.docx': 'General Services Office (GSO)',
   'HRMO-CC.docx': 'Human Resource Management Office',
   'MBO-CC.docx': 'Municipal Budget Office',
@@ -20,7 +20,7 @@ const titles: Record<string, string> = {
   'Copy of OMSWD-CC.docx': 'Municipal Social Welfare and Development Officer (copy)',
   'PESO-CC.docx': 'Public Employment Service Office (PESO)',
   'SB-CC.docx': 'Office of the Sangguniang Bayan',
-  'FEEDBACK AND COMPLAINTS MECHANISMS-Cavinti.docx': 'Help Us Serve You Better!',
+  'FEEDBACK AND COMPLAINTS MECHANISMS-Pililla.docx': 'Help Us Serve You Better!',
   'Annex - New Schedule of Fees and Other Charges (Building Code Fee).pdf': 'Annex A: New Schedule of Fees and Other Charges of the Revised Implementing Rules and Regulations (IRR) of the National Building Code of the Philippines (PD 1096)',
   'Annex - Tax on Business.pdf': 'Annex A: Chapter II - Taxes on Business',
 }

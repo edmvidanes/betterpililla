@@ -16,7 +16,7 @@ import { parseLegislationRow, refreshLegislation } from './sources/legislation.t
 import { saveRefreshStatus } from './refresh-status.ts';
 import { routes as applicationRoutes } from '../../src/app/route-manifest.ts';
 
-const source: SourceRecord = { id: 'cavinti-ordinances-index', name: 'Official ordinances', tier: 'primary-lgu', url: 'https://example.test/ordinances', dataUrl: 'https://example.test/ordinancesData', adapter: 'municipal-legislation-datatables/v1', formats: ['HTML', 'JSON', 'PDF'], retrievalStatus: 'public endpoint returned HTTP 200', coverage: 'Metadata only; attachments not reviewed.' };
+const source: SourceRecord = { id: 'pililla-ordinances-index', name: 'Official ordinances', tier: 'primary-lgu', url: 'https://example.test/ordinances', dataUrl: 'https://example.test/ordinancesData', adapter: 'municipal-legislation-datatables/v1', formats: ['HTML', 'JSON', 'PDF'], retrievalStatus: 'public endpoint returned HTTP 200', coverage: 'Metadata only; attachments not reviewed.' };
 const cells = ['<div><span>No. 001-2026</span><span>Public</span></div>', '<span>EXACT &amp; ORIGINAL “TITLE”</span>', '<span>By: HON. A</span>', '<span>FINANCE</span><span>RULES</span>', '<span>Jan 1, 2026</span>', '<a href="/001.pdf">Download</a>'];
 const oldRow = { ...parseLegislationRow(cells, 'ordinance', source, 1), recordId: 'ordinance:old-source-row:1' };
 const previous: LegislationSet = { schemaVersion: 'civic-legislation-record-set/v1', documentType: 'ordinance', municipality: 'Test municipality', retrievedAt: '2026-01-01', sourceIndexUrl: source.url, sourceFeedUrl: source.dataUrl!, sourceId: source.id, sourceFeedSha256: 'a'.repeat(64), recordsTotal: 1, recordsFiltered: 1, recordCount: 1, recordScope: 'Complete metadata capture; attachments unreviewed', records: [oldRow] };
@@ -67,8 +67,8 @@ test('full reviewed snapshot publishes every JSON byte, all 4898 legislative row
       assert.ok((await readFile(join(directory, entry.csvUrl))).length > 0);
     }
     assert.equal(portal.sources[0].id, pack.documents['source-register'].sources[0].id);
-    assert.ok(search.some((row) => row.path.includes('barangay%3Amahipon-lumot')));
-    assert.ok(search.some((row) => row.path.includes('barangay%3Amahipon') && !row.path.includes('lumot')));
+    assert.ok(search.some((row) => row.path.includes('barangay%3Abagumbayan')));
+    assert.ok(search.some((row) => row.path.includes('barangay%3Awawa')));
   } finally { await rm(directory, { recursive: true, force: true }); }
 });
 
@@ -182,7 +182,7 @@ test('manual refresh checks all registered sources but incomplete feeds retain c
     const reportPath = join(directory, 'report.json');
     const client = new FixtureClient((url) => /(?:ordinances|resolutions)Data/.test(url)
       ? capture(url, { recordsTotal: 2, recordsFiltered: 2, data: [] })
-      : capture(url, '<html><title>Coverage only</title><body>Cavinti Executive Office Council Document Service Name Office &amp; Contact</body></html>', 'text/html'));
+      : capture(url, '<html><title>Coverage only</title><body>Pililla Executive Office Council Document Service Name Office &amp; Contact</body></html>', 'text/html'));
     await assert.rejects(refresh({ root, destination: target, reportPath, client }), /Incomplete structured/);
     assert.deepEqual(await readFile(join(root, 'legislation/ordinances.json')), before);
     assert.equal(await readFile(target, 'utf8'), 'last good publication');
@@ -200,10 +200,10 @@ test('public refresh failure metadata marks stale sources without changing captu
     const portal = await publish(pack, destination);
     const canonicalBefore = await readFile(join(destination, 'legislation/ordinances.json'));
     await saveRefreshStatus({ schemaVersion: 'refresh-report/v1', checkedAt: '2099-10-22T12:00:00Z', outcome: 'retained-last-good',
-      checks: [{ sourceId: 'cavinti-ordinances-index', retrievedAt: '2099-10-22T12:00:00Z', availabilityStatus: 'access-blocked', freshnessStatus: 'stale', note: 'Structured capture blocked; previous complete feed retained' }] },
+      checks: [{ sourceId: 'pililla-ordinances-index', retrievedAt: '2099-10-22T12:00:00Z', availabilityStatus: 'access-blocked', freshnessStatus: 'stale', note: 'Structured capture blocked; previous complete feed retained' }] },
     join(directory, 'cache/report.json'), destination);
     const refreshed = JSON.parse(await readFile(join(destination, 'portal.json'), 'utf8'));
-    const checkedSource = refreshed.sources.find((entry: { sourceId: string }) => entry.sourceId === 'cavinti-ordinances-index');
+    const checkedSource = refreshed.sources.find((entry: { sourceId: string }) => entry.sourceId === 'pililla-ordinances-index');
     assert.equal(checkedSource.status.freshnessStatus, 'stale');
     assert.equal(checkedSource.status.availabilityStatus, 'access-blocked');
     assert.equal(checkedSource.lastCheckedAt, '2099-10-22T12:00:00Z');
@@ -223,7 +223,7 @@ test('service schema retains requirement sources and rejects incomplete steps', 
   assert.throws(() => validate('service', { ...service, steps: [{ order: 1, client: 'Apply' }] }), /required/);
 });
 
-test('a second LGU source uses its registered structured adapter, not Cavinti identifiers', async () => {
+test('a second LGU source uses its registered structured adapter, not Pililla identifiers', async () => {
   const newSource: SourceRecord = { ...source, id: 'san-isidro-local-laws', name: 'San Isidro local laws',
     url: 'https://san-isidro.example/ordinances', dataUrl: 'https://san-isidro.example/lawsData' };
   const newPrevious: LegislationSet = { ...previous, municipality: 'San Isidro', sourceId: newSource.id,

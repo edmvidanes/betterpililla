@@ -32,7 +32,7 @@ export function OfficialDetail(props: CivicProps & { recordId: string; correctio
   if (!row) return null
   const fil = locale === 'fil'
   const sourceId = String(row.sourceId || row.profileSourceId)
-  const sourcePage = sourceId === 'cavinti-executive-directory' ? 'https://www.cavinti-egov.com/executive' : 'https://www.cavinti-egov.com/legislative'
+  const sourcePage = sourceId === 'pililla-executive-directory' ? 'https://pilillarizal.gov.ph/executive' : 'https://pilillarizal.gov.ph/legislative'
   const roleEvidence = row.roleEvidence && typeof row.roleEvidence === 'object' && !Array.isArray(row.roleEvidence) ? row.roleEvidence : null
   const links = data.officials.profileEvidenceLinks
   const link = links && typeof links === 'object' && !Array.isArray(links) ? links[recordId] : null
@@ -48,7 +48,7 @@ export function OfficialDetail(props: CivicProps & { recordId: string; correctio
           ? (fil ? 'Hindi malinaw ang eksaktong katungkulan o pagiging kasapi; hindi ito patunay ng kasalukuyan o nahalal na katungkulan.' : 'Exact office or membership status is unclear; this card does not establish an elected or current office.')
           : (fil ? 'Hindi itinatatag ng direktoryong ito ang kasalukuyang termino o panunungkulan.' : 'This directory does not establish current tenure or term dates.')}</p>
         <dl className="official-facts">
-          <dt>{fil ? 'Katungkulan ayon sa direktoryo ng Cavinti' : 'Role in Cavinti directory'}</dt><dd>{row.roleLabel ? <span lang="en">{String(row.roleLabel)}</span> : (fil ? 'Hindi natukoy' : 'Not established')}</dd>
+          <dt>{fil ? 'Katungkulan ayon sa direktoryo ng Pililla' : 'Role in Pililla directory'}</dt><dd>{row.roleLabel ? <span lang="en">{String(row.roleLabel)}</span> : (fil ? 'Hindi natukoy' : 'Not established')}</dd>
           <dt>{fil ? 'Komite ayon sa direktoryo' : 'Committee as listed'}</dt><dd>{row.committeeLabel ? <span lang="en">{String(row.committeeLabel)}</span> : (fil ? 'Hindi nakasaad' : 'Not stated')}</dd>
           {row.expertiseLabel && <><dt>{fil ? 'Expertise ayon sa direktoryo' : 'Expertise as listed'}</dt><dd lang="en">{String(row.expertiseLabel)}</dd></>}
           {typeof row.authoredCountAsDisplayed === 'number' && <><dt>{fil ? 'Authored / Co-authored ayon sa direktoryo' : 'Authored / co-authored as displayed'}</dt><dd>{formatNumber(row.authoredCountAsDisplayed, locale)} / {formatNumber(Number(row.coauthoredCountAsDisplayed), locale)}</dd></>}
@@ -81,10 +81,10 @@ export function OfficialDetail(props: CivicProps & { recordId: string; correctio
         <dt>{fil ? 'Boto' : 'Votes'}</dt><dd>{formatNumber(Number(result.votes), locale)}</dd>
         <dt>{fil ? 'Porsiyento ng mga rehistradong botante' : 'Percent of registered voters'}</dt><dd>{String(result.percentRegisteredVoters)}%</dd>
       </dl>
-      <SourceNote {...props} id="rappler-cavinti-2025-returns" />
+      <SourceNote {...props} id="rappler-Pililla-2025-returns" />
     </section>}
     <section><h2>{fil ? 'Pinagmulan at katibayan' : 'Sources and evidence'}</h2>
-      <p>{fil ? 'Direktoryo ng Cavinti E-Gov; ang tala ng direktoryo ay nakunan noong' : 'Cavinti E-Gov directory; directory record captured'} {formatDate(String(data.officials.capturedAt), locale)}. <a href={sourcePage}>{fil ? 'Buksan ang direktoryo' : 'Open directory'}</a></p>
+      <p>{fil ? 'Direktoryo ng Pililla E-Gov; ang tala ng direktoryo ay nakunan noong' : 'Pililla E-Gov directory; directory record captured'} {formatDate(String(data.officials.capturedAt), locale)}. <a href={sourcePage}>{fil ? 'Buksan ang direktoryo' : 'Open directory'}</a></p>
       {portraitUrl(recordId) && <p>{fil ? 'Larawan mula sa parehong direktoryo, nakita noong' : 'Portrait from the same directory, observed'} {formatDate(portraitCaptureDate, locale)}. {fil ? 'Direktang nilo-load mula sa munisipal na site; walang nakasaad na photographer. Hindi nasuri ang naka-embed na karapatan.' : 'Loaded directly from the municipal site; photographer uncredited. Embedded rights metadata has not been reviewed.'} <a href={portraitUrl(recordId) || undefined}>{fil ? 'Orihinal na larawan' : 'Original image'}</a> · <a href={portraitRightsUrl}>{fil ? 'Pahayag ng site sa paggamit' : 'Site-wide rights statement'}</a></p>}
       {roleEvidence && <><h3>{fil ? 'Katibayan ng katungkulan' : 'Role evidence'}</h3>{roleEvidence.evidenceText && <p lang="en">{String(roleEvidence.evidenceText)}</p>}{roleEvidence.notes && <p lang="en">{String(roleEvidence.notes)}</p>}<p lang="en">{String(roleEvidence.verificationStatus)}</p>{roleEvidence.documentUrl && <p><a href={String(roleEvidence.documentUrl)}>{String(roleEvidence.documentNumber)}</a></p>}<SourceNote {...props} id={String(roleEvidence.sourceId)} /></>}
       {row.verificationStatus && <p className="civic-meta" lang="en">{String(row.verificationStatus)}</p>}

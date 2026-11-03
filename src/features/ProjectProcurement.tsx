@@ -82,14 +82,14 @@ export default function ProjectProcurement(props: CivicProps & { projects: boole
     ? Number(b.infraYear) - Number(a.infraYear)
     : (Date.parse(String(b.dateDisplayed)) || 0) - (Date.parse(String(a.dateDisplayed)) || 0))
   const listingPage = usePagination(matching, JSON.stringify([projects, query]))
-  const sourceId = String(records[0]?.sourceId || (projects ? 'dpwh-bettergov-snapshot' : 'bettergov-cavinti-procurement'))
+  const sourceId = String(records[0]?.sourceId || (projects ? 'dpwh-bettergov-snapshot' : 'bettergov-Pililla-procurement'))
   const source = data.portal.sources.find(item => (item.id || item.sourceId) === sourceId)
   const sourceUrl = source?.url || source?.canonicalUrl
   const labels = locale === 'fil' ? {
-    intro: projects ? 'Mga proyektong may “Cavinti” sa paglalarawan sa snapshot ng BetterGov PH.' : 'Mga procurement lead mula sa PhilGEPS Contract Browser ng BetterGov PH.',
+    intro: projects ? 'Mga proyektong may “Pililla” sa paglalarawan sa snapshot ng BetterGov PH.' : 'Mga procurement lead mula sa PhilGEPS Contract Browser ng BetterGov PH.',
     source: 'Tingnan ang pinagmulang BetterGov PH dataset', search: 'Hanapin sa mga rekord', contract: 'Contract ID', year: 'Taon ng imprastraktura', budget: 'Badyet', status: 'Status sa snapshot', id: 'ID sa source', awardee: 'Awardee', amount: 'Halagang ipinakita', date: 'Petsa sa source', empty: 'Walang snapshot na available.'
   } : {
-    intro: projects ? 'Projects with “Cavinti” in their descriptions in the BetterGov PH snapshot.' : 'Procurement leads from BetterGov PH’s PhilGEPS Contract Browser.',
+    intro: projects ? 'Projects with “Pililla” in their descriptions in the BetterGov PH snapshot.' : 'Procurement leads from BetterGov PH’s PhilGEPS Contract Browser.',
     source: 'View the BetterGov PH source dataset', search: 'Search records', contract: 'Contract ID', year: 'Infrastructure year', budget: 'Budget', status: 'Snapshot-reported status', id: 'Source ID', awardee: 'Awardee', amount: 'Displayed amount', date: 'Source date', empty: 'No snapshot is available.'
   }
   const currency = new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { style: 'currency', currency: 'PHP' })
@@ -121,7 +121,7 @@ export default function ProjectProcurement(props: CivicProps & { projects: boole
         </section>}
         <section className="service-detail-section"><h2>{locale === 'fil' ? 'Paano basahin ang rekord' : 'How to read this record'}</h2>
           <p>{projects
-            ? (locale === 'fil' ? 'Sekundaryang snapshot ito ng mga proyektong may “Cavinti” sa paglalarawan. Maaaring saklaw ng isang proyekto ang ibang lugar; hindi nito pinatutunayan ang kasalukuyang status o gastos ng munisipyo.' : 'This secondary snapshot matches “Cavinti” in project descriptions. A project may cover other areas; the record does not verify its current status or municipal expenditure.')
+            ? (locale === 'fil' ? 'Sekundaryang snapshot ito ng mga proyektong may “Pililla” sa paglalarawan. Maaaring saklaw ng isang proyekto ang ibang lugar; hindi nito pinatutunayan ang kasalukuyang status o gastos ng munisipyo.' : 'This secondary snapshot matches “Pililla” in project descriptions. A project may cover other areas; the record does not verify its current status or municipal expenditure.')
             : (locale === 'fil' ? 'Bahagyang makasaysayang listahan ito na iniuugnay sa PhilGEPS. Ang halaga ay ni-round sa buong piso; hindi beripikado ang kahulugan ng petsa at status. Hindi ito patunay ng bayad o pagkumpleto.' : 'This is a partial historical listing attributed to PhilGEPS. Amounts are rounded to whole pesos; the meanings of the displayed date and status are unverified. This is not proof of payment or completion.')}</p>
         </section>
       </div><aside className="civic-aside"><h2>{locale === 'fil' ? 'Pinagmulan' : 'Source'}</h2>

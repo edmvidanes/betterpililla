@@ -103,11 +103,11 @@ export default function Services(props: CivicProps) {
     <div className="civic-split"><section>
       <section aria-labelledby="service-guidance">
         <h2 id="service-guidance">{locale === 'fil' ? 'Mga praktikal na gabay' : 'Practical guidance'}</h2>
-        <p>{locale === 'fil' ? 'Mga pambansang gabay at inilathalang kontak ito, hindi kumpletong listahan ng serbisyo ng Cavinti. Tingnan ang mga link at kumpirmahin ang kasalukuyang detalye bago pumunta.' : 'These are national guidance and published contacts, not a complete Cavinti service catalogue. Check the links and confirm current details before visiting.'}</p>
+        <p>{locale === 'fil' ? 'Mga pambansang gabay at inilathalang kontak ito, hindi kumpletong listahan ng serbisyo ng Pililla. Tingnan ang mga link at kumpirmahin ang kasalukuyang detalye bago pumunta.' : 'These are national guidance and published contacts, not a complete Pililla service catalogue. Check the links and confirm current details before visiting.'}</p>
         <ul className="record-list">
           <li>
             <h3>{locale === 'fil' ? 'Pagpaparehistro ng kapanganakan' : 'Register a birth'}</h3>
-            <p>{locale === 'fil' ? 'Ayon sa PSA, iparehistro ang kapanganakan sa local civil registry office ng lungsod o munisipalidad kung saan ito nangyari sa loob ng 30 araw. Kung sa Cavinti ipinanganak, magtanong sa municipal civil registrar tungkol sa mga dokumento at delayed registration.' : 'The PSA says a birth should be registered within 30 days at the local civil registry office where it occurred. For a birth in Cavinti, ask the municipal civil registrar about documents and delayed registration.'}</p>
+            <p>{locale === 'fil' ? 'Ayon sa PSA, iparehistro ang kapanganakan sa local civil registry office ng lungsod o munisipalidad kung saan ito nangyari sa loob ng 30 araw. Kung sa Pililla ipinanganak, magtanong sa municipal civil registrar tungkol sa mga dokumento at delayed registration.' : 'The PSA says a birth should be registered within 30 days at the local civil registry office where it occurred. For a birth in Pililla, ask the municipal civil registrar about documents and delayed registration.'}</p>
             <a href="https://psa.gov.ph/civilregistration/facts">{locale === 'fil' ? 'Gabay ng PSA sa civil registration' : 'PSA civil registration guidance'}<LinkArrow /></a>
           </li>
           <li>

@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 
-const ordinances = JSON.parse(readFileSync('data/cavinti/legislation/ordinances.json', 'utf8')).records as { recordId: string; title: string; documentNumber: string; documentUrl: string }[]
+const ordinances = JSON.parse(readFileSync('data/pililla/legislation/ordinances.json', 'utf8')).records as { recordId: string; title: string; documentNumber: string; documentUrl: string }[]
 
 test('filtered source row opens its own document and survives locale switching', async ({ page }) => {
   const row = ordinances[0]

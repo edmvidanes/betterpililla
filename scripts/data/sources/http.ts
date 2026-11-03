@@ -2,7 +2,7 @@ import { sha256 } from '../normalize.ts';
 
 export interface Capture { url: string; finalUrl: string; status: number; contentType: string; retrievedAt: string; sourceDate: string | null; sourceDateHeader?: string | null; sha256?: string; body: string; }
 export type Fetcher = typeof fetch;
-const agent = 'BetterCavintiManualResearch/1.0';
+const agent = 'BetterPilillaManualResearch/1.0';
 
 export class SourceClient {
   private robots = new Map<string, Promise<string>>();

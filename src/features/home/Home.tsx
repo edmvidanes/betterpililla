@@ -7,7 +7,7 @@ import { catalogs, formatDate, type Locale, type MessageKey } from '../../i18n/l
 import { routes } from '../../app/route-manifest'
 import LatestNews from './LatestNews'
 import ServiceHighlights from './ServiceHighlights'
-import CavintiMap from './CavintiMap'
+import PilillaMap from './PilillaMap'
 import Demographics from './Demographics'
 import OfficialChannels from './OfficialChannels'
 import './home.css'
@@ -182,8 +182,8 @@ export default function Home({ locale, data, href, search, dataStatus }: {
       <div className="atlas-browse-intro">
         <h2 id="atlas-browse-title">{t.atlasBrowse}</h2>
         <figure className="atlas-hall-photo">
-          <img src={`${import.meta.env.BASE_URL}cavinti-municipal-hall.webp`} alt={locale === 'fil' ? 'Bahay pamahalaan ng Cavinti noong 2013' : 'Cavinti municipal hall in 2013'} width="1000" height="1333" loading="lazy" />
-          <figcaption><a href="https://commons.wikimedia.org/wiki/File:Cavinti,Lagunajf8166_03.JPG">Ramon FVelasquez</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></figcaption>
+          <img src={`${import.meta.env.BASE_URL}Pililla-municipal-hall.webp`} alt={locale === 'fil' ? 'Bahay pamahalaan ng Pililla noong 2013' : 'Pililla municipal hall in 2013'} width="1000" height="1333" loading="lazy" />
+          <figcaption><a href="https://commons.wikimedia.org/wiki/File:Pililla,Rizaljf8166_03.JPG">Ramon FVelasquez</a> · <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></figcaption>
         </figure>
       </div>
       <div className="atlas-index">
@@ -197,7 +197,7 @@ export default function Home({ locale, data, href, search, dataStatus }: {
     <Demographics locale={locale} href={href} municipality={data.municipality} />
 
     <LatestNews locale={locale} href={href} />
-    <CavintiMap locale={locale} center={lgu.mapView.center} zoom={lgu.mapView.zoom} />
+    <PilillaMap locale={locale} center={lgu.mapView.center} zoom={lgu.mapView.zoom} />
     <OfficialChannels locale={locale} />
 
     <section className="atlas-inner atlas-sources" aria-labelledby="atlas-sources-title">

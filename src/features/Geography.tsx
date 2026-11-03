@@ -2,8 +2,8 @@ import { lgu } from '../config/lgu'
 import type { DataRecord } from '../data/loaders'
 import { catalogs } from '../i18n/locales'
 import { civicCatalogs } from '../i18n/civic'
-import CavintiMap from './home/CavintiMap'
-import AboutCavinti from './AboutCavinti'
+import PilillaMap from './home/PilillaMap'
+import AboutPililla from './AboutPililla'
 import { PageIntro, RawRecord, SourceNote, type CivicProps } from './Civic'
 
 export default function Geography(props: CivicProps) {
@@ -15,7 +15,7 @@ export default function Geography(props: CivicProps) {
   return <>
     <PageIntro title={t.map} />
     <div className="geography-map">
-      <CavintiMap locale={locale} center={lgu.mapView.center} zoom={lgu.mapView.zoom} />
+      <PilillaMap locale={locale} center={lgu.mapView.center} zoom={lgu.mapView.zoom} />
     </div>
     <p className="civic-meta">{c.mapPrivacy} <a href={href('privacy')}>{t.privacy}</a></p>
     <section aria-labelledby="geography-facts-title">
@@ -32,7 +32,7 @@ export default function Geography(props: CivicProps) {
       </div>
       <SourceNote {...props} id={lgu.sourceIds.about} />
     </section>
-    <AboutCavinti locale={locale} href={href} />
+    <AboutPililla locale={locale} href={href} />
     <RawRecord {...props} value={geography} />
   </>
 }

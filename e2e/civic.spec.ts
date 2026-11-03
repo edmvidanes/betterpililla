@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test'
 import { readFileSync } from 'node:fs'
 
-const population = JSON.parse(readFileSync('data/cavinti/municipality.json', 'utf8')).populationFacts as { indicator: string; referenceYear?: number; value: number; sourceId: string }[]
-const ordinances = JSON.parse(readFileSync('data/cavinti/legislation/ordinances.json', 'utf8')).records as { recordId: string; documentNumber: string; sourceDate: string }[]
+const population = JSON.parse(readFileSync('data/pililla/municipality.json', 'utf8')).populationFacts as { indicator: string; referenceYear?: number; value: number; sourceId: string }[]
+const ordinances = JSON.parse(readFileSync('data/pililla/legislation/ordinances.json', 'utf8')).records as { recordId: string; documentNumber: string; sourceDate: string }[]
 
 test('population selection keeps the published value and its evidence together', async ({ page }) => {
   await page.goto('/en/statistics/demographics')

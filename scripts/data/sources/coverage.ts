@@ -5,11 +5,11 @@ import { SourceClient } from './http.ts';
 
 export interface CoverageCheck { sourceId: string; adapter: string; requestedUrl: string; finalUrl: string | null; retrievedAt: string; httpStatus: number | null; contentType: string | null; sourceDate: string | null; responseSha256?: string; availabilityStatus: AvailabilityStatus; freshnessStatus: 'not-checked' | 'stale'; note: string; observed?: { title: string; linkCount: number; tableCount: number; headings: string[]; }; }
 const municipalChecks: Record<string, { family: string; requiredText: RegExp }> = {
-  'cavinti-citizens-charter': { family: 'municipal-charter-coverage', requiredText: /Service Name.*Office\s*&\s*Contact/i },
-  'cavinti-about': { family: 'municipal-geography-coverage', requiredText: /Cavinti|barangay/i },
-  'cavinti-executive-directory': { family: 'municipal-directory-coverage', requiredText: /Executive Office/i },
-  'cavinti-legislative-directory': { family: 'municipal-directory-coverage', requiredText: /Council|Sangguniang/i },
-  'cavinti-other-documents': { family: 'municipal-document-coverage', requiredText: /document/i },
+  'pililla-citizens-charter': { family: 'municipal-charter-coverage', requiredText: /Service Name.*Office\s*&\s*Contact/i },
+  'pililla-about': { family: 'municipal-geography-coverage', requiredText: /Pililla|barangay/i },
+  'pililla-executive-directory': { family: 'municipal-directory-coverage', requiredText: /Executive Office/i },
+  'pililla-legislative-directory': { family: 'municipal-directory-coverage', requiredText: /Council|Sangguniang/i },
+  'pililla-other-documents': { family: 'municipal-document-coverage', requiredText: /document/i },
 };
 
 /** Inspect public page shape only. No universal facts parser, PDF archive or social-post scraper. */

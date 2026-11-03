@@ -10,6 +10,6 @@ test('official portraits match profiles and unresolved membership remains explic
   await expect(page.locator('.official-detail')).toContainText('does not establish an elected or current office')
   await expect(page.locator('.official-facts')).toContainText('Juris Doctor')
   await expect(page.locator('.official-facts')).toContainText('0 / 0')
-  await expect(page.getByRole('link', { name: 'Open directory' })).toHaveAttribute('href', 'https://www.cavinti-egov.com/legislative')
-  await expect(page.getByRole('link', { name: 'Site-wide rights statement' })).toHaveAttribute('href', 'https://www.cavinti-egov.com/contact')
+  await expect(page.getByRole('link', { name: 'Open directory' })).toHaveAttribute('href', 'https://pilillarizal.gov.ph/legislative')
+  await expect(page.getByRole('link', { name: 'Site-wide rights statement' })).toHaveAttribute('href', 'https://pilillarizal.gov.ph/contact')
 })

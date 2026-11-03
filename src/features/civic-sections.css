@@ -1,11 +1,11 @@
 .other-documents,
-.about-cavinti { margin-block: 3rem; }
+.about-Pililla { margin-block: 3rem; }
 
 .other-documents > h2,
-.about-cavinti > h2 { margin-bottom: .75rem; }
+.about-Pililla > h2 { margin-bottom: .75rem; }
 
 .other-documents > p,
-.about-cavinti > p { max-width: 75ch; }
+.about-Pililla > p { max-width: 75ch; }
 
 .other-documents-source {
   padding: 1rem 1.25rem;
@@ -23,11 +23,11 @@
 .other-documents-list p { margin: 0; }
 .other-documents-list a { display: inline-flex; align-items: center; min-height: 44px; margin-top: auto; padding-block: .35rem; font-weight: 650; }
 
-.about-cavinti-profile { max-width: 75ch; margin-top: 2rem; }
-.about-cavinti-profile h3 { margin: 2rem 0 .6rem; font-size: 1.25rem; }
-.about-cavinti-profile h3:first-child { margin-top: 0; }
-.about-cavinti-profile p { margin: 0 0 1rem; }
-.about-cavinti-evidence {
+.about-Pililla-profile { max-width: 75ch; margin-top: 2rem; }
+.about-Pililla-profile h3 { margin: 2rem 0 .6rem; font-size: 1.25rem; }
+.about-Pililla-profile h3:first-child { margin-top: 0; }
+.about-Pililla-profile p { margin: 0 0 1rem; }
+.about-Pililla-evidence {
   margin-top: 2rem;
   padding: 1.25rem;
   background: #fffaeb;
@@ -86,7 +86,7 @@
 }
 
 @media (max-width: 700px) {
-  .other-documents, .about-cavinti { margin-block: 2rem; }
+  .other-documents, .about-Pililla { margin-block: 2rem; }
   .official-channels { padding-block: 2.5rem; }
   .other-documents .directory-tools { align-items: stretch; }
   .other-documents .directory-tools label { flex-basis: 100%; }

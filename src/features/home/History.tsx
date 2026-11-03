@@ -1,7 +1,7 @@
 import { catalogs, type Locale } from '../../i18n/locales'
 import './history.css'
 
-const churchSource = 'https://philhistoricsites.nhcp.gov.ph/registry_database/church-of-cavinti/'
+const churchSource = 'https://philhistoricsites.nhcp.gov.ph/registry_database/church-of-Pililla/'
 const records = [
   {
     date: '1619–1621',
@@ -15,21 +15,21 @@ const records = [
     dateTime: '1639',
     title: 'historyUprising',
     narrative: 'historyUprisingNarrative',
-    source: 'https://en.wikipedia.org/wiki/Cavinti_Church',
+    source: 'https://en.wikipedia.org/wiki/Pililla_Church',
   },
   {
     date: '1824–1851',
     dateTime: '1824',
     title: 'historyEarthquake',
     narrative: 'historyEarthquakeNarrative',
-    source: 'https://en.wikipedia.org/wiki/Cavinti_Church',
+    source: 'https://en.wikipedia.org/wiki/Pililla_Church',
   },
   {
     date: '1880',
     dateTime: '1880',
     title: 'historyEarthquake1880',
     narrative: 'historyEarthquake1880Narrative',
-    source: 'https://en.wikipedia.org/wiki/Cavinti_Church',
+    source: 'https://en.wikipedia.org/wiki/Pililla_Church',
   },
   {
     date: '1904',
@@ -64,15 +64,15 @@ const records = [
     dateTime: '2026',
     title: 'historyData',
     narrative: 'historyDataNarrative',
-    source: 'https://rsso04a.psa.gov.ph/content/2024-community-based-monitoring-system-cbms-data-turnover-cavinti-laguna',
+    source: 'https://rsso04a.psa.gov.ph/content/2024-community-based-monitoring-system-cbms-data-turnover-Pililla-Rizal',
   },
 ] as const
 
 const notes = [
   { key: 'historyMarker', source: churchSource },
-  { key: 'historyWeaving', source: 'https://pia.gov.ph/features/sambalilo-festival-breathes-new-life-to-cavintis-pandan-weaving-tradition/' },
-  { key: 'historyFalls', source: 'https://www.cavinti-egov.com/aboutUs' },
-  { key: 'historyCaves', source: 'https://cavintiunderground.wixsite.com/cavinticave/about' },
+  { key: 'historyWeaving', source: 'https://pia.gov.ph/features/sambalilo-festival-breathes-new-life-to-Pilillas-pandan-weaving-tradition/' },
+  { key: 'historyFalls', source: 'https://pilillarizal.gov.ph/aboutUs' },
+  { key: 'historyCaves', source: 'https://Pilillaunderground.wixsite.com/Pilillacave/about' },
 ] as const
 
 export default function History({ locale }: { locale: Locale }) {

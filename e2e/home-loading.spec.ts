@@ -9,7 +9,7 @@ test('landing page shows its first sections while data is loading', async ({ pag
   })
   try {
     await page.goto('/en/', { waitUntil: 'domcontentloaded' })
-    await expect(page.getByRole('heading', { name: 'Cavinti, Laguna' })).toBeVisible()
+    await expect(page.getByRole('heading', { name: 'Pililla, Rizal' })).toBeVisible()
     await expect(page.locator('#portal-search')).toBeVisible()
     await expect(page.getByRole('heading', { name: 'Go straight to the information' })).toBeVisible()
     await expect(page.getByRole('heading', { name: 'Explore public information' })).toBeVisible()

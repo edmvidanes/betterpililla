@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import { catalogs, type Locale } from '../../i18n/locales'
 import type { Map as MapLibreMap } from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
-import './cavinti-map.css'
+import './Pililla-map.css'
 
-export default function CavintiMap({ locale, center, zoom }: {
+export default function PilillaMap({ locale, center, zoom }: {
   locale: Locale
   center: readonly [number, number]
   zoom: number

@@ -1,5 +1,5 @@
 import { Pagination, usePagination } from '../components/Pagination'
-import news from '../data/cavinti-news.json'
+import news from '../data/pililla-news.json'
 import { formatDate } from '../i18n/locales'
 import { LinkArrow, PageIntro, type CivicProps } from './Civic'
 import { newsImages } from './news-images'
@@ -34,12 +34,12 @@ export function NewsDetail({ locale, href, recordId }: CivicProps & { recordId: 
     <p><a className="news-back" href={href('news')}>{fil ? 'Lahat ng balita' : 'All news'} <LinkArrow /></a></p>
     <article>
       <header className="news-header"><h1>{article.title}</h1><p className="civic-meta">{article.date} · {article.category} · {article.author}</p></header>
-      {images?.cover && <figure className="news-hero"><img src={imagePath(images.cover)} alt="" /><figcaption>{fil ? 'Larawan mula sa' : 'Image from'} <a href={article.url}>Cavinti E-Gov</a></figcaption></figure>}
+      {images?.cover && <figure className="news-hero"><img src={imagePath(images.cover)} alt="" /><figcaption>{fil ? 'Larawan mula sa' : 'Image from'} <a href={article.url}>Pililla E-Gov</a></figcaption></figure>}
       <div className="news-body"><p className="civic-meta">{fil ? 'Orihinal na teksto; walang nasuring salin.' : 'Original source text; no reviewed translation is available.'}</p>
         {article.paragraphs.length ? <div lang="fil">{article.paragraphs.map((paragraph, index) => <p key={index} className="news-paragraph">{paragraph}</p>)}</div> : <p>{fil ? 'Walang tekstong lumitaw sa katawan ng artikulo.' : 'No text appeared in the article body.'}</p>}
-        {images?.body.map((image, index) => <figure className="news-body-image" key={image}><img src={imagePath(image)} alt={fil ? `Larawan sa orihinal na balita ${index + 1}` : `Image ${index + 1} from the original article`} loading="lazy" /><figcaption>{fil ? 'Larawan mula sa' : 'Image from'} <a href={article.url}>Cavinti E-Gov</a></figcaption></figure>)}
-        <p><a className="news-read" href={article.url}>{fil ? 'Basahin sa opisyal na portal ng Cavinti' : 'Read on the official Cavinti portal'} <LinkArrow /></a></p>
-        <p className="civic-meta">{fil ? 'Nakuhang archive noong' : 'Archive captured'} {formatDate(news.metadata.capturedAt, locale)} · <a href="https://www.cavinti-egov.com/contact">{fil ? 'Pahayag ng pinagmulan tungkol sa mga karapatan' : 'Source rights statement'}</a></p>
+        {images?.body.map((image, index) => <figure className="news-body-image" key={image}><img src={imagePath(image)} alt={fil ? `Larawan sa orihinal na balita ${index + 1}` : `Image ${index + 1} from the original article`} loading="lazy" /><figcaption>{fil ? 'Larawan mula sa' : 'Image from'} <a href={article.url}>Pililla E-Gov</a></figcaption></figure>)}
+        <p><a className="news-read" href={article.url}>{fil ? 'Basahin sa opisyal na portal ng Pililla' : 'Read on the official Pililla portal'} <LinkArrow /></a></p>
+        <p className="civic-meta">{fil ? 'Nakuhang archive noong' : 'Archive captured'} {formatDate(news.metadata.capturedAt, locale)} · <a href="https://pilillarizal.gov.ph/contact">{fil ? 'Pahayag ng pinagmulan tungkol sa mga karapatan' : 'Source rights statement'}</a></p>
       </div>
     </article>
   </div>
