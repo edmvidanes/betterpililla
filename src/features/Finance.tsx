@@ -5,6 +5,7 @@ import { PageIntro, RawRecord, SourceNote, type CivicProps } from './Civic'
 import { rows } from '../data/loaders'
 import { transparencyRecordId } from '../domain/transparency-record'
 import { Pagination, usePagination } from '../components/Pagination'
+import sreDataset from '../data/pililla-sre.json'
 
 const regularIncome: [number, number][] = [
   
@@ -58,6 +59,12 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
         {incomePage.visible.map(([year, amount]) => <tr key={year}><td>{year}</td><td>{new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount)}</td></tr>)}
       </tbody></table></div>
       <Pagination {...incomePage} locale={locale} label={incomeLabels.heading} />
+    </section>
+    <section><h2>{locale === 'fil' ? 'Statement of Receipts and Expenditures (SRE)' : 'Statement of Receipts and Expenditures (SRE)'}</h2>
+      {(sreDataset.records as { period: string; sourceUrl: string; capturedAt: string }[]).length === 0
+        ? <><p>{locale === 'fil' ? 'Wala pang panahong SRE ng Pililla ang nakukuha at nabeberipika. Ang nawawalang panahon ay hindi zero — tingnan ang mga opisyal na pinagmulan:' : 'No Pililla SRE period has been captured and verified yet. A missing period is not zero — see the official sources:'}</p>
+          <ul className="record-list">{sreDataset.expectedSources.map(source => <li key={source.url}><a href={source.url}>{source.name}</a></li>)}</ul></>
+        : <ul className="record-list">{(sreDataset.records as { period: string; sourceUrl: string; capturedAt: string }[]).map(record => <li key={record.period}><h3>{record.period}</h3><p className="civic-meta">{record.capturedAt} · <a href={record.sourceUrl}>{locale === 'fil' ? 'Pinagmulan' : 'Source'}</a></p></li>)}</ul>}
     </section>
     <div className="civic-split"><section><h2>{c.documentLeads}</h2><p className="measure">{c.documentLimit}</p><ul className="record-list">{documentPage.visible.map(row => <li key={String(row.documentNumber)}><p className="civic-meta" lang="en">{String(row.documentNumber)}</p><h3><a lang="en" href={String(row.documentUrl)}>{String(row.titleAsIndexed)}</a></h3>{row.scopeWarning && <p lang="en">{String(row.scopeWarning)}</p>}<SourceNote {...props} id={String(row.sourceId)} /></li>)}</ul><Pagination {...documentPage} locale={locale} label={c.documentLeads} /></section>
       <aside className="civic-aside"><h2>{c.coverageHeading}</h2><dl>{categories.map((category, index) => <div key={category}><dt className="directory-role">{category}</dt><dd style={{ margin: '0 0 1rem' }}>{index === 0 ? 'Not yet collected' : c.coverageMissing}</dd></div>)}</dl></aside></div>
