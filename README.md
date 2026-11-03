@@ -3,7 +3,7 @@
 BetterPililla is an independent, bilingual public-information portal for Pililla, Rizal. It is a static site, not an official government website. The codebase can be adapted for another municipality by replacing its data and configuration.
 
 
-> **Local POC status (2026-11-03):** Forked locally from BetterCavinti. Identity, config, municipality, barangay and officials packs are Pililla-specific (officials and PSGC/population marked unverified pending PSA/COMELEC/DILG primary extracts). Services, transparency, sector, news and legislation packs are still template scaffolds - do NOT publish until replaced with Pililla-sourced records. No GitHub repo, domain or deployment yet. Official LGU site: https://pilillarizal.gov.ph
+> **Local POC status (2026-11-03):** Forked locally from the BetterCavinti template. Identity, config, municipality, barangay and officials packs are Pililla-specific (officials and PSGC/population marked unverified pending PSA/COMELEC/DILG primary extracts). Logo is an original Pililla wind-farm community emblem (not an official seal). Transparency hub is live and Pililla-only: procurement and DPWH projects query the shared BetterGov search (search2.bettergov.ph) filtered to Pililla; finance shows an honest empty state until a verified Pililla SRE is captured with source URL + capture date. News section removed. Legislation is gated behind a not-yet-collected notice (the template's other-municipality records are withdrawn from pages, search and sitemap). Still scaffolds - do NOT publish until replaced with Pililla-sourced records: services Citizens' Charter details and sector-inventory. No GitHub repo, domain or deployment yet. Official LGU site: https://pilillarizal.gov.ph
 
 ## run locally
 
