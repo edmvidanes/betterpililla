@@ -3,7 +3,7 @@ export const routes = [
   ['government/officials', 'officials'], ['government/offices', 'offices'],
   ['government/committees', 'committees'], ['government/barangays', 'barangays'],
   ['open-lgu/legislation', 'legislation'], ['open-lgu/terms', 'terms'],
-  ['transparency/finance', 'finance'], ['transparency/procurement', 'procurement'],
+  ['transparency', 'transparency'], ['transparency/finance', 'finance'], ['transparency/procurement', 'procurement'],
   ['transparency/projects', 'projects'], ['statistics/demographics', 'demographics'],
   ['statistics/competitiveness', 'competitiveness'], ['statistics/municipal-income', 'income'],
   ['open-data', 'downloads'], ['map', 'map'], ['places', 'places'], ['advisories', 'advisories'],

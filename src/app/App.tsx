@@ -25,6 +25,7 @@ const Contacts = lazy(() => import('../features/Government').then(module => ({ d
 const Demographics = lazy(() => import('../features/Demographics'))
 const Competitiveness = lazy(() => import('../features/Competitiveness'))
 const Finance = lazy(() => import('../features/Finance'))
+const TransparencyHub = lazy(() => import('../features/TransparencyHub'))
 const ProjectProcurement = lazy(() => import('../features/ProjectProcurement'))
 const Downloads = lazy(() => import('../features/Catalogues').then(module => ({ default: module.Downloads })))
 const Sources = lazy(() => import('../features/Catalogues').then(module => ({ default: module.Sources })))
@@ -64,7 +65,7 @@ function App({ initialPath }: { initialPath?: string }) {
     { label: t.government, keys: ['government', 'officials', 'offices', 'committees', 'barangays', 'map', 'history'] },
     { label: t.statistics, keys: ['demographics', 'competitiveness', 'income'] },
     { label: 'OpenLGU', keys: ['legislation', 'terms', 'downloads'] },
-    { label: t.transparency, keys: ['finance', 'procurement', 'projects', 'sources'] },
+    { label: t.transparency, keys: ['transparency', 'finance', 'procurement', 'projects', 'sources'] },
   ]
   useEffect(() => {
     const closeMenus = (event: MouseEvent | KeyboardEvent) => {
@@ -159,6 +160,7 @@ function App({ initialPath }: { initialPath?: string }) {
   else if (route.startsWith('open-lgu/terms/')) content = notFound()
   else if (route === 'statistics/demographics') content = <Demographics data={data} locale={locale} href={href} />
   else if (route === 'statistics/competitiveness') content = <Competitiveness data={data} locale={locale} href={href} />
+  else if (route === 'transparency') content = <TransparencyHub data={data} locale={locale} href={href} />
   else if (route === 'statistics/municipal-income' || route === 'transparency/finance') content = <Finance data={data} locale={locale} href={href} income={route.startsWith('statistics')} />
   else if (route === 'transparency/procurement' || route === 'transparency/projects') content = <ProjectProcurement data={data} locale={locale} href={href} correctionLink={correctionLink} projects={route.endsWith('projects')} />
   else if (route.startsWith('transparency/projects/') || route.startsWith('transparency/procurement/')) {
