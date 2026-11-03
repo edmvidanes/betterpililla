@@ -6,9 +6,8 @@ import { rows } from '../data/loaders'
 import { transparencyRecordId } from '../domain/transparency-record'
 import { Pagination, usePagination } from '../components/Pagination'
 
-const regularIncome = [
-  [2016, 111913255.20], [2015, 105721576.59], [2014, 94283213.10], [2013, 92741110.78],
-  [2012, 80379224.83], [2011, 83392149.52], [2010, 69931486.50], [2009, 62148017.68]
+const regularIncome: [number, number][] = [
+  
 ]
 
 export default function Finance(props: CivicProps & { income?: boolean }) {
@@ -46,22 +45,22 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
   const projectSource = data.portal.sources.find(source => source.id === projects[0]?.sourceId)
   const datasetUrl = projectSource?.url || projectSource?.canonicalUrl || ''
   const incomeLabels = locale === 'fil' ? {
-    heading: 'Makasaysayang regular na kita ng munisipyo',
+    heading: 'Pananalapi ng Pililla - hindi pa nakokolekta (tingnan ang opisyal na portal)',
     year: 'Taong pinansyal', amount: 'Regular na kita (₱)', source: 'Tingnan ang datos at depinisyon sa PhilAtlas'
   } : {
-    heading: 'Historical municipal regular income',
-    year: 'Fiscal year', amount: 'Regular income (₱)', source: 'View the data and definition on PhilAtlas'
+    heading: 'Pililla finance - not yet collected (see official portals)',
+    year: 'Fiscal year', amount: 'Regular income (₱)', source: 'Commission on Audit - Annual Audit Reports for LGUs (search Pililla, Rizal)'
   }
   return <><PageIntro title={income ? t.income : t.finance} />
     <section><h2>{incomeLabels.heading}</h2>
-      <p><a href="https://www.philatlas.com/luzon/r04a/Rizal/Pililla.html">{incomeLabels.source}</a></p>
+      <p><a href="https://www.coa.gov.ph/reports/annual-audit-reports/aar-local-government-units/">{incomeLabels.source}</a></p>
       <div className="table-wrap" role="region" aria-label={incomeLabels.heading} tabIndex={0}><table className="coverage-table"><thead><tr><th scope="col">{incomeLabels.year}</th><th scope="col">{incomeLabels.amount}</th></tr></thead><tbody>
         {incomePage.visible.map(([year, amount]) => <tr key={year}><td>{year}</td><td>{new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount)}</td></tr>)}
       </tbody></table></div>
       <Pagination {...incomePage} locale={locale} label={incomeLabels.heading} />
     </section>
     <div className="civic-split"><section><h2>{c.documentLeads}</h2><p className="measure">{c.documentLimit}</p><ul className="record-list">{documentPage.visible.map(row => <li key={String(row.documentNumber)}><p className="civic-meta" lang="en">{String(row.documentNumber)}</p><h3><a lang="en" href={String(row.documentUrl)}>{String(row.titleAsIndexed)}</a></h3>{row.scopeWarning && <p lang="en">{String(row.scopeWarning)}</p>}<SourceNote {...props} id={String(row.sourceId)} /></li>)}</ul><Pagination {...documentPage} locale={locale} label={c.documentLeads} /></section>
-      <aside className="civic-aside"><h2>{c.coverageHeading}</h2><dl>{categories.map((category, index) => <div key={category}><dt className="directory-role">{category}</dt><dd style={{ margin: '0 0 1rem' }}>{index === 0 ? '2009–2016' : c.coverageMissing}</dd></div>)}</dl></aside></div>
+      <aside className="civic-aside"><h2>{c.coverageHeading}</h2><dl>{categories.map((category, index) => <div key={category}><dt className="directory-role">{category}</dt><dd style={{ margin: '0 0 1rem' }}>{index === 0 ? 'Not yet collected' : c.coverageMissing}</dd></div>)}</dl></aside></div>
     {projects.length > 0 && <section><h2>{labels.heading}</h2>
       <p><a href={datasetUrl}>{labels.source}</a></p><SourceNote {...props} id={String(projects[0].sourceId)} />
       <div className="directory-tools"><label htmlFor="dpwh-query">{labels.search}<input id="dpwh-query" type="search" value={query} onChange={event => setQuery(event.target.value)} /></label></div>
@@ -82,7 +81,7 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
       </tbody></table></div>
       <Pagination {...procurementPage} locale={locale} label={procurementLabels.heading} />
     </section>}
-    <section lang="en"><h2>BSP opinions on proposed municipal borrowing</h2>
+    {borrowingPage.visible.length > 0 && <section lang="en"><h2>BSP opinions on proposed municipal borrowing</h2>
       <p>These Monetary Board opinions concern proposed domestic borrowing by the Municipality of Pililla, Rizal, Region IV-A (CALABARZON). The amounts are proposals, not loan drawdowns or outstanding debt; the records do not establish that the proposed projects were completed.</p>
       <ul className="record-list">{borrowingPage.visible.map(row => <li key={String(row.resolutionNumber)}>
         <h3>₱{Number(row.proposedLoanAmountPhpMillion).toFixed(2)} million proposed</h3>
@@ -91,10 +90,10 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
         <p><a href={`${String(row.sourceUrl)}#page=${String(row.sourcePage)}`}>BSP report, page {String(row.sourcePage)}</a></p>
         <SourceNote {...props} id={String(row.sourceId)} />
       </li>)}</ul>
-    </section>
+    </section>}
     <Pagination {...borrowingPage} locale={locale} label={locale === 'fil' ? 'Mga opinyon ng BSP sa iminungkahing pangungutang ng munisipyo' : 'BSP opinions on proposed municipal borrowing'} />
-    <h2>{c.sourceChecks}</h2><div className="table-wrap" role="region" aria-label={c.sourceChecks} tabIndex={0}><table className="coverage-table"><thead><tr><th scope="col">{t.sources}</th><th scope="col">{c.availability}</th></tr></thead><tbody>{sourceChecksPage.visible.map(check => <tr key={String(check.sourceId)}><td><SourceNote {...props} id={String(check.sourceId)} /></td><td lang="en">{String(check.retrievalStatus)}</td></tr>)}</tbody></table></div>
-    <Pagination {...sourceChecksPage} locale={locale} label={c.sourceChecks} />
+    {sourceChecksPage.visible.length > 0 && <><h2>{c.sourceChecks}</h2><div className="table-wrap" role="region" aria-label={c.sourceChecks} tabIndex={0}><table className="coverage-table"><thead><tr><th scope="col">{t.sources}</th><th scope="col">{c.availability}</th></tr></thead><tbody>{sourceChecksPage.visible.map(check => <tr key={String(check.sourceId)}><td><SourceNote {...props} id={String(check.sourceId)} /></td><td lang="en">{String(check.retrievalStatus)}</td></tr>)}</tbody></table></div>
+    <Pagination {...sourceChecksPage} locale={locale} label={c.sourceChecks} /></>}
     <RawRecord {...props} value={data.transparency} />
   </>
 }
