@@ -10,7 +10,8 @@ export function searchPortal(rows: SearchRow[], query: string, locale: Locale): 
     text: `${path.replaceAll('/', ' ')} ${catalogs.en[key]} ${catalogs.fil[key]}`,
   })).filter(row => matches(`${row.title} ${row.text}`))
   const pagePaths = new Set(pages.map(page => page.path.replace(/^\//, '')))
-  const records = rows.filter(row => !pagePaths.has(row.path.replace(/^\//, '')) && matches(`${row.title} ${row.text} ${row.sourceIds?.join(' ')}`))
+  const visibleRows = rows.filter(row => row.type !== 'legislation' && !row.path.replace(/^\//, '').startsWith('open-lgu/legislation'))
+  const records = visibleRows.filter(row => !pagePaths.has(row.path.replace(/^\//, '')) && matches(`${row.title} ${row.text} ${row.sourceIds?.join(' ')}`))
   const titleMatches = (row: SearchRow) => matches(row.title)
   return [...pages, ...records.filter(titleMatches), ...records.filter(row => !titleMatches(row))]
 }

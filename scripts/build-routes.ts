@@ -38,8 +38,9 @@ for (const lead of services.serviceLegislationLeads || []) {
 for (const record of transparency.dpwhProjectSnapshot || []) pages.set(`transparency/projects/${transparencyRecordId(record)}`, { title: record.description })
 for (const record of transparency.betterGovProcurementLeads || []) pages.set(`transparency/procurement/${transparencyRecordId(record)}`, { title: record.title })
 const children = new Map<string, string[]>()
+const hasColonSegment = (path: string) => path.split('/').some(segment => { try { return decodeURIComponent(segment).includes(':') } catch { return false } })
 for (const path of pages.keys()) {
-  if (!path) continue
+  if (!path || hasColonSegment(path)) continue
   const parent = path.includes('/') ? path.slice(0, path.lastIndexOf('/')) : ''
   if (!pages.has(parent)) continue
   const siblings = children.get(parent) || []
@@ -64,6 +65,7 @@ try {
 const entries: string[] = []
 for (const locale of ['en', 'fil'] as const) {
   for (const [path, page] of pages) {
+    if (hasColonSegment(path)) continue
     const label = localized(page.title, locale)
     const title = path ? `${label} · Better${lgu.name}` : `Better${lgu.name} · ${catalogs[locale].communityPortal}`
     const text = localized(page.text, locale).replace(/\s+/g, ' ').trim()

@@ -6,13 +6,11 @@ import { loadData, loadSearch, type DataPack, type DataRecord, type EvidenceValu
 import { EvidenceTree, ExternalDocumentLink, SourceCitation } from '../components/Evidence'
 import { Pagination, usePagination } from '../components/Pagination'
 import SearchPalette from '../components/SearchPalette'
-import type { LegislationIndexRecord, LegislationRecord } from '../features/legislation/Legislation'
 import { routes } from './route-manifest'
 import PageMotion from './PageMotion'
 import Home from '../features/home/Home'
 import { searchPortal } from './search'
 
-const Legislation = lazy(() => import('../features/legislation/Legislation'))
 const History = lazy(() => import('../features/home/History'))
 const Services = lazy(() => import('../features/Services'))
 const ServiceDetail = lazy(() => import('../features/ServiceDetail'))
@@ -130,7 +128,6 @@ function App({ initialPath }: { initialPath?: string }) {
   const notFound = () => <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><code className="requested-url">{location.pathname}</code><p><a href={href('search')}>{t.search}</a></p></>
   const officialRows = data ? records(data.officials.records) : []
   const { visible: visibleCommittees, page: committeePage, pages: committeePages, setPage: setCommitteePage } = usePagination(officialRows.filter(row => row.committeeLabel))
-  const allLegislation = data ? records(data.legislationIndex.records) as unknown as LegislationIndexRecord[] : []
   let content: ReactNode
   const dataStatus = error
     ? <><h2>{t.loadError}</h2><Button onClick={() => location.reload()}>{t.retry}</Button><p><ExternalDocumentLink url={lgu.officialUrl} /></p></>
@@ -154,7 +151,7 @@ function App({ initialPath }: { initialPath?: string }) {
   else if (route === 'government/offices' || route.startsWith('government/offices/')) content = <Contacts data={data} locale={locale} href={href} officeId={route === 'government/offices' ? undefined : route.slice('government/offices/'.length)} />
   else if (route === 'government/committees') content = <><h1>{t.committees}</h1>{original}<ul className="record-list">{visibleCommittees.map(row => <li key={String(row.recordId)}><h2>{String(row.committeeLabel)}</h2><a href={href(`government/officials/${encodeURIComponent(String(row.recordId))}`)}>{String(row.displayName)}</a>{cite(String(row.sourceId))}</li>)}</ul><Pagination page={committeePage} pages={committeePages} setPage={setCommitteePage} locale={locale} label={locale === 'fil' ? 'Mga pahina ng mga komite' : 'Committee pages'} /></>
   else if (route === 'government/barangays' || route.startsWith('government/barangays/')) content = <Barangays data={data} locale={locale} href={href} recordId={route === 'government/barangays' ? undefined : route.slice('government/barangays/'.length)} correctionLink={correctionLink} />
-  else if (route === 'open-lgu/legislation' || route.startsWith('open-lgu/legislation/')) content = <Legislation locale={locale} records={allLegislation} detail={data.legislationDetail as unknown as LegislationRecord | null} recordId={route === 'open-lgu/legislation' ? undefined : route.slice('open-lgu/legislation/'.length)} href={href} sourceLink={sourceHref} correctionLink={correctionLink} />
+  else if (route === 'open-lgu/legislation' || route.startsWith('open-lgu/legislation/')) content = <><h1>{t.legislation}</h1><p>{locale === 'fil' ? 'Hindi pa nakokolekta ang mga ordinansa at resolusyon ng Pililla para sa portal na ito. Inalis ang dating listahan dahil hindi ito mga tala ng Pililla; ilalathala lamang ito kapag may naberipikang dokumento ng Pililla na may pinagmulang URL at petsa ng pagkuha. Pansamantala, tingnan ang opisyal na website ng munisipyo.' : 'Pililla ordinances and resolutions have not been collected for this portal yet. The previous listing did not contain Pililla records, so it was withdrawn; records will appear only after verified Pililla documents are captured with a source URL and capture date. In the meantime, please refer to the official municipal website.'}</p><p><ExternalDocumentLink url={lgu.officialUrl} /></p>{cite(lgu.sourceIds.legislative)}</>
   else if (route === 'open-lgu/terms') content = <><h1>{t.terms}</h1>{cite(lgu.sourceIds.legislative)}</>
   else if (route.startsWith('open-lgu/terms/')) content = notFound()
   else if (route === 'statistics/demographics') content = <Demographics data={data} locale={locale} href={href} />
