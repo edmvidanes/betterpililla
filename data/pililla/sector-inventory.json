@@ -1,0 +1,431 @@
+{
+  "schemaVersion": "civic-sector-coverage/v1",
+  "municipality": "Pililla, Rizal, Philippines (SCAFFOLD - source data not yet replaced; do not publish)",
+  "capturedAt": "2026-11-03",
+  "sectors": [
+    {
+      "sector": "education",
+      "availability": "partial-dated-school-garden-evidence-and-directory-leads",
+      "verifiedLocalRecords": [
+        {
+          "schoolNameAsPublished": "Sumucab Elementary School",
+          "evidence": "Winner, small school category and home gardens evaluation."
+        },
+        {
+          "schoolNameAsPublished": "Layasin Elementary School",
+          "evidence": "First place, medium school category."
+        },
+        {
+          "schoolNameAsPublished": "Lumot Elementary School",
+          "evidence": "Winner, large school category."
+        },
+        {
+          "schoolNameAsPublished": "Calminue Integrated National High School",
+          "evidence": "First among secondary schools and winner of the home gardens evaluation."
+        },
+        {
+          "schoolNameAsPublished": "Pililla Elementary School",
+          "evidence": "Received gardening tools as Hall of Famer."
+        }
+      ],
+      "schoolGardenEvidence": {
+        "sourceId": "searca-school-gardens",
+        "sourceUrl": "https://www.searca.org/news/searca-partners-deped-pililla-laguna-district-wide-school-home-gardens-evaluation",
+        "publishedAt": "2024-04-15",
+        "capturedAt": "2026-10-27",
+        "scope": "SEARCA reports the Pililla district-wide school and home gardens evaluation on 25–26 March 2024, with 15 primary and four secondary schools visited. The named schools above are not a complete or current roster."
+      },
+      "allocationListEvidence": {
+        "sourceId": "deped-school-identifiers",
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List-4.pdf",
+        "capturedAt": "2026-10-27",
+        "scope": "DepEd lapel voice amplifiers allocation list by school; the rows identify region and division, not municipality. Rizal-division rows do not establish a Pililla location or a current roster. Names below retain PDF spelling and are not inferred reconciliations with other sources.",
+        "records": [
+          {
+            "schoolId": "108270",
+            "division": "Rizal",
+            "schoolNameAsPublished": "BUKAL ES"
+          },
+          {
+            "schoolId": "108271",
+            "division": "Rizal",
+            "schoolNameAsPublished": "Bulajo ES"
+          },
+          {
+            "schoolId": "108272",
+            "division": "Rizal",
+            "schoolNameAsPublished": "Burol Elementary School"
+          },
+          {
+            "schoolId": "108273",
+            "division": "Rizal",
+            "schoolNameAsPublished": "Calminue ES"
+          },
+          {
+            "schoolId": "108274",
+            "division": "Rizal",
+            "schoolNameAsPublished": "Cansuso ES"
+          },
+          {
+            "schoolId": "108275",
+            "division": "Rizal",
+            "schoolNameAsPublished": "Pililla Elementary"
+          },
+          {
+            "schoolId": "108276",
+            "division": "Rizal",
+            "schoolNameAsPublished": "Inao-Awan ES"
+          },
+          {
+            "schoolId": "108277",
+            "division": "Rizal",
+            "schoolNameAsPublished": "Layug ES"
+          },
+          {
+            "schoolId": "108278",
+            "division": "Rizal",
+            "schoolNameAsPublished": "LUMOT ELEM"
+          },
+          {
+            "schoolId": "108279",
+            "division": "Rizal",
+            "schoolNameAsPublished": "Paowin ES"
+          },
+          {
+            "schoolId": "108280",
+            "division": "Rizal",
+            "schoolNameAsPublished": "Sumucab ES"
+          },
+          {
+            "schoolId": "108281",
+            "division": "Rizal",
+            "schoolNameAsPublished": "Talaongan East ES"
+          },
+          {
+            "schoolId": "108282",
+            "division": "Rizal",
+            "schoolNameAsPublished": "Talaongan West ES"
+          },
+          {
+            "schoolId": "164508",
+            "division": "Rizal",
+            "schoolNameAsPublished": "Sisilmin ES"
+          },
+          {
+            "schoolId": "164526",
+            "division": "Binan City",
+            "schoolNameAsPublished": "Southville 5A ES - Langkiwa"
+          },
+          {
+            "schoolId": "307911",
+            "division": "Rizal",
+            "schoolNameAsPublished": "Pililla Integrated National High School"
+          },
+          {
+            "schoolId": "307926",
+            "division": "Rizal",
+            "schoolNameAsPublished": "Calminue Integrated National High School"
+          }
+        ],
+        "discrepancies": "The PDF lists ID 164508 as Sisilmin ES, not the search lead's Silsimin ES; ID 164526 is Southville 5A ES - Langkiwa in Binan City, not Layasin ES. These discrepancies do not establish the correct IDs or identities of the search leads."
+      },
+      "elementaryDirectory": {
+        "sourceUrl": "https://depedlaguna.com/schools/elementary-level/",
+        "capturedAt": "2026-10-27",
+        "scope": "Pililla sub-office entries in an undated secondary directory, not a current or complete masterlist.",
+        "records": [
+          {
+            "schoolId": "108270",
+            "schoolNameAsPublished": "BUKAL ES"
+          },
+          {
+            "schoolId": "108271",
+            "schoolNameAsPublished": "Bulajo ES"
+          },
+          {
+            "schoolId": "108272",
+            "schoolNameAsPublished": "Burol Elementary School"
+          },
+          {
+            "schoolId": "108273",
+            "schoolNameAsPublished": "Calminue ES"
+          },
+          {
+            "schoolId": "108274",
+            "schoolNameAsPublished": "Cansuso ES"
+          },
+          {
+            "schoolId": "108275",
+            "schoolNameAsPublished": "Pililla Elementary"
+          },
+          {
+            "schoolId": "108276",
+            "schoolNameAsPublished": "Inao-Awan ES"
+          },
+          {
+            "schoolId": "108277",
+            "schoolNameAsPublished": "Layug ES"
+          },
+          {
+            "schoolId": "108278",
+            "schoolNameAsPublished": "LUMOT ELEM"
+          },
+          {
+            "schoolId": "108279",
+            "schoolNameAsPublished": "Paowin ES"
+          },
+          {
+            "schoolId": "108280",
+            "schoolNameAsPublished": "Sumucab ES"
+          },
+          {
+            "schoolId": "108281",
+            "schoolNameAsPublished": "Talaongan East ES"
+          },
+          {
+            "schoolId": "108282",
+            "schoolNameAsPublished": "Talaongan West ES"
+          },
+          {
+            "schoolId": "164508",
+            "schoolNameAsPublished": "Sisilmin ES"
+          },
+          {
+            "schoolId": "164517",
+            "schoolNameAsPublished": "Layasin Elementary School"
+          },
+          {
+            "schoolId": "164523",
+            "schoolNameAsPublished": "UDIA ELEMENTARY SCHOOL"
+          }
+        ]
+      },
+      "directoryLeads": [
+        {
+          "schoolNameAsPublished": "Calminue Integrated National High School",
+          "schoolId": "307926",
+          "sourceId": "deped-laguna-directory",
+          "sourceTier": "secondary-reference",
+          "sourceUrl": "https://depedlaguna.com/schools/senior-high-school/",
+          "verificationStatus": "listed-in-unversioned-regional-directory; not-reconciled-to-current-DepEd-masterlist"
+        },
+        {
+          "schoolNameAsPublished": "Pililla Integrated National High School",
+          "schoolId": "307911",
+          "sourceId": "deped-laguna-directory",
+          "sourceTier": "secondary-reference",
+          "sourceUrl": "https://depedlaguna.com/schools/senior-high-school/",
+          "verificationStatus": "listed-in-unversioned-regional-directory; not-reconciled-to-current-DepEd-masterlist"
+        }
+      ],
+      "searchOnlyElementaryLeads": {
+        "sourceUrl": "https://www.deped.gov.ph/wp-content/uploads/Annex-B_Allocation-List-4.pdf",
+        "verificationStatus": "search-result-leads; PDF inspected separately; discrepancies remain unresolved",
+        "publicationDisposition": "research-only; do-not-publish-as-current-school-roster",
+        "records": [
+          {
+            "schoolNameAsPublished": "Bukal ES",
+            "schoolId": "108270"
+          },
+          {
+            "schoolNameAsPublished": "Bulajo ES",
+            "schoolId": "108271"
+          },
+          {
+            "schoolNameAsPublished": "Burol ES",
+            "schoolId": "108272"
+          },
+          {
+            "schoolNameAsPublished": "Calminue ES",
+            "schoolId": "108273"
+          },
+          {
+            "schoolNameAsPublished": "Cansuso ES",
+            "schoolId": "108274"
+          },
+          {
+            "schoolNameAsPublished": "Pililla ES",
+            "schoolId": "108275"
+          },
+          {
+            "schoolNameAsPublished": "Inao-Awan ES",
+            "schoolId": "108276"
+          },
+          {
+            "schoolNameAsPublished": "Layug ES",
+            "schoolId": "108277"
+          },
+          {
+            "schoolNameAsPublished": "Lumot ES",
+            "schoolId": "108278"
+          },
+          {
+            "schoolNameAsPublished": "Paowin ES",
+            "schoolId": "108279"
+          },
+          {
+            "schoolNameAsPublished": "Sumucab ES",
+            "schoolId": "108280"
+          },
+          {
+            "schoolNameAsPublished": "Talaongan East ES",
+            "schoolId": "108281"
+          },
+          {
+            "schoolNameAsPublished": "Talaongan West ES",
+            "schoolId": "108282"
+          },
+          {
+            "schoolNameAsPublished": "Silsimin ES",
+            "schoolId": "164508"
+          },
+          {
+            "schoolNameAsPublished": "Layasin ES",
+            "schoolId": "164526"
+          }
+        ],
+        "notes": "These names/IDs are retained as search-result discovery leads, not a verified current DepEd masterlist. The separately recorded PDF rows use their own published spellings and include discrepancies for IDs 164508 and 164526. Do not reconcile spelling variants or identities by guess."
+      },
+      "missingData": [
+        "dated authoritative complete school roster",
+        "enrollment",
+        "staffing",
+        "facilities",
+        "performance series"
+      ]
+    },
+    {
+      "sector": "health",
+      "availability": "official-emergency-contacts-only; facility-profile-unverified",
+      "factsFile": "emergency-contacts.json",
+      "sourceIds": [
+        "pililla-about",
+        "pililla-rhu-channel",
+        "doh-calabarzon-facilities"
+      ],
+      "missingData": [
+        "DOH-verified facility registration",
+        "current services and operating hours",
+        "staffing",
+        "facility-level indicators"
+      ],
+      "privacyBoundary": "Never ingest patient-level records, case details, or identifiable health data."
+    },
+    {
+      "sector": "agriculture-and-fisheries",
+      "availability": "no-verified-municipal-statistics-extracted",
+      "discoverySources": [
+        "https://psa.gov.ph/taxonomy/term/1709",
+        "https://psa.gov.ph/sites/default/files/kmcd/files/2022-CAF-Data-Items.pdf",
+        "https://psa.gov.ph/publication/selected-statistics-on-agriculture-and-fisheries",
+        "https://rsso04a.psa.gov.ph/sites/default/files/attachment-dir/Fisheries%20Production_Fourth%20Qtr%202024%20and%20Annual%202024.pdf"
+      ],
+      "missingData": [
+        "Pililla-specific 2022 CAF published tables",
+        "municipality-level crop/livestock/fisheries series"
+      ],
+      "notes": "Rizal or CALABARZON totals are not Pililla totals; do not downscale them."
+    },
+    {
+      "sector": "tourism-and-culture",
+      "availability": "ordinance-evidence-only; no-verified-arrival-series",
+      "sourceIds": [
+        "pililla-official-home",
+        "pililla-ordinances-index",
+        "pililla-about"
+      ],
+      "knownRecord": {
+        "documentNumber": "No. 053 - 2026",
+        "title": "An ordinance mandating accurate monthly tourist-arrival reports by tourism establishments",
+        "sourceId": "pililla-ordinances-index",
+        "attachmentUrl": "https://pililla-egov.com/uploads/documents/municipal-ordinance-no-053-2026-mandatory-tourist-arrival-reporting-1791442174.pdf",
+        "verificationStatus": "official-index-title-captured; PDF text-not-reviewed"
+      },
+      "missingData": [
+        "current verified attractions register",
+        "public site-level operating information",
+        "publishable visitor counts",
+        "accommodation inventory"
+      ],
+      "privacyBoundary": "Do not scrape or publish establishment submissions unless officially released in aggregate and licensed for reuse."
+    },
+    {
+      "sector": "disaster-and-hazards",
+      "availability": "official-plan-reference-and-hotlines; no-extracted-hazard-layer",
+      "discoverySources": [
+        "https://hazardhunter.georisk.gov.ph/map",
+        "https://www.phivolcs.dost.gov.ph/gis-web-hazard-maps",
+        "https://www.pagasa.dost.gov.ph/products-and-services/flood-hazard-maps",
+        "https://pililla-egov.com/resolutions"
+      ],
+      "knownRecord": {
+        "documentNumber": "Resolution No. 338-2023",
+        "title": "Adoption of the Local Disaster Risk Reduction and Management Plan 2024-2028",
+        "verificationStatus": "official-index-reference-observed; plan document and indicators not extracted"
+      },
+      "missingData": [
+        "published plan text and measurable indicators",
+        "dated Pililla hazard layers",
+        "barangay-level exposure tables"
+      ],
+      "safetyRule": "Hazard outputs must cite input layer, date, location and limitations; never present a map assessment as an emergency warning."
+    },
+    {
+      "sector": "weather-and-climate",
+      "availability": "official-source-catalogued; no-Pililla-station-series-confirmed",
+      "discoverySources": [
+        "https://www.pagasa.dost.gov.ph/climate/climatological-normals",
+        "https://climgridph.pagasa.dost.gov.ph/ClimGridPh/historical_rainfall.php"
+      ],
+      "missingData": [
+        "verified Pililla station identifier and series",
+        "municipality-specific climatological normals"
+      ],
+      "notes": "Do not label a nearby station or gridded estimate as an observation made in Pililla."
+    },
+    {
+      "sector": "environment-and-watershed",
+      "availability": "regional-context-only; no-local-measurement-series",
+      "discoverySources": [
+        "https://www.napocor.gov.ph/wp-content/uploads/NPC_Corporate_Governance/2023/2023_Watershed_Management_Activities.pdf",
+        "https://llda.gov.ph/wp-content/uploads/2019/09/Vol_12.Caliraya-SB.pdf",
+        "https://www.pililla-egov.com/"
+      ],
+      "context": "The checked sources identify the Caliraya-Lumot watershed and Pililla's inclusion in the Caliraya sub-basin; these do not establish current municipal measurements.",
+      "missingData": [
+        "Pililla water quality series",
+        "waste and sanitation indicators",
+        "forest-cover or biodiversity series",
+        "environmental permits register"
+      ]
+    },
+    {
+      "sector": "competitiveness",
+      "availability": "official-source-lead; complete-labelled-profile-not-retrieved",
+      "sourceId": "dti-cmci-pililla",
+      "sourceUrl": "https://cmci.dti.gov.ph/lgu-profile.php?lgu=Pililla&year=2024",
+      "retrievalStatus": "HTTP 403 on direct reader access; search index exposed only a partial unlabelled snippet",
+      "verifiedRankingOrScore": null,
+      "missingData": [
+        "labelled annual rank and score",
+        "year-series rows",
+        "indicator and units metadata"
+      ],
+      "publicationDisposition": "do-not-publish-rank-or-score-from-snippet; retrieve the official DTI table and retain its year, municipality class, denominator, and indicator labels"
+    },
+    {
+      "sector": "finance-procurement-and-projects",
+      "availability": "source-coverage-documented-no-complete-local-dataset",
+      "factsFile": "transparency.json",
+      "sourceIds": [
+        "dilg-fdp",
+        "blgf-fiscal-data",
+        "bettergov-blgf-mirror",
+        "philgeps-pililla-award-lead",
+        "coa-annual-audits"
+      ],
+      "notes": "No missing/inaccessible result is represented as a zero value or a complete record set."
+    }
+  ],
+  "pilillaScaffoldNote": "Copied from BetterPililla template structure only. Records still describe the template municipality and MUST be replaced with Pililla-sourced records before any public deployment."
+}

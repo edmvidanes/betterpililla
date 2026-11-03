@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "civic-research-updates/v1",
+  "capturedAt": "2026-11-03",
+  "municipality": "Pililla, Rizal, Philippines",
+  "scope": "Priority collection attempts under plan section 6.4. Supplemental immutable research evidence only; does not replace canonical facts, legislative rows, or existing coverage conflicts.",
+  "timestampPolicy": "Web-reader attempts expose no per-request clock: retrievedAt uses observed UTC calendar date (day precision). Direct-fetch response hashes include exact observed UTC timestamps. No synthetic midnight timestamps.",
+  "rightsAndRetention": "No bulk mirroring, authentication bypass, certificate override or restricted/private records collected. Public municipal attachments downloaded transiently for checksum/text extraction; PDFs and rendered page removed. Retain bounded attributed excerpts, hashes and source URLs only; unknown reuse licenses are not permission to redistribute entire documents.",
+  "observationContract": {
+    "required": [
+      "recordId",
+      "sourceId",
+      "sourceUrl",
+      "retrievedAt",
+      "availabilityStatus",
+      "verificationStatus",
+      "freshnessStatus",
+      "notes"
+    ],
+    "findings": "Optional bounded sourceOriginalText excerpts with SHA-256 of exact UTF-8 excerpt text; page is a 1-based PDF page where established. responseSha256, when present, separately hashes exact fetched response bytes.",
+    "httpStatus": "null means reader did not expose HTTP status, not HTTP 200. Availability describes observed retrieval, not completeness.",
+    "metadataSeparation": "indexMetadata is copied canonical index evidence, not a claim extracted from attachment contents. Machine or visual extraction remains unreviewed.",
+    "sourceReferences": "Each observations[].sourceId references an existing source-register entry. Discovery through a registered page may use that page source ID with an explicit note; proposed new sources are not silently treated as registered."
+  },
+  "observations": [
+    {
+      "recordId": "research:2026-10-21:psgc",
+      "sourceId": "psa-psgc-pililla",
+      "sourceUrl": "https://psa.gov.ph/classification/psgc/barangays/0403407000",
+      "retrievedAt": "2026-10-21",
+      "availabilityStatus": "access-blocked",
+      "verificationStatus": "not-reviewed",
+      "freshnessStatus": "not-checked",
+      "notes": "Direct web reader returned HTTP 403. No bypass attempted; no underlying Pililla table, value, roster, or complete archive retrieved.",
+      "retrieval": {
+        "method": "web-reader",
+        "httpStatus": 403
+      }
+    }
+  ],
+  "discoveryAttempts": [],
+  "proposedSources": [],
+  "collectionLimits": [
+    "Current PSGC and 2020/2024 census tables remain unverified; 17/19 barangay and naming conflict remains unresolved.",
+    "Citizen Charter JSON returned an empty table; service procedures, fees, requirements and complete service catalog remain unavailable.",
+    "No complete CMCI, municipal finance, procurement, project, school or health register retrieved; no totals or completion metrics inferred.",
+    "No official Cavinti polygon or authoritative boundary export obtained. HazardHunterPH expressly disclaims authority of its approximate administrative boundaries.",
+    "Municipal channel publication and page reachability are not contact or hotline live validation. No current local safety advisory asserted.",
+    "Legislative PDFs sampled only: one current-year appropriation and one current-year barangay procedure document. No complete attachment corpus, executive-order archive or audit report extracted. Native text blank for both; one budget page visually inspected, not independently legally reviewed.",
+    "PAGASA advisory attachment text unreadable; no issue/valid time or Cavinti target area verified. Historical TIEZA document cannot establish current tourism access, operation or arrivals.",
+    "Search snippets were used as discovery leads only, not promoted to verified findings."
+  ]
+}

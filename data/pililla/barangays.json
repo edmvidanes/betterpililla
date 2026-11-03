@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "civic-barangay-roster-evidence/v1",
+  "municipality": "Pililla, Rizal, Philippines",
+  "capturedAt": "2026-11-03",
+  "canonicalRoster": {
+    "status": "unverified-needs-PSA-PSGC-extract",
+    "count": 9,
+    "sourceId": "psa-psgc-pililla",
+    "notes": "Names from PhilAtlas/secondary listing; spellings must be reconciled with PSA PSGC before presenting as canonical."
+  },
+  "sourceClaims": [
+    {
+      "sourceId": "philatlas-pililla",
+      "sourceTier": "secondary-reference",
+      "sourceUrl": "https://www.philatlas.com/luzon/r04a/rizal/pililla.html",
+      "claim": "Pililla has 9 barangays",
+      "count": 9,
+      "namesAsPublished": [
+        "Bagumbayan",
+        "Halayhayin",
+        "Hulo",
+        "Imatong",
+        "Malaya",
+        "Niogan",
+        "Quisao",
+        "Takungan",
+        "Wawa"
+      ],
+      "verificationStatus": "published-secondary-needs-PSA-crosscheck"
+    }
+  ],
+  "secondaryPopulationTable": {
+    "sourceId": "philatlas-pililla",
+    "sourceTier": "secondary-reference",
+    "referenceYears": [],
+    "verificationStatus": "not-yet-collected",
+    "rows": []
+  },
+  "discrepancies": []
+}

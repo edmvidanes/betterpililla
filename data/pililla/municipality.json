@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "civic-municipality/v1",
+  "recordId": "ph:rizal:pililla",
+  "name": "Pililla",
+  "province": "Rizal",
+  "region": "CALABARZON",
+  "psgcMunicipalityCode": {
+    "value": "0405810000",
+    "sourceId": "psa-psgc-pililla",
+    "sourceTier": "primary-government",
+    "verificationStatus": "unverified-needs-PSA-direct-extract",
+    "notes": "PSGC 0405810000 reported in secondary search results 2026-11-03; confirm via psa.gov.ph PSGC extract before publishing."
+  },
+  "incomeClass": {
+    "value": 1,
+    "sourceId": "psa-psgc-pililla",
+    "verificationStatus": "unverified-needs-DOF-BLGF-crosscheck",
+    "notes": "First-class reported by PhilAtlas/PSA secondary results; verify classification date."
+  },
+  "annualRegularIncome": {
+    "sourceId": "philatlas-pililla",
+    "verificationStatus": "published-secondary-needs-BLGF-crosscheck",
+    "unit": "PHP",
+    "notes": "PhilAtlas attributes annual regular income to BLGF; the primary tables were not directly verified. Historical figures are not current revenue or CMCI scores.",
+    "records": [
+      {
+        "year": 2009,
+        "value": 62148017.68
+      },
+      {
+        "year": 2010,
+        "value": 69931486.5
+      },
+      {
+        "year": 2011,
+        "value": 83392149.52
+      },
+      {
+        "year": 2012,
+        "value": 80379224.83
+      },
+      {
+        "year": 2013,
+        "value": 92741110.78
+      },
+      {
+        "year": 2014,
+        "value": 94283213.1
+      },
+      {
+        "year": 2015,
+        "value": 105721576.59
+      },
+      {
+        "year": 2016,
+        "value": 111913255.2
+      }
+    ]
+  },
+  "populationFacts": [],
+  "geography": {
+    "neighborsAsPublished": [
+      "Tanay",
+      "Baras",
+      "Jala-Jala",
+      "Cardona (verify via PSA/OSM)"
+    ],
+    "boundaryGeometry": {
+      "status": "not-found-in-checked-primary-sources",
+      "notes": "No official polygon verified. Map center is approximate orientation only."
+    }
+  },
+  "asOf": "2026-11-03",
+  "importantLimit": "This snapshot separates indexed PSA evidence and secondary published values. It does not calculate demographic indicators or claim a complete municipal statistical profile.",
+  "populationNote": "Unverified: secondary values conflict; no figure published until PSA retrieved. Missing is not zero."
+}

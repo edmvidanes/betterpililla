@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "civic-emergency-contact-evidence/v1",
+  "municipality": "Pililla, Rizal, Philippines",
+  "capturedAt": "2026-11-03",
+  "sourceId": "pililla-official-home",
+  "sourceUrl": "https://pilillarizal.gov.ph",
+  "pagePublicationDate": null,
+  "freshnessStatus": "not-yet-collected",
+  "records": [],
+  "publicUseWarning": "No Pililla emergency numbers have been verified yet. Do not publish Cavinti or invented numbers. Collect PNP/BFP/MDRRMO/RHU numbers from the official LGU site or offices, with capture date, before adding."
+}

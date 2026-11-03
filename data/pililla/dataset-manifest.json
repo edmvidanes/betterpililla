@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "civic-data-manifest/v1",
+  "municipality": {
+    "recordId": "ph:rizal:pililla",
+    "name": "Pililla",
+    "province": "Laguna",
+    "psgcCode": "0403407000",
+    "psgcCodeStatus": "indexed-primary-direct-fetch-blocked"
+  },
+  "generatedAt": "2026-10-28T12:34:27.238Z",
+  "license": {
+    "projectCode": "CC0",
+    "projectAuthoredMetadata": "CC0 where project-authored",
+    "upstreamContent": "Source-specific terms apply; unknown terms are not treated as permission to republish."
+  },
+  "datasets": [
+    {
+      "id": "municipality",
+      "canonicalJson": "municipality.json",
+      "schemaVersion": "civic-municipality/v1",
+      "recordCount": 1,
+      "sourceIds": [
+        "pililla-official-home",
+        "pililla-about",
+        "psa-psgc-pililla",
+        "philatlas-pililla"
+      ],
+      "status": "contains primary source claims, indexed-primary leads, and separately labeled secondary values"
+    },
+    {
+      "id": "barangays",
+      "canonicalJson": "barangays.json",
+      "schemaVersion": "civic-barangay-roster-evidence/v1",
+      "recordCount": 0,
+      "sourceIds": [
+        "pililla-about",
+        "pililla-barangay-count-ordinance",
+        "philatlas-pililla",
+        "psa-psgc-pililla"
+      ],
+      "status": "source-specific roster claims and a secondary population table; canonical current roster unresolved"
+    },
+    {
+      "id": "officials",
+      "canonicalJson": "officials.json",
+      "schemaVersion": "civic-official-directory-evidence/v1",
+      "recordCount": 2,
+      "sourceIds": [
+        "pililla-executive-directory",
+        "pililla-legislative-directory",
+        "pililla-resolutions-index",
+        "openhalalan-winners",
+        "rappler-pililla-2025-returns",
+        "dilg-elective-officials-2025-2028",
+        "pililla-official-home"
+      ],
+      "rights": "OpenHalalan election records: ODbL 1.0, https://opendatacommons.org/licenses/odbl/1-0/; Leung et al. (2026), https://doi.org/10.5281/zenodo.17783099. Rappler and DILG: upstream reuse terms unknown.",
+      "status": "municipal and DILG directory evidence, historical election winner claims and partial unofficial 2025 returns; dated evidence does not establish current tenure"
+    },
+    {
+      "id": "emergency-contacts",
+      "canonicalJson": "emergency-contacts.json",
+      "schemaVersion": "civic-emergency-contact-evidence/v1",
+      "recordCount": 0,
+      "sourceIds": [
+        "pililla-about",
+        "pililla-contact",
+        "pililla-official-home"
+      ],
+      "status": "official page values; freshness unverified"
+    },
+    {
+      "id": "services",
+      "canonicalJson": "services.json",
+      "schemaVersion": "civic-service-catalogue-evidence/v1",
+      "recordCount": 147,
+      "sourceIds": [
+        "pililla-charter-supplied-documents",
+        "pililla-ordinances-index"
+      ],
+      "status": "Public-facing services extracted from locally supplied charter documents; current applicability and provenance are not independently verified. Ordinance title leads are separate."
+    },
+    {
+      "id": "sector-inventory",
+      "canonicalJson": "sector-inventory.json",
+      "schemaVersion": "civic-sector-coverage/v1",
+      "recordCount": 9,
+      "sourceIds": [
+        "deped-laguna-directory",
+        "deped-elementary-allocation-leads",
+        "deped-school-identifiers",
+        "searca-school-gardens",
+        "psa-cbms-pililla",
+        "dti-cmci-pililla",
+        "dilg-fdp",
+        "blgf-fiscal-data",
+        "bettergov-blgf-mirror",
+        "philgeps-pililla-award-lead",
+        "coa-annual-audits",
+        "pililla-about",
+        "pililla-rhu-channel",
+        "doh-calabarzon-facilities",
+        "pililla-official-home",
+        "pililla-ordinances-index"
+      ],
+      "status": "source coverage and candidate leads, not complete sector datasets"
+    },
+    {
+      "id": "transparency",
+      "canonicalJson": "transparency.json",
+      "schemaVersion": "civic-transparency-evidence/v1",
+      "recordCount": 101,
+      "sourceIds": [
+        "dilg-fdp",
+        "blgf-fiscal-data",
+        "bettergov-blgf-mirror",
+        "philgeps-pililla-award-lead",
+        "coa-annual-audits",
+        "pililla-ordinances-index",
+        "pililla-resolutions-index",
+        "bsp-lgu-borrowings",
+        "dpwh-bettergov-snapshot",
+        "dpwh-contract-api-capture",
+        "bettergov-pililla-procurement"
+      ],
+      "rights": "DPWH contract API reuse terms are unknown; availability does not establish reuse permission.",
+      "status": "partial historical project and procurement snapshots, separate later DPWH contract API captures, and document leads; no complete financial, procurement, or project totals"
+    },
+    {
+      "id": "ordinances",
+      "canonicalJson": "legislation/ordinances.json",
+      "convenienceCsv": "legislation/ordinances.csv",
+      "schemaVersion": "civic-legislation-record-set/v1",
+      "recordCount": 406,
+      "sourceId": "pililla-ordinances-index",
+      "sourceFeedUrl": "https://pililla-egov.com/ordinancesData?draw=1&start=0&length=250",
+      "sourceFeedSha256": "fa182934587123345353cc28eb07c3100831596128aa5f49df1955565bec586d",
+      "dateRange": {
+        "from": "1992-07-24",
+        "to": "2026-09-28"
+      },
+      "status": "all returned index rows captured; PDF attachments not fully reviewed"
+    },
+    {
+      "id": "research-updates",
+      "canonicalJson": "research-updates.json",
+      "schemaVersion": "civic-research-updates/v1",
+      "recordCount": 1,
+      "sourceIds": [
+        "psa-psgc-pililla",
+        "pililla-about"
+      ],
+      "status": "supplemental incomplete priority research; native PDF text blank; bounded budget page-1 visual transcription unreviewed; no canonical domain fact replacement"
+    },
+    {
+      "id": "resolutions",
+      "canonicalJson": "legislation/resolutions.json",
+      "convenienceCsv": "legislation/resolutions.csv",
+      "schemaVersion": "civic-legislation-record-set/v1",
+      "recordCount": 4492,
+      "sourceId": "pililla-resolutions-index",
+      "sourceFeedUrl": "https://pililla-egov.com/resolutionsData?draw=1&start=0&length=250",
+      "sourceFeedSha256": "a488d6a40f3819dea0fc623902c2be709306b3c41d33fc10c964760998fc66ee",
+      "dateRange": {
+        "from": "1992-07-17",
+        "to": "2026-10-12"
+      },
+      "status": "all returned index rows captured; PDF attachments not fully reviewed"
+    }
+  ],
+  "globalLimitations": [
+    "The current PSA PSGC roster and directly retrieved population tables are not present; indexed and secondary claims are marked as such.",
+    "Municipal services, finance, procurement, projects, competitiveness, boundaries, and several sector series are incomplete or inaccessible.",
+    "Do not interpret missing datasets, inaccessible sources, or empty observed pages as zero activity or as proof no records exist."
+  ]
+}

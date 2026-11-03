@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "civic-official-directory-evidence/v1",
+  "municipality": "Pililla, Rizal, Philippines",
+  "capturedAt": "2026-11-03",
+  "records": [
+    {
+      "recordId": "pililla-executive-john-masinsin",
+      "displayName": "John V. Masinsin",
+      "directorySection": "Executive Office",
+      "roleLabel": "Municipal Mayor",
+      "roleEvidence": {
+        "sourceId": "pililla-official-home",
+        "documentUrl": "https://pilillarizal.gov.ph",
+        "evidenceText": "Official Pililla site announcements (Aug 2025-Mar 2026) refer to Mayor John V. Masinsin; Wikipedia elected-officials list corroborates. Verify via COMELEC/DILG before publishing.",
+        "verificationStatus": "official-source-observed-needs-COMELEC-crosscheck"
+      },
+      "profileSourceId": "pililla-executive-directory",
+      "termDates": null,
+      "contactDetails": null,
+      "notes": "Do not infer term dates or contacts not in cited source."
+    },
+    {
+      "recordId": "pililla-legislative-dan-masinsin",
+      "displayName": "Dan V. Masinsin",
+      "directorySection": "The Council",
+      "roleLabel": "Vice Mayor",
+      "roleEvidence": {
+        "sourceId": "pililla-legislative-directory",
+        "documentUrl": "https://en.wikipedia.org/wiki/Pililla",
+        "evidenceText": "Secondary listing names Dan V. Masinsin as Vice Mayor (2025-). Verify via COMELEC/DILG and SB directory before publishing.",
+        "verificationStatus": "secondary-only-unverified"
+      },
+      "profileSourceId": "pililla-legislative-directory",
+      "termDates": null,
+      "contactDetails": null,
+      "notes": "Sangguniang Bayan members intentionally not listed until an official roster is retrieved."
+    }
+  ]
+}
