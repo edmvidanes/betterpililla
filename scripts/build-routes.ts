@@ -12,7 +12,6 @@ const search = JSON.parse(await readFile(join(publicData, 'search-index.json'), 
 const offices = JSON.parse(await readFile(join(publicData, 'emergency-contacts.json'), 'utf8'))
 const services = JSON.parse(await readFile(join(publicData, 'services.json'), 'utf8'))
 const ordinances = JSON.parse(await readFile(join(publicData, 'legislation', 'ordinances.json'), 'utf8'))
-const news = JSON.parse(await readFile(join(root, 'src/data/pililla-news.json'), 'utf8'))
 const transparency = JSON.parse(await readFile(join(publicData, 'transparency.json'), 'utf8'))
 const catalogs = {
   en: JSON.parse(await readFile(join(root, 'src/i18n/catalogs/en.json'), 'utf8')),
@@ -36,7 +35,6 @@ for (const lead of services.serviceLegislationLeads || []) {
     pages.set(`services/${encodeURIComponent(lead.recordId)}`, { title: lead.topic, text: { en: 'Ordinance index lead; current service availability has not been confirmed.', fil: 'Batay sa indeks ng ordinansa; hindi pa nakumpirma ang kasalukuyang serbisyo.' } })
   }
 }
-for (const article of news.articles) pages.set(`news/${encodeURIComponent(article.id)}`, { title: article.title, text: article.bodyText })
 for (const record of transparency.dpwhProjectSnapshot || []) pages.set(`transparency/projects/${transparencyRecordId(record)}`, { title: record.description })
 for (const record of transparency.betterGovProcurementLeads || []) pages.set(`transparency/procurement/${transparencyRecordId(record)}`, { title: record.title })
 const children = new Map<string, string[]>()

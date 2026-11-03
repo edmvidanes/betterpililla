@@ -5,7 +5,6 @@ import type { DataPack } from '../../data/loaders'
 import { lgu } from '../../config/lgu'
 import { catalogs, formatDate, type Locale, type MessageKey } from '../../i18n/locales'
 import { routes } from '../../app/route-manifest'
-import LatestNews from './LatestNews'
 import ServiceHighlights from './ServiceHighlights'
 import PilillaMap from './PilillaMap'
 import Demographics from './Demographics'
@@ -189,14 +188,13 @@ export default function Home({ locale, data, href, search, dataStatus }: {
       <div className="atlas-index">
         <section><h3>{t.atlasGovernment}</h3>{links(['government', 'officials', 'barangays', 'services'], true)}</section>
         <section><h3>{t.atlasRecords}</h3>{links(['finance', 'procurement', 'projects', 'legislation', 'downloads'], true)}</section>
-        <section className="atlas-local"><h3>{t.atlasLocal}</h3>{links(['demographics', 'competitiveness', 'map', 'places', 'advisories', 'news', 'history'], true)}</section>
+        <section className="atlas-local"><h3>{t.atlasLocal}</h3>{links(['demographics', 'competitiveness', 'map', 'places', 'advisories', 'history'], true)}</section>
       </div>
     </section>
 
     {data ? <>
     <Demographics locale={locale} href={href} municipality={data.municipality} />
 
-    <LatestNews locale={locale} href={href} />
     <PilillaMap locale={locale} center={lgu.mapView.center} zoom={lgu.mapView.zoom} />
     <OfficialChannels locale={locale} />
 

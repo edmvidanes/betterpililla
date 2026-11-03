@@ -31,8 +31,6 @@ const LiveProjects = lazy(() => import('../features/LiveProjects'))
 const Downloads = lazy(() => import('../features/Catalogues').then(module => ({ default: module.Downloads })))
 const Sources = lazy(() => import('../features/Catalogues').then(module => ({ default: module.Sources })))
 const Barangays = lazy(() => import('../features/Barangays'))
-const News = lazy(() => import('../features/News'))
-const NewsDetail = lazy(() => import('../features/News').then(module => ({ default: module.NewsDetail })))
 const Geography = lazy(() => import('../features/Geography'))
 
 const base = import.meta.env.BASE_URL
@@ -62,7 +60,7 @@ function App({ initialPath }: { initialPath?: string }) {
     searchDialog.current?.querySelector<HTMLInputElement>('input')?.focus()
   }
   const navigationGroups: { label: string; keys: MessageKey[] }[] = [
-    { label: t.services, keys: ['services', 'places', 'advisories', 'news'] },
+    { label: t.services, keys: ['services', 'places', 'advisories'] },
     { label: t.government, keys: ['government', 'officials', 'offices', 'committees', 'barangays', 'map', 'history'] },
     { label: t.statistics, keys: ['demographics', 'competitiveness', 'income'] },
     { label: 'OpenLGU', keys: ['legislation', 'terms', 'downloads'] },
@@ -174,8 +172,6 @@ function App({ initialPath }: { initialPath?: string }) {
   else if (route === 'places') content = <Places data={data} locale={locale} href={href} />
   else if (route === 'advisories') content = <Advisories data={data} locale={locale} href={href} />
   else if (route === 'history') content = <History locale={locale} />
-  else if (route === 'news') content = <News data={data} locale={locale} href={href} />
-  else if (route.startsWith('news/')) content = <NewsDetail data={data} locale={locale} href={href} recordId={route.slice('news/'.length)} />
   else if (route === 'open-data') content = <Downloads data={data} locale={locale} href={href} />
   else if (route === 'sources') content = <Sources data={data} locale={locale} href={href} />
   else if (route.startsWith('sources/')) {
