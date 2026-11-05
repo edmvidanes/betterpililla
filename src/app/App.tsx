@@ -27,7 +27,6 @@ const Demographics = lazy(() => import('../features/Demographics'))
 const Competitiveness = lazy(() => import('../features/Competitiveness'))
 const Finance = lazy(() => import('../features/Finance'))
 const TransparencyHub = lazy(() => import('../features/TransparencyHub'))
-const CollectionPlan = lazy(() => import('../features/CollectionPlan'))
 const BudgetPortal = lazy(() => import('../features/BudgetPortal'))
 const LiveProcurement = lazy(() => import('../features/LiveProcurement'))
 const LiveProjects = lazy(() => import('../features/LiveProjects'))
@@ -69,7 +68,7 @@ function App({ initialPath }: { initialPath?: string }) {
     { label: t.government, keys: ['government', 'officials', 'offices', 'committees', 'barangays', 'map', 'history'] },
     { label: t.statistics, keys: ['demographics', 'competitiveness', 'income'] },
     { label: 'OpenLGU', keys: ['legislation', 'terms', 'downloads'] },
-    { label: t.transparency, keys: ['transparency', 'budgetPortal', 'enactedBudgets', 'budgetSources', 'procurement', 'projects', 'finance', 'collectionPlan'] },
+    { label: t.transparency, keys: ['transparency', 'budgetPortal', 'enactedBudgets', 'budgetSources', 'procurement', 'projects', 'finance'] },
   ]
   useEffect(() => {
     const update = () => setBrowserPath(location.pathname + location.search + location.hash)
@@ -171,7 +170,6 @@ function App({ initialPath }: { initialPath?: string }) {
   else if (route === 'statistics/demographics') content = <Demographics data={data} locale={locale} href={href} />
   else if (route === 'statistics/competitiveness') content = <Competitiveness data={data} locale={locale} href={href} />
   else if (route === 'transparency') content = <TransparencyHub data={data} locale={locale} href={href} />
-  else if (route === 'collection-plan') content = <CollectionPlan data={data} locale={locale} href={href} />
   else if (route === 'transparency/budget' || route.startsWith('transparency/budget/')) content = <BudgetPortal locale={locale} route={route} />
   else if (route === 'statistics/municipal-income' || route === 'transparency/finance') content = <Finance data={data} locale={locale} href={href} income={route.startsWith('statistics')} />
   else if (route === 'transparency/procurement') content = <LiveProcurement data={data} locale={locale} href={href} />
@@ -225,8 +223,8 @@ function App({ initialPath }: { initialPath?: string }) {
     ['transparency/finance', 'finance'],
   ]
   const unavailableSection = unavailableSections.find(([path]) => route === path || route.startsWith(path + '/'))
-  if (data && unavailableSection) content = <><h1>{t[unavailableSection[1]]}</h1><WorkInProgress locale={locale} path={route} /></>
-  else if (data && ['services', 'open-lgu/legislation', 'places', 'advisories', 'history', 'statistics/demographics'].includes(route)) content = <>{content}<WorkInProgress locale={locale} path={route} /></>
+  if (data && unavailableSection) content = <><h1>{t[unavailableSection[1]]}</h1><WorkInProgress locale={locale} /></>
+  else if (data && ['services', 'open-lgu/legislation', 'places', 'advisories', 'history', 'statistics/demographics'].includes(route)) content = <>{content}<WorkInProgress locale={locale} /></>
   return <>
     <CheckedLink className="skip-link" href="#main">{t.skip}</CheckedLink>
     <div className={`community-bar${route === '' ? ' atlas-utility' : ''}`}><div className="utility-inner">
@@ -276,7 +274,7 @@ function App({ initialPath }: { initialPath?: string }) {
           <p>{t.footerDescription.replace('{place}', lgu.name)}</p>
         </div>
         <nav aria-label={t.footer}>
-          {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads', 'collectionPlan'] as MessageKey[]).map(key => <CheckedLink key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</CheckedLink>)}
+          {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads'] as MessageKey[]).map(key => <CheckedLink key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</CheckedLink>)}
         </nav>
       </div>
       <p>{locale === 'fil' ? 'Petsa ng pagkakatala' : 'Date recorded'}: {data ? formatDate(data.portal.capturedAt, locale) : t.loading}. {locale === 'fil' ? 'Suriin muli ang mga sanggunian; maaaring luma na ang datos mula sa mga ito.' : 'Double-check sources; sourced data may be stale.'}</p>
@@ -285,7 +283,7 @@ function App({ initialPath }: { initialPath?: string }) {
     </footer> : <footer><p>{t.community}</p>
       <p>{locale === 'fil' ? 'Petsa ng pagkakatala' : 'Date recorded'}: {data ? formatDate(data.portal.capturedAt, locale) : t.loading}. {locale === 'fil' ? 'Suriin muli ang mga sanggunian; maaaring luma na ang datos mula sa mga ito.' : 'Double-check sources; sourced data may be stale.'}</p>
       <nav aria-label={t.footer}>
-        {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads', 'collectionPlan'] as MessageKey[]).map(key => <CheckedLink key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</CheckedLink>)}
+        {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads'] as MessageKey[]).map(key => <CheckedLink key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</CheckedLink>)}
         {lgu.repository && <CheckedLink href={lgu.repository} aria-label="GitHub">{githubIcon}</CheckedLink>}
       </nav></footer>}
   </>

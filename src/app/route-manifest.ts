@@ -10,6 +10,6 @@ export const routes = [
   ['statistics/competitiveness', 'competitiveness'], ['statistics/municipal-income', 'income'],
   ['open-data', 'downloads'], ['map', 'map'], ['places', 'places'], ['advisories', 'advisories'],
   ['sources', 'sources'], ['report-data', 'corrections'], ['search', 'search'],
-  ['history', 'history'], ['collection-plan', 'collectionPlan'],
+  ['history', 'history'],
   ['accessibility', 'accessibility'], ['privacy', 'privacy'], ['about', 'about'],
 ] as const

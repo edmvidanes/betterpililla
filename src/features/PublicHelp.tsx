@@ -34,6 +34,5 @@ export default function PublicHelp({ locale, href }: CivicProps) {
     </section>
     <section className="collection-gate"><h2>{fil ? 'Tubig sa Pililla' : 'Water services in Pililla'}</h2><p><CheckedLink href={href('services/water-district')}>Pililla Water District</CheckedLink> — {fil ? 'Mga kontak, charter, rates, form at pampublikong rekord.' : 'Contacts, charter, rates, forms and public records.'}</p></section>
     <details className="provider-review"><summary>{fil ? 'Mga detalye na kailangan pang kumpirmahin' : 'Details requiring confirmation'}</summary><ul>{help.reviewIssues.map(issue => <li key={issue} lang="en">{issue}</li>)}</ul></details>
-    <p><CheckedLink href={href('collection-plan')}>{fil ? 'Tingnan ang progreso ng koleksyon' : 'View collection progress'}</CheckedLink></p>
   </article>
 }

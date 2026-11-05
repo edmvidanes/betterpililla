@@ -62,6 +62,6 @@ export default function TransparencyHub({ locale, href }: CivicProps) {
     </ul>
     <section className="work-in-progress" aria-label="WorkInProgress"><h2>{t.finance} · WorkInProgress</h2><p>{fil ? 'Wala pang nasuring municipal finance o audit documents. Ipapakita ang mga ito kapag may beripikadong pinagmulan.' : 'Verified municipal finance and audit documents have not been collected. This section will be populated when source documents are available.'}</p><CheckedLink href={href('transparency/finance')}>{t.finance}</CheckedLink></section>
     <p><CheckedLink href="https://www.rizalprovince.ph/pages/disclosure%20report.html">{fil ? 'Mga disclosure ng Lalawigan ng Rizal' : 'Rizal provincial disclosures'}</CheckedLink> · <CheckedLink href="https://www.rizalprovince.ph/pages/bids.html">{fil ? 'Mga bid ng lalawigan' : 'Provincial bids'}</CheckedLink>. {fil ? 'Hiwalay ang saklaw ng lalawigan sa pananalapi ng munisipyo.' : 'Provincial reports have separate coverage from municipal finances.'}</p>
-    <p><CheckedLink href={href('collection-plan') + '#collect-finance'}>{t.collectionPlan}</CheckedLink> · <CheckedLink href={href('sources')}>{t.sources}</CheckedLink></p>
+    <p><CheckedLink href={href('sources')}>{t.sources}</CheckedLink></p>
   </>
 }

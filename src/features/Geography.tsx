@@ -17,7 +17,7 @@ export default function Geography(props: CivicProps) {
     <p className="civic-meta">{c.mapPrivacy} <CheckedLink href={href('privacy')}>{t.privacy}</CheckedLink></p>
     <section aria-labelledby="geography-facts-title">
       <h2 id="geography-facts-title">{c.geographyFacts}</h2>
-      <WorkInProgress locale={locale} path="map" />
+      <WorkInProgress locale={locale} />
       <SourceNote {...props} id={lgu.sourceIds.about} />
     </section>
   </>

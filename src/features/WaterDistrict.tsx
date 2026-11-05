@@ -16,7 +16,7 @@ export default function WaterDistrict({ locale, href }: CivicProps) {
   return <article className="provider-records">
     <PageIntro title={district.name}>{fil ? 'Mga serbisyo sa tubig at pampublikong rekord ng hiwalay na water district na nagsisilbi sa Pililla, Rizal.' : 'Water services and public records of the separate water district serving Pililla, Rizal.'}</PageIntro>
     <p className="civic-meta">{fil ? 'Mga sanggunian: sinuri noong 5 Nobyembre 2026. Ang water district ay GOCC; hiwalay ang mga rekord nito sa munisipyo.' : 'Sources checked 5 November 2026. The water district is a GOCC; its records are separate from municipal records.'}</p>
-    <nav className="collection-phases" aria-label={fil ? 'Nilalaman ng pahina' : 'On this page'}>{[['contact',fil ? 'Mga contact' : 'Contacts'],['services',fil ? 'Mga serbisyo' : 'Services'],['rates',fil ? 'Mga rate' : 'Rates'],['records',fil ? 'Mga rekord' : 'Records']].map(([id,label]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav>
+    <nav className="provider-nav" aria-label={fil ? 'Nilalaman ng pahina' : 'On this page'}>{[['contact',fil ? 'Mga contact' : 'Contacts'],['services',fil ? 'Mga serbisyo' : 'Services'],['rates',fil ? 'Mga rate' : 'Rates'],['records',fil ? 'Mga rekord' : 'Records']].map(([id,label]) => <a key={id} href={`#${id}`}>{label}</a>)}</nav>
     <section id="contact"><h2>{fil ? 'Makipag-ugnayan sa water district' : 'Contact the water district'}</h2><p>{district.address}</p>
       <ul className="civic-links">{district.phones.map(phone => <li key={phone}><a className="provider-phone" href={phoneLink(phone)}>{phone}</a></li>)}<li><a href={`mailto:${district.email}`}>{district.email}</a></li></ul>
       <p lang="en">{district.officeHours}</p><p className="civic-meta">{fil ? 'Inilathalang mga contact; hindi nasubukan sa pagtawag.' : 'Published contacts; not verified through test calls.'}</p>
@@ -56,6 +56,6 @@ export default function WaterDistrict({ locale, href }: CivicProps) {
       <p>{fil ? 'Inilalarawan ng charter ang paglikha sa ilalim ng SB Resolution No. 64, s. 1990, at LWUA certificate noong 4 Marso 1991. Hindi pa nakolekta ang buong resolution.' : 'The charter describes creation under SB Resolution No. 64, s. 1990, and an LWUA certificate issued 4 March 1991. The full resolution has not been collected.'} <CheckedLink href={`${district.charter}#page=2`}>{fil ? 'Charter, pahina 2' : 'Charter, page 2'}</CheckedLink></p>
     </section>
     <details className="provider-review"><summary>{fil ? 'Mga natuklasang isyu sa pagsusuri' : 'Content review findings'}</summary><ul>{district.issues.map(issue => <li lang="en" key={issue}>{issue}</li>)}</ul></details>
-    <p><a href={asset('prwd-pages.json')} download>{fil ? 'I-download ang source inventory (JSON)' : 'Download source inventory (JSON)'}</a> · <CheckedLink href={href('collection-plan')}>{fil ? 'Progreso ng koleksyon' : 'Collection progress'}</CheckedLink> · <CheckedLink href={href('services/public-contacts')}>{fil ? 'Mga hotline' : 'Public hotlines'}</CheckedLink></p>
+    <p><a href={asset('prwd-pages.json')} download>{fil ? 'I-download ang source inventory (JSON)' : 'Download source inventory (JSON)'}</a> · <CheckedLink href={href('services/public-contacts')}>{fil ? 'Mga hotline' : 'Public hotlines'}</CheckedLink></p>
   </article>
 }
