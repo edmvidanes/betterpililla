@@ -4,3 +4,5 @@
 .work-in-progress { margin-block: 1.5rem; padding: 1.25rem; background: var(--progress-background); color: var(--progress-ink); }
 .work-in-progress h2 { margin: 0 0 .5rem; font-size: 1.25rem; }
 .work-in-progress p { margin: 0; max-width: 70ch; }
+.work-in-progress .collection-plan-link { margin-top: 1rem; }
+.work-in-progress li + li { margin-top: .7rem; }

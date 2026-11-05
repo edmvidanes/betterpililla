@@ -60,6 +60,6 @@ export default function TransparencyHub({ locale, href }: CivicProps) {
       </li>)}
     </ul>
     <section className="work-in-progress" aria-label="WorkInProgress"><h2>{t.finance} · WorkInProgress</h2><p>{fil ? 'Wala pang nasuring municipal finance o audit documents. Ipapakita ang mga ito kapag may beripikadong pinagmulan.' : 'Verified municipal finance and audit documents have not been collected. This section will be populated when source documents are available.'}</p><CheckedLink href={href('transparency/finance')}>{t.finance}</CheckedLink></section>
-    <p><CheckedLink href={href('sources')}>{t.sources}</CheckedLink></p>
+    <p><CheckedLink href={href('collection-plan') + '#collect-finance'}>{t.collectionPlan}</CheckedLink> · <CheckedLink href={href('sources')}>{t.sources}</CheckedLink></p>
   </>
 }
