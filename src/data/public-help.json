@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-11-05",
+  "sourceDate": null,
+  "operationallyVerified": false,
+  "hotlines": [
+    {"name":"Pililla MDRRMO","purpose":{"en":"Disaster response","fil":"Pagtugon sa sakuna"},"phones":["0917-939-8558"],"source":"https://www.rizalprovince.ph/images/emergency%20hotline.jpg","scope":"Pililla, Rizal"},
+    {"name":"Pililla PNP","purpose":{"en":"Police assistance","fil":"Tulong mula sa pulisya"},"phones":["0998-967-3463"],"source":"https://www.rizalprovince.ph/images/PNP%20hotline.jpg","scope":"Pililla, Rizal","legacyLandline":"(02) 654-5185"},
+    {"name":"Pililla BFP","purpose":{"en":"Fire response","fil":"Pagtugon sa sunog"},"phones":["0997-771-6015"],"source":"https://www.rizalprovince.ph/images/bureau%20hotline%20fire.jpg","scope":"Pililla, Rizal"},
+    {"name":"Rizal PDRRMO","purpose":{"en":"Provincial disaster response","fil":"Pagtugon sa sakuna sa lalawigan"},"phones":["0961-869-5888"],"source":"https://www.rizalprovince.ph/images/emergency%20hotline.jpg","scope":"Rizal province","legacyLandline":"8571-4375"}
+  ],
+  "trunkline": "(02) 8256-3000",
+  "directorySource": "https://www.rizalprovince.ph/pages/directory.html",
+  "address": "Rizal Provincial Capitol, Circumferencial Road cor. P. Oliveros St., Ynares Center Complex, Antipolo City, 1870",
+  "offices": [
+    {"name":"Provincial Disaster Risk Reduction and Management Office","extensions":"5101","email":"pdrrmo@rizalprovincialgov.ph"},
+    {"name":"Provincial Health Office","extensions":"5003 / 5009","email":"pho@rizalprovincialgov.ph"},
+    {"name":"Rizal Provincial Hospital System","extensions":"6507 / 6508","email":"rphs@rizalprovincialgov.ph"},
+    {"name":"Provincial Social Welfare and Development Office","extensions":"6014","email":"pswd@rizalprovincialgov.ph"},
+    {"name":"Rizal Scholarship Office","extensions":"4221","email":"scholarshipoffice@rizalprovincialgov.ph"},
+    {"name":"Public Employment Service Office","extensions":"2203","email":"peso@rizalprovincialgov.ph"},
+    {"name":"Provincial Legal Office","extensions":"5303 / 5309","email":"legaloffice@rizalprovincialgov.ph"},
+    {"name":"Provincial Agriculturist","extensions":"5702 / 5703","email":"agriculturistoffice@rizalprovincialgov.ph"},
+    {"name":"Provincial Veterinarian","extensions":"5702 / 5703","email":"veterinaryoffice@rizalprovincialgov.ph"},
+    {"name":"Rizal Environment and Natural Resources Office","extensions":"5304","email":"renro@rizalprovincialgov.ph"},
+    {"name":"Tourism Office","extensions":"4242","email":"tourismoffice@rizalprovincialgov.ph"},
+    {"name":"Provincial Information Office","extensions":"4802","email":"pio@rizalprovincialgov.ph"},
+    {"name":"Sangguniang Panlalawigan Secretariat","extensions":"3501 / 3504 / 3505 / 3509","email":"spsecretariat@rizalprovincialgov.ph"},
+    {"name":"Provincial Treasurer","extensions":"5904 / 5905 / 5909","email":"treasurersoffice@rizalprovincialgov.ph"},
+    {"name":"Housing and Resettlement Division","extensions":"5104","email":"rizalprovincialhousing@gmail.com"}
+  ],
+  "charter": "https://www.rizalprovince.ph/pages/citizen%27s%20charter%202025.pdf",
+  "services": [
+    {"name":"Scholarship and financial assistance","pages":"26–29","office":"Scholarship Office","note":"Application requirements and eligibility are in the 2025 charter. Intake dates need confirmation."},
+    {"name":"Legal assistance and advice","pages":"30–33","office":"Provincial Legal Office"},
+    {"name":"Job referral","pages":"62–63","office":"Public Employment Service Office"},
+    {"name":"Information, maps and records for research","pages":"66–67","office":"Provincial Planning and Development Office"},
+    {"name":"Assistance to individuals in crisis","pages":"78–79","office":"Provincial Social Welfare and Development Office"},
+    {"name":"Emergency shelter assistance","pages":"80–81","office":"Provincial Social Welfare and Development Office"},
+    {"name":"Ambulance services","pages":"154–155","office":"Rizal Provincial Hospital System"},
+    {"name":"Medical assistance","pages":"156–157","office":"Rizal Provincial Hospital System"}
+  ],
+  "reviewIssues": [
+    "Hotline images have no visible issue date; no test calls were made.",
+    "The police image prints a seven-digit landline. Its current format has not been confirmed.",
+    "The directory uses 8256-3000, while the 2025 charter scholarship entry prints 8-620-2400. Use the published directory and confirm with the office.",
+    "Scholarship webpages and the directory use different contact emails and office-head names. No current application window is claimed.",
+    "The Pililla dining-establishment download points to a .pdf.pdf URL that returns 404. WorkInProgress.",
+    "Provincial budgets and bids belong to the province, even when their projects name Pililla. They are not municipal expenditure."
+  ]
+}

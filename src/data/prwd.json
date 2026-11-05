@@ -1,0 +1,46 @@
+{
+  "name": "Pililla Water District",
+  "website": "https://prwd.gov.ph/",
+  "contactSource": "https://prwd.gov.ph/contact-us/",
+  "phones": ["(02) 8654-0817", "(02) 8654-4089", "0935-246-9417"],
+  "email": "pw_district1991@yahoo.com.ph",
+  "address": "National Road, Brgy. Bagumbayan, Pililla, Rizal",
+  "officeHours": "Monday–Friday, 8:00 a.m.–5:00 p.m., except holidays (2025 FOI manual, page 15)",
+  "charter": "https://prwd.gov.ph/wp-content/uploads/2024/01/PILILLA-WATER-DISTRICT_CC_03012024.pdf",
+  "charterEdition": "2023, 3rd Edition",
+  "rateSource": "https://prwd.gov.ph/wp-content/uploads/2026/04/New-Rates-2026.xlsx",
+  "rateAnnouncement": "https://prwd.gov.ph/announcements/pililla-water-district-new-water-rates-effective-april-2026-2/",
+  "rateEffective": "2026-04",
+  "foiManual": "https://prwd.gov.ph/wp-content/uploads/2026/01/Peoples-FOI-Manual-2025.pdf",
+  "foiReceivingOfficer": {"name":"Mary Antonette Q. Gamez","phone":"0995-987-0971","sourcePage":38},
+  "forms": [
+    {"name":"Senior citizen application form","url":"https://prwd.gov.ph/wp-content/uploads/2024/01/SC-Form.docx","format":"DOCX"},
+    {"name":"FOI request form","url":"https://prwd.gov.ph/wp-content/uploads/2024/02/FOI-Request-Form.docx","format":"DOCX"},
+    {"name":"New connection requirements (older separate sheet)","url":"https://prwd.gov.ph/wp-content/uploads/2022/04/NSC-requirements-latest.pdf","format":"PDF"},
+    {"name":"Client satisfaction measurement survey","url":"https://forms.gle/QaZ5p9SanLb4tzcJA","format":"Online form"},
+    {"name":"Complaint/report form","url":"https://forms.gle/JnXpRmUmLsUMfvDN6","format":"Online form"},
+    {"name":"Feedback form","url":"https://forms.gle/VMQ64L7uE5pTTLLZA","format":"Online form"},
+    {"name":"Older satisfaction survey","url":"https://forms.gle/rBMeMFzWoH2pBFnG9","format":"Online form"}
+  ],
+  "board": ["Anicia A. Martinez — Chairperson", "Reneecilia B. Paz De Leon — Vice Chairperson", "Nenita N. Amores — Secretary", "Engr. Jose B. Anievas — Member", "Bayani T. Paz — Education Sector Member"],
+  "connections": {"value":12520,"period":"December 2024","source":"https://prwd.gov.ph/about-us/","scope":"District concessionaires; not population or all Pililla households"},
+  "financialCharts": [
+    {"name":"Income and expense summary","url":"https://prwd.gov.ph/wp-content/uploads/2022/04/prwd_income_expense_2022.png","period":"2020 and 2021"},
+    {"name":"Cash flow comparison","url":"https://prwd.gov.ph/wp-content/uploads/2022/04/prwd_cashflow_2022.png","period":"2020 and 2021"},
+    {"name":"Financial position comparison","url":"https://prwd.gov.ph/wp-content/uploads/2022/04/prwd_comparative_statement_of-financial_position_2022.png","period":"2020 and 2021"}
+  ],
+  "procurement": [
+    {"title":"Pipeline expansion and interconnection: Bagumbayan–Halayhayin","url":"https://prwd.gov.ph/wp-content/uploads/2026/09/Supply-of-Labor-Equipment-and-Construction-Materials-for-Pipeline-Expansion-and-Interconnection-Between-Barangay-Bagumbayan-and-Barangay-Halayhayin-Pililla-Rizal-1.pdf","period":"September 2026","pages":"12–13","status":"Bid document; award and implementation unverified","note":"Numeric ABC is ₱4,300,000, but the amount in words differs. Page 13 gives both September 30 and October 5 submission deadlines. Both are past; do not treat this as an open bid."},
+    {"title":"Stainless water tank truck — Protrucks Corporation","url":"https://prwd.gov.ph/wp-content/uploads/2025/10/Notice-of-Award-to-Protrucks-Corporation20251009_16074370.pdf","period":"9 October 2025","pages":"1","status":"Award notice; delivery and payment unverified","note":"NOA 2025-10-01-SVP; PR 2025-2837. Published award amount ₱1,758,000. Delivery is stated as 30 calendar days from Notice to Proceed; the NTP was not collected."}
+  ],
+  "issues": [
+    "The 2023 charter is the latest linked edition found; its current operational status needs confirmation. The homepage also links a 2021 edition.",
+    "Senior citizen processing steps sum to seven minutes, while page 13 prints a three-minute total. Processing time is WorkInProgress.",
+    "The 2025 FOI manual page 25 gives conflicting complex-request periods. Confirm the applicable deadline with the FOI Receiving Officer.",
+    "The FAQ says payments are office-only; a January 2025 post advertises LANDBANK payment. Merchant availability and fees are unverified.",
+    "The 2007 tariff page is historical. The April 2026 workbook is the newer published schedule.",
+    "Proposed-rate pages embed images from a different water district's development domain. No PRWD proposed rates were inferred.",
+    "The About page says sixteen (18) pumping stations. The pumping-station count remains WorkInProgress.",
+    "Financial charts show 2020–2021, despite 2022 filenames. Exact values and scale are not recoverable from labels; no totals were estimated."
+  ]
+}
