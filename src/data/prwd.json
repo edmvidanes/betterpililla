@@ -14,6 +14,7 @@
   "foiManual": "https://prwd.gov.ph/wp-content/uploads/2026/01/Peoples-FOI-Manual-2025.pdf",
   "foiReceivingOfficer": {"name":"Mary Antonette Q. Gamez","phone":"0995-987-0971","sourcePage":38},
   "forms": [
+    {"name":"Waiver and transfer of rights form","url":"https://prwd.gov.ph/wp-content/uploads/2022/04/WAIVER-TRANSFER-OF-RIGHT.bmp","format":"BMP image"},
     {"name":"Senior citizen application form","url":"https://prwd.gov.ph/wp-content/uploads/2024/01/SC-Form.docx","format":"DOCX"},
     {"name":"FOI request form","url":"https://prwd.gov.ph/wp-content/uploads/2024/02/FOI-Request-Form.docx","format":"DOCX"},
     {"name":"New connection requirements (older separate sheet)","url":"https://prwd.gov.ph/wp-content/uploads/2022/04/NSC-requirements-latest.pdf","format":"PDF"},
@@ -22,6 +23,7 @@
     {"name":"Feedback form","url":"https://forms.gle/VMQ64L7uE5pTTLLZA","format":"Online form"},
     {"name":"Older satisfaction survey","url":"https://forms.gle/rBMeMFzWoH2pBFnG9","format":"Online form"}
   ],
+  "unlinkedForms": ["Contract Agreement Form", "Service Application & Construction Order Form 1", "Service Application & Construction Order Form 2"],
   "board": ["Anicia A. Martinez — Chairperson", "Reneecilia B. Paz De Leon — Vice Chairperson", "Nenita N. Amores — Secretary", "Engr. Jose B. Anievas — Member", "Bayani T. Paz — Education Sector Member"],
   "connections": {"value":12520,"period":"December 2024","source":"https://prwd.gov.ph/about-us/","scope":"District concessionaires; not population or all Pililla households"},
   "financialCharts": [

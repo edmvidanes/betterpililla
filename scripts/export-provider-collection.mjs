@@ -1,10 +1,9 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { join } from 'node:path'
 import { parse } from 'parse5'
-import { execFileSync } from 'node:child_process'
 
 const root = (await readFile('.cache/prwd/latest.txt', 'utf8')).trim()
-const directories = [root, '.cache/prwd/images', '.cache/prwd/additional', '.cache/province/2026-11-05', '.cache/province/linked', '.cache/province/additional']
+const directories = [root, '.cache/prwd/images', '.cache/prwd/additional', '.cache/prwd/media', '.cache/province/2026-11-05', '.cache/province/linked', '.cache/province/additional']
 const output = 'public/collection/providers'
 await mkdir(output, { recursive: true })
 const captures = [], extraction = new Map()
@@ -20,7 +19,7 @@ const nodeText = node => node.nodeName === '#text' ? node.value : (node.childNod
 const inventory = []
 for (const row of unique) {
   const extension = new URL(row.url).pathname.split('.').pop().toLowerCase()
-  const kind = ['pdf', 'docx', 'xlsx', 'png', 'jpg', 'jpeg'].includes(extension) ? extension : row.kind
+  const kind = ['pdf', 'docx', 'xlsx', 'png', 'jpg', 'jpeg', 'bmp', 'mp4'].includes(extension) ? extension : row.kind
   let sourceDate = null
   if (kind === 'html' && row.httpStatus === 200) {
     const html = await readFile(join(row.folder, row.file), 'utf8')
@@ -68,9 +67,15 @@ for (const row of captures.filter(row => /\/ITB-2026\//.test(row.url) && extract
 await writeRows('province-pililla-bid-pages.json', provinceHits)
 const totals = agency => { const rows = inventory.filter(row => row.agency === agency && row.status !== 'excluded-template-or-out-of-scope'); return { urlsChecked: rows.length, captured: rows.filter(row => row.status === 'collected-for-review').length, documents: rows.filter(row => ['pdf','xlsx','docx'].includes(row.kind) && row.httpStatus === 200).length, pdfPages: rows.reduce((sum, row) => sum + (row.pages || 0), 0) } }
 await writeFile(join(output, 'summary.json'), JSON.stringify({ collectedAt: new Date().toISOString(), municipality: 'Pililla, Rizal', prwd: totals('Pililla Water District'), province: totals('Rizal Provincial Government'), prwdExternalServices: 13, tariffRows: tariff.length, meterSizes: 4, missingPrwdLinks: missing.length, provinceBidPagesNamingPililla: provinceHits.length, note: 'District and provincial evidence does not fill municipal finance, charter, elected-official or PSA datasets. Captured records still require content and currency review.' }, null, 2) + '\n')
-const prior = execFileSync('git', ['show', 'HEAD:src/data/link-audit.json'], { encoding: 'utf8' })
+const prior = await readFile('src/data/link-audit.json', 'utf8')
 const audit = JSON.parse(prior), known = new Set(audit.links.map(row => row.url))
-const displayed = inventory.filter(row => !known.has(row.url) && row.status !== 'excluded-template-or-out-of-scope' && (/pdf|xlsx|docx/.test(row.kind) || /forms.gle|foi.gov.ph|lbp-eservices|hotline|prwd_income|prwd_cashflow|prwd_comparative|Active-Service|\/contact-us\/|\/forms\/|\/transparency\/?$|\/about-us\/|\/bod-and-management\/|\/mandate-and-functions\/|\/water-rates\/|\/bidding-and-awards\/|new-water-rates-effective|\/directory.html|\/index.html$|\/iskolarnigob|\/disclosure%20report|\/bids.html|\/RPHS-|\/tourism.html$|\/pay-your-water/.test(row.url)))
+const displayed = inventory.filter(row => row.status !== 'excluded-template-or-out-of-scope' && (/pdf|xlsx|docx|bmp/.test(row.kind) || /forms.gle|foi.gov.ph|lbp-eservices|hotline|prwd_income|prwd_cashflow|prwd_comparative|Active-Service|\/contact-us\/|\/forms\/|\/transparency\/?$|\/about-us\/|\/bod-and-management\/|\/mandate-and-functions\/|\/water-rates\/|\/bidding-and-awards\/|new-water-rates-effective|\/directory.html|\/index.html$|\/iskolarnigob|\/disclosure%20report|\/bids.html|\/RPHS-|\/tourism.html$|\/pay-your-water/.test(row.url)))
 const added = displayed.map(row => ({ url: row.url, checkedAt: row.capturedAt, status: row.status === 'collected-for-review' ? 'ok' : 'unavailable', httpStatus: row.httpStatus, contentBytes: row.bytes, title: row.title, reason: row.status === 'collected-for-review' ? 'Nonempty source captured; content and currency review are separate.' : row.status }))
-if (added.length) await writeFile('src/data/link-audit.json', prior.replace(/\n  \]/, ',\n' + added.map(row => '    ' + JSON.stringify(row)).join(',\n') + '\n  ]'))
+const fresh = new Map(added.map(row => [row.url, row]))
+let updated = prior.split('\n').map(line => {
+  try { const row = JSON.parse(line.trim().replace(/,$/, '')); return fresh.has(row.url) ? '    ' + JSON.stringify(fresh.get(row.url)) + (line.trim().endsWith(',') ? ',' : '') : line } catch { return line }
+}).join('\n')
+const newRows = added.filter(row => !known.has(row.url))
+if (newRows.length) updated = updated.replace(/\n  \]/, ',\n' + newRows.map(row => '    ' + JSON.stringify(row)).join(',\n') + '\n  ]')
+await writeFile('src/data/link-audit.json', updated)
 console.log(JSON.stringify({ inventory: inventory.length, missingDocuments: missing.length, provinceBidPages: provinceHits.length }))

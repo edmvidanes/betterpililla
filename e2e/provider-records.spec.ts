@@ -16,6 +16,8 @@ test('main services links to the district and assistance while municipal records
   await expect(page.locator('#rates')).not.toContainText('₱300.65')
   await expect(page.locator('[data-external-url="https://forms.gle/JnXpRmUmLsUMfvDN6"]')).toContainText('WorkInProgress')
   await expect(page.locator('a[href="https://forms.gle/JnXpRmUmLsUMfvDN6"]')).toHaveCount(0)
+  await expect(page.locator('#services a[href$="WAIVER-TRANSFER-OF-RIGHT.bmp"]')).toHaveCount(1)
+  await expect(page.locator('#services')).toContainText('Contract Agreement Form — WorkInProgress')
 })
 test('public hotlines are dialable and retain their verification limits on mobile', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
