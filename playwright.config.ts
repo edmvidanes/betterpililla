@@ -4,10 +4,12 @@ export default defineConfig({
   testDir: './e2e',
   use: {
     ...devices['Desktop Chrome'],
-    baseURL: 'http://127.0.0.1:4173',
-    launchOptions: { executablePath: '/usr/bin/chromium' },
+    baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:4173',
+    launchOptions: process.env.PLAYWRIGHT_EXECUTABLE_PATH
+      ? { executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH }
+      : undefined,
   },
-  webServer: {
+  webServer: process.env.PLAYWRIGHT_BASE_URL ? undefined : {
     command: 'npm run dev -- --host 127.0.0.1 --port 4173',
     url: 'http://127.0.0.1:4173',
     reuseExistingServer: !process.env.CI,
