@@ -69,6 +69,7 @@ export async function publish(pack: DataPack, destination = resolve('public/data
     const services = documents.services;
     await writeFile(join(staging, 'services-index.json'), JSON.stringify({
       sourceUrl: services.sourceUrl, capturedAt: services.capturedAt,
+      publicationStatus: services.publicationStatus, publicationNote: services.publicationNote,
       serviceLegislationLeads: services.serviceLegislationLeads,
       services: services.services.map((row: Record<string, any>) => ({
         recordId: row.recordId, name: row.name, office: row.office, description: row.description,

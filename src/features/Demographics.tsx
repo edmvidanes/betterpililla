@@ -18,6 +18,11 @@ export default function Demographics(props: CivicProps) {
   const visible = population.filter(row => allYears || Number(row.referenceYear) >= 2015)
   const selected = visible.find(row => row.referenceYear === selectedYear) ?? visible.at(-1)
   const rate = facts.find(row => row.indicator === 'population_growth_rate_annualized')
+  if (!facts.length) return <>
+    <PageIntro title={t.demographics} />
+    <p>{locale === 'fil' ? 'Hindi pa nakokolekta ang naberipikang datos ng populasyon ng Pililla. Walang ipinapakitang bilang hanggang makuha ang sanggunian ng PSA.' : 'Verified population data for Pililla has not been collected yet. Figures will appear once PSA source records are available.'}</p>
+    <SourceNote {...props} id={lgu.sourceIds.psgc} />
+  </>
   const minYear = Number(visible[0]?.referenceYear)
   const maxYear = Number(visible.at(-1)?.referenceYear)
   const ceiling = Math.ceil(Math.max(...visible.map(row => Number(row.value))) / 5000) * 5000

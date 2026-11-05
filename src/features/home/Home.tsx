@@ -189,7 +189,7 @@ export default function Home({ locale, data, href, search, dataStatus }: {
     </section>
 
     {data ? <>
-    <Demographics locale={locale} href={href} municipality={data.municipality} />
+    {Array.isArray(data.municipality.populationFacts) && data.municipality.populationFacts.length > 0 && <Demographics locale={locale} href={href} municipality={data.municipality} />}
 
     <PilillaMap locale={locale} center={lgu.mapView.center} zoom={lgu.mapView.zoom} />
     <OfficialChannels locale={locale} />
