@@ -4,7 +4,7 @@ Collected on 5 November 2026. Local preview remains on port 4174.
 
 - Public assistance: http://127.0.0.1:4174/en/services/public-contacts
 - Water district: http://127.0.0.1:4174/en/services/water-district
-- Phase progress: http://127.0.0.1:4174/en/collection-plan#provider-progress
+- Current phase progress: [PROGRESS.md](PROGRESS.md) (local Markdown tracker)
 
 Pililla Water District is a separate GOCC. Provincial records belong to Rizal province. Neither source replaces Pililla municipal charter, finance, elected-official or PSA datasets.
 
@@ -45,4 +45,4 @@ FOI report originals are available only in the local review archive/source cache
 
 ## Validation
 
-Production build succeeds: 58 paths in two locales. The 25 data tests and 21 browser tests pass. Tests cover tariff/source-cell reconciliation, tax rounding, withheld municipal records, broken-link behavior, phone links, source downloads, mobile layout and locale switching. Lint has five pre-existing warnings and no errors.
+Collection-day validation (5 November 2026): production build succeeded with 58 paths in two locales; 25 data tests and 21 browser tests passed. Tests covered tariff/source-cell reconciliation, tax rounding, withheld municipal records, broken-link behavior, phone links, source downloads, mobile layout and locale switching. Lint had five pre-existing warnings and no errors. The collection-plan route was subsequently retired; current validation is recorded in [PROGRESS.md](PROGRESS.md).

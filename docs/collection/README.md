@@ -1,6 +1,6 @@
 # Pililla public-record collection — 5 November 2026
 
-Local website: http://127.0.0.1:4174/en/collection-plan. The page itemizes 17 collection tasks in six ordered phases and links each unfinished section to its documents, custodian and publication gate.
+Current tracker: [PROGRESS.md](PROGRESS.md). It itemizes 17 sections across six phases with progress bars, missing records and publication checkpoints. The collection plan was removed from the website on 6 November 2026; this report preserves the first collection pass.
 
 | Phase | First collection pass | Remaining work |
 | --- | --- | --- |
@@ -21,4 +21,4 @@ Extract the captured DILG table with `node scripts/extract-officials-review.mjs 
 
 After content review of captured sources, `node scripts/export-collection-log.mjs` exports access metadata, review candidates and checked source-link statuses. Keep actual response hashes and source dates distinct from project extraction dates.
 
-The request checklist supplies document scopes and periods for confirmed custodians. No email, FOI request or other message has been sent. Unresolved sections stay WorkInProgress; budget-title matches and external feeds retain their existing, separate coverage.
+The local [request checklist](record-requests.md) supplies document scopes and periods for confirmed custodians. No email, FOI request or other message has been sent. Unresolved sections stay WorkInProgress; budget-title matches and external feeds retain their existing, separate coverage.
