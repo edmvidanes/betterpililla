@@ -140,9 +140,9 @@ export default function Home({ locale, data, href, search, dataStatus }: {
       </h1></div>
       <figure className="atlas-photos">
         <div className={`atlas-photo-strip${photosVisible ? ' is-visible' : ''}`}>
-          {[0, 1].map(row => <div className={`atlas-photo-track${row ? ' atlas-photo-track-second' : ''}`}
+          {[0].map(row => <div className={`atlas-photo-track${row ? ' atlas-photo-track-second' : ''}`}
             style={{ animationDuration: `${photos.length * 5}s` }} key={row} aria-hidden={row === 1 ? true : undefined}>
-            {[0, 1].map(copy => <div className="atlas-photo-group" key={copy} aria-hidden={copy === 1 ? true : undefined}>
+            {[0].map(copy => <div className="atlas-photo-group" key={copy} aria-hidden={copy === 1 ? true : undefined}>
               {(row ? [...photos.slice(Math.ceil(photos.length / 2)), ...photos.slice(0, Math.ceil(photos.length / 2))] : photos).map((photo, index) =>
                 <span className="atlas-photo-frame" key={photo.src}>
                   <img src={`${import.meta.env.BASE_URL}${photo.src}`} alt={copy || row ? '' : photo.alt[locale]}
@@ -157,7 +157,7 @@ export default function Home({ locale, data, href, search, dataStatus }: {
             <summary>{t.photoCredits}</summary>
             <div className="atlas-credits-panel">
               <ul>{photos.map(photo => <li key={photo.src}>
-                <a href={photo.source}>{photo.title}</a> · {photo.author} · {photo.licenseUrl ? <a href={photo.licenseUrl}>{photo.license}</a> : t.photoPermission}
+                <a href={photo.source}>{photo.title}</a>, {photo.author}, {photo.licenseUrl ? <a href={photo.licenseUrl}>{photo.license}</a> : t.photoPermission}. {locale === 'fil' ? 'Ni-resize; maaaring i-crop sa display.' : 'Resized; may be cropped for display.'}
               </li>)}</ul>
             </div>
           </details>

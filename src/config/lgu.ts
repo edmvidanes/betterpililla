@@ -52,5 +52,11 @@ export const lgu: MunicipalityConfig = {
     procurementDashboard: 'https://transparency.bettergov.ph/organizations/',
     dpwhDashboard: 'https://transparency.bettergov.ph/dpwh',
   },
-  homepagePhotos: [], demographicsPhotos: [],
+  homepagePhotos: [{
+    src: 'images/pililla/windfarm.jpg', width: 1920, height: 1281,
+    title: 'Pililla Windfarm',
+    alt: { en: 'Wind turbines across the green hills of Pililla, Rizal', fil: 'Mga wind turbine sa luntiang burol ng Pililla, Rizal' },
+    author: 'Froi Rivera', source: 'https://commons.wikimedia.org/wiki/File:Pililla_Windfarm.jpg',
+    license: 'CC BY-SA 4.0', licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0/',
+  }], demographicsPhotos: [],
 }
