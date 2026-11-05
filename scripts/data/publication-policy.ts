@@ -1,0 +1,37 @@
+import type { DataPack } from './validate.ts';
+import { collectSourceIds } from './normalize.ts';
+
+/** Withhold foreign template records without editing the retained source snapshot. */
+export function publicationDocuments(pack: DataPack, withheld: readonly string[]) {
+  const documents = { ...pack.documents };
+  const rewritten = new Set<string>();
+  const note = 'Not collected for Pililla. Foreign template records are withheld pending Pililla source documents.';
+  for (const id of withheld) {
+    const original = documents[id];
+    if (!original) throw new Error(`Unknown withheld dataset: ${id}`);
+    documents[id] = {
+      schemaVersion: original.schemaVersion,
+      municipality: pack.documents['dataset-manifest'].municipality,
+      capturedAt: original.capturedAt ?? original.retrievedAt,
+      publicationStatus: 'not-collected', publicationNote: note,
+      records: [], services: [], sectors: [], observations: [], serviceLegislationLeads: [],
+    };
+    rewritten.add(id);
+  }
+  if (withheld.length) {
+    const manifest = documents['dataset-manifest'];
+    documents['dataset-manifest'] = { ...manifest,
+      datasets: manifest.datasets.map((entry: Record<string, any>) => withheld.includes(entry.id)
+        ? { ...entry, recordCount: 0, sourceIds: [], status: note } : entry),
+      globalLimitations: [...manifest.globalLimitations, note],
+    };
+    const allowed = new Set(Object.entries(documents).filter(([id]) => id !== 'source-register')
+      .flatMap(([, document]) => collectSourceIds(document)));
+    documents['source-register'] = { ...documents['source-register'],
+      sources: documents['source-register'].sources.filter((source: { id: string }) => allowed.has(source.id)),
+    };
+    rewritten.add('dataset-manifest');
+    rewritten.add('source-register');
+  }
+  return { documents, rewritten };
+}

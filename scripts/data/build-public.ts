@@ -8,11 +8,14 @@ import { loadDataPack, validatePack } from './validate.ts';
 import type { DataPack } from './validate.ts';
 import { applyRefreshStatus, readRefreshStatus } from './refresh-status.ts';
 import { writeLegislationData } from './build-legislation.ts';
+import { publicationDocuments } from './publication-policy.ts';
+import { lgu } from '../../src/config/lgu.ts';
 
 /** Validate before touching publication; a failed build leaves the last good directory intact. */
-export async function publish(pack: DataPack, destination = resolve('public/data')): Promise<Portal> {
+export async function publish(pack: DataPack, destination = resolve('public/data'), withheld: readonly string[] = []): Promise<Portal> {
   validatePack(pack);
-  const { documents, files } = pack;
+  const { files } = pack;
+  const { documents, rewritten } = publicationDocuments(pack, withheld);
   const manifest = documents['dataset-manifest'];
   const register = documents['source-register'];
   const sources = register.sources.map((source: SourceRecord) => normalizeSource(source, register.capturedAt));
@@ -25,7 +28,7 @@ export async function publish(pack: DataPack, destination = resolve('public/data
     await cp(join(pack.root, 'schemas'), join(staging, 'schemas'), { recursive: true });
     for (const [id, data] of Object.entries(documents)) {
       const file = files[id];
-      const bytes = await readFile(join(pack.root, file));
+      const bytes = rewritten.has(id) ? Buffer.from(JSON.stringify(data, null, 2) + '\n') : await readFile(join(pack.root, file));
       const output = join(staging, file);
       await mkdir(dirname(output), { recursive: true });
       await writeFile(output, bytes);
@@ -81,6 +84,7 @@ export async function publish(pack: DataPack, destination = resolve('public/data
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
-  const portal = await publish(await loadDataPack(process.argv[2] ? resolve(process.argv[2]) : undefined));
+  const pack = await loadDataPack(process.argv[2] ? resolve(process.argv[2]) : undefined);
+  const portal = await publish(pack, resolve('public/data'), basename(pack.root) === lgu.slug ? lgu.withheldDatasets : []);
   console.log(`Published ${portal.datasets.length} datasets to public/data.`);
 }

@@ -5,6 +5,7 @@ export interface MunicipalityConfig {
   recordId: string
   dataPath: string
   repository: string
+  withheldDatasets: readonly string[]
   officialUrl: string
   defaultLocale: 'en' | 'fil'
   sourceIds: Record<'about' | 'charter' | 'executive' | 'legislative' | 'psgc' | 'population' | 'competitiveness' | 'fdp' | 'fiscal' | 'audit' | 'procurement', string>
@@ -32,7 +33,8 @@ export interface MunicipalityConfig {
 
 export const lgu: MunicipalityConfig = {
   slug: 'pililla', name: 'Pililla', province: 'Rizal', recordId: 'ph:rizal:pililla',
-  dataPath: 'data', repository: 'https://github.com/betterpililla/betterpililla',
+  dataPath: 'data', repository: '',
+  withheldDatasets: ['services', 'sector-inventory', 'ordinances', 'resolutions', 'research-updates'],
   officialUrl: 'https://pilillarizal.gov.ph/', defaultLocale: 'en',
   // Approximate OSM town center; map orientation only, not an official boundary.
   mapView: { center: [121.315, 14.48], zoom: 13 },
