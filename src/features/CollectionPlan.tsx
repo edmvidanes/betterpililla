@@ -7,6 +7,7 @@ import { catalogs, formatDate } from '../i18n/locales'
 import { PageIntro, type CivicProps } from './Civic'
 import officials from '../../public/collection/officials-review.json'
 import './collection-plan.css'
+import ProviderCollection from './ProviderCollection'
 
 export default function CollectionPlan({ locale, href }: CivicProps) {
   const fil = locale === 'fil', t = catalogs[locale]
@@ -30,6 +31,7 @@ export default function CollectionPlan({ locale, href }: CivicProps) {
     <PageIntro title={t.collectionPlan}>{fil ? 'Mga kulang na tala at sunod-sunod na hakbang sa pagkolekta ng pampublikong dokumento ng Pililla, Rizal.' : 'An itemized list of missing records and the steps for collecting public documents about Pililla, Rizal.'}</PageIntro>
     <p className="civic-meta">{fil ? 'Huling pagsusuri' : 'Last collection review'}: {formatDate(collectionDate, locale)}. {fil ? 'Ang ebidensya para sa pagsusuri ay hindi pa inilalathala bilang kasalukuyang rekord ng munisipyo.' : 'Evidence for review has not been released as current municipal records.'}</p>
     <nav className="collection-phases" aria-label={fil ? 'Mga yugto ng pagkolekta' : 'Collection phases'}>{phases.map(phase => <a key={phase.id} href={`#phase-${phase.id}`}>{phase.id}. {phase.title[locale]}</a>)}</nav>
+    <ProviderCollection locale={locale} href={href} />
     {phases.map(phase => <section className="collection-phase" id={`phase-${phase.id}`} key={phase.id} aria-labelledby={`phase-title-${phase.id}`}>
       <h2 id={`phase-title-${phase.id}`}>{fil ? 'Yugto' : 'Phase'} {phase.id}: {phase.title[locale]}</h2>
       <p>{phase.task[locale]}</p>
