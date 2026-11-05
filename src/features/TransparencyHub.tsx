@@ -6,6 +6,7 @@ export default function TransparencyHub({ locale, href }: CivicProps) {
   const t = catalogs[locale]
   const fil = locale === 'fil'
   const pillars = [
+    { path: 'services/water-district', title: t.waterDistrict, badge: fil ? 'Water district' : 'Water district', text: fil ? 'Mga procurement record, historical financial chart at FOI documents ng hiwalay na water district. Hindi mga total ng munisipyo.' : 'Procurement records, historical financial charts and FOI documents of the separate water district. These are not municipal totals.' },
     {
       path: 'transparency/budget', title: t.budgetPortal, badge: 'FY2027',
       text: fil ? 'Ihambing ang NEP at House Bill 10858, kasama ang mga dokumento ng bawat proyekto na binabanggit ang Pililla.' : 'Compare NEP and House Bill 10858, with source documents for projects naming Pililla.',
@@ -60,6 +61,7 @@ export default function TransparencyHub({ locale, href }: CivicProps) {
       </li>)}
     </ul>
     <section className="work-in-progress" aria-label="WorkInProgress"><h2>{t.finance} · WorkInProgress</h2><p>{fil ? 'Wala pang nasuring municipal finance o audit documents. Ipapakita ang mga ito kapag may beripikadong pinagmulan.' : 'Verified municipal finance and audit documents have not been collected. This section will be populated when source documents are available.'}</p><CheckedLink href={href('transparency/finance')}>{t.finance}</CheckedLink></section>
+    <p><CheckedLink href="https://www.rizalprovince.ph/pages/disclosure%20report.html">{fil ? 'Mga disclosure ng Lalawigan ng Rizal' : 'Rizal provincial disclosures'}</CheckedLink> · <CheckedLink href="https://www.rizalprovince.ph/pages/bids.html">{fil ? 'Mga bid ng lalawigan' : 'Provincial bids'}</CheckedLink>. {fil ? 'Hiwalay ang saklaw ng lalawigan sa pananalapi ng munisipyo.' : 'Provincial reports have separate coverage from municipal finances.'}</p>
     <p><CheckedLink href={href('collection-plan') + '#collect-finance'}>{t.collectionPlan}</CheckedLink> · <CheckedLink href={href('sources')}>{t.sources}</CheckedLink></p>
   </>
 }

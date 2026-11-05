@@ -42,6 +42,8 @@ export default function Services(props: CivicProps) {
   const [page, setPage] = useState(1)
   if (data.services.publicationStatus === 'not-collected') return <>
     <PageIntro title={t.services}>{locale === 'fil' ? 'Mga serbisyo at dokumento ng Pililla.' : 'Services and documents for Pililla.'}</PageIntro>
+    <ul className="directory-grid"><li><h2><CheckedLink href={href('services/water-district')}>{t.waterDistrict}</CheckedLink></h2><p>{locale === 'fil' ? 'Mga kontak, serbisyo sa charter, rates noong Abril 2026, mga form at transparency record ng water district.' : 'Water district contacts, charter services, April 2026 rates, forms and transparency records.'}</p></li><li><h2><CheckedLink href={href('services/public-contacts')}>{t.publicContacts}</CheckedLink></h2><p>{locale === 'fil' ? 'Mga inilathalang hotline ng Pililla at serbisyo ng Lalawigan ng Rizal, kasama ang mga sanggunian at kailangang kumpirmahin.' : 'Published Pililla hotlines and Rizal provincial services, with sources and verification gaps.'}</p></li></ul>
+    <h2>{locale === 'fil' ? 'Mga serbisyo ng munisipyo · WorkInProgress' : 'Municipal services · WorkInProgress'}</h2>
     <p>{locale === 'fil' ? 'Hindi pa nakokolekta ang Citizens’ Charter ng Pililla. Ilalagay rito ang mga kinakailangan, bayarin at proseso kapag may naberipikang sanggunian.' : 'Pililla’s Citizens’ Charter has not been collected yet. Requirements, fees, and steps will appear here once verified source documents are available.'}</p>
     <p><CheckedLink href={lgu.officialUrl}>{t.officialWebsite}</CheckedLink></p>
     <p><CheckedLink href={lgu.citizensCharterUrl}>{locale === 'fil' ? 'Basahin ang inilathalang 2024 Citizens’ Charter (PDF)' : 'Read the published 2024 Citizens’ Charter (PDF)'}</CheckedLink></p>

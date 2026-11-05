@@ -1,5 +1,6 @@
 export const routes = [
   ['', 'home'], ['services', 'services'], ['government', 'government'],
+  ['services/water-district', 'waterDistrict'], ['services/public-contacts', 'publicContacts'],
   ['government/officials', 'officials'], ['government/offices', 'offices'],
   ['government/committees', 'committees'], ['government/barangays', 'barangays'],
   ['open-lgu/legislation', 'legislation'], ['open-lgu/terms', 'terms'],

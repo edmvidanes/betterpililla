@@ -15,6 +15,8 @@ import WorkInProgress from '../components/WorkInProgress'
 
 const Services = lazy(() => import('../features/Services'))
 const ServiceDetail = lazy(() => import('../features/ServiceDetail'))
+const WaterDistrict = lazy(() => import('../features/WaterDistrict'))
+const PublicHelp = lazy(() => import('../features/PublicHelp'))
 const Places = lazy(() => import('../features/Places').then(module => ({ default: module.Places })))
 const Advisories = lazy(() => import('../features/Places').then(module => ({ default: module.Advisories })))
 const Government = lazy(() => import('../features/Government').then(module => ({ default: module.Government })))
@@ -63,7 +65,7 @@ function App({ initialPath }: { initialPath?: string }) {
     searchDialog.current?.querySelector<HTMLInputElement>('input')?.focus()
   }
   const navigationGroups: { label: string; keys: MessageKey[] }[] = [
-    { label: t.services, keys: ['services', 'places', 'advisories'] },
+    { label: t.services, keys: ['services', 'waterDistrict', 'publicContacts', 'places', 'advisories'] },
     { label: t.government, keys: ['government', 'officials', 'offices', 'committees', 'barangays', 'map', 'history'] },
     { label: t.statistics, keys: ['demographics', 'competitiveness', 'income'] },
     { label: 'OpenLGU', keys: ['legislation', 'terms', 'downloads'] },
@@ -146,6 +148,8 @@ function App({ initialPath }: { initialPath?: string }) {
   else if (error) content = <><h1>{t.loadError}</h1><Button onClick={() => location.reload()}>{t.retry}</Button><p><ExternalDocumentLink url={lgu.officialUrl} /></p></>
   else if (!data) content = <p role="status">{t.loading}</p>
   else if (route === 'services') content = <Services data={data} locale={locale} href={href} />
+  else if (route === 'services/water-district') content = <WaterDistrict data={data} locale={locale} href={href} />
+  else if (route === 'services/public-contacts') content = <PublicHelp data={data} locale={locale} href={href} />
   else if (route.startsWith('services/')) {
     const recordId = route.slice('services/'.length)
     const row = records(data.services.services).find(r => r.recordId === recordId)
