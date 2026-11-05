@@ -1,38 +1,27 @@
+import CheckedLink from '../components/CheckedLink'
 import { lgu } from '../config/lgu'
 import type { DataRecord } from '../data/loaders'
 import { catalogs } from '../i18n/locales'
 import { civicCatalogs } from '../i18n/civic'
 import PilillaMap from './home/PilillaMap'
-import AboutPililla from './AboutPililla'
+import WorkInProgress from '../components/WorkInProgress'
 import { PageIntro, RawRecord, SourceNote, type CivicProps } from './Civic'
 
 export default function Geography(props: CivicProps) {
   const { data, locale, href } = props
   const t = catalogs[locale], c = civicCatalogs[locale]
   const geography = data.municipality.geography as DataRecord
-  const coordinates = geography.officialAboutPageCoordinatesText as DataRecord
-  const neighbors = geography.neighborsAsPublished as string[]
   return <>
     <PageIntro title={t.map} />
     <div className="geography-map">
       <PilillaMap locale={locale} center={lgu.mapView.center} zoom={lgu.mapView.zoom} />
     </div>
-    <p className="civic-meta">{c.mapPrivacy} <a href={href('privacy')}>{t.privacy}</a></p>
+    <p className="civic-meta">{c.mapPrivacy} <CheckedLink href={href('privacy')}>{t.privacy}</CheckedLink></p>
     <section aria-labelledby="geography-facts-title">
       <h2 id="geography-facts-title">{c.geographyFacts}</h2>
-      <div className="civic-split">
-        <div><h3>{c.geographyNeighbors}</h3><ul className="geography-neighbors">{neighbors.map(neighbor => <li key={neighbor} lang="en">{neighbor}</li>)}</ul></div>
-        <div className="civic-aside"><h3>{c.geographyCoordinates}</h3>
-          <dl className="geography-coordinates">
-            <div><dt>{c.latitude}</dt><dd>{String(coordinates.latitudeRange)}</dd></div>
-            <div><dt>{c.longitude}</dt><dd>{String(coordinates.longitudeRange)}</dd></div>
-          </dl>
-          <p>{c.geographyCoordinateNote}</p>
-        </div>
-      </div>
+      <WorkInProgress locale={locale} />
       <SourceNote {...props} id={lgu.sourceIds.about} />
     </section>
-    <AboutPililla locale={locale} href={href} />
     <RawRecord {...props} value={geography} />
   </>
 }
