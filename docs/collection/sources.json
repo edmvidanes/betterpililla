@@ -12,5 +12,8 @@
   { "id": "cmci-home", "phase": 4, "kind": "html", "url": "https://cmci.dti.gov.ph/", "purpose": "Find an actual Pililla profile and its year; no ranking inferred from unrelated research" },
   { "id": "blgf-income-class", "phase": 4, "kind": "html", "url": "https://blgf.gov.ph/lgu-income-class/", "purpose": "Find DOF Order 074-2024 and its municipality annex" },
   { "id": "coa-pililla-2025", "phase": 5, "kind": "html", "url": "https://www.coa.gov.ph/wpfd_file/pililla-annual-audit-report-2025/", "purpose": "COA landing page; retrieve the actual 2025 audit PDF before reporting findings" },
-  { "id": "dilg-full-disclosure", "phase": 5, "kind": "html", "url": "https://fdpp.dilg.gov.ph/", "purpose": "Locate Pililla Rizal budget, SRE, AIP, APP and financial disclosure documents" }
+  { "id": "dilg-full-disclosure", "phase": 5, "kind": "html", "url": "https://fdpp.dilg.gov.ph/", "purpose": "Locate Pililla Rizal budget, SRE, AIP, APP and financial disclosure documents" },
+  { "id": "dilg-disclosure-reports", "phase": 5, "kind": "html", "url": "https://fdpp.dilg.gov.ph/fdpp/report", "purpose": "Public document report route linked from the FDPP home page" },
+  { "id": "nhcp-pililla-church", "phase": 6, "kind": "html", "url": "https://philhistoricsites.nhcp.gov.ph/registry_database/simbahan-ng-pililla/", "purpose": "Primary registry of Pililla church marker; use only registry-supported history" },
+  { "id": "rizal-tourism", "phase": 6, "kind": "html", "url": "https://rizalprovince.ph/pages/tourism.html", "purpose": "Pililla entries in provincial listings; do not reuse Wikipedia-derived descriptions or infer current hours" }
 ]
