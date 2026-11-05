@@ -1,3 +1,4 @@
+import CheckedLink from '../components/CheckedLink'
 import { lgu } from '../config/lgu'
 import { catalogs } from '../i18n/locales'
 import { civicCatalogs } from '../i18n/civic'
@@ -36,11 +37,11 @@ export function Places(props: CivicProps) {
       <ul className="record-list">{elementaryPages.visible.map(school => <li key={String(school.schoolId)}><h3 lang="en">{String(school.schoolNameAsPublished)}</h3><p className="civic-meta">{c.schoolId}: {String(school.schoolId)}</p></li>)}</ul>
       <Pagination {...elementaryPages} locale={locale} label={copy.elementary} />
       <p className="civic-meta">{locale === 'fil' ? 'Ang direktoryong ito ay gumagamit ng ID 164517 para sa Layasin; ang naunang search lead na 164526 ay tumutukoy sa ibang paaralan sa hiwalay na listahan ng DepEd.' : 'This directory lists Layasin as ID 164517; an earlier search lead, 164526, identifies a different school in a separate DepEd list.'}</p>
-      {typeof elementary?.sourceUrl === 'string' && <p><a href={elementary.sourceUrl}>{copy.source}</a></p>}
+      {typeof elementary?.sourceUrl === 'string' && <p><CheckedLink href={elementary.sourceUrl}>{copy.source}</CheckedLink></p>}
       <h3>{copy.integrated}</h3>
       <ul className="record-list">{integratedPages.visible.map(school => <li key={String(school.schoolId)}><h3 lang="en">{String(school.schoolNameAsPublished)}</h3><p className="civic-meta">{c.schoolId}: {String(school.schoolId)}</p><SourceNote {...props} id={String(school.sourceId)} /></li>)}</ul>
       <Pagination {...integratedPages} locale={locale} label={copy.integrated} />
-    </section><aside className="civic-aside"><h2>{c.health}</h2>{health && <ul className="civic-links"><li><a lang="en" href={href(`government/offices/${health.category}`)}>{String(health.service)}<LinkArrow /></a></li></ul>}<SourceNote {...props} id={lgu.sourceIds.about} /></aside></div>
+    </section><aside className="civic-aside"><h2>{c.health}</h2>{health && <ul className="civic-links"><li><CheckedLink lang="en" href={href(`government/offices/${health.category}`)}>{String(health.service)}<LinkArrow /></CheckedLink></li></ul>}<SourceNote {...props} id={lgu.sourceIds.about} /></aside></div>
     <h2>{c.otherCoverage}</h2>
     <p className="civic-meta">{copy.topics}</p>
     {sectors.filter(row => row.sector !== 'education' && row.sector !== 'health').map(row => {
@@ -49,9 +50,9 @@ export function Places(props: CivicProps) {
       return <details key={String(row.sector)} className="civic-disclosure"><summary>{sectorTitles[String(row.sector)] || String(row.sector)}</summary>
         {typeof row.context === 'string' && <p lang="en">{row.context}</p>}
         {typeof row.notes === 'string' && <p lang="en">{row.notes}</p>}
-        {record && <><h3>{copy.record}</h3><p lang="en">{String(record.documentNumber)}: {String(record.title)}</p><p>{copy.indexOnly}</p>{typeof record.attachmentUrl === 'string' && <a href={record.attachmentUrl}>{String(record.documentNumber)}</a>}</>}
+        {record && <><h3>{copy.record}</h3><p lang="en">{String(record.documentNumber)}: {String(record.title)}</p><p>{copy.indexOnly}</p>{typeof record.attachmentUrl === 'string' && <CheckedLink href={record.attachmentUrl}>{String(record.documentNumber)}</CheckedLink>}</>}
         {rowsOfStrings(row.missingData).length > 0 && <><h3>{c.missingData}</h3><ul>{rowsOfStrings(row.missingData).map(value => <li key={value} lang="en">{value}</li>)}</ul></>}
-        {sources.length > 0 && <><h3>{copy.references}</h3><ul>{sources.map(url => <li key={url}><a href={url}>{new URL(url).hostname}</a></li>)}</ul></>}
+        {sources.length > 0 && <><h3>{copy.references}</h3><ul>{sources.map(url => <li key={url}><CheckedLink href={url}>{new URL(url).hostname}</CheckedLink></li>)}</ul></>}
         {typeof row.sourceId === 'string' && <SourceNote {...props} id={row.sourceId} />}
         {rowsOfStrings(row.sourceIds).map(id => <SourceNote key={id} {...props} id={id} />)}
         <RawRecord {...props} value={row} /></details>
@@ -68,10 +69,10 @@ export function Advisories(props: CivicProps) {
   return <>
     <PageIntro title={t.advisories} />
     <div className="civic-split"><section><h2>{c.officialResources}</h2><ul className="civic-links">
-      <li><a href="https://www.pagasa.dost.gov.ph/">{c.pagasa}<LinkArrow /></a></li>
-      <li><a href="https://www.phivolcs.dost.gov.ph/gis-web-hazard-maps">{c.phivolcs}<LinkArrow /></a></li>
-      <li><a href="https://hazardhunter.georisk.gov.ph/map">{c.hazardhunter}<LinkArrow /></a></li>
-    </ul><p className="civic-meta">{c.hazardLimit}</p><a href={href('government/offices')}>{c.publishedContacts}</a></section>
+      <li><CheckedLink href="https://www.pagasa.dost.gov.ph/">{c.pagasa}<LinkArrow /></CheckedLink></li>
+      <li><CheckedLink href="https://www.phivolcs.dost.gov.ph/gis-web-hazard-maps">{c.phivolcs}<LinkArrow /></CheckedLink></li>
+      <li><CheckedLink href="https://hazardhunter.georisk.gov.ph/map">{c.hazardhunter}<LinkArrow /></CheckedLink></li>
+    </ul><p className="civic-meta">{c.hazardLimit}</p><CheckedLink href={href('government/offices')}>{c.publishedContacts}</CheckedLink></section>
     <aside className="civic-aside"><h2>{c.planReference}</h2>{plan && <><p lang="en">{String(plan.documentNumber)}</p><h3 lang="en">{String(plan.title)}</h3></>}<p>{c.planLimit}</p><SourceNote {...props} id={lgu.sourceIds.legislative} /></aside></div>
     {rows(data.sectors.sectors).filter(row => /weather|disaster/.test(String(row.sector))).map(row => <RawRecord key={String(row.sector)} {...props} value={row} />)}
   </>

@@ -1,3 +1,4 @@
+import CheckedLink from './CheckedLink'
 import { useMemo, useState, type RefObject } from 'react'
 import type { DataPack } from '../data/loaders'
 import { searchPortal } from '../app/search'
@@ -38,9 +39,9 @@ export default function SearchPalette({ dialog, search, error, locale, href }: {
     </div>
     <div className="palette-body">
       {!search ? <p className="palette-message" role="status">{error ? t.loadError : t.loading}</p> : !query.trim() ? <p className="palette-message">{t.searchPrompt}</p> : !results.length ? <p className="palette-message" role="status">{t.noResults}</p> : <ul id="palette-results" role="listbox" aria-label={t.search}>
-        {results.map((row, index) => <li id={`palette-result-${index}`} role="option" aria-selected={index === active} key={`${row.type}:${row.id}`} onMouseMove={() => setActive(index)}><a href={href(row.path)} tabIndex={-1}><ResultIcon type={row.type} label={row.type === 'page' ? t.searchPage : row.type} /><span className="palette-result-title">{row.title}</span><span className="palette-arrow" aria-hidden="true">→</span></a></li>)}
+        {results.map((row, index) => <li id={`palette-result-${index}`} role="option" aria-selected={index === active} key={`${row.type}:${row.id}`} onMouseMove={() => setActive(index)}><CheckedLink href={href(row.path)} tabIndex={-1}><ResultIcon type={row.type} label={row.type === 'page' ? t.searchPage : row.type} /><span className="palette-result-title">{row.title}</span><span className="palette-arrow" aria-hidden="true">→</span></CheckedLink></li>)}
       </ul>}
-      {query.trim() && search && <a className="palette-all" href={`${href('search')}?q=${encodeURIComponent(query)}`}>{t.searchAll} <span aria-hidden="true">→</span></a>}
+      {query.trim() && search && <CheckedLink className="palette-all" href={`${href('search')}?q=${encodeURIComponent(query)}`}>{t.searchAll} <span aria-hidden="true">→</span></CheckedLink>}
     </div>
     <div className="palette-footer"><span><kbd>↑</kbd> <kbd>↓</kbd> {t.searchNavigate}</span><span><kbd>↵</kbd> {t.searchSelect}</span><span><kbd>esc</kbd> {t.searchDismiss}</span></div>
   </dialog>

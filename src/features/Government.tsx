@@ -1,3 +1,4 @@
+import CheckedLink from '../components/CheckedLink'
 import { useState } from 'react'
 import { lgu } from '../config/lgu'
 import { catalogs, formatDate, formatNumber } from '../i18n/locales'
@@ -18,7 +19,7 @@ export function Government(props: CivicProps) {
     ['government/barangays', t.barangays, c.barangaysDescription],
     ['open-lgu/terms', t.terms, c.termsDescription],
   ]
-  return <><PageIntro title={t.government} /><ul className="directory-grid">{links.map(([path, title, description]) => <li key={path}><h2><a className="government-link" href={href(path)}>{title}<LinkArrow /></a></h2><p className="muted">{description}</p></li>)}</ul><SourceNote {...props} id={lgu.sourceIds.executive} /><SourceNote {...props} id={lgu.sourceIds.legislative} /></>
+  return <><PageIntro title={t.government} /><ul className="directory-grid">{links.map(([path, title, description]) => <li key={path}><h2><CheckedLink className="government-link" href={href(path)}>{title}<LinkArrow /></CheckedLink></h2><p className="muted">{description}</p></li>)}</ul><SourceNote {...props} id={lgu.sourceIds.executive} /><SourceNote {...props} id={lgu.sourceIds.legislative} /></>
 }
 
 function Portrait({ recordId }: { recordId: string }) {
@@ -40,7 +41,7 @@ export function OfficialDetail(props: CivicProps & { recordId: string; correctio
   const dilg = evidence ? rows(data.officials.dilgDirectory).find(item => item.lastName === evidence.dilg) : undefined
   const result = evidence ? rows(data.officials.electionReturns).find(item => item.candidateAsPublished === evidence.returns) : undefined
   return <article className="official-profile">
-    <a className="service-back" href={href('government/officials')}>{fil ? '← Lahat ng nasa direktoryo' : '← All directory profiles'}</a>
+    <CheckedLink className="service-back" href={href('government/officials')}>{fil ? '← Lahat ng nasa direktoryo' : '← All directory profiles'}</CheckedLink>
     <div className="official-detail">
       <Portrait recordId={recordId} />
       <div><h1 lang="en">{String(row.displayName)}</h1><p lang="en">{String(row.directorySection)}</p>
@@ -66,7 +67,7 @@ export function OfficialDetail(props: CivicProps & { recordId: string; correctio
         <dt>{fil ? 'Termino ayon sa direktoryo' : 'Directory term'}</dt><dd>{String(dilg.term)}</dd>
         <dt>{fil ? 'Address ng opisina' : 'Office address'}</dt><dd lang="en">{String(dilg.officeAddress)}</dd>
         <dt>{fil ? 'Telepono ng opisina' : 'Office phone'}</dt><dd>{String(dilg.officePhone)}</dd>
-        <dt>Email</dt><dd><a href={`mailto:${String(dilg.officeEmail)}`}>{String(dilg.officeEmail)}</a></dd>
+        <dt>Email</dt><dd><CheckedLink href={`mailto:${String(dilg.officeEmail)}`}>{String(dilg.officeEmail)}</CheckedLink></dd>
       </dl>
       <SourceNote {...props} id="dilg-elective-officials-2025-2028" />
     </section>}
@@ -84,14 +85,14 @@ export function OfficialDetail(props: CivicProps & { recordId: string; correctio
       <SourceNote {...props} id="rappler-Pililla-2025-returns" />
     </section>}
     <section><h2>{fil ? 'Pinagmulan at katibayan' : 'Sources and evidence'}</h2>
-      <p>{fil ? 'Direktoryo ng Pililla E-Gov; ang tala ng direktoryo ay nakunan noong' : 'Pililla E-Gov directory; directory record captured'} {formatDate(String(data.officials.capturedAt), locale)}. <a href={sourcePage}>{fil ? 'Buksan ang direktoryo' : 'Open directory'}</a></p>
-      {portraitUrl(recordId) && <p>{fil ? 'Larawan mula sa parehong direktoryo, nakita noong' : 'Portrait from the same directory, observed'} {formatDate(portraitCaptureDate, locale)}. {fil ? 'Direktang nilo-load mula sa munisipal na site; walang nakasaad na photographer. Hindi nasuri ang naka-embed na karapatan.' : 'Loaded directly from the municipal site; photographer uncredited. Embedded rights metadata has not been reviewed.'} <a href={portraitUrl(recordId) || undefined}>{fil ? 'Orihinal na larawan' : 'Original image'}</a> · <a href={portraitRightsUrl}>{fil ? 'Pahayag ng site sa paggamit' : 'Site-wide rights statement'}</a></p>}
-      {roleEvidence && <><h3>{fil ? 'Katibayan ng katungkulan' : 'Role evidence'}</h3>{roleEvidence.evidenceText && <p lang="en">{String(roleEvidence.evidenceText)}</p>}{roleEvidence.notes && <p lang="en">{String(roleEvidence.notes)}</p>}<p lang="en">{String(roleEvidence.verificationStatus)}</p>{roleEvidence.documentUrl && <p><a href={String(roleEvidence.documentUrl)}>{String(roleEvidence.documentNumber)}</a></p>}<SourceNote {...props} id={String(roleEvidence.sourceId)} /></>}
+      <p>{fil ? 'Direktoryo ng Pililla E-Gov; ang tala ng direktoryo ay nakunan noong' : 'Pililla E-Gov directory; directory record captured'} {formatDate(String(data.officials.capturedAt), locale)}. <CheckedLink href={sourcePage}>{fil ? 'Buksan ang direktoryo' : 'Open directory'}</CheckedLink></p>
+      {portraitUrl(recordId) && <p>{fil ? 'Larawan mula sa parehong direktoryo, nakita noong' : 'Portrait from the same directory, observed'} {formatDate(portraitCaptureDate, locale)}. {fil ? 'Direktang nilo-load mula sa munisipal na site; walang nakasaad na photographer. Hindi nasuri ang naka-embed na karapatan.' : 'Loaded directly from the municipal site; photographer uncredited. Embedded rights metadata has not been reviewed.'} <CheckedLink href={portraitUrl(recordId) || undefined}>{fil ? 'Orihinal na larawan' : 'Original image'}</CheckedLink> · <CheckedLink href={portraitRightsUrl}>{fil ? 'Pahayag ng site sa paggamit' : 'Site-wide rights statement'}</CheckedLink></p>}
+      {roleEvidence && <><h3>{fil ? 'Katibayan ng katungkulan' : 'Role evidence'}</h3>{roleEvidence.evidenceText && <p lang="en">{String(roleEvidence.evidenceText)}</p>}{roleEvidence.notes && <p lang="en">{String(roleEvidence.notes)}</p>}<p lang="en">{String(roleEvidence.verificationStatus)}</p>{roleEvidence.documentUrl && <p><CheckedLink href={String(roleEvidence.documentUrl)}>{String(roleEvidence.documentNumber)}</CheckedLink></p>}<SourceNote {...props} id={String(roleEvidence.sourceId)} /></>}
       {row.verificationStatus && <p className="civic-meta" lang="en">{String(row.verificationStatus)}</p>}
       <SourceNote {...props} id={sourceId} />
     </section>
     <RawRecord {...props} value={row} />
-    <p><a href={correctionLink(recordId)}>{catalogs[locale].correction}</a></p>
+    <p><CheckedLink href={correctionLink(recordId)}>{catalogs[locale].correction}</CheckedLink></p>
   </article>
 }
 
@@ -113,7 +114,7 @@ export function Officials(props: CivicProps) {
   return <><PageIntro title={t.officials} />
     <div className="directory-tools"><label htmlFor="official-query">{c.filterDirectory}<input id="official-query" type="search" placeholder={c.directoryPlaceholder} value={query} onChange={event => setQuery(event.target.value)} /></label><label htmlFor="official-section">{c.directorySection}<select id="official-section" value={section} onChange={event => setSection(event.target.value)}><option value="">{c.allGroups}</option>{sections.map(value => <option key={value} value={value} lang="en">{value}</option>)}</select></label></div>
     <p className="civic-meta" role="status">{formatNumber(matching.length, locale)} {t.records}</p>
-    {!matching.length && <p>{t.noResults}</p>}<ul className="directory-grid">{visibleOfficials.map(row => <li key={String(row.recordId)}><div className="official-card"><Portrait recordId={String(row.recordId)} /><div><p className="civic-meta" lang="en">{String(row.directorySection)}</p><h2><a lang="en" href={href(`government/officials/${encodeURIComponent(String(row.recordId))}`)}>{String(row.displayName)}</a></h2>{row.roleLabel && <p className="directory-role" lang="en">{String(row.roleLabel)}</p>}{row.committeeLabel && <p lang="en">{String(row.committeeLabel)}</p>}{row.verificationStatus === 'primary-directory-card-observed; exact office or membership status unclear' && <p>{locale === 'fil' ? 'Hindi malinaw ang eksaktong katungkulan o pagiging kasapi.' : 'Exact office or membership status is unclear.'}</p>}<SourceNote {...props} id={String(row.sourceId || row.profileSourceId)} /></div></div></li>)}</ul>
+    {!matching.length && <p>{t.noResults}</p>}<ul className="directory-grid">{visibleOfficials.map(row => <li key={String(row.recordId)}><div className="official-card"><Portrait recordId={String(row.recordId)} /><div><p className="civic-meta" lang="en">{String(row.directorySection)}</p><h2><CheckedLink lang="en" href={href(`government/officials/${encodeURIComponent(String(row.recordId))}`)}>{String(row.displayName)}</CheckedLink></h2>{row.roleLabel && <p className="directory-role" lang="en">{String(row.roleLabel)}</p>}{row.committeeLabel && <p lang="en">{String(row.committeeLabel)}</p>}{row.verificationStatus === 'primary-directory-card-observed; exact office or membership status unclear' && <p>{locale === 'fil' ? 'Hindi malinaw ang eksaktong katungkulan o pagiging kasapi.' : 'Exact office or membership status is unclear.'}</p>}<SourceNote {...props} id={String(row.sourceId || row.profileSourceId)} /></div></div></li>)}</ul>
     <Pagination page={officialsPage} pages={officialsPages} setPage={setOfficialsPage} locale={locale} label={locale === 'fil' ? 'Mga pahina ng mga opisyal' : 'Official pages'} />
     {winners.length > 0 && <details className="civic-disclosure official-winners" open>
       <summary><h2 id="historical-winners">{locale === 'fil' ? 'Mga nanalo sa mga nakaraang halalan' : 'Historical election winners'}</h2></summary>
@@ -121,7 +122,7 @@ export function Officials(props: CivicProps) {
         <div><p>{locale === 'fil'
           ? 'Mga makasaysayang pahayag mula sa sekundaryang dataset, hindi patunay ng panunungkulan o kasalukuyang katungkulan. Hindi kumpleto ang saklaw; dalawa lamang ang tala para sa 2010. Hindi pa napagkakasundo ang pinagmulan ng mga tala noong 2004–2013; mula 2016 pataas ay nagmula sa itinamang dataset.'
           : 'Historical secondary-source claims, not evidence of tenure or current office. Coverage is incomplete; only two records are available for 2010. Provenance for 2004–2013 is unreconciled; records from 2016 onward are derived from the corrected dataset.'}</p>
-          <p>OpenHalalan: Leung et al. (2026), <a href="https://doi.org/10.5281/zenodo.17783099">DOI 10.5281/zenodo.17783099</a> · <a href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL 1.0</a> · <a href="https://data.bettergov.ph/datasets/25">BetterGov</a></p>
+          <p>OpenHalalan: Leung et al. (2026), <CheckedLink href="https://doi.org/10.5281/zenodo.17783099">DOI 10.5281/zenodo.17783099</CheckedLink> · <CheckedLink href="https://opendatacommons.org/licenses/odbl/1-0/">ODbL 1.0</CheckedLink> · <CheckedLink href="https://data.bettergov.ph/datasets/25">BetterGov</CheckedLink></p>
         </div>
         <SourceNote {...props} id="openhalalan-winners" />
         <div className="directory-tools"><label htmlFor="winner-query">{locale === 'fil' ? 'Maghanap ng nanalo' : 'Search winners'}<input id="winner-query" type="search" value={winnerQuery} onChange={event => setWinnerQuery(event.target.value)} /></label><label htmlFor="winner-year">{locale === 'fil' ? 'Taon ng halalan' : 'Election year'}<select id="winner-year" value={winnerYear} onChange={event => setWinnerYear(event.target.value)}><option value="">{locale === 'fil' ? 'Lahat ng taon' : 'All years'}</option>{years.map(year => <option key={year} value={year}>{year}</option>)}</select></label></div>
@@ -140,11 +141,11 @@ export function Contacts(props: CivicProps & { officeId?: string }) {
   const contacts = rows(data.contacts.records).filter(row => !officeId || row.category === officeId)
   const { visible, page, pages, setPage } = usePagination(contacts, officeId)
   return <><PageIntro title={t.offices} />
-    {!contacts.length && <><h2>{t.notFound}</h2><a href={href('government/offices')}>{c.publishedContacts}</a></>}
-    <ul className="directory-grid">{visible.map(row => <li key={String(row.category)}><h2><a lang="en" href={href(`government/offices/${row.category}`)}>{String(row.service)}</a></h2>
+    {!contacts.length && <><h2>{t.notFound}</h2><CheckedLink href={href('government/offices')}>{c.publishedContacts}</CheckedLink></>}
+    <ul className="directory-grid">{visible.map(row => <li key={String(row.category)}><h2><CheckedLink lang="en" href={href(`government/offices/${row.category}`)}>{String(row.service)}</CheckedLink></h2>
       {row.addressAsPublished && <p lang="en">{String(row.addressAsPublished)}</p>}
-      {Array.isArray(row.emailsAsPublished) && <ul className="civic-links">{row.emailsAsPublished.filter((email): email is string => typeof email === 'string').map(email => <li key={email}><a href={`mailto:${email}`}>{email}</a></li>)}</ul>}
-      <ul className="civic-links">{(row.numbersAsPublished as string[]).map(number => <li key={number}>{/^\+?[\d\s()-]+$/.test(number) ? <a className="civic-phone" href={`tel:${number.replace(/[^+\d]/g, '')}`}>{number}</a> : number}</li>)}</ul>
+      {Array.isArray(row.emailsAsPublished) && <ul className="civic-links">{row.emailsAsPublished.filter((email): email is string => typeof email === 'string').map(email => <li key={email}><CheckedLink href={`mailto:${email}`}>{email}</CheckedLink></li>)}</ul>}
+      <ul className="civic-links">{(row.numbersAsPublished as string[]).map(number => <li key={number}>{/^\+?[\d\s()-]+$/.test(number) ? <CheckedLink className="civic-phone" href={`tel:${number.replace(/[^+\d]/g, '')}`}>{number}</CheckedLink> : number}</li>)}</ul>
       <p className="civic-meta">{t.checked}: {formatDate(String(row.capturedAt || data.contacts.capturedAt), locale)} · {c.validation}: {c.notPerformed}</p>
       <SourceNote {...props} id={String(row.sourceId || data.contacts.sourceId)} />{officeId && <RawRecord {...props} value={row} />}</li>)}</ul>
     <Pagination page={page} pages={pages} setPage={setPage} locale={locale} label={locale === 'fil' ? 'Mga pahina ng mga tanggapan' : 'Office pages'} />

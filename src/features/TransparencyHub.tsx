@@ -1,3 +1,4 @@
+import CheckedLink from '../components/CheckedLink'
 import { catalogs } from '../i18n/locales'
 import { PageIntro, type CivicProps } from './Civic'
 
@@ -42,10 +43,10 @@ export default function TransparencyHub({ locale, href }: CivicProps) {
     <ul className="directory-grid">
       {pillars.map(pillar => <li key={pillar.path}>
         <p className="civic-meta">{pillar.badge}</p>
-        <h2><a href={href(pillar.path)}>{pillar.title}</a></h2>
+        <h2><CheckedLink href={href(pillar.path)}>{pillar.title}</CheckedLink></h2>
         <p>{pillar.text}</p>
       </li>)}
     </ul>
-    <p><a href={href('sources')}>{t.sources}</a></p>
+    <p><CheckedLink href={href('sources')}>{t.sources}</CheckedLink></p>
   </>
 }

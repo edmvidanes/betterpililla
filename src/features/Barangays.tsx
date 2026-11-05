@@ -1,3 +1,4 @@
+import CheckedLink from '../components/CheckedLink'
 import { useState } from 'react'
 import { barangayId } from '../domain/ids'
 import { rows, type DataRecord } from '../data/loaders'
@@ -25,10 +26,10 @@ export default function Barangays(props: CivicProps & { recordId?: string; corre
     .sort((a, b) => sort === 'population' ? (valueFor(b) ?? -1) - (valueFor(a) ?? -1) || a.localeCompare(b, locale) : a.localeCompare(b, locale))
   const { visible, page, pages, setPage } = usePagination(matching, JSON.stringify([query, year, sort, recordId]))
   const maximum = Math.max(1, ...populationRows.map(row => Number(row[`population${year}`]) || 0))
-  if (recordId && !name) return <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><code>{recordId}</code><p><a href={href('government/barangays')}>{c.backBarangays}</a></p></>
+  if (recordId && !name) return <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><code>{recordId}</code><p><CheckedLink href={href('government/barangays')}>{c.backBarangays}</CheckedLink></p></>
 
   return <>
-    {name && <p><a href={href('government/barangays')}>{c.backBarangays}</a></p>}
+    {name && <p><CheckedLink href={href('government/barangays')}>{c.backBarangays}</CheckedLink></p>}
     <PageIntro title={name || t.barangays} />
     <div className="barangay-layout">
       <section aria-labelledby="barangay-population-title">
@@ -59,15 +60,15 @@ export default function Barangays(props: CivicProps & { recordId?: string; corre
           </ul>}
           <SourceNote {...props} id={String(population.sourceId)} />
           {claims.filter(claim => (claim.namesAsPublished as string[] | null)?.includes(name)).map(claim => <SourceNote {...props} key={String(claim.sourceId)} id={String(claim.sourceId)} />)}
-          <p><a href={correctionLink(recordId!)}>{t.correction}</a></p>
+          <p><CheckedLink href={correctionLink(recordId!)}>{t.correction}</CheckedLink></p>
         </> : <>
           {!matching.length && <p>{t.noResults}</p>}
           <ul className="barangay-bars">{visible.map(value => {
             const count = valueFor(value)
-            return <li key={value}><a href={href(`government/barangays/${encodeURIComponent(barangayId(value))}`)}>
+            return <li key={value}><CheckedLink href={href(`government/barangays/${encodeURIComponent(barangayId(value))}`)}>
               <span className="barangay-bar-label"><strong lang="en">{value}</strong><span>{count === null ? c.coverageMissing : formatNumber(count, locale)}</span></span>
               {count !== null && <span className="barangay-bar-track" aria-hidden="true"><span style={{ width: `${count / maximum * 100}%` }} /></span>}
-            </a></li>
+            </CheckedLink></li>
           })}</ul>
           <Pagination page={page} pages={pages} setPage={setPage} locale={locale} label={locale === 'fil' ? 'Mga pahina ng mga barangay' : 'Barangay pages'} />
           <SourceNote {...props} id={String(population.sourceId)} />

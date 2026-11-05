@@ -1,3 +1,4 @@
+import CheckedLink from './CheckedLink'
 import type { ReactNode } from 'react'
 import type { EvidenceValue } from '../data/loaders'
 import type { NormalizedSource as SourceRecord } from '../domain/types'
@@ -7,12 +8,12 @@ import { normalizeStatus } from '../domain/status'
 
 export function ExternalDocumentLink({ url, children }: { url: string; children?: ReactNode }) {
   if (!/^https?:\/\//.test(url)) return <span>{url}</span>
-  return <a href={url} rel="noreferrer">{children ?? url}</a>
+  return <CheckedLink href={url} rel="noreferrer">{children ?? url}</CheckedLink>
 }
 export function SourceCitation({ source, href, locale }: { source: SourceRecord; href: string; locale: Locale }) {
   const c = civicCatalogs[locale]
   return <details className="citation"><summary>{source.name || source.publisher}<span>{source.lastCheckedAt}</span></summary>
-    <a href={href}>{c.sourceDetails}</a>
+    <CheckedLink href={href}>{c.sourceDetails}</CheckedLink>
     <p><ExternalDocumentLink url={source.url || source.canonicalUrl || ''} /></p>
     <dl>
       <div><dt>{c.verification}</dt><dd>{c[source.status.verificationStatus]}</dd></div>
@@ -32,7 +33,7 @@ export function EvidenceTree({ value, locale, sources, sourceHref }: { value: Ev
   if (typeof value === 'boolean') return <span lang="en">{String(value)}</span>
   if (typeof value === 'string') {
     const source = sources.find(s => s.id === value || s.sourceId === value)
-    return source ? <a href={sourceHref(source.id || source.sourceId!)}>{source.name || source.publisher}</a> : /^https?:\/\//.test(value) ? <ExternalDocumentLink url={value} /> : <span className="source-text">{value}</span>
+    return source ? <CheckedLink href={sourceHref(source.id || source.sourceId!)}>{source.name || source.publisher}</CheckedLink> : /^https?:\/\//.test(value) ? <ExternalDocumentLink url={value} /> : <span className="source-text">{value}</span>
   }
   if (typeof value === 'number') return <span className="tabular-nums">{value.toLocaleString(locale === 'fil' ? 'fil-PH' : 'en-PH', { maximumFractionDigits: 20 })}</span>
   if (Array.isArray(value)) return <ul className="evidence-list">{value.map((entry, i) => <li key={i}><EvidenceTree value={entry} locale={locale} sources={sources} sourceHref={sourceHref} /></li>)}</ul>
