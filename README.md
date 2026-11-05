@@ -3,7 +3,7 @@
 BetterPililla is an independent, bilingual public-information portal for Pililla, Rizal. It is a static site, not an official government website. The codebase can be adapted for another municipality by replacing its data and configuration.
 
 
-> **Local POC status (2026-11-03):** Forked locally from the BetterCavinti template. Identity, config, municipality, barangay and officials packs are Pililla-specific (officials and PSGC/population marked unverified pending PSA/COMELEC/DILG primary extracts). Logo is an original Pililla wind-farm community emblem (not an official seal). Transparency hub is live and Pililla-only: procurement and DPWH projects query the shared BetterGov search (search2.bettergov.ph) filtered to Pililla; finance shows an honest empty state until a verified Pililla SRE is captured with source URL + capture date. News section removed. Legislation is gated behind a not-yet-collected notice (the template's other-municipality records are withdrawn from pages, search and sitemap). Still scaffolds - do NOT publish until replaced with Pililla-sourced records: services Citizens' Charter details and sector-inventory. No GitHub repo, domain or deployment yet. Official LGU site: https://pilillarizal.gov.ph
+> **Local preview (2026-11-05):** Adapted from BetterCavinti for `betterpililla` and the future `https://betterpililla.org` domain. No public GitHub repository or deployment has been created. Foreign template services, legislation, sector listings and research are withheld from generated downloads, search and pages. Missing population, services and history show collection notices; official names remain explicitly unverified. The published 2024 Pililla Citizens’ Charter is linked as an official source, with no claim that its requirements are current. Photography is credited to Froi Rivera under CC BY-SA 4.0. Docker files are ready, but container execution has not been verified because Docker Desktop is not installed. See [local setup and verification](docs/LOCAL_SETUP.md).
 
 ## run locally
 
@@ -13,6 +13,29 @@ Requires Node.js 24 and npm.
 npm ci
 npm run dev
 ```
+
+To review the production build locally:
+
+```sh
+npm run build
+npm run local:serve
+```
+
+Open **http://127.0.0.1:4173/**. The server binds to localhost only.
+
+## local containers
+
+Requires Docker Desktop running with Linux containers and Docker Compose v2:
+
+```sh
+npm run container:up
+npm run container:status
+npm run container:down
+```
+
+The container serves **http://127.0.0.1:8080/**. `Dockerfile` builds with Node.js 24, then copies only the static output into an unprivileged Nginx image. Compose uses a read-only filesystem, a temporary `/tmp`, no Linux capabilities and a health check. No database is required. This configuration is prepared for a future runtime check; the current preview runs directly under Node.
+
+To run the browser tests, first install Chromium with `npx playwright install chromium`. On Windows, you can instead set `PLAYWRIGHT_EXECUTABLE_PATH` to your installed Edge executable. Set `PLAYWRIGHT_BASE_URL` to test an already running local preview or container; otherwise Playwright starts Vite automatically.
 
 Useful checks:
 
@@ -32,6 +55,8 @@ React 19, TypeScript, Vite, Tailwind CSS 4 and Kapwa. MapLibre GL provides the m
 ## data
 
 `data/pililla/` holds the reviewed source data. `public/data/` is generated during development and builds; do not edit it. Data schemas and validation live in `data/schemas/` and `src/domain/`. Sources, capture dates, evidence and coverage gaps are part of the data—keep them with each dataset, and do not treat missing information as zero or verified fact.
+
+The retained source pack still contains foreign template records for reference. `lgu.withheldDatasets` applies an explicit publication policy during `data:build`: affected records become empty `civic-withheld/v1` notices with their own schema and regenerated download hashes. Raw template files are not copied into the runtime image. Remove a dataset from that list only after replacing and reviewing its Pililla source records. The separate inherited other-documents snapshot is also excluded from the site.
 
 Finance and income tables show the newest fiscal years first; project and procurement listings use the snapshot year and displayed source date, respectively. Borrowing opinions are ordered by resolution date.
 

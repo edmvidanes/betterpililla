@@ -22,7 +22,7 @@ User selected a restrained Kapwa-style interface with Tailwind. The landing page
 
 ## Evidence on Hand
 
-Canonical snapshot in data/pililla. Legislation contains complete captured index metadata, not reviewed attachment contents. Services, finances, projects, boundaries and other datasets have explicit gaps. Contacts are not live-validated.
+The retained snapshot in data/pililla contains foreign template records. The explicit publication policy withholds them from downloads, search and routes. Pililla source collection remains incomplete for legislation, services, sectors, history, population and budgets. Official names and secondary barangay names retain their verification limits. The official 2024 Citizens' Charter is a dated source link, without transcribed instructions. No social URLs or contact numbers are presented as live-validated.
 
 ## Product Principles
 
