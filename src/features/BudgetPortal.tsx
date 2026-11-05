@@ -10,7 +10,7 @@ function portalPath(route: string) {
 export default function BudgetPortal({ locale, route }: { locale: Locale; route: string }) {
   const frame = useRef<HTMLIFrameElement>(null)
   const currentPath = useRef(portalPath(route))
-  const [source, setSource] = useState(`${import.meta.env.BASE_URL}budget-portal${currentPath.current}`)
+  const [source, setSource] = useState(() => `${import.meta.env.BASE_URL}budget-portal${portalPath(route)}`)
   const [height, setHeight] = useState(720)
   const [ready, setReady] = useState(false)
   const [failed, setFailed] = useState(false)
