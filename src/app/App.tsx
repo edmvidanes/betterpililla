@@ -235,7 +235,7 @@ function App({ initialPath }: { initialPath?: string }) {
         <CheckedLink className="initiative-link" href="https://lgu.bettergov.ph/">{t.joinInitiative}</CheckedLink>
         <CheckedLink href={href('about')}>{t.about}</CheckedLink>
         <CheckedLink href={lgu.officialUrl}>{t.officialWebsite}</CheckedLink>
-        <CheckedLink href={href('government/offices')}>{t.hotlines}</CheckedLink>
+        <CheckedLink href={href('services/public-contacts')}>{t.hotlines}</CheckedLink>
         <CheckedLink href={`${base}${locale === 'en' ? 'fil' : 'en'}/${route.split('/').map(encodeURIComponent).join('/')}${route === '' ? homeSuffix : location.search + location.hash}`} lang={locale === 'en' ? 'fil' : 'en'} hrefLang={locale === 'en' ? 'fil' : 'en'}>{locale === 'en' ? 'Filipino' : 'English'}</CheckedLink>
       </nav>
     </div></div>
@@ -260,7 +260,7 @@ function App({ initialPath }: { initialPath?: string }) {
         <div className="mobile-project-links">
           <CheckedLink href={href('about')}>{t.about}</CheckedLink>
           <CheckedLink href={lgu.officialUrl}>{t.officialWebsite}</CheckedLink>
-          <CheckedLink href={href('government/offices')}>{t.hotlines}</CheckedLink>
+          <CheckedLink href={href('services/public-contacts')}>{t.hotlines}</CheckedLink>
           <CheckedLink href={`${base}${locale === 'en' ? 'fil' : 'en'}/${route.split('/').map(encodeURIComponent).join('/')}${route === '' ? homeSuffix : location.search + location.hash}`} lang={locale === 'en' ? 'fil' : 'en'} hrefLang={locale === 'en' ? 'fil' : 'en'}>{locale === 'en' ? 'Filipino' : 'English'}</CheckedLink>
         </div>
       </nav>

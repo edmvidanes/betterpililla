@@ -17,6 +17,7 @@ test('main services links to the district and assistance while municipal records
   await expect(page.locator('[data-external-url="https://forms.gle/JnXpRmUmLsUMfvDN6"]')).toContainText('WorkInProgress')
   await expect(page.locator('a[href="https://forms.gle/JnXpRmUmLsUMfvDN6"]')).toHaveCount(0)
   await expect(page.locator('#services a[href$="WAIVER-TRANSFER-OF-RIGHT.bmp"]')).toHaveCount(1)
+  await expect(page.locator('main a[href="https://prwd.gov.ph/"]')).toHaveCount(1)
   await expect(page.locator('#services')).toContainText('Contract Agreement Form — WorkInProgress')
 })
 test('public hotlines are dialable and retain their verification limits on mobile', async ({ page }) => {
@@ -26,6 +27,7 @@ test('public hotlines are dialable and retain their verification limits on mobil
   await expect(page.locator('main a[href="tel:+639179398558"]')).toHaveText('0917-939-8558')
   await expect(page.locator('main')).toContainText('hindi nasubukan ang mga numero')
   await expect(page.locator('#provincial-offices tbody tr')).toHaveCount(15)
+  await expect(page.locator('.community-bar a[href="/fil/services/public-contacts"]')).toHaveCount(1)
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
   await page.locator('.menu-toggle').click()
   await page.getByRole('link', { name: 'English', exact: true }).first().click()
