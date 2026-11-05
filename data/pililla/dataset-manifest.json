@@ -3,8 +3,8 @@
   "municipality": {
     "recordId": "ph:rizal:pililla",
     "name": "Pililla",
-    "province": "Laguna",
-    "psgcCode": "0403407000",
+    "province": "Rizal",
+    "psgcCode": "0405810000",
     "psgcCodeStatus": "indexed-primary-direct-fetch-blocked"
   },
   "generatedAt": "2026-10-28T12:34:27.238Z",

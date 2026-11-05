@@ -1,0 +1,6 @@
+[
+  { "id": "psa-pililla", "phase": 1, "kind": "html", "url": "https://psa.gov.ph/classification/psgc/barangays/0405810000", "purpose": "Municipality identifier, dated barangay roster and population table" },
+  { "id": "psa-rizal", "phase": 1, "kind": "html", "url": "https://psa.gov.ph/classification/psgc/citimuni/0405800000", "purpose": "Confirm province and municipality code" },
+  { "id": "municipal-home", "phase": 1, "kind": "html", "url": "https://pilillarizal.gov.ph/", "purpose": "Discover municipal records and source links" },
+  { "id": "citizen-charter-2024", "phase": 2, "kind": "pdf", "url": "https://pilillarizal.gov.ph/wp-content/uploads/2025/06/Pililla_CC_2024.pdf", "purpose": "Service and office inventory; 2024 edition requires a current-version check" }
+]
