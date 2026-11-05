@@ -1,0 +1,19 @@
+.provider-records > section { margin-block: 2.5rem; scroll-margin-top: 7rem; }
+.provider-records .directory-grid { margin-block: 1.5rem; }
+.provider-records .directory-grid h3 { margin-top: 0; }
+.provider-records a { overflow-wrap: anywhere; }
+.provider-phone { font-size: 1.2rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.provider-table { overflow-x: auto; max-width: 100%; margin-block: 1rem; }
+.provider-table table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.provider-table caption { text-align: left; padding-block: .5rem; color: var(--text-muted, #4b5563); }
+.provider-table th, .provider-table td { padding: .8rem; text-align: left; vertical-align: top; border-bottom: 1px solid #d7e0e8; }
+.provider-table th { background: #f3f7fa; font-weight: 600; }
+.provider-table td.money { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.provider-review { margin-block: 1rem; border: 1px solid #d7e0e8; border-radius: .5rem; padding: 1rem; }
+.provider-review summary { cursor: pointer; font-weight: 600; }
+.provider-review li { margin-block: .6rem; }
+.provider-source-text { white-space: pre-wrap; line-height: 1.7; overflow-wrap: anywhere; }
+.provider-select { display: block; margin-block: 1rem; }
+.provider-select select { margin-left: .7rem; padding: .5rem; background: white; border: 1px solid #94a3b8; border-radius: .3rem; }
+.provider-chart { display: block; width: 100%; max-width: 780px; height: auto; margin-block: 1rem; }
+@media (max-width: 600px) { .provider-table { font-size: .85rem; } .provider-table th, .provider-table td { padding: .6rem; } .provider-records > section { margin-block: 2rem; } }
