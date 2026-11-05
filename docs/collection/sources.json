@@ -2,5 +2,15 @@
   { "id": "psa-pililla", "phase": 1, "kind": "html", "url": "https://psa.gov.ph/classification/psgc/barangays/0405810000", "purpose": "Municipality identifier, dated barangay roster and population table" },
   { "id": "psa-rizal", "phase": 1, "kind": "html", "url": "https://psa.gov.ph/classification/psgc/citimuni/0405800000", "purpose": "Confirm province and municipality code" },
   { "id": "municipal-home", "phase": 1, "kind": "html", "url": "https://pilillarizal.gov.ph/", "purpose": "Discover municipal records and source links" },
-  { "id": "citizen-charter-2024", "phase": 2, "kind": "pdf", "url": "https://pilillarizal.gov.ph/wp-content/uploads/2025/06/Pililla_CC_2024.pdf", "purpose": "Service and office inventory; 2024 edition requires a current-version check" }
+  { "id": "citizen-charter-2024", "phase": 2, "kind": "pdf", "url": "https://pilillarizal.gov.ph/wp-content/uploads/2025/06/Pililla_CC_2024.pdf", "purpose": "Service and office inventory; 2024 edition requires a current-version check" },
+  { "id": "dilg-elected-officials-response", "phase": 3, "kind": "html", "url": "https://www.foi.gov.ph/agencies/dilg/list-of-elected-local-officials/", "purpose": "DILG response linking its 2025-2028 elective-official directory" },
+  { "id": "dilg-directory-folder", "phase": 3, "kind": "html", "url": "https://drive.google.com/drive/folders/1fcyeVj_aNF3mdcnDq8rvL8Zj9r77oLZw", "purpose": "Public directory linked by DILG; retrieve the actual file and filter Rizal/Pililla before publishing" },
+  { "id": "psa-pililla-brap-2026", "phase": 3, "kind": "html", "url": "https://rsso04a.psa.gov.ph/content/psa-rizal-and-lgu-pililla-award-certificates-live-birth-security-papers-beneficiaries-birth", "purpose": "Dated May 2026 corroboration of named municipal officials, not a complete roster" },
+  { "id": "dilg-directory-sheet", "phase": 3, "kind": "html", "url": "https://docs.google.com/spreadsheets/d/1B2N5SjZEBP-29tUioFHaSk-6R_1YFGcYIkSPjuApxZw/htmlview", "purpose": "Actual public worksheet linked from the DILG directory folder" },
+  { "id": "dilg-directory-rows", "phase": 3, "kind": "html", "url": "https://docs.google.com/spreadsheets/d/1B2N5SjZEBP-29tUioFHaSk-6R_1YFGcYIkSPjuApxZw/htmlview/sheet?headers=true&gid=1213553854", "purpose": "Consolidated Directory as February 2026 tab, discovered in the public sheet HTML" },
+  { "id": "psgc-2026-q3", "phase": 4, "kind": "xlsx", "url": "https://psa.gov.ph/system/files/scd/PSGC-3Q-2026-Publication-Datafile.xlsx", "purpose": "30 September 2026 PSGC publication linked from the PSA municipality page" },
+  { "id": "cmci-home", "phase": 4, "kind": "html", "url": "https://cmci.dti.gov.ph/", "purpose": "Find an actual Pililla profile and its year; no ranking inferred from unrelated research" },
+  { "id": "blgf-income-class", "phase": 4, "kind": "html", "url": "https://blgf.gov.ph/lgu-income-class/", "purpose": "Find DOF Order 074-2024 and its municipality annex" },
+  { "id": "coa-pililla-2025", "phase": 5, "kind": "html", "url": "https://www.coa.gov.ph/wpfd_file/pililla-annual-audit-report-2025/", "purpose": "COA landing page; retrieve the actual 2025 audit PDF before reporting findings" },
+  { "id": "dilg-full-disclosure", "phase": 5, "kind": "html", "url": "https://fdpp.dilg.gov.ph/", "purpose": "Locate Pililla Rizal budget, SRE, AIP, APP and financial disclosure documents" }
 ]

@@ -9,7 +9,8 @@ const run = promisify(execFile)
 const root = fileURLToPath(new URL('../', import.meta.url))
 const phase = Number(process.argv[2])
 if (!Number.isInteger(phase) || phase < 1 || phase > 6) throw new Error('Choose a phase: node scripts/collect-public-records.mjs 1..6')
-const sources = JSON.parse(await readFile(join(root, 'docs/collection/sources.json'), 'utf8')).filter(source => source.phase === phase)
+const sources = JSON.parse(await readFile(join(root, 'docs/collection/sources.json'), 'utf8')).filter(source => source.phase === phase && (!process.argv[3] || source.id === process.argv[3]))
+if (!sources.length) throw new Error('No matching catalog sources')
 const startedAt = new Date().toISOString()
 const output = resolve(root, '.cache/public-records', startedAt.replace(/[:.]/g, '-'), `phase-${phase}`)
 await mkdir(output, { recursive: true })
@@ -31,7 +32,7 @@ for (const source of sources) {
   const contentType = metadata.content_type || null
   const text = bytes.toString('utf8')
   const errorPage = /access denied|request blocked|just a moment|captcha|<title>\s*(error|404|403)/i.test(text.slice(0, 12000))
-  const expectedFormat = source.kind === 'pdf' ? bytes.subarray(0, 5).toString() === '%PDF-' : source.kind === 'json' ? /json/i.test(contentType || '') : /html/i.test(contentType || '')
+  const expectedFormat = source.kind === 'pdf' ? bytes.subarray(0, 5).toString() === '%PDF-' : source.kind === 'xlsx' ? bytes.subarray(0, 2).toString() === 'PK' && /spreadsheetml/i.test(contentType || '') : source.kind === 'json' ? /json/i.test(contentType || '') : /html/i.test(contentType || '')
   const captured = !failure && httpStatus >= 200 && httpStatus < 300 && bytes.length > 100 && expectedFormat && !errorPage
   const result = {
     ...source, capturedAt, method: 'curl-https-valid-tls', httpStatus, contentType,
