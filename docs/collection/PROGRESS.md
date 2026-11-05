@@ -106,4 +106,5 @@ Evidence: [first-pass report](README.md), [PRWD/Rizal report](PRWD-RIZAL.md), [m
 | Date | Progress update | Validation / outcome |
 | --- | --- | --- |
 | 2026-11-05 | First municipal pass: 17 source attempts (7 captures, 10 blocked); provider collection: 67 documents | Source evidence retained; municipal records withheld pending review |
-| 2026-11-06 | Moved the 17-section/six-phase plan to this Markdown tracker; established A/B/C baseline (10/51) | No new source collection; website plan/navigation removed; QA recorded after build |
+| 2026-11-06 | Moved the 17-section/six-phase plan to this Markdown tracker; established A/B/C baseline (10/51) | No new source collection; website plan/navigation and public request checklist removed; QA results |
+| 2026-11-06 | Removed the About template-attribution paragraph and three extra Public Contacts links; added homepage Transparency shortcut | English/Filipino checks pass; collected records retained; collection checkpoints unchanged |

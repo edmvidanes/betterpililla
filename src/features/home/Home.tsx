@@ -174,7 +174,7 @@ export default function Home({ locale, data, href, search, dataStatus }: {
     <section className="atlas-shortcuts" aria-labelledby="atlas-shortcuts-title">
       <div className="atlas-inner">
         <h2 id="atlas-shortcuts-title">{t.atlasShortcuts}</h2>
-        {links(['services', 'officials', 'legislation', 'downloads'])}
+        {links(['services', 'officials', 'legislation', 'transparency', 'downloads'])}
       </div>
     </section>
 
