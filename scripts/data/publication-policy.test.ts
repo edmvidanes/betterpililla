@@ -15,7 +15,7 @@ test('Pililla publication withholds foreign records across downloads, hashes and
   const temporary = await mkdtemp(join(tmpdir(), 'betterpililla-publication-'));
   const destination = join(temporary, 'data');
   try {
-    const portal = await publish(pack, destination, lgu.withheldDatasets);
+    const portal = await publish(pack, destination);
     const schema = JSON.parse(await readFile(join(destination, 'schemas/withheld.schema.json'), 'utf8'));
     const validate = new Ajv().compile(schema);
     for (const id of lgu.withheldDatasets) {

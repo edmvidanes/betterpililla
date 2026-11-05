@@ -12,7 +12,7 @@ import { publicationDocuments, withheldSchema } from './publication-policy.ts';
 import { lgu } from '../../src/config/lgu.ts';
 
 /** Validate before touching publication; a failed build leaves the last good directory intact. */
-export async function publish(pack: DataPack, destination = resolve('public/data'), withheld: readonly string[] = []): Promise<Portal> {
+export async function publish(pack: DataPack, destination = resolve('public/data'), withheld: readonly string[] = basename(pack.root) === lgu.slug ? lgu.withheldDatasets : []): Promise<Portal> {
   validatePack(pack);
   const { files } = pack;
   const { documents, rewritten } = publicationDocuments(pack, withheld);

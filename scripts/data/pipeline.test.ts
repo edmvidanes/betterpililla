@@ -34,7 +34,7 @@ test('full reviewed snapshot publishes every JSON byte, all 4898 legislative row
   const pack = await loadDataPack();
   const directory = await mkdtemp(join(tmpdir(), 'civic-publication-'));
   try {
-    const portal = await publish(pack, join(directory, 'data'));
+    const portal = await publish(pack, join(directory, 'data'), []);
     const search: SearchRow[] = JSON.parse(await readFile(join(directory, 'data', 'search-index.json'), 'utf8'));
     assert.equal('search' in portal, false);
     const legislation = search.filter((row) => row.type === 'legislation');
