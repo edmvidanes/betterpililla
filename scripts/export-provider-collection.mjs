@@ -24,7 +24,7 @@ for (const row of unique) {
   let sourceDate = null
   if (kind === 'html' && row.httpStatus === 200) {
     const html = await readFile(join(row.folder, row.file), 'utf8')
-    sourceDate = html.match(/datetime=["']([^"']+)["']/)?.[1] || html.match(/\| ([A-Z][a-z]{2} \d{1,2}, \d{4}) \|/)?.[1] || null
+    sourceDate = html.match(/datetime=["']([^"']+)["']/)?.[1] || html.match(/class=["']published["'][^>]*>([^<]+)</)?.[1] || html.match(/\| ([A-Z][a-z]{2} \d{1,2}, \d{4}) \|/)?.[1] || null
   }
   const excluded = /author\/|blogger-gb|\/sample\/?$|sitemap|robots|cropped-logo|\/logo|commission-logo|DBM-logo|GSIS-logo|philgeps-logo|lwua-logo|pawd-logo|gpppb-logo|iqwd.qdev/.test(row.url) || row.placeholder
   inventory.push({ id: row.id, url: row.url, title: row.title || row.label || new URL(row.url).pathname.split('/').pop(), agency: /prwd.gov.ph/.test(row.url) ? 'Pililla Water District' : /rizalprovince.ph/.test(row.url) ? 'Rizal Provincial Government' : 'Linked external service', kind, sourceDate, capturedAt: row.capturedAt, httpStatus: row.httpStatus, bytes: row.bytes, sha256: row.sha256, status: excluded ? 'excluded-template-or-out-of-scope' : row.httpStatus === 200 && !row.reason ? 'collected-for-review' : 'WorkInProgress', pages: extraction.get(row.id)?.pages ?? null, imageOnlyPages: extraction.get(row.id)?.imageOnlyPages ?? [], sheets: extraction.get(row.id)?.sheets ?? [] })
