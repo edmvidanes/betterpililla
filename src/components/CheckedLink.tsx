@@ -2,7 +2,7 @@ import type { ComponentProps } from 'react'
 import audit from '../data/link-audit.json'
 import './work-in-progress.css'
 
-type Result = { url: string; status: string; reason?: string }
+type Result = { url: string; status: string; reason?: string; checkedAt?: string }
 const checked = new Map((audit.links as Result[]).map(row => [row.url.replace(/#.*$/, ''), row]))
 export function linkStatus(href: string) {
   if (!/^https?:\/\//.test(href) || /^https?:\/\/(127\.0\.0\.1|localhost)(:|\/)/.test(href)) return null

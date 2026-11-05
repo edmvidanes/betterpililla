@@ -1,4 +1,4 @@
-import CheckedLink from './CheckedLink'
+import CheckedLink, { linkStatus } from './CheckedLink'
 import type { ReactNode } from 'react'
 import type { EvidenceValue } from '../data/loaders'
 import type { NormalizedSource as SourceRecord } from '../domain/types'
@@ -12,10 +12,12 @@ export function ExternalDocumentLink({ url, children }: { url: string; children?
 }
 export function SourceCitation({ source, href, locale }: { source: SourceRecord; href: string; locale: Locale }) {
   const c = civicCatalogs[locale]
+  const currentCheck = linkStatus(source.url || source.canonicalUrl || '')
   return <details className="citation"><summary>{source.name || source.publisher}<span>{source.lastCheckedAt}</span></summary>
     <CheckedLink href={href}>{c.sourceDetails}</CheckedLink>
     <p><ExternalDocumentLink url={source.url || source.canonicalUrl || ''} /></p>
     <dl>
+      {currentCheck && <div><dt>{locale === 'fil' ? 'Pagsuri ng link' : 'Link check'}</dt><dd>{currentCheck.status === 'ok' ? (locale === 'fil' ? 'May nilalaman' : 'Content received') : 'WorkInProgress'} · {currentCheck.checkedAt?.slice(0, 10) || 'Unchecked'}</dd></div>}
       <div><dt>{c.verification}</dt><dd>{c[source.status.verificationStatus]}</dd></div>
       <div><dt>{c.availability}</dt><dd>{c[source.status.availabilityStatus]}</dd></div>
       <div><dt>{c.freshness}</dt><dd>{c[source.status.freshnessStatus]}</dd></div>

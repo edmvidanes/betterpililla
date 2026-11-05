@@ -7,14 +7,14 @@ test('missing population is presented without fabricated totals', async ({ page 
   await expect(page.locator('main')).not.toContainText('33,610')
 })
 
-test('official name and section filters intersect and recover from an empty result', async ({ page }) => {
-  await page.goto('/en/government/officials')
-  await page.getByLabel('Search this directory').fill('john')
-  await expect(page.locator('.directory-grid > li')).toHaveCount(1)
-  await page.getByLabel('Directory section').selectOption('The Council')
-  await expect(page.locator('.directory-grid > li')).toHaveCount(0)
-  await page.getByLabel('Directory section').selectOption('')
-  await expect(page.locator('.directory-grid > li')).toContainText('John V. Masinsin')
+test('unverified civic sections explicitly show work in progress', async ({ page, request }) => {
+  for (const route of ['government/offices', 'government/committees', 'statistics/municipal-income', 'transparency/finance']) {
+    await page.goto(`/en/${route}`)
+    await expect(page.getByRole('heading', { name: 'WorkInProgress' })).toBeVisible()
+  }
+  const municipality = await (await request.get('/data/municipality.json')).json()
+  expect(municipality.annualRegularIncome.records).toEqual([])
+  expect(municipality.incomeClass.value).toBeUndefined()
 })
 
 test('places and advisories withhold foreign template listings', async ({ page }) => {
