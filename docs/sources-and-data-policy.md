@@ -11,12 +11,12 @@ Source register entries preserve original source names, URLs, tiers, capture not
 ## Evidence quality and limits
 
 - Primary direct retrieval, primary search-index-only leads, secondary values, unreviewed machine extraction, conflicts and unreviewed claims remain distinguishable.
-- The homepage history is a selected chronology, not a complete community history. Church-history entries rely partly on secondary accounts; the 2024 population is a dated census count and the 2026 data turnover is separately sourced.
+- Pililla history and population pages remain WorkInProgress. Dated PSA tables, DILG directory rows, NHCP registry metadata and provincial place-listing candidates are kept in the separate collection review queue, with source access logs and publication gates.
 - Availability and freshness do not upgrade verification. `current-at-capture` describes capture availability, not the present legal validity of a law, current term of office or present operation of a hotline.
 - Unknown role/term dates remain unknown. Do not infer a title from an honorific, directory order or committee label.
 - The 2025 Cavinti returns are Rappler's partial, unofficial Comelec Media Server snapshot, not proclamations or evidence of current tenure. Percentages are of registered voters; the captured councilor list includes only the first ten displayed candidates, not the full field. Source names and party labels are retained separately from directory profiles and OpenHalalan winner claims.
 - DILG's elective-official directory records the 2025–2028 term and public office contacts as of February 2026. These are separate source claims, not proof of present tenure or live contact validation; name forms are not silently merged with municipal directory records.
-- Official profiles link explicitly matched DILG and Rappler records to municipal directory cards. Source-specific names and election aliases remain visible; profiles without a reviewed match show no additional claim.
+- Official profiles remain withheld. The newly captured DILG rows are a February 2026 directory snapshot for term 2025–2028; later changes, ex-officio seats and appointments require separate evidence.
 - Source-specific barangay lists remain competing claims. Do not merge similarly named places or declare a canonical roster until dated authoritative evidence resolves the conflict.
 - Statistics require unit, reference period, geography and registered evidence. Derived civic statistics are rejected. Numeric zero is publishable only with explicit source-published zero evidence; unknown remains null with a status.
 - Legislative rows retain original numbers/suffixes, dates, titles and separate duplicate occurrences. A link may be an attachment or a source-published copy-request/contact route. Neither a title nor a link verifies an enacted clause or fiscal amount.
@@ -24,7 +24,7 @@ Source register entries preserve original source names, URLs, tiers, capture not
 - Search-index discoveries, procurement dates after capture, incomplete award queries and unreviewed OCR/transcriptions are leads, not completed awards or verified legal/financial facts.
 - DPWH project reports retain the BetterGov snapshot and a separate dated contract API capture. API status, progress, payment fields and coordinates are source-reported, not independently verified; linked documents are not reviewed. A zero payment field does not establish that no payment was made.
 - Empty inspected tables and inaccessible sources do not imply that no municipal services, spending, projects or records exist.
-- The services directory includes public-facing entries extracted from user-supplied Citizens' Charter documents, alongside separately labeled ordinance-index leads. Source titles use document headings where available; otherwise the filename is identified as a fallback. The supplied files are not published, their provenance and current validity are not independently verified, and uncertain information remains visible. Confirm fees, requirements and availability with the responsible office; source text is not a reviewed translation.
+- Foreign charter template records remain quarantined. The official Pililla 2024 charter is a discovered source lead, but its PDF retrieval is blocked and the current edition has not been established. No service fees or procedures are released from snippets or template content.
 
 ## Refresh behavior
 

@@ -753,26 +753,26 @@
       "id": "psa-psgc-pililla",
       "name": "PSA PSGC Pililla municipality/barangay record",
       "tier": "primary-government",
-      "url": "https://psa.gov.ph/classification/psgc/barangays/0403407000",
+      "url": "https://psa.gov.ph/classification/psgc/barangays/0405810000",
       "formats": [
         "HTML"
       ],
-      "retrievalStatus": "direct reader returned 403; search index exposed the Pililla record",
-      "coverage": "Search-index evidence reports PSGC municipality code 0403407000 and 2024 population 24,740. Direct retrieval of the full official row/list failed; treat the population as indexed-primary, not independently extracted from the source table.",
-      "lastCheckedAt": "2026-10-28T12:34:57.151Z",
+      "retrievalStatus": "Direct HTTPS returned 403; primary PSA web-reader tables transcribed separately for review on 2026-11-05.",
+      "coverage": "Pililla, Rizal: PSA code 0405810000 confirmed against the province page. The dated 2024 POPCEN and 2025-07-31 roster are in the separate collection review queue; legacy Cavinti identifiers and counts do not describe Pililla.",
+      "lastCheckedAt": "2026-11-05T11:22:19.086Z",
       "refreshCheck": {
         "sourceId": "psa-psgc-pililla",
         "adapter": "government-reference-coverage",
-        "requestedUrl": "https://psa.gov.ph/classification/psgc/barangays/0403407000",
-        "retrievedAt": "2026-10-28T12:34:57.151Z",
-        "finalUrl": "https://psa.gov.ph/classification/psgc/barangays/0403407000",
+        "requestedUrl": "https://psa.gov.ph/classification/psgc/barangays/0405810000",
+        "retrievedAt": "2026-11-05T11:22:19.086Z",
+        "finalUrl": "https://psa.gov.ph/classification/psgc/barangays/0405810000",
         "httpStatus": 403,
         "contentType": "text/html; charset=UTF-8",
         "sourceDate": null,
-        "responseSha256": "5aceb4aacaae8942732624a2866d28b640633760994ab1588c648b8708e45c9f",
+        "responseSha256": "b87b15308339f40569fec39e5cee24824c85762a6c1e05d7dc7d4a2de89bc30c",
         "availabilityStatus": "access-blocked",
         "freshnessStatus": "not-checked",
-        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced."
+        "note": "Direct response was an access error, not a PSA document. Web-reader extraction is labeled separately and remains review-required."
       }
     },
     {
