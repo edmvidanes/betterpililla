@@ -25,6 +25,7 @@ const Demographics = lazy(() => import('../features/Demographics'))
 const Competitiveness = lazy(() => import('../features/Competitiveness'))
 const Finance = lazy(() => import('../features/Finance'))
 const TransparencyHub = lazy(() => import('../features/TransparencyHub'))
+const BudgetPortal = lazy(() => import('../features/BudgetPortal'))
 const LiveProcurement = lazy(() => import('../features/LiveProcurement'))
 const LiveProjects = lazy(() => import('../features/LiveProjects'))
 const Downloads = lazy(() => import('../features/Catalogues').then(module => ({ default: module.Downloads })))
@@ -35,7 +36,9 @@ const Geography = lazy(() => import('../features/Geography'))
 const base = import.meta.env.BASE_URL
 const githubIcon = <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.32-3.79-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.64 1.22 3.28.93.1-.73.39-1.22.7-1.5-2.5-.28-5.12-1.25-5.12-5.56 0-1.23.44-2.24 1.16-3.03-.12-.28-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.16a10.8 10.8 0 0 1 5.64 0c2.15-1.46 3.1-1.16 3.1-1.16.61 1.55.23 2.7.11 2.98.72.79 1.16 1.8 1.16 3.03 0 4.32-2.63 5.27-5.13 5.55.4.35.76 1.03.76 2.08v3.1c0 .3.21.65.78.54A11.25 11.25 0 0 0 12 .75Z" /></svg>
 function App({ initialPath }: { initialPath?: string }) {
-  const pathname = initialPath ?? (location.pathname.startsWith(base) ? location.pathname.slice(base.length) : location.pathname.slice(1))
+  const [browserPath, setBrowserPath] = useState(initialPath ?? location.pathname + location.search + location.hash)
+  const currentPath = browserPath.split(/[?#]/)[0]
+  const pathname = initialPath ?? (currentPath.startsWith(base) ? currentPath.slice(base.length) : currentPath.slice(1))
   const segments = pathname.replace(/\/$/, '').split('/').filter(Boolean)
   const explicitLocale = segments[0] === 'en' || segments[0] === 'fil'
   const locale: Locale = explicitLocale ? segments[0] as Locale : lgu.defaultLocale
@@ -63,8 +66,13 @@ function App({ initialPath }: { initialPath?: string }) {
     { label: t.government, keys: ['government', 'officials', 'offices', 'committees', 'barangays', 'map', 'history'] },
     { label: t.statistics, keys: ['demographics', 'competitiveness', 'income'] },
     { label: 'OpenLGU', keys: ['legislation', 'terms', 'downloads'] },
-    { label: t.transparency, keys: ['transparency', 'finance', 'procurement', 'projects', 'sources'] },
+    { label: t.transparency, keys: ['transparency', 'budgetPortal', 'enactedBudgets', 'budgetSources', 'procurement', 'projects', 'finance'] },
   ]
+  useEffect(() => {
+    const update = () => setBrowserPath(location.pathname + location.search + location.hash)
+    window.addEventListener('popstate', update)
+    return () => window.removeEventListener('popstate', update)
+  }, [])
   useEffect(() => {
     const closeMenus = (event: MouseEvent | KeyboardEvent) => {
       if (event instanceof KeyboardEvent && searchDialog.current?.open) return
@@ -158,6 +166,7 @@ function App({ initialPath }: { initialPath?: string }) {
   else if (route === 'statistics/demographics') content = <Demographics data={data} locale={locale} href={href} />
   else if (route === 'statistics/competitiveness') content = <Competitiveness data={data} locale={locale} href={href} />
   else if (route === 'transparency') content = <TransparencyHub data={data} locale={locale} href={href} />
+  else if (route === 'transparency/budget' || route.startsWith('transparency/budget/')) content = <BudgetPortal locale={locale} route={route} />
   else if (route === 'statistics/municipal-income' || route === 'transparency/finance') content = <Finance data={data} locale={locale} href={href} income={route.startsWith('statistics')} />
   else if (route === 'transparency/procurement') content = <LiveProcurement data={data} locale={locale} href={href} />
   else if (route === 'transparency/projects') content = <LiveProjects data={data} locale={locale} href={href} />
@@ -238,7 +247,7 @@ function App({ initialPath }: { initialPath?: string }) {
           }) ? 'is-active' : undefined}>{group.label}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg></summary>
           <div className="nav-dropdown">{group.keys.map(key => {
             const path = routes.find(([, label]) => label === key)![0]
-            return <CheckedLink key={key} href={href(path)} aria-current={route === path ? 'page' : undefined}>{t[key]}</CheckedLink>
+            return <CheckedLink key={key} href={href(path)} aria-current={route === path ? 'page' : undefined}>{t[key]}{key === 'finance' && <span className="work-in-progress-label">WorkInProgress</span>}</CheckedLink>
           })}</div>
         </details>)}
         <CheckedLink className="header-search" href={href('search')} aria-label={t.search} aria-keyshortcuts="Control+K Meta+K" onClick={event => { event.preventDefault(); openSearch() }}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg><span>{t.search}</span></CheckedLink>
