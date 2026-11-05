@@ -21,7 +21,7 @@ npm run build
 npm run local:serve
 ```
 
-Open **http://127.0.0.1:4173/**. The server binds to localhost only.
+Open **http://127.0.0.1:4174/**. The server binds to localhost only.
 
 ## local containers
 

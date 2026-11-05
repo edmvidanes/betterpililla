@@ -10,7 +10,7 @@
     "build": "tsc -b && vite build && node --experimental-strip-types scripts/build-routes.ts",
     "lint": "oxlint",
     "preview": "vite preview",
-    "local:serve": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
+    "local:serve": "vite preview --host 127.0.0.1 --port 4174 --strictPort",
     "container:up": "docker compose up --build --detach --wait",
     "container:down": "docker compose down",
     "container:status": "docker compose ps",
