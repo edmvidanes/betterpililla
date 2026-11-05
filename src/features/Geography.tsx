@@ -1,16 +1,14 @@
 import CheckedLink from '../components/CheckedLink'
 import { lgu } from '../config/lgu'
-import type { DataRecord } from '../data/loaders'
 import { catalogs } from '../i18n/locales'
 import { civicCatalogs } from '../i18n/civic'
 import PilillaMap from './home/PilillaMap'
 import WorkInProgress from '../components/WorkInProgress'
-import { PageIntro, RawRecord, SourceNote, type CivicProps } from './Civic'
+import { PageIntro, SourceNote, type CivicProps } from './Civic'
 
 export default function Geography(props: CivicProps) {
-  const { data, locale, href } = props
+  const { locale, href } = props
   const t = catalogs[locale], c = civicCatalogs[locale]
-  const geography = data.municipality.geography as DataRecord
   return <>
     <PageIntro title={t.map} />
     <div className="geography-map">
@@ -22,6 +20,5 @@ export default function Geography(props: CivicProps) {
       <WorkInProgress locale={locale} />
       <SourceNote {...props} id={lgu.sourceIds.about} />
     </section>
-    <RawRecord {...props} value={geography} />
   </>
 }

@@ -32,6 +32,14 @@ export function publicationDocuments(pack: DataPack, withheld: readonly string[]
     rewritten.add(id);
   }
   if (withheld.length) {
+    const municipality = documents['municipality'];
+    const pending = { publicationStatus: 'WorkInProgress', notes: 'Unverified source content is withheld pending review.' };
+    documents['municipality'] = { ...municipality, psgcMunicipalityCode: pending, incomeClass: pending,
+      annualRegularIncome: { ...pending, records: [] }, geography: { ...pending, boundaryGeometry: municipality.geography?.boundaryGeometry } };
+    documents['officials'] = { ...documents['officials'], records: [], publicationStatus: 'WorkInProgress',
+      publicationNote: 'Official names and terms are withheld until Pililla source records are verified.' };
+    rewritten.add('municipality');
+    rewritten.add('officials');
     const manifest = documents['dataset-manifest'];
     documents['dataset-manifest'] = { ...manifest,
       datasets: manifest.datasets.map((entry: Record<string, any>) => withheld.includes(entry.id)
