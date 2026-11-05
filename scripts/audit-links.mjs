@@ -22,13 +22,13 @@ try {
   page.on('response', async response => {
     if (!response.url().includes('/indexes/')) return;
     const payload = await response.json().catch(() => ({}));
-    feeds.push({ url: response.url(), status: response.status(), total: payload.estimatedTotalHits ?? null, returned: payload.hits?.length ?? 0, descriptionsMentionPililla: payload.hits?.every(row => row.description ? /\bpililla\b/i.test(row.description) : row.organization_name === 'MUNICIPALITY OF PILILLA, RIZAL') ?? null });
+    feeds.push({ url: response.url(), status: response.status(), total: payload.estimatedTotalHits ?? null, sourceReturned: payload.hits?.length ?? 0, scopedPililla: payload.hits?.filter(row => row.description ? /\bpililla\b/i.test(row.description) : row.organization_name === 'MUNICIPALITY OF PILILLA, RIZAL').length ?? 0 });
   });
   for (const locale of ['en', 'fil']) for (const [route] of routes) {
     const errors = []; const onError = error => errors.push(error.message); page.on('pageerror', onError);
     const path = `/${locale}/${route}`;
     const response = await page.goto(origin + path, { waitUntil: 'domcontentloaded' });
-    await page.waitForFunction(() => document.querySelector('main') && !document.querySelector('main').textContent.includes('Loading validated public data') && !document.querySelector('main').textContent.includes('Naglo-load'), null, { timeout: 15000 }).catch(() => {});
+    await page.waitForFunction(() => document.querySelector('main') && !/Loading validated public data|Kinakarga ang nasuring pampublikong datos/.test(document.querySelector('main').textContent), null, { timeout: 15000 }).catch(() => {});
     await page.locator('main h1').first().waitFor({ timeout: 15000 }).catch(() => {});
     await page.waitForFunction(() => !/Loading records|Kinukuha ang mga rekord/.test(document.querySelector('main')?.textContent || ''), null, { timeout: 15000 }).catch(() => {});
     const links = await page.locator('a[href], [data-external-url]').evaluateAll(items => items.map(a => ({ url: a.href || a.dataset.externalUrl, text: a.textContent.trim() })));
@@ -37,7 +37,7 @@ try {
       else if (/^https?:\/\//.test(link.url)) urls.add(link.url);
     }
     const body = await page.locator('main').innerText({ timeout: 500 }).catch(() => '');
-    pages.push({ path, status: response.status(), heading: await page.locator('main h1').first().textContent({ timeout: 500 }).catch(() => ''), textLength: body.length, loading: /Loading validated|Naglo-load|Loading records|Kinukuha ang mga rekord/.test(body), workInProgress: body.includes('WorkInProgress'), errors });
+    pages.push({ path, status: response.status(), heading: await page.locator('main h1').first().textContent({ timeout: 500 }).catch(() => ''), textLength: body.length, loading: /Loading validated public data|Kinakarga ang nasuring pampublikong datos|Loading records|Kinukuha ang mga rekord/.test(body), workInProgress: body.includes('WorkInProgress'), errors });
     page.off('pageerror', onError);
     console.log(`page: ${path}, ${body.length} characters, ${errors.length} errors`);
   }
@@ -89,6 +89,8 @@ results.sort((a, b) => a.url.localeCompare(b.url));
 await writeFile('src/data/link-audit.json', '{\n  "links": [\n' + results.map(row => '    ' + JSON.stringify(row)).join(',\n') + '\n  ]\n}\n');
 const local = [];
 for (const [url] of internal) { const response = await fetch(url); local.push({ url, status: response.status, contentType: response.headers.get('content-type') }); }
-await writeFile('docs/qa/internal-links.json', rows(local));
+const compact = [];
+for (let i = 0; i < local.length; i += 3) compact.push(local.slice(i, i + 3).map(row => JSON.stringify(row)).join(','));
+await writeFile('docs/qa/internal-links.json', '[\n' + compact.map(row => '  ' + row).join(',\n') + '\n]\n');
 console.log(JSON.stringify({ external: results.length, working: results.filter(r => r.status === 'ok').length, unavailable: results.filter(r => r.status !== 'ok').length, internal: local.length }));
 process.exit(0);
