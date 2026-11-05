@@ -11,7 +11,8 @@ export default function SmoothScroll({ children }: { children: ReactNode }) {
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
     const motion = gsap.matchMedia()
-    motion.add('(prefers-reduced-motion: no-preference)', () => {
+    // Keep the collapsing navigation on the browser's native scroll surface.
+    motion.add('(min-width: 1151px) and (prefers-reduced-motion: no-preference)', () => {
       const smoother = ScrollSmoother.create({
         wrapper: wrapper.current!,
         content: content.current!,

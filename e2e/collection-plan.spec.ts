@@ -1,0 +1,41 @@
+import { expect, test } from '@playwright/test'
+
+test('unfinished services lead to a dated collection plan with review records', async ({ page, request }) => {
+  await page.goto('/en/services')
+  await expect(page.locator('.work-in-progress')).toContainText('Latest charter')
+  await page.locator('.work-in-progress .collection-plan-link a').click()
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Public record collection plan')
+  await expect(page.locator('.collection-phase')).toHaveCount(6)
+  await expect(page.locator('.collection-items li')).toHaveCount(17)
+  await expect(page.locator('main')).toContainText('has not been released as current municipal records')
+  await page.locator('.collection-review summary').click()
+  await expect(page.locator('.collection-review tbody tr')).toHaveCount(10)
+  await expect(page.locator('.collection-review')).toContainText('February 2026')
+  for (const name of ['officials-review.json', 'psa-review.json', 'heritage-review.json', 'attempts.json', 'record-requests.md']) {
+    const response = await request.get(`/collection/${name}`)
+    expect(response.ok()).toBe(true)
+    expect((await response.body()).length).toBeGreaterThan(100)
+  }
+  const records = await (await request.get('/collection/officials-review.json')).json()
+  expect(records.publicationStatus).toBe('review-required')
+  expect(records.records.every((row: Record<string, string>) => row.PROVINCE === 'RIZAL' && row['CITY/MUNICIPALITY'] === 'PILILLA')).toBe(true)
+  const released = await (await request.get('/data/officials.json')).json()
+  expect(released.records).toEqual([])
+})
+
+test('Filipino collection navigation and review tables fit a phone', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('/fil/collection-plan#collect-finance')
+  await expect(page.locator('#collect-finance')).toContainText('Pananalapi at audit')
+  await expect(page.locator('#collect-finance')).toContainText('Hindi ma-access ang sanggunian')
+  await expect(page.locator('#collect-finance')).toBeInViewport()
+  await page.locator('.collection-review summary').click()
+  await expect(page.locator('.collection-review tbody tr')).toHaveCount(10)
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+  await page.keyboard.press('Control+Home')
+  await expect(page.locator('.menu-toggle')).toBeInViewport()
+  await page.locator('.menu-toggle').click()
+  await page.getByRole('link', { name: 'English', exact: true }).first().click()
+  await expect(page).toHaveURL(/\/en\/collection-plan#collect-finance$/)
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Public record collection plan')
+})

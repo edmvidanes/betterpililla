@@ -1,4 +1,7 @@
 import CheckedLink from '../components/CheckedLink'
+import { useEffect } from 'react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ScrollSmoother } from 'gsap/ScrollSmoother'
 import { collectionDate, collectionItems, collectionStatus, phases } from '../data/collection-plan'
 import { catalogs, formatDate } from '../i18n/locales'
 import { PageIntro, type CivicProps } from './Civic'
@@ -8,6 +11,21 @@ import './collection-plan.css'
 export default function CollectionPlan({ locale, href }: CivicProps) {
   const fil = locale === 'fil', t = catalogs[locale]
   const asset = (name: string) => `${import.meta.env.BASE_URL}collection/${name}`
+  useEffect(() => {
+    const followFragment = () => {
+      const id = location.hash.slice(1)
+      if (!/^(collect-[a-z-]+|phase-[1-6])$/.test(id)) return
+      const target = document.getElementById(id)
+      if (!target) return
+      ScrollTrigger.refresh()
+      const smoother = ScrollSmoother.get()
+      if (smoother) smoother.scrollTo(target, false, 'top 112px')
+      else target.scrollIntoView({ block: 'start', behavior: 'instant' })
+    }
+    const frame = requestAnimationFrame(followFragment)
+    window.addEventListener('hashchange', followFragment)
+    return () => { cancelAnimationFrame(frame); window.removeEventListener('hashchange', followFragment) }
+  }, [])
   return <article className="collection-plan">
     <PageIntro title={t.collectionPlan}>{fil ? 'Mga kulang na tala at sunod-sunod na hakbang sa pagkolekta ng pampublikong dokumento ng Pililla, Rizal.' : 'An itemized list of missing records and the steps for collecting public documents about Pililla, Rizal.'}</PageIntro>
     <p className="civic-meta">{fil ? 'Huling pagsusuri' : 'Last collection review'}: {formatDate(collectionDate, locale)}. {fil ? 'Ang ebidensya para sa pagsusuri ay hindi pa inilalathala bilang kasalukuyang rekord ng munisipyo.' : 'Evidence for review has not been released as current municipal records.'}</p>
