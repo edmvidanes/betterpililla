@@ -1,0 +1,22 @@
+{
+  "collectedAt": "2026-11-05T12:05:13.795Z",
+  "municipality": "Pililla, Rizal",
+  "prwd": {
+    "urlsChecked": 211,
+    "captured": 210,
+    "documents": 23,
+    "pdfPages": 452
+  },
+  "province": {
+    "urlsChecked": 65,
+    "captured": 61,
+    "documents": 44,
+    "pdfPages": 382
+  },
+  "prwdExternalServices": 13,
+  "tariffRows": 20,
+  "meterSizes": 4,
+  "missingPrwdLinks": 21,
+  "provinceBidPagesNamingPililla": 6,
+  "note": "District and provincial evidence does not fill municipal finance, charter, elected-official or PSA datasets. Captured records still require content and currency review."
+}
