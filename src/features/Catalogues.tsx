@@ -3,7 +3,6 @@ import { Pagination, usePagination } from '../components/Pagination'
 import { catalogs, formatDate, formatNumber } from '../i18n/locales'
 import { civicCatalogs } from '../i18n/civic'
 import { PageIntro, RawRecord, SourceNote, type CivicProps } from './Civic'
-import OtherDocuments from './OtherDocuments'
 
 export function Downloads(props: CivicProps) {
   const { data, locale } = props
@@ -20,7 +19,6 @@ export function Downloads(props: CivicProps) {
       <details className="civic-disclosure"><summary>{c.technicalDetails}</summary><h3>{t.rights}</h3><p lang="en">{dataset.rights}</p><p className="hash">SHA-256: {dataset.sha256}</p>{dataset.sourceIds.map(id => <SourceNote {...props} key={id} id={id} />)}</details>
     </li>)}</ul>
     <Pagination page={page} pages={pages} setPage={setPage} locale={locale} label={locale === 'fil' ? 'Mga pahina ng dataset' : 'Dataset pages'} />
-    <OtherDocuments locale={locale} />
   </>
 }
 

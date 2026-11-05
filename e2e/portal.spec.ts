@@ -1,35 +1,36 @@
 import { expect, test } from '@playwright/test'
-import { readFileSync } from 'node:fs'
 
-const ordinances = JSON.parse(readFileSync('data/pililla/legislation/ordinances.json', 'utf8')).records as { recordId: string; title: string; documentNumber: string; documentUrl: string }[]
-
-test('filtered source row opens its own document and survives locale switching', async ({ page }) => {
-  const row = ordinances[0]
-  await page.goto('/en/open-lgu/legislation')
-  await page.getByLabel('Search original metadata').fill(row.recordId)
-  const recordLink = page.locator('main a').filter({ hasText: row.title })
-  await expect(recordLink).toHaveCount(1)
-  await recordLink.click()
-  await expect(page.locator(`main a[href="${row.documentUrl}"]`)).toBeVisible()
+test('legislation shows its collection gap and preserves the requested locale', async ({ page }) => {
+  await page.goto('/en/open-lgu/legislation?year=2025')
+  await expect(page.locator('main')).toContainText('have not been collected')
+  await expect(page.locator('main a[href*="/uploads/"]')).toHaveCount(0)
   await page.getByRole('link', { name: 'Filipino', exact: true }).click()
   await expect(page.locator('html')).toHaveAttribute('lang', 'fil')
-  await expect(page.locator('h1')).toHaveText(row.title)
-  await expect(page).toHaveURL(new RegExp('/fil/open-lgu/legislation/'))
+  await expect(page.locator('main')).toContainText('Hindi pa nakokolekta')
+  await expect(page).toHaveURL(/\/fil\/open-lgu\/legislation\?year=2025$/)
 })
 
-test('duplicate source rows remain distinct deep links', async ({ page }) => {
-  const row = ordinances.find(a => ordinances.some(b => b.recordId !== a.recordId && b.documentUrl === a.documentUrl))!
-  const other = ordinances.find(b => b.recordId !== row.recordId && b.documentUrl === row.documentUrl)!
-  await page.goto(`/en/open-lgu/legislation/${encodeURIComponent(row.recordId)}`)
-  const related = page.locator(`main a[href$="${encodeURIComponent(other.recordId)}"]`)
-  await expect(related).toHaveCount(1)
-  await related.click()
-  await expect(page).toHaveURL(new RegExp(encodeURIComponent(other.recordId).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')))
-  await expect(page.locator(`main a[href="${other.documentUrl}"]`)).toBeVisible()
+test('withdrawn template records are absent from public downloads and search', async ({ request }) => {
+  for (const [file, field] of [
+    ['services.json', 'services'], ['sector-inventory.json', 'sectors'],
+    ['legislation/ordinances.json', 'records'], ['legislation/resolutions.json', 'records'],
+  ]) {
+    const response = await request.get(`/data/${file}`)
+    expect(response.ok()).toBeTruthy()
+    const data = await response.json()
+    expect(data.publicationStatus).toBe('not-collected')
+    expect(data[field]).toEqual([])
+  }
+  const search = await (await request.get('/data/search-index.json')).json()
+  expect(search.some((row: { type: string }) => row.type === 'legislation' || row.type === 'service')).toBe(false)
 })
 
-test('unknown records do not render an unrelated attachment', async ({ page }) => {
-  await page.goto('/en/open-lgu/legislation/not-a-record')
-  await expect(page.locator('main a[href*="/uploads/documents/"]')).toHaveCount(0)
-  await expect(page.locator('main')).toContainText('not-a-record')
+test('services and local reporting explain what is available in the preview', async ({ page }) => {
+  await page.goto('/en/services')
+  await expect(page.locator('main')).toContainText('Citizens’ Charter has not been collected')
+  await page.goto('/en/services/service:cchatto-cc:1')
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Page or record not found')
+  await page.goto('/en/report-data')
+  await expect(page.locator('main')).toContainText('This is a local preview')
+  await expect(page.locator('main a[href*="/issues/new"]')).toHaveCount(0)
 })
