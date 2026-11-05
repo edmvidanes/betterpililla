@@ -11,7 +11,6 @@ import PageMotion from './PageMotion'
 import Home from '../features/home/Home'
 import { searchPortal } from './search'
 
-const History = lazy(() => import('../features/home/History'))
 const Services = lazy(() => import('../features/Services'))
 const ServiceDetail = lazy(() => import('../features/ServiceDetail'))
 const Places = lazy(() => import('../features/Places').then(module => ({ default: module.Places })))
@@ -42,7 +41,7 @@ function App({ initialPath }: { initialPath?: string }) {
   const t = catalogs[locale]
   const href = (path: string) => `${base}${locale}${path ? `/${path.replace(/^\//, '')}` : '/'}`
   const sourceHref = (id: string) => href(`sources/${encodeURIComponent(id)}`)
-  const correctionLink = (id: string, template = 'data-correction.yml') => `${lgu.repository}/issues/new?${new URLSearchParams({ template, record: id, title: `[Data] ${id}`, 'source-page': location.href })}`
+  const correctionLink = (id: string, template = 'data-correction.yml') => lgu.repository ? `${lgu.repository}/issues/new?${new URLSearchParams({ template, record: id, title: `[Data] ${id}`, 'source-page': location.href })}` : href('report-data')
   const [data, setData] = useState<DataPack | null>(null)
   const [error, setError] = useState(false)
   const [paletteSearch, setPaletteSearch] = useState<DataPack['search'] | null>(null)
@@ -166,9 +165,10 @@ function App({ initialPath }: { initialPath?: string }) {
     content = projects ? <LiveProjects data={data} locale={locale} href={href} recordId={recordId} /> : <LiveProcurement data={data} locale={locale} href={href} recordId={recordId} />
   }
   else if (route === 'map') content = <Geography data={data} locale={locale} href={href} />
+  else if ((route === 'places' || route === 'advisories') && data.sectors.publicationStatus === 'not-collected') content = <><h1>{route === 'places' ? t.places : t.advisories}</h1><p>{locale === 'fil' ? 'Hindi pa nakokolekta ang mga sanggunian ng Pililla para sa seksyong ito. Tingnan ang opisyal na website para sa kasalukuyang impormasyon.' : 'Pililla sources for this section have not been collected yet. Check the official website for current information.'}</p><a href={lgu.officialUrl}>{t.officialWebsite}</a></>
   else if (route === 'places') content = <Places data={data} locale={locale} href={href} />
   else if (route === 'advisories') content = <Advisories data={data} locale={locale} href={href} />
-  else if (route === 'history') content = <History locale={locale} />
+  else if (route === 'history') content = <><h1>{t.historyTitle}</h1><p>{t.historyIntro}</p><a href={lgu.officialUrl}>{t.officialWebsite}</a></>
   else if (route === 'open-data') content = <Downloads data={data} locale={locale} href={href} />
   else if (route === 'sources') content = <Sources data={data} locale={locale} href={href} />
   else if (route.startsWith('sources/')) {
@@ -178,7 +178,7 @@ function App({ initialPath }: { initialPath?: string }) {
     content = source ? <><h1>{source.name || source.publisher}</h1>{cite(id)}{tree(source as unknown as EvidenceValue)}<h2>{t.affected}</h2><SearchResults rows={related} href={href} locale={locale} /><p><a href={correctionLink(id)}>{t.correction}</a></p></> : notFound()
   }
   else if (route === 'search') content = <SearchPage data={data} locale={locale} href={href} />
-  else if (route === 'report-data') content = <><h1>{t.corrections}</h1><p className="measure">{t.correctionText}</p><ul className="topic-list"><li><a href={correctionLink(new URLSearchParams(location.search).get('record') || '')}>{t.correction}</a></li><li><a href={correctionLink('', 'missing-record.yml')}>{t.missing}</a></li><li><a href={correctionLink('', 'project-observation.yml')}>{t.observation}</a></li></ul></>
+  else if (route === 'report-data') content = <><h1>{t.corrections}</h1>{lgu.repository ? <><p className="measure">{t.correctionText}</p><ul className="topic-list"><li><a href={correctionLink(new URLSearchParams(location.search).get('record') || '')}>{t.correction}</a></li><li><a href={correctionLink('', 'missing-record.yml')}>{t.missing}</a></li><li><a href={correctionLink('', 'project-observation.yml')}>{t.observation}</a></li></ul></> : <><p>{locale === 'fil' ? 'Lokal na preview pa lamang ito. Bubuksan ang pag-uulat kapag na-set up na ang pampublikong repository. Para sa ngayon, makikita rito ang mga sanggunian at kakulangan ng datos.' : 'This is a local preview. Reporting will open once the public repository is set up. You can review sources and data gaps here in the meantime.'}</p><a href={href('sources')}>{t.sources}</a></>}</>
   else if (route === 'about') content = <article className="about-page">
     <header className="about-intro">
       <h1>{t.about}</h1>
@@ -187,9 +187,9 @@ function App({ initialPath }: { initialPath?: string }) {
       <p>{locale === 'fil' ? <>Ang <a href="https://about.bettergov.ph/">BetterGov.ph</a> ay isang kilusang pinapatakbo ng mga boluntaryo para mas madaling mahanap at maunawaan ang datos ng pamahalaan. Sa antas ng mga lungsod at munisipalidad, hinihikayat ng <a href="https://lgu.bettergov.ph/">BetterLGU</a> ang mga komunidad na gumawa at mag-ambag sa sarili nilang mga portal.</> : <><a href="https://about.bettergov.ph/">BetterGov.ph</a> is a volunteer-driven movement making government data easier to access and understand. <a href="https://lgu.bettergov.ph/">BetterLGU</a> brings that work to cities and municipalities, encouraging communities to build local portals and contribute to existing ones.</>}</p>
       <p>{locale === 'fil' ? 'Ginawa ang BetterPililla para sa inisyatibong ito. Dito, makikita ang mga pampublikong tala ng Pililla kasama ang mga orihinal na dokumento at sanggunian. Nakasaad din kung may kulang o hindi pa nakukumpirma, para alam mo kung ano ang maaari mong asahan at kung ano ang kailangan pang itanong.' : 'BetterPililla was built for that initiative. It brings Pililla’s public records together with original documents and sources you can follow. Gaps and unresolved claims stay visible, so you can see what is known and what still needs an answer.'}</p>
       <p>{t.community}</p>
-      <p>{locale === 'fil' ? <>Kredito sa site ng BetterPililla at sa template: <a href={lgu.repository}>@klnwlks sa GitHub</a>.</> : <>BetterPililla site and template by <a href={lgu.repository}>@klnwlks on GitHub</a>.</>}</p>
+      <p>{locale === 'fil' ? <>Batay sa open-source na <a href="https://github.com/klnwlks/bettercavinti">BetterCavinti template ni @klnwlks</a>.</> : <>Based on the open-source <a href="https://github.com/klnwlks/bettercavinti">BetterCavinti template by @klnwlks</a>.</>}</p>
       <nav className="about-links" aria-label={t.projectLinks}>
-        <a href={lgu.repository}>GitHub</a>
+        {lgu.repository && <a href={lgu.repository}>GitHub</a>}
         <a href={lgu.officialUrl}>{lgu.name}</a>
       </nav>
     </header>
@@ -255,12 +255,12 @@ function App({ initialPath }: { initialPath?: string }) {
       </div>
       <p>{locale === 'fil' ? 'Petsa ng pagkakatala' : 'Date recorded'}: {data ? formatDate(data.portal.capturedAt, locale) : t.loading}. {locale === 'fil' ? 'Suriin muli ang mga sanggunian; maaaring luma na ang datos mula sa mga ito.' : 'Double-check sources; sourced data may be stale.'}</p>
       <div className="atlas-footer-statement"><span>{t.footerCommunity}</span><strong>{t.footerCost.replace('{place}', lgu.name)} <span>₱0</span></strong></div>
-      <div className="atlas-footer-bottom"><a href={lgu.repository} aria-label="GitHub">{githubIcon}</a></div>
+      {lgu.repository && <div className="atlas-footer-bottom"><a href={lgu.repository} aria-label="GitHub">{githubIcon}</a></div>}
     </footer> : <footer><p>{t.community}</p>
       <p>{locale === 'fil' ? 'Petsa ng pagkakatala' : 'Date recorded'}: {data ? formatDate(data.portal.capturedAt, locale) : t.loading}. {locale === 'fil' ? 'Suriin muli ang mga sanggunian; maaaring luma na ang datos mula sa mga ito.' : 'Double-check sources; sourced data may be stale.'}</p>
       <nav aria-label={t.footer}>
         {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads'] as MessageKey[]).map(key => <a key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</a>)}
-        <a href={lgu.repository} aria-label="GitHub">{githubIcon}</a>
+        {lgu.repository && <a href={lgu.repository} aria-label="GitHub">{githubIcon}</a>}
       </nav></footer>}
   </>
 }

@@ -39,6 +39,11 @@ export default function Services(props: CivicProps) {
   const [query, setQuery] = useState(new URLSearchParams(location.search).get('q') || '')
   const [category, setCategory] = useState('all')
   const [page, setPage] = useState(1)
+  if (data.services.publicationStatus === 'not-collected') return <>
+    <PageIntro title={t.services}>{locale === 'fil' ? 'Mga serbisyo at dokumento ng Pililla.' : 'Services and documents for Pililla.'}</PageIntro>
+    <p>{locale === 'fil' ? 'Hindi pa nakokolekta ang Citizens’ Charter ng Pililla. Ilalagay rito ang mga kinakailangan, bayarin at proseso kapag may naberipikang sanggunian.' : 'Pililla’s Citizens’ Charter has not been collected yet. Requirements, fees, and steps will appear here once verified source documents are available.'}</p>
+    <p><a href={lgu.officialUrl}>{t.officialWebsite}</a></p>
+  </>
   const services = rows(data.services.services)
   const normalizedQuery = query.trim().toLocaleLowerCase()
   const matching = services.filter(row => (category === 'all' || serviceTopic(`${row.office} ${row.name}`) === category) && [row.name, row.office, row.description, row.classification, row.transactionType].some(value => typeof value === 'string' && value.toLocaleLowerCase().includes(normalizedQuery)))
