@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "betterpililla-reader-extract/v1",
+  "capturedOn": "2026-11-05",
+  "method": "Web reader of primary PSA pages; structured field transcription, not original HTML bytes",
+  "publicationStatus": "review-required",
+  "municipality": "Pililla",
+  "province": "Rizal",
+  "psgcCode": "0405810000",
+  "correspondenceCode": "045810000",
+  "rosterAsOf": "2025-07-31",
+  "populationPeriod": "2024 POPCEN",
+  "publishedMunicipalPopulation": 72503,
+  "sources": [
+    { "url": "https://psa.gov.ph/classification/psgc/barangays/0405810000", "locator": "Municipality code; Barangays in the municipality of Pililla; lines 328-347 in web reader" },
+    { "url": "https://psa.gov.ph/classification/psgc/citimuni/0405800000", "locator": "Municipalities in the province of Rizal; Pililla row; lines 339-351 in web reader" }
+  ],
+  "barangays": [
+    { "name": "Bagumbayan", "psgcCode": "0405810001", "population2024": 13483 },
+    { "name": "Halayhayin", "psgcCode": "0405810003", "population2024": 9806 },
+    { "name": "Hulo", "psgcCode": "0405810004", "population2024": 12126 },
+    { "name": "Imatong", "psgcCode": "0405810005", "population2024": 794 },
+    { "name": "Malaya", "psgcCode": "0405810006", "population2024": 7546 },
+    { "name": "Niogan", "psgcCode": "0405810007", "population2024": 5850 },
+    { "name": "Quisao", "psgcCode": "0405810008", "population2024": 17361 },
+    { "name": "Wawa", "psgcCode": "0405810009", "population2024": 3950 },
+    { "name": "Takungan", "psgcCode": "0405810010", "population2024": 1587 }
+  ],
+  "limitations": ["Direct HTTPS retrieval returned 403 from this machine; no original PSA bytes claimed.", "Roster date and population period are different; neither is a 2026 count.", "Check against the latest quarterly PSGC download before releasing the roster.", "PSA displays an income class without a classification period; use a dated DOF order instead."]
+}

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "betterpililla-heritage-review/v1",
+  "publicationStatus": "review-required",
+  "records": [
+    {
+      "title": "Simbahan ng Pililla",
+      "source": {
+        "url": "https://philhistoricsites.nhcp.gov.ph/registry_database/simbahan-ng-pililla/",
+        "capturedAt": "2026-11-05T11:29:00.875Z",
+        "sourceSha256": "c16f495df88b56fb277a456620ba1f06ba18a686bd49e208235d50d462a25422"
+      },
+      "locator": "Registry entry: Location, Marker date, Installed by",
+      "sourceLocation": "Pililia, Rizal (Region IV-A)",
+      "markerDate": "1977-01-16",
+      "installedBy": "National Historical Institute (NHI)",
+      "note": "Source spelling retained. Marker date is not the date the town or church was founded."
+    },
+    {
+      "title": "54 MW WIND FARM",
+      "source": {
+        "url": "https://rizalprovince.ph/pages/tourism.html",
+        "capturedAt": "2026-11-05T11:29:05.738Z",
+        "sourceSha256": "74816ba87994b3af6f3c94eeaff7ada5eb12c4a8bd1e93899318b3cfce5840d5"
+      },
+      "locator": "54 MW WIND FARM heading and address",
+      "sourceLocation": "Pililla, Rizal",
+      "note": "Place-listing candidate only. Opening hours, fees, accessibility and present operation are not confirmed. Some provincial descriptions cite Wikipedia; those descriptions were excluded."
+    },
+    {
+      "title": "BAHAY NA BATO",
+      "source": {
+        "url": "https://rizalprovince.ph/pages/tourism.html",
+        "capturedAt": "2026-11-05T11:29:05.738Z",
+        "sourceSha256": "74816ba87994b3af6f3c94eeaff7ada5eb12c4a8bd1e93899318b3cfce5840d5"
+      },
+      "locator": "BAHAY NA BATO heading and address",
+      "sourceLocation": "Pililla, Rizal",
+      "note": "Place-listing candidate only. Opening hours, fees, accessibility and present operation are not confirmed. Some provincial descriptions cite Wikipedia; those descriptions were excluded."
+    },
+    {
+      "title": "LYGER ANIMAL SANCTUARY",
+      "source": {
+        "url": "https://rizalprovince.ph/pages/tourism.html",
+        "capturedAt": "2026-11-05T11:29:05.738Z",
+        "sourceSha256": "74816ba87994b3af6f3c94eeaff7ada5eb12c4a8bd1e93899318b3cfce5840d5"
+      },
+      "locator": "LYGER ANIMAL SANCTUARY heading and address",
+      "sourceLocation": "Pililla, Rizal",
+      "note": "Place-listing candidate only. Opening hours, fees, accessibility and present operation are not confirmed. Some provincial descriptions cite Wikipedia; those descriptions were excluded."
+    }
+  ]
+}

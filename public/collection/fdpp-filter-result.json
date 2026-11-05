@@ -1,0 +1,9 @@
+{
+  "sourceUrl": "https://fdpp.dilg.gov.ph/fdpp/report",
+  "checkedOn": "2026-11-05",
+  "method": "Edge browser, public document report form",
+  "status": "filter-unresolved",
+  "steps": ["Public report page loaded.", "Selected the source-published REGION IV-A - CALABARZON option, value 04.", "Province options did not finish loading within 12 seconds."],
+  "documentsCaptured": 0,
+  "limitation": "This is an unsuccessful collection attempt. It does not establish that Pililla has no disclosures, is noncompliant, or has zero spending. COA's 2025 landing-page lead was separately blocked. No login or record submission was attempted."
+}
