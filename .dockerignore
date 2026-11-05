@@ -1,0 +1,14 @@
+.git
+.github
+node_modules
+dist
+public/data
+.impeccable
+.hallmark
+.cache
+test-results
+playwright-report
+*.log
+*.err
+*.local
+.env*
