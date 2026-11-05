@@ -12,6 +12,10 @@ colors:
   warning-background: "#fffaeb"
   warning-foreground: "#5c420b"
 typography:
+  place-name:
+    fontSize: "clamp(2.5rem, 6.8cqw, 6rem)"
+    fontWeight: 800
+    lineHeight: 1.04
   body:
     fontFamily: "Inter, Segoe UI, system-ui, sans-serif"
     fontSize: "1rem"
@@ -35,6 +39,8 @@ spacing:
 ## Overview
 
 The portal uses restrained Kapwa styling with Tailwind. Following the user's BetterLB navigation reference, the global shell uses a compact utility strip and grouped horizontal navigation instead of a documentation-style sidebar. The homepage prioritizes search and quick access; detailed source limits remain on the affected pages and source routes.
+
+The local Pililla preview dated 2026-11-05 retains this palette, body stack and navigation. Its place-name heading uses the frontmatter scale, above one still, credited Froi Rivera windfarm photograph. The banner spans the available width with a 220–310px responsive height; its crop is disclosed in the credits. No repeating ribbon or empty demographics photo region is rendered. Municipal source links replace unverified social-channel tiles. Empty source collections show explicit bilingual notices. These local changes supersede the earlier photo-ribbon and channel-grid descriptions below.
 
 ## Colors
 

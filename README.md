@@ -54,7 +54,7 @@ React 19, TypeScript, Vite, Tailwind CSS 4 and Kapwa. MapLibre GL provides the m
 
 ## data
 
-`data/pililla/` holds the reviewed source data. `public/data/` is generated during development and builds; do not edit it. Data schemas and validation live in `data/schemas/` and `src/domain/`. Sources, capture dates, evidence and coverage gaps are part of the data—keep them with each dataset, and do not treat missing information as zero or verified fact.
+`data/pililla/` holds the retained source snapshot and Pililla-specific additions. `public/data/` is generated during development and builds; do not edit it. Data schemas and validation live in `data/schemas/` and `src/domain/`. Sources, capture dates, evidence and coverage gaps are part of the data—keep them with each dataset, and do not treat missing information as zero or verified fact.
 
 The retained source pack still contains foreign template records for reference. `lgu.withheldDatasets` applies an explicit publication policy during `data:build`: affected records become empty `civic-withheld/v1` notices with their own schema and regenerated download hashes. Raw template files are not copied into the runtime image. Remove a dataset from that list only after replacing and reviewing its Pililla source records. The separate inherited other-documents snapshot is also excluded from the site.
 
