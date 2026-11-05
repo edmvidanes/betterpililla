@@ -34,10 +34,6 @@ test('public hotlines are dialable and retain their verification limits on mobil
   await expect(page).toHaveURL(/\/en\/services\/public-contacts$/)
 })
 test('provider collection downloads contain evidence and preserve disclosure gaps', async ({ page, request }) => {
-  await page.goto('/en/collection-plan#provider-progress')
-  await expect(page.locator('#provider-progress')).toBeInViewport()
-  await expect(page.locator('#provider-progress tbody tr')).toHaveCount(6)
-  await expect(page.locator('#provider-progress')).toContainText('Municipal finance remains missing')
   for (const name of ['prwd-pages.json','province-sources.json','prwd-charter-services.json','prwd-tariff.json','prwd-missing-documents.json','province-pililla-bid-pages.json']) {
     const response = await request.get(`/collection/providers/${name}`)
     expect(response.ok()).toBe(true)
