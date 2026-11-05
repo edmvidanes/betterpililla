@@ -81,7 +81,7 @@ export async function fetchPilillaProjects(limit = 100) {
 export async function fetchTransparencyRecord(projects: boolean, recordId: string) {
   if (projects) {
     const result = await search<DpwhDoc>('dpwh', { q: recordId, limit: 10 })
-    return result.hits.find(doc => doc.contractId === recordId) || null
+    return result.hits.find(doc => doc.contractId === recordId && isPilillaProject(doc)) || null
   }
   const result = await search<PhilgepsDoc>('philgeps', {
     q: recordId,

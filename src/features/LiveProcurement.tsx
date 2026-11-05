@@ -1,3 +1,5 @@
+import CheckedLink from '../components/CheckedLink'
+import WorkInProgress from '../components/WorkInProgress'
 import { useEffect, useState } from 'react'
 import { catalogs, formatNumber } from '../i18n/locales'
 import { lgu } from '../config/lgu'
@@ -49,8 +51,8 @@ export default function LiveProcurement(props: CivicProps & { recordId?: string 
 
   if (recordId) {
     if (detail === 'loading') return <><PageIntro title={t.procurement} /><p role="status">{fil ? 'Kinukuha ang rekord…' : 'Loading record…'}</p></>
-    if (detail === 'error') return <><PageIntro title={t.procurement} /><p role="alert">{unavailable}</p><p><a href={dashboard}>{fil ? 'BetterGov PH dashboard' : 'BetterGov PH dashboard'}</a></p></>
-    if (!detail) return <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><a href={href('transparency/procurement')}>{t.procurement}</a></>
+    if (detail === 'error') return <><PageIntro title={t.procurement} /><WorkInProgress locale={locale}>{unavailable}</WorkInProgress><p><CheckedLink href={dashboard}>BetterGov PH dashboard</CheckedLink></p></>
+    if (!detail) return <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><CheckedLink href={href('transparency/procurement')}>{t.procurement}</CheckedLink></>
     const facts: [string, string][] = [
       [fil ? 'Sanggunian' : 'Reference', detail.reference_id || '—'],
       [fil ? 'Nanalo / supplier' : 'Awardee', detail.awardee_name || '—'],
@@ -71,9 +73,9 @@ export default function LiveProcurement(props: CivicProps & { recordId?: string 
         </section>
       </div><aside className="civic-aside"><h2>{fil ? 'Pinagmulan' : 'Source'}</h2>
         <p>{fil ? 'BetterGov PH Transparency dashboard (PhilGEPS).' : 'BetterGov PH Transparency dashboard (PhilGEPS).'}</p>
-        <p><a href={dashboard}>{fil ? 'Tingnan ang organisasyon sa dashboard' : 'View this organization on the dashboard'}</a></p>
+        <p><CheckedLink href={dashboard}>{fil ? 'Tingnan ang organisasyon sa dashboard' : 'View this organization on the dashboard'}</CheckedLink></p>
       </aside></div>
-      <p><a href={href('transparency/procurement')}>{t.procurement}</a></p>
+      <p><CheckedLink href={href('transparency/procurement')}>{t.procurement}</CheckedLink></p>
     </>
   }
 
@@ -81,15 +83,16 @@ export default function LiveProcurement(props: CivicProps & { recordId?: string 
     <PageIntro title={t.procurement}>{fil
       ? 'Mga procurement award ng MUNICIPALITY OF PILILLA, RIZAL mula sa PhilGEPS, live mula sa BetterGov PH search. Hindi kasama ang mga paaralan at ibang ahensyang nasa Pililla.'
       : 'Procurement awards of MUNICIPALITY OF PILILLA, RIZAL from PhilGEPS, live from the BetterGov PH search index. Schools and other agencies located in Pililla are not included.'}</PageIntro>
-    <p><a href={dashboard}>{fil ? 'Pinagmulan: BetterGov PH Transparency dashboard' : 'Source: BetterGov PH Transparency dashboard'}</a></p>
+    <p><CheckedLink href={dashboard}>{fil ? 'Pinagmulan: BetterGov PH Transparency dashboard' : 'Source: BetterGov PH Transparency dashboard'}</CheckedLink></p>
     {state.kind === 'loading' && <p role="status">{fil ? 'Kinukuha ang mga rekord…' : 'Loading records…'}</p>}
-    {state.kind === 'error' && <p role="alert">{unavailable}</p>}
+    {state.kind === 'error' && <WorkInProgress locale={locale}>{unavailable}</WorkInProgress>}
+    {state.kind === 'ready' && !docs.length && <WorkInProgress locale={locale} />}
     {state.kind === 'ready' && <>
       <div className="directory-tools"><label htmlFor="live-procurement-query">{fil ? 'Maghanap' : 'Search'}<input id="live-procurement-query" type="search" value={query} onChange={event => setQuery(event.target.value)} /></label></div>
       <p className="civic-meta" role="status">{formatNumber(matching.length, locale)} / {formatNumber(state.total, locale)} {t.records}{state.total > docs.length ? (fil ? ` (unang ${docs.length} ang ipinapakita)` : ` (showing first ${docs.length})`) : ''}</p>
       {!matching.length && <p>{t.noResults}</p>}
       <ul className="record-list">{page.visible.map(doc => <li key={doc.id}>
-        <h2 lang="en"><a href={href(`transparency/procurement/${encodeURIComponent(doc.id)}`)}>{doc.award_title}</a></h2>
+        <h2 lang="en"><CheckedLink href={href(`transparency/procurement/${encodeURIComponent(doc.id)}`)}>{doc.award_title}</CheckedLink></h2>
         <dl>
           <div><dt>{fil ? 'Sanggunian' : 'Reference'}</dt><dd lang="en">{doc.reference_id || '—'}</dd></div>
           <div><dt>{fil ? 'Nanalo / supplier' : 'Awardee'}</dt><dd lang="en">{doc.awardee_name || '—'}</dd></div>

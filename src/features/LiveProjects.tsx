@@ -1,3 +1,5 @@
+import CheckedLink from '../components/CheckedLink'
+import WorkInProgress from '../components/WorkInProgress'
 import { useEffect, useState } from 'react'
 import { catalogs, formatNumber } from '../i18n/locales'
 import { lgu } from '../config/lgu'
@@ -43,8 +45,8 @@ export default function LiveProjects(props: CivicProps & { recordId?: string }) 
 
   if (recordId) {
     if (detail === 'loading') return <><PageIntro title={t.projects} /><p role="status">{fil ? 'Kinukuha ang rekord…' : 'Loading record…'}</p></>
-    if (detail === 'error') return <><PageIntro title={t.projects} /><p role="alert">{unavailable}</p><p><a href={lgu.transparency.dpwhDashboard}>{fil ? 'BetterGov PH DPWH dashboard' : 'BetterGov PH DPWH dashboard'}</a></p></>
-    if (!detail) return <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><a href={href('transparency/projects')}>{t.projects}</a></>
+    if (detail === 'error') return <><PageIntro title={t.projects} /><WorkInProgress locale={locale}>{unavailable}</WorkInProgress><p><CheckedLink href={lgu.transparency.dpwhDashboard}>BetterGov PH DPWH dashboard</CheckedLink></p></>
+    if (!detail) return <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><CheckedLink href={href('transparency/projects')}>{t.projects}</CheckedLink></>
     const facts: [string, string][] = [
       [fil ? 'Kontrata' : 'Contract', detail.contractId || '—'],
       [fil ? 'Katayuan (ayon sa tala)' : 'Status (as recorded)', detail.status || '—'],
@@ -66,9 +68,9 @@ export default function LiveProjects(props: CivicProps & { recordId?: string }) 
         </section>
       </div><aside className="civic-aside"><h2>{fil ? 'Pinagmulan' : 'Source'}</h2>
         <p>{fil ? 'BetterGov PH Transparency (DPWH).' : 'BetterGov PH Transparency (DPWH).'}</p>
-        <p><a href={lgu.transparency.dpwhDashboard}>{fil ? 'Tingnan sa DPWH dashboard' : 'View on the DPWH dashboard'}</a></p>
+        <p><CheckedLink href={lgu.transparency.dpwhDashboard}>{fil ? 'Tingnan sa DPWH dashboard' : 'View on the DPWH dashboard'}</CheckedLink></p>
       </aside></div>
-      <p><a href={href('transparency/projects')}>{t.projects}</a></p>
+      <p><CheckedLink href={href('transparency/projects')}>{t.projects}</CheckedLink></p>
     </>
   }
 
@@ -76,15 +78,16 @@ export default function LiveProjects(props: CivicProps & { recordId?: string }) 
     <PageIntro title={t.projects}>{fil
       ? 'Mga proyektong DPWH na binabanggit ang Pililla sa paglalarawan, live mula sa BetterGov PH search. Maaaring sumaklaw ang ilan sa karatig-bayan.'
       : 'DPWH projects whose description mentions Pililla, live from the BetterGov PH search index. Some may span neighboring towns.'}</PageIntro>
-    <p><a href={lgu.transparency.dpwhDashboard}>{fil ? 'Pinagmulan: BetterGov PH Transparency (DPWH)' : 'Source: BetterGov PH Transparency (DPWH)'}</a></p>
+    <p><CheckedLink href={lgu.transparency.dpwhDashboard}>{fil ? 'Pinagmulan: BetterGov PH Transparency (DPWH)' : 'Source: BetterGov PH Transparency (DPWH)'}</CheckedLink></p>
     {state.kind === 'loading' && <p role="status">{fil ? 'Kinukuha ang mga rekord…' : 'Loading records…'}</p>}
-    {state.kind === 'error' && <p role="alert">{unavailable}</p>}
+    {state.kind === 'error' && <WorkInProgress locale={locale}>{unavailable}</WorkInProgress>}
+    {state.kind === 'ready' && !docs.length && <WorkInProgress locale={locale} />}
     {state.kind === 'ready' && <>
       <div className="directory-tools"><label htmlFor="live-project-query">{fil ? 'Maghanap' : 'Search'}<input id="live-project-query" type="search" value={query} onChange={event => setQuery(event.target.value)} /></label></div>
       <p className="civic-meta" role="status">{formatNumber(matching.length, locale)} / {formatNumber(state.total, locale)} {t.records}</p>
       {!matching.length && <p>{t.noResults}</p>}
       <ul className="record-list">{page.visible.map(doc => <li key={doc.contractId}>
-        <h2 lang="en"><a href={href(`transparency/projects/${encodeURIComponent(doc.contractId)}`)}>{doc.description}</a></h2>
+        <h2 lang="en"><CheckedLink href={href(`transparency/projects/${encodeURIComponent(doc.contractId)}`)}>{doc.description}</CheckedLink></h2>
         <dl>
           <div><dt>{fil ? 'Kontrata' : 'Contract'}</dt><dd>{doc.contractId || '—'}</dd></div>
           <div><dt>{fil ? 'Taon' : 'Year'}</dt><dd>{doc.infraYear || '—'}</dd></div>

@@ -1,3 +1,4 @@
+import CheckedLink from '../components/CheckedLink'
 import { useState } from 'react'
 import { lgu } from '../config/lgu'
 import { catalogs, formatDate } from '../i18n/locales'
@@ -42,8 +43,8 @@ export default function Services(props: CivicProps) {
   if (data.services.publicationStatus === 'not-collected') return <>
     <PageIntro title={t.services}>{locale === 'fil' ? 'Mga serbisyo at dokumento ng Pililla.' : 'Services and documents for Pililla.'}</PageIntro>
     <p>{locale === 'fil' ? 'Hindi pa nakokolekta ang Citizens’ Charter ng Pililla. Ilalagay rito ang mga kinakailangan, bayarin at proseso kapag may naberipikang sanggunian.' : 'Pililla’s Citizens’ Charter has not been collected yet. Requirements, fees, and steps will appear here once verified source documents are available.'}</p>
-    <p><a href={lgu.officialUrl}>{t.officialWebsite}</a></p>
-    <p><a href={lgu.citizensCharterUrl}>{locale === 'fil' ? 'Basahin ang inilathalang 2024 Citizens’ Charter (PDF)' : 'Read the published 2024 Citizens’ Charter (PDF)'}</a></p>
+    <p><CheckedLink href={lgu.officialUrl}>{t.officialWebsite}</CheckedLink></p>
+    <p><CheckedLink href={lgu.citizensCharterUrl}>{locale === 'fil' ? 'Basahin ang inilathalang 2024 Citizens’ Charter (PDF)' : 'Read the published 2024 Citizens’ Charter (PDF)'}</CheckedLink></p>
   </>
   const services = rows(data.services.services)
   const normalizedQuery = query.trim().toLocaleLowerCase()
@@ -73,7 +74,7 @@ export default function Services(props: CivicProps) {
               <div className="service-filter-list">{categoryButtons()}</div>
             </details>
           </aside>
-            <section className="service-report"><div><h2>{locale === 'fil' ? 'May nawawalang serbisyo?' : 'Missing a service?'}</h2><p>{locale === 'fil' ? 'Magmungkahi ng serbisyo at magbahagi ng pampublikong sanggunian para masuri. Huwag magpadala ng pribadong impormasyon.' : 'Suggest a service and share a public source for review. Please do not submit private information.'}</p></div><a href={`${lgu.repository}/issues/new?template=missing-record.yml`}>{locale === 'fil' ? 'Magmungkahi sa GitHub' : 'Suggest on GitHub'} <LinkArrow /></a></section>
+            <section className="service-report"><div><h2>{locale === 'fil' ? 'May nawawalang serbisyo?' : 'Missing a service?'}</h2><p>{locale === 'fil' ? 'Magmungkahi ng serbisyo at magbahagi ng pampublikong sanggunian para masuri. Huwag magpadala ng pribadong impormasyon.' : 'Suggest a service and share a public source for review. Please do not submit private information.'}</p></div><CheckedLink href={`${lgu.repository}/issues/new?template=missing-record.yml`}>{locale === 'fil' ? 'Magmungkahi sa GitHub' : 'Suggest on GitHub'} <LinkArrow /></CheckedLink></section>
           </div>
           <div className="service-results">
             {services.length || leads.length ? <>
@@ -82,19 +83,19 @@ export default function Services(props: CivicProps) {
             {visibleServices.length > 0 && <section aria-labelledby="charter-services"><h2 id="charter-services">{locale === 'fil' ? 'Mga serbisyo sa Citizens’ Charter' : 'Citizens’ Charter services'}</h2>
               <ul className="service-grid">{visibleServices.map(row => <li key={String(row.recordId)} className="service-card">
                 <div className="service-card-top"><ServiceIcon category={serviceTopic(`${row.office} ${row.name}`)} /><span className="service-badge">Citizens’ Charter</span></div>
-                <h3 lang="en"><a href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{String(row.name)}</a></h3>
+                <h3 lang="en"><CheckedLink href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{String(row.name)}</CheckedLink></h3>
                 {typeof row.office === 'string' && <p className="civic-meta" lang="en">{row.office}</p>}
                 {typeof row.classification === 'string' && row.classification && <p className="service-classification" lang="en">{row.classification}</p>}
                 {row.needsClarification === true && <p className="service-card-status">{locale === 'fil' ? 'May hindi tiyak na impormasyon' : 'Information needs clarification'}</p>}
-                <div className="service-card-footer"><a href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{locale === 'fil' ? 'Tingnan ang detalye' : 'View details'} <span aria-hidden="true">→</span></a></div>
+                <div className="service-card-footer"><CheckedLink href={href(`services/${encodeURIComponent(String(row.recordId))}`)}>{locale === 'fil' ? 'Tingnan ang detalye' : 'View details'} <span aria-hidden="true">→</span></CheckedLink></div>
               </li>)}</ul>
             </section>}
             {visibleLeads.length > 0 && <section aria-labelledby="service-legislation-leads"><h2 id="service-legislation-leads">{c.serviceLegislationLeads}</h2><p className="service-evidence">{!services.length && (locale === 'fil' ? 'Walang nakuhang tala ng serbisyo sa Citizens’ Charter. ' : 'No service entries were captured from the Citizens’ Charter. ')}{c.serviceLegislationLeadsText}</p><ul className="service-grid">{visibleLeads.map(({ record, topic }) => <li key={String(record.recordId)} className="service-card">
               <div className="service-card-top"><ServiceIcon category={serviceTopic(`${topic} ${record.title}`)} /><span className="service-badge service-badge-lead">{locale === 'fil' ? 'Indeks ng ordinansa' : 'Ordinance index'}</span></div>
-              <h3><a href={href(`services/${encodeURIComponent(String(record.recordId))}`)}>{topic}</a></h3>
+              <h3><CheckedLink href={href(`services/${encodeURIComponent(String(record.recordId))}`)}>{topic}</CheckedLink></h3>
               <p className="service-card-status">{locale === 'fil' ? 'Hindi pa beripikado ang availability' : 'Availability unverified'}</p>
               <p className="civic-meta">{String(record.documentNumber)} · {formatDate(String(record.sourceDate), locale)}</p>
-              <div className="service-card-footer"><a href={href(`services/${encodeURIComponent(String(record.recordId))}`)}>{locale === 'fil' ? 'Tingnan ang serbisyo' : 'View service'} <span aria-hidden="true">→</span></a><a href={String(record.documentUrl)}>{locale === 'fil' ? 'Opisyal na dokumento' : 'Official document'}</a></div>
+              <div className="service-card-footer"><CheckedLink href={href(`services/${encodeURIComponent(String(record.recordId))}`)}>{locale === 'fil' ? 'Tingnan ang serbisyo' : 'View service'} <span aria-hidden="true">→</span></CheckedLink><CheckedLink href={String(record.documentUrl)}>{locale === 'fil' ? 'Opisyal na dokumento' : 'Official document'}</CheckedLink></div>
             </li>)}</ul><SourceNote {...props} id={String(leads[0].record.sourceId)} /></section>}
             {!matching.length && !matchingLeads.length && <p>{t.noResults}</p>}
             {pages > 1 && <nav className="service-pagination" aria-label={locale === 'fil' ? 'Mga pahina ng resulta' : 'Result pages'}>
@@ -114,25 +115,25 @@ export default function Services(props: CivicProps) {
           <li>
             <h3>{locale === 'fil' ? 'Pagpaparehistro ng kapanganakan' : 'Register a birth'}</h3>
             <p>{locale === 'fil' ? 'Ayon sa PSA, iparehistro ang kapanganakan sa local civil registry office ng lungsod o munisipalidad kung saan ito nangyari sa loob ng 30 araw. Kung sa Pililla ipinanganak, magtanong sa municipal civil registrar tungkol sa mga dokumento at delayed registration.' : 'The PSA says a birth should be registered within 30 days at the local civil registry office where it occurred. For a birth in Pililla, ask the municipal civil registrar about documents and delayed registration.'}</p>
-            <a href="https://psa.gov.ph/civilregistration/facts">{locale === 'fil' ? 'Gabay ng PSA sa civil registration' : 'PSA civil registration guidance'}<LinkArrow /></a>
+            <CheckedLink href="https://psa.gov.ph/civilregistration/facts">{locale === 'fil' ? 'Gabay ng PSA sa civil registration' : 'PSA civil registration guidance'}<LinkArrow /></CheckedLink>
           </li>
           <li>
             <h3>{locale === 'fil' ? 'Kopya ng birth certificate' : 'Request a birth certificate'}</h3>
             <p>{locale === 'fil' ? 'Para sa PSA copy, tingnan ang gabay ng PSA sa pag-apply at appointment. Iba ito sa unang pagpaparehistro ng kapanganakan sa lokal na civil registry.' : 'For a PSA copy, see the PSA application and appointment guidance. This is separate from registering the birth with the local civil registry.'}</p>
-            <a href="https://psa.gov.ph/birth-certificate">{locale === 'fil' ? 'Gabay ng PSA sa birth certificate' : 'PSA birth certificate guidance'}<LinkArrow /></a>
+            <CheckedLink href="https://psa.gov.ph/birth-certificate">{locale === 'fil' ? 'Gabay ng PSA sa birth certificate' : 'PSA birth certificate guidance'}<LinkArrow /></CheckedLink>
           </li>
           <li>
             <h3>{locale === 'fil' ? 'Kalusugan at tulong panlipunan' : 'Health and social welfare'}</h3>
             <p>{locale === 'fil' ? 'Inilathala ng munisipalidad ang mga kontak ng Rural Health Unit at Municipal Social Welfare and Development Office. Magtanong sa kanila tungkol sa available na tulong, iskedyul at mga kailangan.' : 'The municipality publishes contacts for the Rural Health Unit and Municipal Social Welfare and Development Office. Ask them about available assistance, schedules and requirements.'}</p>
-            <a href={href('government/offices')}>{c.contactOffice}<LinkArrow /></a>
+            <CheckedLink href={href('government/offices')}>{c.contactOffice}<LinkArrow /></CheckedLink>
           </li>
         </ul>
         <p className="civic-meta">{locale === 'fil' ? 'Mga sanggunian at kontak: sinaliksik noong Oktubre 27, 2026; hindi live na nakumpirma ang mga numero.' : 'Sources and contacts researched October 27, 2026; phone numbers were not live-validated.'}</p>
       </section>
-      <ul className="civic-links"><li><a href={String(data.services.sourceUrl)}>{c.officialCharter}<LinkArrow /></a></li><li><a href={href('government/offices')}>{c.contactOffice}<LinkArrow /></a></li></ul>
+      <ul className="civic-links"><li><CheckedLink href={String(data.services.sourceUrl)}>{c.officialCharter}<LinkArrow /></CheckedLink></li><li><CheckedLink href={href('government/offices')}>{c.contactOffice}<LinkArrow /></CheckedLink></li></ul>
       <p className="civic-meta">{t.capture}: {formatDate(String(data.services.capturedAt), locale)}</p>
       <SourceNote {...props} id={lgu.sourceIds.charter} />
-    </section><aside className="civic-aside"><h2>{c.beforeVisit}</h2><p>{c.beforeVisitText}</p><h3>{c.publishedContacts}</h3><ul className="civic-links">{rows(data.contacts.records).map(row => <li key={String(row.category)}><a href={href(`government/offices/${row.category}`)} lang="en">{String(row.service)}<LinkArrow /></a></li>)}</ul></aside></div>
-    <p><a href={`${import.meta.env.BASE_URL}${lgu.dataPath}/services.json`}>{c.originalRecord} <LinkArrow /></a></p>
+    </section><aside className="civic-aside"><h2>{c.beforeVisit}</h2><p>{c.beforeVisitText}</p><h3>{c.publishedContacts}</h3><ul className="civic-links">{rows(data.contacts.records).map(row => <li key={String(row.category)}><CheckedLink href={href(`government/offices/${row.category}`)} lang="en">{String(row.service)}<LinkArrow /></CheckedLink></li>)}</ul></aside></div>
+    <p><CheckedLink href={`${import.meta.env.BASE_URL}${lgu.dataPath}/services.json`}>{c.originalRecord} <LinkArrow /></CheckedLink></p>
   </>
 }

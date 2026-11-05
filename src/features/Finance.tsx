@@ -1,3 +1,4 @@
+import CheckedLink from '../components/CheckedLink'
 import { useState } from 'react'
 import { catalogs, formatNumber } from '../i18n/locales'
 import { civicCatalogs } from '../i18n/civic'
@@ -54,7 +55,7 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
   }
   return <><PageIntro title={income ? t.income : t.finance} />
     <section><h2>{incomeLabels.heading}</h2>
-      <p><a href="https://www.coa.gov.ph/reports/annual-audit-reports/aar-local-government-units/">{incomeLabels.source}</a></p>
+      <p><CheckedLink href="https://www.coa.gov.ph/reports/annual-audit-reports/aar-local-government-units/">{incomeLabels.source}</CheckedLink></p>
       <div className="table-wrap" role="region" aria-label={incomeLabels.heading} tabIndex={0}><table className="coverage-table"><thead><tr><th scope="col">{incomeLabels.year}</th><th scope="col">{incomeLabels.amount}</th></tr></thead><tbody>
         {incomePage.visible.map(([year, amount]) => <tr key={year}><td>{year}</td><td>{new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount)}</td></tr>)}
       </tbody></table></div>
@@ -63,28 +64,28 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
     <section><h2>{locale === 'fil' ? 'Statement of Receipts and Expenditures (SRE)' : 'Statement of Receipts and Expenditures (SRE)'}</h2>
       {(sreDataset.records as { period: string; sourceUrl: string; capturedAt: string }[]).length === 0
         ? <><p>{locale === 'fil' ? 'Wala pang panahong SRE ng Pililla ang nakukuha at nabeberipika. Ang nawawalang panahon ay hindi zero — tingnan ang mga opisyal na pinagmulan:' : 'No Pililla SRE period has been captured and verified yet. A missing period is not zero — see the official sources:'}</p>
-          <ul className="record-list">{sreDataset.expectedSources.map(source => <li key={source.url}><a href={source.url}>{source.name}</a></li>)}</ul></>
-        : <ul className="record-list">{(sreDataset.records as { period: string; sourceUrl: string; capturedAt: string }[]).map(record => <li key={record.period}><h3>{record.period}</h3><p className="civic-meta">{record.capturedAt} · <a href={record.sourceUrl}>{locale === 'fil' ? 'Pinagmulan' : 'Source'}</a></p></li>)}</ul>}
+          <ul className="record-list">{sreDataset.expectedSources.map(source => <li key={source.url}><CheckedLink href={source.url}>{source.name}</CheckedLink></li>)}</ul></>
+        : <ul className="record-list">{(sreDataset.records as { period: string; sourceUrl: string; capturedAt: string }[]).map(record => <li key={record.period}><h3>{record.period}</h3><p className="civic-meta">{record.capturedAt} · <CheckedLink href={record.sourceUrl}>{locale === 'fil' ? 'Pinagmulan' : 'Source'}</CheckedLink></p></li>)}</ul>}
     </section>
-    <div className="civic-split"><section><h2>{c.documentLeads}</h2><p className="measure">{c.documentLimit}</p><ul className="record-list">{documentPage.visible.map(row => <li key={String(row.documentNumber)}><p className="civic-meta" lang="en">{String(row.documentNumber)}</p><h3><a lang="en" href={String(row.documentUrl)}>{String(row.titleAsIndexed)}</a></h3>{row.scopeWarning && <p lang="en">{String(row.scopeWarning)}</p>}<SourceNote {...props} id={String(row.sourceId)} /></li>)}</ul><Pagination {...documentPage} locale={locale} label={c.documentLeads} /></section>
+    <div className="civic-split"><section><h2>{c.documentLeads}</h2><p className="measure">{c.documentLimit}</p><ul className="record-list">{documentPage.visible.map(row => <li key={String(row.documentNumber)}><p className="civic-meta" lang="en">{String(row.documentNumber)}</p><h3><CheckedLink lang="en" href={String(row.documentUrl)}>{String(row.titleAsIndexed)}</CheckedLink></h3>{row.scopeWarning && <p lang="en">{String(row.scopeWarning)}</p>}<SourceNote {...props} id={String(row.sourceId)} /></li>)}</ul><Pagination {...documentPage} locale={locale} label={c.documentLeads} /></section>
       <aside className="civic-aside"><h2>{c.coverageHeading}</h2><dl>{categories.map((category, index) => <div key={category}><dt className="directory-role">{category}</dt><dd style={{ margin: '0 0 1rem' }}>{index === 0 ? 'Not yet collected' : c.coverageMissing}</dd></div>)}</dl></aside></div>
     {projects.length > 0 && <section><h2>{labels.heading}</h2>
-      <p><a href={datasetUrl}>{labels.source}</a></p><SourceNote {...props} id={String(projects[0].sourceId)} />
+      <p><CheckedLink href={datasetUrl}>{labels.source}</CheckedLink></p><SourceNote {...props} id={String(projects[0].sourceId)} />
       <div className="directory-tools"><label htmlFor="dpwh-query">{labels.search}<input id="dpwh-query" type="search" value={query} onChange={event => setQuery(event.target.value)} /></label></div>
       <p className="civic-meta" role="status">{formatNumber(matching.length, locale)} / {formatNumber(projects.length, locale)} {t.records}</p>
       {!matching.length && <p>{t.noResults}</p>}
       <div className="table-wrap" role="region" aria-label={labels.heading} tabIndex={0}><table className="coverage-table"><thead><tr><th scope="col">{labels.title}</th><th scope="col">{labels.contract}</th><th scope="col">{labels.year}</th><th scope="col">{labels.budget}</th><th scope="col">{labels.status}</th></tr></thead><tbody>
-        {projectPage.visible.map(row => <tr key={transparencyRecordId(row)}><td lang="en"><a href={href(`transparency/projects/${transparencyRecordId(row)}`)}>{String(row.description)}</a></td><td>{String(row.contractId)}</td><td>{String(row.infraYear)}</td><td>{typeof row.budget === 'number' ? new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(row.budget) : '—'}</td><td lang="en">{String(row.status)}</td></tr>)}
+        {projectPage.visible.map(row => <tr key={transparencyRecordId(row)}><td lang="en"><CheckedLink href={href(`transparency/projects/${transparencyRecordId(row)}`)}>{String(row.description)}</CheckedLink></td><td>{String(row.contractId)}</td><td>{String(row.infraYear)}</td><td>{typeof row.budget === 'number' ? new Intl.NumberFormat(locale === 'fil' ? 'fil-PH' : 'en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(row.budget) : '—'}</td><td lang="en">{String(row.status)}</td></tr>)}
       </tbody></table></div>
       <Pagination {...projectPage} locale={locale} label={labels.heading} />
     </section>}
     {procurement.length > 0 && <section><h2>{procurementLabels.heading}</h2>
-      <p><a href={procurementUrl}>{procurementLabels.source}</a></p><SourceNote {...props} id={String(procurement[0].sourceId)} />
+      <p><CheckedLink href={procurementUrl}>{procurementLabels.source}</CheckedLink></p><SourceNote {...props} id={String(procurement[0].sourceId)} />
       <div className="directory-tools"><label htmlFor="procurement-query">{procurementLabels.search}<input id="procurement-query" type="search" value={procurementQuery} onChange={event => setProcurementQuery(event.target.value)} /></label></div>
       <p className="civic-meta" role="status">{formatNumber(matchingProcurement.length, locale)} / {formatNumber(procurement.length, locale)} {t.records}</p>
       {!matchingProcurement.length && <p>{t.noResults}</p>}
       <div className="table-wrap" role="region" aria-label={procurementLabels.heading} tabIndex={0}><table className="coverage-table"><thead><tr><th scope="col">{procurementLabels.title}</th><th scope="col">{procurementLabels.id}</th><th scope="col">{procurementLabels.awardee}</th><th scope="col">{procurementLabels.amount}</th><th scope="col">{procurementLabels.date}</th><th scope="col">{procurementLabels.status}</th></tr></thead><tbody>
-        {procurementPage.visible.map(row => <tr key={transparencyRecordId(row)}><td lang="en"><a href={href(`transparency/procurement/${transparencyRecordId(row)}`)}>{String(row.title)}</a></td><td lang="en">{row.id ? String(row.id) : '—'}</td><td lang="en">{String(row.awardee)}</td><td>{String(row.amountDisplayed)}</td><td lang="en">{String(row.dateDisplayed)}</td><td lang="en">{String(row.statusDisplayed)}</td></tr>)}
+        {procurementPage.visible.map(row => <tr key={transparencyRecordId(row)}><td lang="en"><CheckedLink href={href(`transparency/procurement/${transparencyRecordId(row)}`)}>{String(row.title)}</CheckedLink></td><td lang="en">{row.id ? String(row.id) : '—'}</td><td lang="en">{String(row.awardee)}</td><td>{String(row.amountDisplayed)}</td><td lang="en">{String(row.dateDisplayed)}</td><td lang="en">{String(row.statusDisplayed)}</td></tr>)}
       </tbody></table></div>
       <Pagination {...procurementPage} locale={locale} label={procurementLabels.heading} />
     </section>}
@@ -94,7 +95,7 @@ export default function Finance(props: CivicProps & { income?: boolean }) {
         <h3>₱{Number(row.proposedLoanAmountPhpMillion).toFixed(2)} million proposed</h3>
         <p>{String(row.reportPeriod)} · Monetary Board resolution {String(row.resolutionNumber)}, dated {String(row.resolutionDate)}</p>
         <p>{String(row.purposeAsReported)}</p>
-        <p><a href={`${String(row.sourceUrl)}#page=${String(row.sourcePage)}`}>BSP report, page {String(row.sourcePage)}</a></p>
+        <p><CheckedLink href={`${String(row.sourceUrl)}#page=${String(row.sourcePage)}`}>BSP report, page {String(row.sourcePage)}</CheckedLink></p>
         <SourceNote {...props} id={String(row.sourceId)} />
       </li>)}</ul>
     </section>}
