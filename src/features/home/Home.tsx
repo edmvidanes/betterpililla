@@ -1,3 +1,4 @@
+import CheckedLink from '../../components/CheckedLink'
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -126,7 +127,7 @@ export default function Home({ locale, data, href, search, dataStatus }: {
   }, [data])
   const t = catalogs[locale]
   const links = (keys: MessageKey[], icons = false) => <ul className="atlas-links">{keys.map(key =>
-    <li key={key}><a href={href(routes.find(([, label]) => label === key)![0])}><span className="atlas-link-label">{icons && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={browseIcons[key]} /></svg>}{t[key]}</span><Arrow /></a></li>,
+    <li key={key}><CheckedLink href={href(routes.find(([, label]) => label === key)![0])}><span className="atlas-link-label">{icons && <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={browseIcons[key]} /></svg>}{t[key]}</span><Arrow /></CheckedLink></li>,
   )}</ul>
 
   return <div className="atlas" ref={atlasRef}>
@@ -157,7 +158,7 @@ export default function Home({ locale, data, href, search, dataStatus }: {
             <summary>{t.photoCredits}</summary>
             <div className="atlas-credits-panel">
               <ul>{photos.map(photo => <li key={photo.src}>
-                <a href={photo.source}>{photo.title}</a>, {photo.author}, {photo.licenseUrl ? <a href={photo.licenseUrl}>{photo.license}</a> : t.photoPermission}. {locale === 'fil' ? 'Ni-resize; maaaring i-crop sa display.' : 'Resized; may be cropped for display.'}
+                <CheckedLink href={photo.source}>{photo.title}</CheckedLink>, {photo.author}, {photo.licenseUrl ? <CheckedLink href={photo.licenseUrl}>{photo.license}</CheckedLink> : t.photoPermission}. {locale === 'fil' ? 'Ni-resize; maaaring i-crop sa display.' : 'Resized; may be cropped for display.'}
               </li>)}</ul>
             </div>
           </details>
@@ -198,9 +199,9 @@ export default function Home({ locale, data, href, search, dataStatus }: {
       <div><h2 id="atlas-sources-title">{t.atlasSources}</h2><p>{t.atlasLimits}</p></div>
       <div className="atlas-source-links">
         <ul className="atlas-links">
-          <li><a href={href('sources')}><span>{t.sources}</span><Arrow /></a></li>
-          <li><a href={href('sources')}><span>{t.viewCoverage}</span><Arrow /></a></li>
-          <li><a href={href('report-data')}><span>{t.corrections}</span><Arrow /></a></li>
+          <li><CheckedLink href={href('sources')}><span>{t.sources}</span><Arrow /></CheckedLink></li>
+          <li><CheckedLink href={href('sources')}><span>{t.viewCoverage}</span><Arrow /></CheckedLink></li>
+          <li><CheckedLink href={href('report-data')}><span>{t.corrections}</span><Arrow /></CheckedLink></li>
         </ul>
         <p>{t.capture}: <time dateTime={data.portal.capturedAt}>{formatDate(data.portal.capturedAt, locale)}</time></p>
       </div>

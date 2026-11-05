@@ -1,3 +1,4 @@
+import CheckedLink from '../../components/CheckedLink'
 import type { DataRecord } from '../../data/loaders'
 import { lgu } from '../../config/lgu'
 import { catalogs, formatNumber, type Locale } from '../../i18n/locales'
@@ -18,17 +19,17 @@ export default function Demographics({ locale, href, municipality }: { locale: L
       <p>{t.homeDemographicsIntro}</p>
       {populations.length > 0 && <div className="population-chart" aria-label={t.homePopulationChart}>
         {populations.map(fact => <div className="population-row" key={`${fact.year}-${fact.source}`}>
-          <a href={fact.source}>{fact.year}</a>
+          <CheckedLink href={fact.source}>{fact.year}</CheckedLink>
           <div className="population-track" aria-hidden="true"><span style={{ width: `${max ? fact.value / max * 100 : 0}%` }} /></div>
           <strong>{formatNumber(fact.value, locale)}</strong>
           <small>{fact.status === 'indexed-primary-direct-fetch-blocked' ? t.homeIndexedSource : t.homeSecondarySource}</small>
         </div>)}
       </div>}
-      <a className="population-more" href={href('statistics/demographics')}>{t.homeExploreDemographics} <span aria-hidden="true">→</span></a>
+      <CheckedLink className="population-more" href={href('statistics/demographics')}>{t.homeExploreDemographics} <span aria-hidden="true">→</span></CheckedLink>
     </div>
     <figure className="demographics-photos">
-      <div className="demographics-photo-strip">{lgu.demographicsPhotos.map(photo => <a href={photo.source} key={photo.src}><img src={`${import.meta.env.BASE_URL}${photo.src}`} alt={photo.alt[locale]} width={photo.width} height={photo.height} loading="lazy" /></a>)}</div>
-      <figcaption><details className="atlas-credits"><summary>{t.photoCredits}</summary><div className="atlas-credits-panel"><ul>{lgu.demographicsPhotos.map(photo => <li key={photo.src}><a href={photo.source}>{photo.title}</a> · {photo.author} · {photo.licenseUrl ? <a href={photo.licenseUrl}>{photo.license}</a> : t.photoPermission}</li>)}</ul></div></details></figcaption>
+      <div className="demographics-photo-strip">{lgu.demographicsPhotos.map(photo => <CheckedLink href={photo.source} key={photo.src}><img src={`${import.meta.env.BASE_URL}${photo.src}`} alt={photo.alt[locale]} width={photo.width} height={photo.height} loading="lazy" /></CheckedLink>)}</div>
+      <figcaption><details className="atlas-credits"><summary>{t.photoCredits}</summary><div className="atlas-credits-panel"><ul>{lgu.demographicsPhotos.map(photo => <li key={photo.src}><CheckedLink href={photo.source}>{photo.title}</CheckedLink> · {photo.author} · {photo.licenseUrl ? <CheckedLink href={photo.licenseUrl}>{photo.license}</CheckedLink> : t.photoPermission}</li>)}</ul></div></details></figcaption>
     </figure>
   </section>
 }

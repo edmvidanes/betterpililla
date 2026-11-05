@@ -1,3 +1,4 @@
+import CheckedLink from '../../components/CheckedLink'
 import { catalogs, type Locale } from '../../i18n/locales'
 import './history.css'
 
@@ -97,10 +98,10 @@ export default function History({ locale }: { locale: Locale }) {
             </summary>
             <div className="atlas-history-detail">
               <p>{t[record.narrative]}</p>
-              <a href={record.source} target="_blank" rel="noreferrer">
+              <CheckedLink href={record.source} target="_blank" rel="noreferrer">
                 {t.historySourcesLabel}
                 <svg className="atlas-history-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg>
-              </a>
+              </CheckedLink>
             </div>
           </details>
         </li>)}
@@ -109,10 +110,10 @@ export default function History({ locale }: { locale: Locale }) {
         {notes.map(note => <article key={note.key} className="atlas-history-note">
           <h3>{t[`${note.key}Title`]}</h3>
           <p>{t[`${note.key}Body`]}</p>
-          <a href={note.source} target="_blank" rel="noreferrer">
+          <CheckedLink href={note.source} target="_blank" rel="noreferrer">
             {t.historySourcesLabel}
             <svg className="atlas-history-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" /></svg>
-          </a>
+          </CheckedLink>
         </article>)}
       </aside>
     </div>

@@ -1,3 +1,4 @@
+import CheckedLink from '../../components/CheckedLink'
 import { useEffect, useMemo, useState } from 'react'
 import { Button } from '@bettergov/kapwa/button'
 import { Pagination, usePagination } from '../../components/Pagination'
@@ -103,9 +104,9 @@ function RelatedRows({ record, matches, text, href, locale }: { record: Legislat
     <ul className="record-list">
       {visible.map((candidate) => (
         <li key={candidate.recordId} className="min-w-0 break-words">
-          <a href={href(`${INDEX_PATH}/${encodeURIComponent(candidate.recordId)}`)}>
+          <CheckedLink href={href(`${INDEX_PATH}/${encodeURIComponent(candidate.recordId)}`)}>
             {candidate.documentNumber || candidate.recordId} · {candidate.sourceId} · {text.row} {candidate.sourceRecordOrder}
-          </a>
+          </CheckedLink>
           <p className="muted">{matchDescription(record, candidate, text)}</p>
         </li>
       ))}
@@ -252,12 +253,12 @@ function LegislationIndex({ locale, records, href, sourceLink }: LegislationProp
                 <li key={record.recordId} className="min-w-0">
                   <p className="muted break-words">{record.documentType} · {record.documentNumber} · {record.sourceDateLabel}</p>
                   <h3 className="break-words [overflow-wrap:anywhere]">
-                    <a href={href(`${INDEX_PATH}/${encodeURIComponent(record.recordId)}`)} className="whitespace-pre-wrap">{record.title || record.recordId}</a>
+                    <CheckedLink href={href(`${INDEX_PATH}/${encodeURIComponent(record.recordId)}`)} className="whitespace-pre-wrap">{record.title || record.recordId}</CheckedLink>
                   </h3>
                   <p className="muted">{text.original}. {text.untranslated}</p>
                   <p className="whitespace-pre-wrap break-words">{text.author}: {record.authorText || text.notSupplied}</p>
                   <p className="whitespace-pre-wrap break-words">{text.committee}: {record.committeeText || text.notSupplied}</p>
-                  <p className="muted break-words"><a href={sourceLink(record.sourceId)}>{record.sourceId}</a> · {text.row} {record.sourceRecordOrder}</p>
+                  <p className="muted break-words"><CheckedLink href={sourceLink(record.sourceId)}>{record.sourceId}</CheckedLink> · {text.row} {record.sourceRecordOrder}</p>
                   {matches.length > 0 && <details><summary>{text.related} ({formatNumber.format(matches.length)})</summary><RelatedRows record={record} matches={matches} text={text} href={href} locale={locale} /></details>}
                 </li>
               )
@@ -285,8 +286,8 @@ export default function Legislation(props: LegislationProps) {
         <h1>{text.notFound}</h1>
         <p>{text.notFoundNote}</p>
         <p className="break-words [overflow-wrap:anywhere]">{text.recordId}: <code>{recordId}</code></p>
-        <p><a href={href(INDEX_PATH)}>{text.back}</a></p>
-        <p><a href={`${href('/search')}?q=${encodeURIComponent(recordId)}`}>{text.search}</a></p>
+        <p><CheckedLink href={href(INDEX_PATH)}>{text.back}</CheckedLink></p>
+        <p><CheckedLink href={`${href('/search')}?q=${encodeURIComponent(recordId)}`}>{text.search}</CheckedLink></p>
       </section>
     )
   }
@@ -305,7 +306,7 @@ export default function Legislation(props: LegislationProps) {
   ]
   return (
     <>
-      <p><a href={href(INDEX_PATH)}>{text.back}</a></p>
+      <p><CheckedLink href={href(INDEX_PATH)}>{text.back}</CheckedLink></p>
       <h1 className="whitespace-pre-wrap break-words [overflow-wrap:anywhere]">{record.title || record.recordId}</h1>
       <p className="notice">{text.original}. {text.untranslated}</p>
       <section className="panel" aria-labelledby="legislation-metadata">
@@ -326,10 +327,10 @@ export default function Legislation(props: LegislationProps) {
         <p>{text.freshnessNote}</p>
         <p>{text.captured}: {record.retrievedAt || text.notSupplied}</p>
         <ul className="record-list">
-          <li>{record.documentUrl ? <a href={record.documentUrl}>{text.attachment}</a> : text.attachmentMissing}</li>
-          {record.sourceIndexUrl && <li><a href={record.sourceIndexUrl}>{text.index}</a></li>}
-          {record.sourceFeedUrl && <li><a href={record.sourceFeedUrl}>{text.feed}</a></li>}
-          <li><a href={sourceLink(record.sourceId)}>{text.evidenceLink}: {record.sourceId}</a></li>
+          <li>{record.documentUrl ? <CheckedLink href={record.documentUrl}>{text.attachment}</CheckedLink> : text.attachmentMissing}</li>
+          {record.sourceIndexUrl && <li><CheckedLink href={record.sourceIndexUrl}>{text.index}</CheckedLink></li>}
+          {record.sourceFeedUrl && <li><CheckedLink href={record.sourceFeedUrl}>{text.feed}</CheckedLink></li>}
+          <li><CheckedLink href={sourceLink(record.sourceId)}>{text.evidenceLink}: {record.sourceId}</CheckedLink></li>
         </ul>
         <p className="break-words [overflow-wrap:anywhere]">{text.hash}: <code>{record.sourceFeedSha256 || text.notSupplied}</code></p>
       </section>
@@ -340,7 +341,7 @@ export default function Legislation(props: LegislationProps) {
           <RelatedRows record={record} matches={matches} text={text} href={href} locale={locale} />
         </section>
       )}
-      <p><a href={correctionLink(record.recordId)}>{text.correction}</a></p>
+      <p><CheckedLink href={correctionLink(record.recordId)}>{text.correction}</CheckedLink></p>
     </>
   )
 }

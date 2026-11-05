@@ -1,3 +1,4 @@
+import CheckedLink from '../../components/CheckedLink'
 import { catalogs, type Locale } from '../../i18n/locales'
 
 const groups = [
@@ -15,7 +16,7 @@ export default function ServiceHighlights({ locale, href }: {
 
   return <ul className="atlas-service-badges" aria-label={t.serviceHighlightTitle}>{groups.map(group =>
     <li key={group.category}>
-      <a href={href(`government/offices/${group.category}`)}>{t[group.label]}</a>
+      <CheckedLink href={href(`government/offices/${group.category}`)}>{t[group.label]}</CheckedLink>
     </li>,
   )}</ul>
 }
