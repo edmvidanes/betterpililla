@@ -7,6 +7,7 @@ export interface MunicipalityConfig {
   repository: string
   withheldDatasets: readonly string[]
   officialUrl: string
+  citizensCharterUrl: string
   defaultLocale: 'en' | 'fil'
   sourceIds: Record<'about' | 'charter' | 'executive' | 'legislative' | 'psgc' | 'population' | 'competitiveness' | 'fdp' | 'fiscal' | 'audit' | 'procurement', string>
   mapView: { center: readonly [number, number]; zoom: number }
@@ -36,6 +37,7 @@ export const lgu: MunicipalityConfig = {
   dataPath: 'data', repository: '',
   withheldDatasets: ['services', 'sector-inventory', 'ordinances', 'resolutions', 'research-updates'],
   officialUrl: 'https://pilillarizal.gov.ph/', defaultLocale: 'en',
+  citizensCharterUrl: 'https://pilillarizal.gov.ph/wp-content/uploads/2025/06/Pililla_CC_2024.pdf',
   // Approximate OSM town center; map orientation only, not an official boundary.
   mapView: { center: [121.315, 14.48], zoom: 13 },
   sourceIds: {

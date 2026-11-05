@@ -43,6 +43,7 @@ export default function Services(props: CivicProps) {
     <PageIntro title={t.services}>{locale === 'fil' ? 'Mga serbisyo at dokumento ng Pililla.' : 'Services and documents for Pililla.'}</PageIntro>
     <p>{locale === 'fil' ? 'Hindi pa nakokolekta ang Citizens’ Charter ng Pililla. Ilalagay rito ang mga kinakailangan, bayarin at proseso kapag may naberipikang sanggunian.' : 'Pililla’s Citizens’ Charter has not been collected yet. Requirements, fees, and steps will appear here once verified source documents are available.'}</p>
     <p><a href={lgu.officialUrl}>{t.officialWebsite}</a></p>
+    <p><a href={lgu.citizensCharterUrl}>{locale === 'fil' ? 'Basahin ang inilathalang 2024 Citizens’ Charter (PDF)' : 'Read the published 2024 Citizens’ Charter (PDF)'}</a></p>
   </>
   const services = rows(data.services.services)
   const normalizedQuery = query.trim().toLocaleLowerCase()
