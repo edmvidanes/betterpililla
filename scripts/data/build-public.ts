@@ -8,7 +8,7 @@ import { loadDataPack, validatePack } from './validate.ts';
 import type { DataPack } from './validate.ts';
 import { applyRefreshStatus, readRefreshStatus } from './refresh-status.ts';
 import { writeLegislationData } from './build-legislation.ts';
-import { publicationDocuments } from './publication-policy.ts';
+import { publicationDocuments, withheldSchema } from './publication-policy.ts';
 import { lgu } from '../../src/config/lgu.ts';
 
 /** Validate before touching publication; a failed build leaves the last good directory intact. */
@@ -26,6 +26,7 @@ export async function publish(pack: DataPack, destination = resolve('public/data
   let movedPrevious = false;
   try {
     await cp(join(pack.root, 'schemas'), join(staging, 'schemas'), { recursive: true });
+    if (withheld.length) await writeFile(join(staging, 'schemas/withheld.schema.json'), JSON.stringify(withheldSchema, null, 2) + '\n');
     for (const [id, data] of Object.entries(documents)) {
       const file = files[id];
       const bytes = rewritten.has(id) ? Buffer.from(JSON.stringify(data, null, 2) + '\n') : await readFile(join(pack.root, file));
@@ -41,7 +42,7 @@ export async function publish(pack: DataPack, destination = resolve('public/data
       for (const sourceId of declaration?.sourceIds ?? (declaration?.sourceId ? [declaration.sourceId] : [])) sourceIds.add(sourceId);
       if (id === 'source-register') for (const source of register.sources) sourceIds.add(source.id);
       entries.push({ id, jsonUrl: `data/${file}`, csvUrl: `data/${csvFile}`,
-        schemaUrl: `data/schemas/${schemaName(id)}.schema.json`,
+        schemaUrl: `data/schemas/${withheld.includes(id) ? 'withheld' : schemaName(id)}.schema.json`,
         rowCount: rows.length, capturedAt: data.capturedAt ?? data.retrievedAt ?? data.asOf ?? data.generatedAt,
         sha256: sha256(bytes), sourceIds: [...sourceIds].sort(),
         coverage: declaration?.status ?? (id === 'source-register' ? register.scope : manifest.globalLimitations.join(' ')),

@@ -1,6 +1,19 @@
 import type { DataPack } from './validate.ts';
 import { collectSourceIds } from './normalize.ts';
 
+export const withheldSchema = {
+  $schema: 'http://json-schema.org/draft-07/schema#',
+  type: 'object', required: ['schemaVersion', 'publicationStatus', 'publicationNote', 'capturedAt'],
+  properties: {
+    schemaVersion: { const: 'civic-withheld/v1' },
+    publicationStatus: { const: 'not-collected' },
+    publicationNote: { type: 'string' }, capturedAt: { type: 'string' },
+    records: { type: 'array', maxItems: 0 }, services: { type: 'array', maxItems: 0 },
+    sectors: { type: 'array', maxItems: 0 }, observations: { type: 'array', maxItems: 0 },
+    serviceLegislationLeads: { type: 'array', maxItems: 0 },
+  },
+};
+
 /** Withhold foreign template records without editing the retained source snapshot. */
 export function publicationDocuments(pack: DataPack, withheld: readonly string[]) {
   const documents = { ...pack.documents };
@@ -10,7 +23,7 @@ export function publicationDocuments(pack: DataPack, withheld: readonly string[]
     const original = documents[id];
     if (!original) throw new Error(`Unknown withheld dataset: ${id}`);
     documents[id] = {
-      schemaVersion: original.schemaVersion,
+      schemaVersion: 'civic-withheld/v1',
       municipality: pack.documents['dataset-manifest'].municipality,
       capturedAt: original.capturedAt ?? original.retrievedAt,
       publicationStatus: 'not-collected', publicationNote: note,
