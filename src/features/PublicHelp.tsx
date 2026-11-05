@@ -3,7 +3,7 @@ import help from '../data/public-help.json'
 import { PageIntro, type CivicProps } from './Civic'
 import './provider-records.css'
 
-export const telephoneHref = (phone: string) => `tel:+63${phone.replace(/\D/g, '').replace(/^0/, '')}`
+const telephoneHref = (phone: string) => `tel:+63${phone.replace(/\D/g, '').replace(/^0/, '')}`
 export default function PublicHelp({ locale, href }: CivicProps) {
   const fil = locale === 'fil'
   return <article className="provider-records">

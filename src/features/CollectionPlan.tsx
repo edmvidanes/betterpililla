@@ -15,7 +15,7 @@ export default function CollectionPlan({ locale, href }: CivicProps) {
   useEffect(() => {
     const followFragment = () => {
       const id = location.hash.slice(1)
-      if (!/^(collect-[a-z-]+|phase-[1-6])$/.test(id)) return
+      if (!/^(collect-[a-z-]+|phase-[1-6]|provider-progress)$/.test(id)) return
       const target = document.getElementById(id)
       if (!target) return
       ScrollTrigger.refresh()
