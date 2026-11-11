@@ -1,15 +1,28 @@
-name: betterpililla
+name: ${COMPOSE_PROJECT_NAME:-betterpililla}
 services:
   web:
-    image: betterpililla:local
+    image: betterpililla:${BETTERPILILLA_IMAGE_TAG:-local}
     build: .
     ports:
-      - "127.0.0.1:8080:8080"
+      - "127.0.0.1:${BETTERPILILLA_PORT:-4174}:8080"
+    networks:
+      - site
     read_only: true
     tmpfs:
-      - /tmp
+      - /tmp:size=64m,mode=1777
     cap_drop:
       - ALL
     security_opt:
       - no-new-privileges:true
+    cpus: 1.0
+    mem_limit: 256m
+    pids_limit: 128
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     restart: unless-stopped
+networks:
+  site:
+    driver: bridge
