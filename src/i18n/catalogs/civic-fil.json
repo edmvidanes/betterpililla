@@ -92,6 +92,7 @@
   "chartDescription": "Populasyon ayon sa taon ng sanggunian. Gamitin ang mga pindutan ng taon upang tingnan ang bawat bilang at sanggunian nito.",
   "secondaryValue": "Sekundaryang inilathalang bilang · hinihintay ang pagsusuri sa PSA",
   "indexedValue": "Bilang mula sa indeks ng paghahanap sa PSA · naharang ang direktang pag-access",
+  "directCensusValue": "Inilathalang bilang sa sensus na direktang sinuri sa mga export ng PSA OpenSTAT",
   "chartNoInterpolation": "Pinagdurugtong ng linya ang mga nakuhang taon; hindi nito ibinibigay ang mga halaga sa pagitan ng mga taon.",
   "publishedRate": "Inilathalang taunang antas ng paglago",
   "rateNote": "Inilathala ng PhilAtlas, hindi kinalkula ng portal na ito. Hinihintay ang pagsusuri sa PSA.",

@@ -92,6 +92,7 @@
   "chartDescription": "Population by reference year. Use the year buttons to inspect each published value and its source.",
   "secondaryValue": "Secondary published figure · PSA cross-check pending",
   "indexedValue": "PSA search-index figure · direct access blocked",
+  "directCensusValue": "Published census count verified directly against PSA OpenSTAT exports",
   "chartNoInterpolation": "The line connects captured reference years; it does not supply values for the years between them.",
   "publishedRate": "Published annualized growth rate",
   "rateNote": "Published by PhilAtlas, not calculated by this portal. PSA cross-check pending.",

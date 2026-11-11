@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { lgu } from '../config/lgu'
-import { catalogs, formatNumber } from '../i18n/locales'
+import { catalogs, formatDate, formatNumber } from '../i18n/locales'
 import { civicCatalogs } from '../i18n/civic'
 import { PageIntro, SourceNote, type CivicProps } from './Civic'
 import './records-polish.css'
@@ -38,7 +38,7 @@ export default function Demographics(props: CivicProps) {
         {visible.map(row => <g key={Number(row.referenceYear)} onMouseEnter={() => setSelectedYear(Number(row.referenceYear))}><circle cx={x(Number(row.referenceYear))} cy={y(Number(row.value))} r="16" fill="transparent" /><circle cx={x(Number(row.referenceYear))} cy={y(Number(row.value))} r={row === selected ? 7 : 5} fill={row === selected ? '#172b4d' : '#1d4ed8'} stroke="white" strokeWidth="2" />{(!allYears || row === visible[0] || row === visible.at(-1)) && <text x={x(Number(row.referenceYear))} y="265" textAnchor="middle">{String(row.referenceYear)}</text>}</g>)}
       </svg></div>
       <div className="chart-years" role="group" aria-label={c.selectYear}>{visible.map(row => <button key={Number(row.referenceYear)} type="button" aria-pressed={row === selected} onClick={() => setSelectedYear(Number(row.referenceYear))}>{String(row.referenceYear)}</button>)}</div>
-      <div aria-live="polite" aria-atomic="true"><p className="chart-selection">{formatNumber(Number(selected.value), locale)} <small>{c.populationUnit} · {String(selected.referenceYear)}</small></p><p className="chart-note">{selected.sourceTier === 'primary-government' ? c.indexedValue : c.secondaryValue}</p></div>
+      <div aria-live="polite" aria-atomic="true"><p className="chart-selection">{formatNumber(Number(selected.value), locale)} <small>{c.populationUnit} · {String(selected.referenceYear)}</small></p><p className="chart-note">{selected.verificationStatus === 'primary-direct' ? c.directCensusValue : selected.sourceTier === 'primary-government' ? c.indexedValue : c.secondaryValue}</p>{typeof selected.referenceDate === 'string' && <p className="chart-note">{t.homeCensusReference} <time dateTime={selected.referenceDate}>{formatDate(selected.referenceDate, locale)}</time></p>}</div>
       <SourceNote {...props} id={String(selected.sourceId)} />
       <p className="chart-note">{c.chartNoInterpolation}</p>
     </section>}

@@ -225,7 +225,7 @@ function App({ initialPath }: { initialPath?: string }) {
   ]
   const unavailableSection = unavailableSections.find(([path]) => route === path || route.startsWith(path + '/'))
   if (data && unavailableSection) content = <><h1>{t[unavailableSection[1]]}</h1><WorkInProgress locale={locale} /></>
-  else if (data && ['services', 'open-lgu/legislation', 'places', 'advisories', 'history', 'statistics/demographics'].includes(route)) content = <>{content}<WorkInProgress locale={locale} /></>
+  else if (data && ['services', 'open-lgu/legislation', 'places', 'advisories', 'history'].includes(route)) content = <>{content}<WorkInProgress locale={locale} /></>
   return <LocaleContext value={locale}>
     <CheckedLink className="skip-link" href="#main">{t.skip}</CheckedLink>
     <div className={`community-bar${route === '' ? ' atlas-utility' : ''}`}><div className="utility-inner">
