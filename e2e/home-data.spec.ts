@@ -1,14 +1,14 @@
 import { expect, test } from '@playwright/test'
 
-test('prerendered census controls wait for their client handlers', async ({ page }) => {
+test('prerendered CMCI controls wait for their client handlers', async ({ page }) => {
   let release!: () => void
   const ready = new Promise<void>(resolve => { release = resolve })
   await page.route('**/assets/index-*.js', async route => { await ready; await route.continue() })
-  await page.goto('/en/statistics/demographics', { waitUntil: 'commit' })
-  const year = page.getByRole('button', { name: '2020', exact: true })
-  try { await expect(year).toBeDisabled() } finally { release() }
-  await year.click()
-  await expect(page.locator('.chart-selection')).toContainText('71,535')
+  await page.goto('/en/', { waitUntil: 'commit' })
+  const pillar = page.locator('.cmci-bar-row').first()
+  try { await expect(pillar).toBeDisabled() } finally { release() }
+  await pillar.click()
+  await expect(page.locator('.cmci-indicators tbody')).toBeVisible()
 })
 
 test('CMCI homepage charts expose all five dated pillar datasets', async ({ page }) => {

@@ -7,6 +7,7 @@ test('reviewed census counts retain their year, date and source', async ({ page 
   await expect(page.locator('time[datetime="2024-07-01"]')).toBeVisible()
   await expect(page.locator('.chart-note').first()).toContainText('verified directly against PSA')
   await page.getByRole('button', { name: '2020', exact: true }).click()
+  await page.locator('.chart-plot g').filter({ has: page.locator('circle') }).last().hover()
   await expect(page.locator('.chart-selection')).toContainText('71,535')
   await page.getByRole('button', { name: '2015', exact: true }).click()
   await expect(page.locator('.chart-selection')).toContainText('64,812')
