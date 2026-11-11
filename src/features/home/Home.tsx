@@ -10,6 +10,7 @@ import ServiceHighlights from './ServiceHighlights'
 import PilillaMap from './PilillaMap'
 import Demographics from './Demographics'
 import OfficialChannels from './OfficialChannels'
+import CmciCharts from '../../components/CmciCharts'
 import './home.css'
 
 function Arrow() {
@@ -191,6 +192,8 @@ export default function Home({ locale, data, href, search, dataStatus }: {
 
     {data ? <>
     {Array.isArray(data.municipality.populationFacts) && data.municipality.populationFacts.length > 0 && <Demographics locale={locale} href={href} municipality={data.municipality} />}
+
+    <div className="atlas-inner"><CmciCharts locale={locale} /></div>
 
     <PilillaMap locale={locale} center={lgu.mapView.center} zoom={lgu.mapView.zoom} />
     <OfficialChannels locale={locale} />

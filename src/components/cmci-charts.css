@@ -1,0 +1,41 @@
+.cmci-charts { color: #172b4d; padding-block: 3rem; }
+.cmci-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; margin-bottom: 2rem; }
+.cmci-heading h2 { font-size: clamp(1.8rem, 3.5vw, 3rem); line-height: 1.15; letter-spacing: -.03em; margin: .4rem 0 .7rem; }
+.cmci-heading p { margin: 0; max-width: 65ch; }
+.cmci-kicker { color: #4c5e78; font-size: .85rem; font-weight: 650; }
+.cmci-archive-label { color: #9a3412; background: #ffedd5; font-size: .8rem; font-weight: 650; padding: .4rem .7rem; white-space: nowrap; }
+.cmci-overview { display: grid; grid-template-columns: minmax(170px, .55fr) minmax(0, 1.6fr); gap: clamp(1.5rem, 5vw, 4rem); }
+.cmci-totals { padding: 1.5rem; background: #eaf1ff; display: grid; gap: 1.3rem; align-content: start; }
+.cmci-totals span { display: block; font-size: .9rem; }
+.cmci-totals strong { display: block; color: #1d4ed8; font-size: clamp(2.5rem, 4vw, 3.5rem); line-height: 1.15; font-variant-numeric: tabular-nums; }
+.cmci-totals p { color: #4c5e78; margin: 0; font-size: .8rem; }
+.cmci-bars { min-width: 0; }
+.cmci-scale { display: flex; justify-content: space-between; margin: 0 5.3rem .4rem 12rem; color: #4c5e78; font-size: .75rem; }
+.cmci-bar-row { display: grid; grid-template-columns: 11rem minmax(0, 1fr) 4.8rem; gap: 1rem; align-items: center; width: 100%; background: transparent; color: inherit; text-align: left; border: 0; border-bottom: 1px solid #dce5f2; padding: .85rem 0; cursor: pointer; }
+.cmci-bar-row[aria-pressed="true"] .cmci-bar-name { color: #1d4ed8; }
+.cmci-bar-name { font-weight: 650; line-height: 1.3; }
+.cmci-bar-name small { display: block; color: #4c5e78; font-size: .75rem; font-weight: 400; margin-top: .25rem; }
+.cmci-bar-track { display: block; height: 1.2rem; background: #eaf1ff; }
+.cmci-bar-track > span { display: block; height: 100%; background: #1d4ed8; }
+.cmci-bar-row strong { text-align: right; font-size: .85rem; font-variant-numeric: tabular-nums; }
+.cmci-weight { color: #4c5e78; font-size: .8rem; margin: .8rem 0 0; }
+.cmci-indicators { margin-top: 1.5rem; border-top: 1px solid #dce5f2; border-bottom: 1px solid #dce5f2; }
+.cmci-indicators summary { cursor: pointer; font-weight: 650; padding-block: 1rem; line-height: 1.5; }
+.cmci-table-scroll { overflow-x: auto; }
+.cmci-indicators table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.cmci-indicators th, .cmci-indicators td { padding: .65rem .8rem; border-bottom: 1px solid #dce5f2; text-align: left; }
+.cmci-indicators thead { background: #eaf1ff; }
+.cmci-indicators tbody th { font-weight: 400; min-width: 200px; }
+.cmci-indicators td { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cmci-provenance { margin-top: 1rem; font-size: .8rem; color: #4c5e78; }
+.cmci-provenance p { margin-bottom: .4rem; }
+.cmci-provenance a { font-weight: 650; text-underline-offset: .2em; }
+@media (max-width: 700px) {
+  .cmci-heading { flex-direction: column; gap: .75rem; }
+  .cmci-overview { grid-template-columns: 1fr; gap: 1.5rem; }
+  .cmci-totals { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .cmci-totals p { grid-column: 1 / -1; }
+  .cmci-bar-row { grid-template-columns: minmax(0, 1fr) 4.8rem; gap: .5rem 1rem; }
+  .cmci-bar-name { grid-column: 1 / -1; }
+  .cmci-scale { margin-left: 0; }
+}
