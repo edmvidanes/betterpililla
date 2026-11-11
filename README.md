@@ -3,7 +3,15 @@
 BetterPililla is an independent, bilingual public-information portal for Pililla, Rizal. It is a static site, not an official government website. The codebase can be adapted for another municipality by replacing its data and configuration.
 
 
-> **Local preview (2026-11-05):** Adapted from BetterCavinti for `betterpililla` and the future `https://betterpililla.org` domain. No public GitHub repository or deployment has been created. Foreign template services, legislation, sector listings and research are withheld from generated downloads, search and pages. Missing population, services and history show collection notices; official names remain explicitly unverified. The published 2024 Pililla Citizens’ Charter is linked as an official source, with no claim that its requirements are current. Photography is credited to Froi Rivera under CC BY-SA 4.0. Docker files are ready, but container execution has not been verified because Docker Desktop is not installed. See [local setup and verification](docs/LOCAL_SETUP.md).
+**Live:** [betterpililla.org](https://betterpililla.org/) · **Contribute:** [GitHub](https://github.com/edmvidanes/betterpililla)
+
+The portal includes source-linked national budget projects associated with Pililla, verified PSA census totals, archived DTI CMCI rankings, water-district information and published public contacts. The header shows Philippine time, weather and dated USD/PHP reference rates. Missing municipal records remain clearly labeled; archived assessments and unconfirmed hotlines are not presented as current verified information.
+
+The latest municipal census is **72,503 as of 1 July 2024**. CMCI charts show the **2024 assessment**, captured in a June 2026 archive. See the [collection tracker](docs/collection/PROGRESS.md) for gaps, [census provenance](docs/collection/CENSUS-VERIFICATION.md) and [CMCI provenance](docs/collection/CMCI-VERIFICATION.md).
+
+## contribute
+
+Developers, designers, translators and public-record researchers are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md), browse [issues](https://github.com/edmvidanes/betterpililla/issues), or propose a source-backed data correction. New records are reviewed before publication; missing values must never be filled with guesses.
 
 ## run locally
 
@@ -33,7 +41,7 @@ npm run container:status
 npm run container:down
 ```
 
-The container serves **http://127.0.0.1:4174/**; stop the Node preview before using that same port locally. `Dockerfile` builds with Node.js 24, then copies only the static output into an unprivileged Nginx image. Compose uses its own project/network, a read-only filesystem, temporary `/tmp`, resource limits and a health check. No database or shared host volumes are required. Run `sh scripts/verify-container.sh` on Linux to check the running container. Docker execution remains pending. See [Amazon Linux EC2 deployment](docs/EC2_DEPLOYMENT.md) for the host Nginx setup and scoped server commands.
+The container serves **http://127.0.0.1:4174/**; stop the Node preview before using that same port locally. `Dockerfile` builds with Node.js 24, then copies only the static output into an unprivileged Nginx image. Compose uses its own project/network, a read-only filesystem, temporary `/tmp`, resource limits and a health check. No database or shared host volumes are required. Run `sh scripts/verify-container.sh` on Linux to check the running container. See [local container instructions](docs/CONTAINERS.md) for scoped commands.
 
 To run the browser tests, first install Chromium with `npx playwright install chromium`. On Windows, you can instead set `PLAYWRIGHT_EXECUTABLE_PATH` to your installed Edge executable. Set `PLAYWRIGHT_BASE_URL` to test an already running local preview or container; otherwise Playwright starts Vite automatically.
 
@@ -50,7 +58,7 @@ npm run lint
 
 ## stack
 
-React 19, TypeScript, Vite, Tailwind CSS 4 and Kapwa. MapLibre GL provides the map; GSAP handles selected scroll effects. There is no runtime API, database, authentication, analytics or scheduled scraper. The site is built as static files in `dist/`.
+React 19, TypeScript, Vite, Tailwind CSS 4 and Kapwa. MapLibre GL provides the map; GSAP handles selected scroll effects. The site is built as static files in `dist/`, with no application backend, database, authentication, analytics or scheduled scraper. Browser requests to external weather, currency and search providers are described in the site's privacy page.
 
 ## data
 
@@ -88,7 +96,7 @@ Review the resulting changes before publishing.
 ```text
 .
 ├── data/
-│   ├── Pililla/                 # canonical Pililla data pack
+│   ├── pililla/                 # canonical Pililla data pack
 │   │   ├── schemas/             # JSON schemas for each dataset
 │   │   ├── legislation/         # ordinance and resolution captures
 │   │   ├── dataset-manifest.json
@@ -99,7 +107,7 @@ Review the resulting changes before publishing.
 ├── e2e/                         # Playwright browser tests
 ├── public/
 │   ├── data/                    # generated data; do not edit
-│   └── images/Pililla/          # locally hosted, credited photographs
+│   └── images/pililla/          # locally hosted, credited photographs
 ├── scripts/
 │   ├── data/                    # validation, generation and refresh
 │   └── build-routes.ts          # static route generation

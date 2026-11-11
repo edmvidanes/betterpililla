@@ -1,5 +1,5 @@
-blank_issues_enabled: false
+blank_issues_enabled: true
 contact_links:
-  - name: Official municipal portal
-    url: https://www.cavinti-egov.com/
-    about: This community repository is not an official emergency or service-request channel.
+  - name: Visit BetterPililla
+    url: https://betterpililla.org/
+    about: Community information portal. GitHub issues are not an emergency or official service-request channel.

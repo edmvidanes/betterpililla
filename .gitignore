@@ -36,3 +36,10 @@ dist-ssr
 /.impeccable/
 /.cache/
 *.log
+
+# Local credentials and private release notes
+.secrets/
+*.pem
+*.key
+*.p12
+*.pfx
