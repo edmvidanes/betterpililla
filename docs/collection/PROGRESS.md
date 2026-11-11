@@ -1,6 +1,6 @@
 # BetterPililla public-record collection progress
 
-Updated: **6 November 2026**. Latest source collection: **5 November 2026**. Municipality: **Pililla, Rizal (PSGC 0405810000)**.
+Updated: **11 November 2026**. Latest source collection: **5 November 2026**. Municipality: **Pililla, Rizal (PSGC 0405810000)**.
 
 This Markdown file is the working tracker. Update it after each collection/review pass; the collection plan is no longer a website page. Public services and source records remain on the website. No requests, calls, form submissions or payment transactions have been made.
 

@@ -25,7 +25,7 @@ Open **http://127.0.0.1:4174/**. The server binds to localhost only.
 
 ## local containers
 
-Requires Docker Desktop running with Linux containers and Docker Compose v2:
+Requires Docker Engine with Linux containers and Docker Compose v2 or later (Docker Desktop on Windows):
 
 ```sh
 npm run container:up
@@ -33,7 +33,7 @@ npm run container:status
 npm run container:down
 ```
 
-The container serves **http://127.0.0.1:8080/**. `Dockerfile` builds with Node.js 24, then copies only the static output into an unprivileged Nginx image. Compose uses a read-only filesystem, a temporary `/tmp`, no Linux capabilities and a health check. No database is required. This configuration is prepared for a future runtime check; the current preview runs directly under Node.
+The container serves **http://127.0.0.1:4174/**; stop the Node preview before using that same port locally. `Dockerfile` builds with Node.js 24, then copies only the static output into an unprivileged Nginx image. Compose uses its own project/network, a read-only filesystem, temporary `/tmp`, resource limits and a health check. No database or shared host volumes are required. Run `sh scripts/verify-container.sh` on Linux to check the running container. Docker execution remains pending. See [Amazon Linux EC2 deployment](docs/EC2_DEPLOYMENT.md) for the host Nginx setup and scoped server commands.
 
 To run the browser tests, first install Chromium with `npx playwright install chromium`. On Windows, you can instead set `PLAYWRIGHT_EXECUTABLE_PATH` to your installed Edge executable. Set `PLAYWRIGHT_BASE_URL` to test an already running local preview or container; otherwise Playwright starts Vite automatically.
 

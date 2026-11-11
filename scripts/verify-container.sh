@@ -12,6 +12,7 @@ container_id=$(docker compose --project-name "$project_name" --file compose.yaml
 [ "$(docker inspect --format '{{.State.Running}}' "$container_id")" = true ] || fail 'Container is not running.'
 [ "$(docker inspect --format '{{.State.Health.Status}}' "$container_id")" = healthy ] || fail 'Container is not healthy.'
 [ "$(docker inspect --format '{{.Config.User}}' "$container_id")" = 101 ] || fail 'Expected unprivileged UID 101.'
+[ "$(docker inspect --format '{{.HostConfig.Privileged}}' "$container_id")" = false ] || fail 'Privileged container mode is enabled.'
 [ "$(docker inspect --format '{{.HostConfig.ReadonlyRootfs}}' "$container_id")" = true ] || fail 'Root filesystem is writable.'
 caps=$(docker inspect --format '{{range .HostConfig.CapDrop}}{{.}} {{end}}' "$container_id")
 case "$caps" in *ALL*) ;; *) fail 'Linux capabilities are not all dropped.' ;; esac
