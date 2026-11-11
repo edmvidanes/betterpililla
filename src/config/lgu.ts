@@ -34,7 +34,7 @@ export interface MunicipalityConfig {
 
 export const lgu: MunicipalityConfig = {
   slug: 'pililla', name: 'Pililla', province: 'Rizal', recordId: 'ph:rizal:pililla',
-  dataPath: 'data', repository: '',
+  dataPath: 'data', repository: 'https://github.com/edmvidanes/betterpililla',
   withheldDatasets: ['services', 'sector-inventory', 'ordinances', 'resolutions', 'research-updates'],
   officialUrl: 'https://pilillarizal.gov.ph/', defaultLocale: 'en',
   citizensCharterUrl: 'https://pilillarizal.gov.ph/wp-content/uploads/2025/06/Pililla_CC_2024.pdf',

@@ -25,12 +25,13 @@ test('withdrawn template records are absent from public downloads and search', a
   expect(search.some((row: { type: string }) => row.type === 'legislation' || row.type === 'service')).toBe(false)
 })
 
-test('services and local reporting explain what is available in the preview', async ({ page }) => {
+test('services retain collection gaps and reporting opens the public contribution queue', async ({ page }) => {
   await page.goto('/en/services')
   await expect(page.locator('main')).toContainText('Citizens’ Charter has not been collected')
   await page.goto('/en/services/service:cchatto-cc:1')
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Page or record not found')
   await page.goto('/en/report-data')
-  await expect(page.locator('main')).toContainText('This is a local preview')
-  await expect(page.locator('main a[href*="/issues/new"]')).toHaveCount(0)
+  const links = page.locator('main a[href^="https://github.com/edmvidanes/betterpililla/issues/new?"]')
+  await expect(links).toHaveCount(3)
+  await expect(links.first()).toHaveAttribute('href', /template=data-correction.yml/)
 })
