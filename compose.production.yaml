@@ -1,0 +1,6 @@
+# Use after a local npm run build; retains isolation and resource limits.
+services:
+  web:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile.runtime
