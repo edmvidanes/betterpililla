@@ -7,7 +7,7 @@ test('Transparency dropdown opens same-site budget records and exports', async (
   const menu = page.locator('.nav-group').filter({ has: page.locator('summary', { hasText: 'Transparency' }) })
   await menu.locator('summary').click()
   await menu.getByRole('link', { name: 'Budget projects · FY2027', exact: true }).click()
-  await expect(page).toHaveURL(/:4174\/en\/transparency\/budget$/)
+  await expect(page).toHaveURL(/\/en\/transparency\/budget$/)
   const budget = page.frameLocator('.budget-portal-frame')
   await expect(budget.getByRole('heading', { level: 1 })).toContainText('5 source projects')
   await expect(budget.getByRole('button', { name: 'Download CSV', exact: true })).toBeVisible()
@@ -38,7 +38,7 @@ test('integrated budgets work on mobile without the separate portal server', asy
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Mga naisabatas na badyet · 2020–2026')
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true)
   const frame = page.frames().find(frame => frame.url().includes('/budget-portal/'))!
-  expect(new URL(frame.url()).port).toBe('4174')
+  expect(new URL(frame.url()).origin).toBe(new URL(page.url()).origin)
   expect(await frame.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true)
   await expect.poll(async () => Number(await page.locator('iframe').getAttribute('height'))).toBeGreaterThan(1000)
 })
