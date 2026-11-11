@@ -35,5 +35,15 @@ test('published Pililla totals match original primary cells and keep other recor
   assert.equal(normalizeSource(source, capture.capturedOn).status.verificationStatus, 'primary-direct')
   assert.equal(documents['source-register'].sources.find((s: { id: string }) => s.id === 'philatlas-pililla').url, 'https://www.philatlas.com/luzon/r04a/rizal/pililla.html')
   assert.deepEqual(documents.municipality.annualRegularIncome.records, [])
-  assert.deepEqual(documents.barangays.secondaryPopulationTable.rows, [])
+  const historical = documents.barangays.secondaryPopulationTable
+  assert.equal(historical.sourceId, 'philatlas-pililla')
+  assert.equal(historical.verificationStatus, 'secondary-only')
+  assert.deepEqual(historical.referenceYears, [2015, 2020])
+  assert.equal(historical.rows.length, 9)
+  assert.equal(new Set(historical.rows.map((row: { sourceName: string }) => row.sourceName)).size, 9)
+  for (const year of historical.referenceYears) {
+    const sum = historical.rows.reduce((total: number, row: Record<string, number>) => total + row[`population${year}`], 0)
+    assert.equal(sum, facts.find((fact: { referenceYear: number }) => fact.referenceYear === year).value)
+  }
+  assert.ok(historical.rows.every((row: Record<string, unknown>) => !Object.hasOwn(row, 'population2024')))
 })

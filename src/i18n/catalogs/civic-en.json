@@ -13,7 +13,7 @@
   "noNamedPopulation": "No published population for this exact name",
   "noNamedPopulationNote": "Do not borrow the value of a similarly named entry. A missing value is not zero.",
   "backBarangays": "All captured barangay names",
-  "populationSourceNote": "PhilAtlas figures for 2015 and 2020; direct PSA cross-check pending. Bar lengths compare published counts, not growth rates.",
+  "populationSourceNote": "Published PhilAtlas counts for the 2015 and 2020 censuses. Municipal totals match PSA; individual barangay counts still need a direct PSA cross-check. Bar lengths compare population counts.",
   "geographyFacts": "Geographic context",
   "geographyNeighbors": "Neighbors as published",
   "geographyCoordinates": "Coordinates published by the municipality",
