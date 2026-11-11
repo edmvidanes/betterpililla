@@ -11,7 +11,7 @@
 .atlas-photos .atlas-photo-track { width: 100%; animation: none; }
 .atlas-photos .atlas-photo-group { width: 100%; }
 .atlas-photos .atlas-photo-frame { flex-basis: 100%; width: 100%; border: 0; }
-.atlas-photos .atlas-photo-strip img { height: clamp(220px, 22vw, 310px); }
+.atlas-photos .atlas-photo-strip img { height: clamp(220px, 22vw, 310px); object-position: center 18%; }
 .atlas-photo-strip { overflow: hidden; margin-inline: .5rem; container-type: inline-size; }
 .atlas-photo-track { display: flex; width: max-content; animation: atlas-photo-scroll 1s linear 2s infinite; animation-play-state: paused; }
 .atlas-photo-track-second { display: none; }
