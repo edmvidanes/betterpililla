@@ -1,0 +1,24 @@
+.live-utility { display: flex; align-items: center; flex-wrap: wrap; gap: .55rem 1.2rem; font-size: .75rem; min-width: 0; }
+.live-utility > span { display: inline-flex; align-items: center; flex-wrap: wrap; gap: .3rem; }
+.live-utility > span > span { color: #4c5e78; }
+.live-rate small { font-size: .65rem; color: #4c5e78; }
+.hotline-menu { position: relative; }
+.hotline-menu summary { cursor: pointer; display: flex; align-items: center; gap: .4rem; font-weight: 650; list-style: none; min-height: 30px; }
+.hotline-menu summary::-webkit-details-marker { display: none; }
+.hotline-dropdown { position: absolute; z-index: 100; top: calc(100% + .4rem); right: 0; width: min(330px, calc(100vw - 2.5rem)); background: #fff; border: 1px solid #cbd5e1; padding: 1rem; box-shadow: 0 12px 28px #172b4d1a; white-space: normal; }
+.hotline-note { color: #4c5e78; line-height: 1.5; }
+.hotline-note .badge { margin-top: .4rem; }
+.hotline-dropdown ul { list-style: none; padding: 0; margin: .6rem 0; }
+.hotline-dropdown li { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding-block: .35rem; }
+.hotline-dropdown li span { font-weight: 650; }
+.hotline-dropdown a { min-height: 36px; align-content: center; }
+.hotline-dropdown li a { white-space: nowrap; }
+.hotline-dropdown > a { display: block; border-top: 1px solid #dce5f2; padding-top: .5rem; }
+@media (max-width: 1250px) { .utility-inner { flex-wrap: wrap; overflow: visible; white-space: normal; } }
+@media (max-width: 700px) {
+  .live-utility { display: grid; grid-template-columns: 1fr 1fr; width: 100%; gap: .3rem .75rem; }
+  .live-clock { grid-column: 1 / -1; }
+  .hotline-menu { grid-column: 1 / -1; }
+  .hotline-dropdown { left: 0; right: auto; }
+  .community-bar .utility-inner { overflow: visible; white-space: normal; }
+}

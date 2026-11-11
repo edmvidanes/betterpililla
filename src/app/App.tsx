@@ -14,6 +14,7 @@ import { searchPortal } from './search'
 import WorkInProgress from '../components/WorkInProgress'
 import StatusBadge from '../components/StatusBadge'
 import { LocaleContext } from '../i18n/LocaleContext'
+import LiveUtility from '../components/LiveUtility'
 
 const Services = lazy(() => import('../features/Services'))
 const ServiceDetail = lazy(() => import('../features/ServiceDetail'))
@@ -203,7 +204,7 @@ function App({ initialPath }: { initialPath?: string }) {
       <p className="about-description">{locale === 'fil' ? 'Kapag kailangan mong mag-asikaso ng dokumento o alamin kung saan napupunta ang pondo ng bayan, mahalagang makita ang tamang impormasyon at ang pinagmulan nito. Mahirap iyon kung magkakahiwalay ang mga tala sa iba’t ibang website at PDF.' : 'When you need to apply for a document or find out how town funds are spent, you need clear information and a source you can check. That gets harder when the records are scattered across websites and PDFs.'}</p>
       <p>{locale === 'fil' ? <>Ang <CheckedLink href="https://about.bettergov.ph/">BetterGov.ph</CheckedLink> ay isang kilusang pinapatakbo ng mga boluntaryo para mas madaling mahanap at maunawaan ang datos ng pamahalaan. Sa antas ng mga lungsod at munisipalidad, hinihikayat ng <CheckedLink href="https://lgu.bettergov.ph/">BetterLGU</CheckedLink> ang mga komunidad na gumawa at mag-ambag sa sarili nilang mga portal.</> : <><CheckedLink href="https://about.bettergov.ph/">BetterGov.ph</CheckedLink> is a volunteer-driven movement making government data easier to access and understand. <CheckedLink href="https://lgu.bettergov.ph/">BetterLGU</CheckedLink> brings that work to cities and municipalities, encouraging communities to build local portals and contribute to existing ones.</>}</p>
       <p>{locale === 'fil' ? 'Ginawa ang BetterPililla para sa inisyatibong ito. Dito, makikita ang mga pampublikong tala ng Pililla kasama ang mga orihinal na dokumento at sanggunian. Nakasaad din kung may kulang o hindi pa nakukumpirma, para alam mo kung ano ang maaari mong asahan at kung ano ang kailangan pang itanong.' : 'BetterPililla was built for that initiative. It brings Pililla’s public records together with original documents and sources you can follow. Gaps and unresolved claims stay visible, so you can see what is known and what still needs an answer.'}</p>
-      <p>{t.community}</p>
+      <LiveUtility locale={locale} href={href} />
       <nav className="about-links" aria-label={t.projectLinks}>
         {lgu.repository && <CheckedLink href={lgu.repository}>GitHub</CheckedLink>}
         <CheckedLink href={lgu.officialUrl}>{lgu.name}</CheckedLink>
