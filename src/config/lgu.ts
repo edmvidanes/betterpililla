@@ -43,7 +43,7 @@ export const lgu: MunicipalityConfig = {
   sourceIds: {
     about: 'pililla-about', charter: 'pililla-citizens-charter',
     executive: 'pililla-executive-directory', legislative: 'pililla-legislative-directory',
-    psgc: 'psa-psgc-pililla', population: 'philatlas-pililla', competitiveness: 'dti-cmci-pililla',
+    psgc: 'psa-psgc-pililla', population: 'psa-2024-openstat', competitiveness: 'dti-cmci-pililla',
     fdp: 'dilg-fdp', fiscal: 'blgf-fiscal-data', audit: 'coa-annual-audits', procurement: 'philgeps-pililla-award-lead',
   },
   transparency: {

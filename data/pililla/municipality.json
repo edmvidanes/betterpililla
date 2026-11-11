@@ -57,7 +57,56 @@
       }
     ]
   },
-  "populationFacts": [],
+  "populationFacts": [
+    {
+      "indicator": "total_population",
+      "value": 64812,
+      "unit": "people",
+      "geography": "Pililla, Rizal",
+      "referenceYear": 2015,
+      "sourceId": "psa-2024-openstat",
+      "sourceUrl": "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/1A/PO_2024/0221A6DLPD0.px",
+      "sourceTier": "primary-government",
+      "verificationStatus": "primary-direct",
+      "published": true,
+      "derived": false,
+      "retrievedAt": "2026-11-11T12:43:42.162Z",
+      "sourceResponseSha256": "fef2a4222cc49404e17f9cb8c52da62fda1cf6a81b3cc0eef45a69c575972141"
+    },
+    {
+      "indicator": "total_population",
+      "value": 71535,
+      "unit": "people",
+      "geography": "Pililla, Rizal",
+      "referenceYear": 2020,
+      "sourceId": "psa-2024-openstat",
+      "sourceUrl": "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/1A/PO_2024/0221A6DLPD0.px",
+      "sourceTier": "primary-government",
+      "verificationStatus": "primary-direct",
+      "published": true,
+      "derived": false,
+      "retrievedAt": "2026-11-11T12:43:42.162Z",
+      "sourceResponseSha256": "fef2a4222cc49404e17f9cb8c52da62fda1cf6a81b3cc0eef45a69c575972141"
+    },
+    {
+      "indicator": "total_population",
+      "value": 72503,
+      "unit": "people",
+      "geography": "Pililla, Rizal",
+      "referenceYear": 2024,
+      "sourceId": "psa-2024-openstat",
+      "sourceUrl": "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/1A/PO_2024/0221A6DLPD0.px",
+      "sourceTier": "primary-government",
+      "verificationStatus": "primary-direct",
+      "published": true,
+      "derived": false,
+      "retrievedAt": "2026-11-11T12:43:42.162Z",
+      "sourceResponseSha256": "fef2a4222cc49404e17f9cb8c52da62fda1cf6a81b3cc0eef45a69c575972141",
+      "referenceDate": "2024-07-01",
+      "period": "2024 POPCEN",
+      "notes": "Census reference date confirmed from PSA release 2025-258; this is not a 2026 population estimate."
+    }
+  ],
   "geography": {
     "neighborsAsPublished": [
       "Tanay",
@@ -70,7 +119,7 @@
       "notes": "No official polygon verified. Map center is approximate orientation only."
     }
   },
-  "asOf": "2026-11-03",
+  "asOf": "2026-11-11",
   "importantLimit": "This snapshot separates indexed PSA evidence and secondary published values. It does not calculate demographic indicators or claim a complete municipal statistical profile.",
-  "populationNote": "Unverified: secondary values conflict; no figure published until PSA retrieved. Missing is not zero."
+  "populationNote": "Reviewed PSA census totals for 2015, 2020 and 2024. Latest census reference date: 1 July 2024. Other demographic indicators remain uncollected."
 }

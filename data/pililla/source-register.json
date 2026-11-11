@@ -856,28 +856,29 @@
     },
     {
       "id": "psa-2024-openstat",
-      "name": "PSA OpenSTAT 2024 POPCEN tables",
+      "name": "PSA OpenSTAT — Pililla census totals, 2015, 2020 and 2024",
       "tier": "primary-government",
-      "url": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__PO_2024?tablelist=true",
+      "url": "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/1A/PO_2024/0221A6DLPD0.px",
       "formats": [
-        "PXWeb tables/export"
+        "JSON",
+        "PXWeb table/export"
       ],
-      "retrievalStatus": "Cloudflare challenge blocked direct browser/reader access",
-      "coverage": "Official population tables; direct Pililla query/export remains outstanding.",
-      "lastCheckedAt": "2026-10-28T12:34:58.265Z",
+      "retrievalStatus": "Primary document read directly: public OpenSTAT JSON queries returned Pililla census totals. Latest 2024 total independently matched the CALABARZON JSON and CSV exports and PSA PSGC pages.",
+      "coverage": "Pililla, Rizal, PSGC 0405810000: 64,812 (2015), 71,535 (2020), 72,503 (2024). Public read-only POST query: Geographic Location 0405810000, Parameter 0/1/2, response format json. Census reference date 1 July 2024 confirmed in PSA release 2025-258. Original exports and query provenance retained in docs/collection/census. GET returns table metadata, not the selected data cells.",
+      "lastCheckedAt": "2026-11-11T12:43:42.162Z",
       "refreshCheck": {
         "sourceId": "psa-2024-openstat",
-        "adapter": "government-reference-coverage",
-        "requestedUrl": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__PO_2024?tablelist=true",
-        "retrievedAt": "2026-10-28T12:34:58.265Z",
-        "finalUrl": "https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__1A__PO_2024?tablelist=true",
-        "httpStatus": 403,
-        "contentType": "text/html; charset=UTF-8",
+        "adapter": "psa-openstat-population-query",
+        "requestedUrl": "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/1A/PO_2024/0221A6DLPD0.px",
+        "retrievedAt": "2026-11-11T12:43:42.162Z",
+        "finalUrl": "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/1A/PO_2024/0221A6DLPD0.px",
+        "httpStatus": 200,
+        "contentType": "application/json; charset=utf-8",
         "sourceDate": null,
-        "responseSha256": "1d57eae54b661081b50f6ec2ae5bde654de39f81b561b5220807ebc642819508",
-        "availabilityStatus": "access-blocked",
-        "freshnessStatus": "not-checked",
-        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced."
+        "responseSha256": "fef2a4222cc49404e17f9cb8c52da62fda1cf6a81b3cc0eef45a69c575972141",
+        "availabilityStatus": "available",
+        "freshnessStatus": "current-at-capture",
+        "note": "Original JSON response from read-only POST query. Capture date is separate from census reference year. HTML access remains blocked; the json-stat2 exporter was excluded after inconsistent output."
       }
     },
     {
