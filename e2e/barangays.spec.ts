@@ -49,6 +49,7 @@ test('all nine PhilAtlas rows appear with the correct years and source', async (
     for (const row of expected) await expect(entries.filter({ hasText: row[0] })).toContainText(row[0] + row[column])
   }
   await expect(page.locator('main')).toContainText('Published PhilAtlas counts for the 2015 and 2020 censuses')
+  await page.locator('main summary').filter({ hasText: 'PhilAtlas Pililla, Rizal profile' }).first().click()
   await expect(page.locator('main a[href="https://www.philatlas.com/luzon/r04a/rizal/pililla.html"]').first()).toBeVisible()
   await expect(page.locator('#barangay-year option[value="2024"]')).toHaveCount(0)
 })
