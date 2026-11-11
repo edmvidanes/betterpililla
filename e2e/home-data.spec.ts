@@ -1,13 +1,15 @@
 import { expect, test } from '@playwright/test'
 
-test('prerendered CMCI controls wait for their client handlers', async ({ page }) => {
+test('emergency contacts work while client JavaScript is delayed', async ({ page }) => {
   let release!: () => void
   const ready = new Promise<void>(resolve => { release = resolve })
   await page.route('**/assets/index-*.js', async route => { await ready; await route.continue() })
   await page.goto('/en/', { waitUntil: 'commit' })
-  const pillar = page.locator('.cmci-bar-row').first()
-  try { await expect(pillar).toBeDisabled() } finally { release() }
-  await pillar.click()
+  try {
+    await page.locator('.hotline-menu summary').click()
+    await expect(page.locator('.hotline-dropdown a[href="tel:+639179398558"]')).toBeVisible()
+  } finally { release() }
+  await page.locator('.cmci-bar-row').first().click()
   await expect(page.locator('.cmci-indicators tbody')).toBeVisible()
 })
 
