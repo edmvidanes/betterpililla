@@ -1,6 +1,6 @@
 # BetterPililla public-record collection progress
 
-Updated: **11 November 2026**. Latest document collection: **5 November 2026**; latest source access recheck: **11 November 2026**. Municipality: **Pililla, Rizal (PSGC 0405810000)**.
+Updated: **11 November 2026**. Latest document collection and source access recheck: **11 November 2026**. Municipality: **Pililla, Rizal (PSGC 0405810000)**.
 
 This Markdown file is the working tracker. Update it after each collection/review pass; the collection plan is no longer a website page. Public services and source records remain on the website. No requests, calls, form submissions or payment transactions have been made.
 
@@ -8,14 +8,14 @@ This Markdown file is the working tracker. Update it after each collection/revie
 
 Each of the 17 sections has three sequential checkpoints: **A** = usable primary evidence captured or transcribed with provenance; **B** = all required fields, scope, dates and inconsistencies reviewed; **C** = current verification cleared and the section released. Each checkpoint is one unit; partial field coverage earns no extra unit. This measures section readiness, not time spent or the number of files downloaded.
 
-**Overall: `[##........]` 19.6% — 10/51 checkpoints.** Identity has A/B/C; seven sections have A only; nine have none. **1/17 sections cleared** (identity baseline); **16/17 still need work**. Already published, dated provider guidance does not establish a complete current municipal section.
+**Overall: `[###.......]` 27.5% — 14/51 checkpoints.** Identity and municipal census have A/B/C; CMCI has A/B for its archived assessment; six sections have A only; eight have none. **2/17 sections cleared**; **15/17 still need work**. Dated provider guidance and archived CMCI charts do not establish complete current municipal sections.
 
 | Phase | Progress bar | Checkpoints | Evidence collected | Missing / next gate |
 | --- | --- | --- | --- | --- |
 | 1. Identity and source access | `[##########]` 100% | 3/3 | Pililla/Rizal identity and PSGC cross-check; access logs | Maintain provenance; distinguish reader transcription from original bytes |
 | 2. Services and public contacts | `[#.........]` 11.1% | 1/9 | Pililla DRRMO, police and fire numbers in provincial images | Current municipal charter, office directory, approved/operational hotlines |
 | 3. Officials and legislation | `[##........]` 16.7% | 2/12 | Ten DILG rows with 2025–2028 term and February 2026 edition | Later changes, ex-officio seats, appointments, committees and full SB texts |
-| 4. Population, geography and statistics | `[#.........]` 13.3% | 2/15 | PSA 2024 population and nine dated barangay rows | Latest PSGC reconciliation, land area/boundaries, DTI and DOF/BLGF records |
+| 4. Population, geography and statistics | `[####......]` 40% | 6/15 | Reviewed PSA 2015/2020/2024 municipal totals; 2024 CMCI rank, score and 50 indicators; nine dated barangay rows | Latest PSGC reconciliation, area/boundaries, latest DTI assessment/cohort, DOF/BLGF records |
 | 5. Municipal finance and disclosures | `[..........]` 0% | 0/3 | COA/FDPP landing-page leads only | Actual municipal budgets, AIP, SRE, statements, audits, APP and procurement/project records |
 | 6. Places, advisories and history | `[##........]` 22.2% | 2/9 | Provincial tourism candidates and NHCP church registry | Current visitor details, issued/expiry dates, primary town-history records |
 
@@ -33,17 +33,26 @@ Bars have ten segments, rounded to the nearest segment; the percentages and frac
 | committees / 3 | Committee memberships | `[..........]` 0/3 | Missing | SB organization resolution and subsequent committee orders | SB Secretariat |
 | terms / 3 | Terms and appointments | `[###.......]` 1/3 | DILG term reference captured | Current dated roster; proclamation/oath/appointment/succession references | DILG / COMELEC / LGU |
 | legislation / 3 | Ordinances and resolutions | `[..........]` 0/3 | Full municipal texts missing | 2022–2026 index and texts; number, series, enactment/effectivity and amendments/repeals | SB Secretariat |
-| population / 4 | Municipal population | `[###.......]` 1/3 | PSA reader table: 72,503 (2024 POPCEN), for review | Original source capture; reference date, methodology and publication review | PSA |
+| population / 4 | Municipal population | `[##########]` 3/3 | PSA original JSON and CSV: 72,503 as of 1 July 2024; historical 2015/2020 totals match; released with provenance | Maintain census year/date; no 2026 estimate inferred | PSA |
 | barangays / 4 | Barangay codes/population | `[###.......]` 1/3 | Nine PSA rows dated 31 July 2025; population sum reconciles | Compare codes/roster with latest PSGC release, including September 2026 lead | PSA |
 | geography / 4 | Geographic facts | `[..........]` 0/3 | Missing | Published area/units, boundary references and authoritative map | PSA / NAMRIA / LGU planning |
-| competitiveness / 4 | Competitiveness | `[..........]` 0/3 | DTI profile access blocked | Actual Pililla profile, year, indicator scores, ranks and ranking cohort | DTI CMCI |
+| competitiveness / 4 | Competitiveness | `[#######...]` 2/3 | Archived DTI 2024 assessment: rank 155, score 32.52, five pillar tables/50 indicators; dated charts published | Latest assessment and ranking cohort definition/size still need confirmation | DTI CMCI |
 | income / 4 | Income class and annual income | `[..........]` 0/3 | DOF/BLGF access blocked | DOF 074-2024 annex row/later orders, effective date, annual SRE income and units | DOF / BLGF / Treasurer |
 | finance / 5 | Finance, audits and procurement | `[..........]` 0/3 | COA blocked; FDPP filter incomplete | 2023–2025 and available 2026 budgets/AIP/SRE/statements/audits/responses/APP/bids/awards/project status; year/fund/scope | COA / DILG / Budget / Accountant / Treasurer / BAC |
 | places / 6 | Places and visitor information | `[###.......]` 1/3 | Provincial Pililla tourism listings captured | Verify addresses, access, current fees and opening hours | Rizal Tourism / LGU |
 | advisories / 6 | Public advisories | `[..........]` 0/3 | No current municipal advisory collection | Issued date, expiry, official issuing office and current notices; archive expired notices | LGU / DRRMO / Health |
 | history / 6 | History and heritage | `[###.......]` 1/3 | NHCP Simbahan ng Pililla registry captured | Additional primary town-history records and direct archival citations | NHCP / LGU archives |
 
-Status totals: **1 baseline, 7 evidence-for-review, 4 source-blocked, 5 missing-document sections**. Blocked is an access result, not evidence that the record does not exist.
+Status totals: **2 cleared, 1 archived assessment reviewed, 6 evidence-for-review, 3 source-blocked, 5 missing-document sections**. Blocked is an access result, not evidence that the record does not exist.
+
+### 11 November: census, CMCI and public utility bar
+
+- [Census verification](CENSUS-VERIFICATION.md): original PSA exports retained with hashes and repeatable queries. The correct Rizal PhilAtlas page works; its old counts match PSA but do not replace the latest census.
+- [CMCI verification](CMCI-VERIFICATION.md): June 2026 archive contains a **2024** assessment. All 50 rows reviewed against original HTML; original overall score retained without recalculating it.
+- Pililla weather uses Open-Meteo; USD/PHP is a dated Frankfurter/ECB reference rate; Philippine time uses Asia/Manila. Live-source failures remain visible instead of showing invented values.
+- The hotline dropdown reuses the existing provincial source-listed contacts; operational verification is still pending. No hospital number or new hotline was guessed.
+- The municipal archive did not recover a usable charter or disclosure files. These gaps remain open.
+- [Hero redesign backlog](../BACKLOG.md): use a clearly visible Pililla windmill photo and verified shortcuts; reference image retained. This design task is queued.
 
 ## Water district and provincial evidence already collected
 
