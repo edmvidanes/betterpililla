@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "betterpililla-cmci-archive/v1",
+  "municipality": "Pililla",
+  "province": "Rizal",
+  "assessmentYear": 2024,
+  "archiveCapturedAt": "2026-06-13T13:13:58Z",
+  "retrievedAt": "2026-11-11T12:44:00.034Z",
+  "sourceUrl": "https://web.archive.org/web/20260613131358/https://cmci.dti.gov.ph/lgu-profile.php?lgu=Pililla",
+  "originalUrl": "https://cmci.dti.gov.ph/lgu-profile.php?lgu=Pililla",
+  "sourceResponseSha256": "5677dc343cf139b22cc2d6a7172fd7c1432f6d01afc0bc385088966327f7efc4",
+  "verificationStatus": "reviewed-archived-primary",
+  "profileCategoryAsPublished": "First Class Municipality",
+  "overallRank": 155,
+  "overallScore": 32.52,
+  "pillarWeightAsPublished": "20%",
+  "pillars": [
+    {
+      "id": "economic-dynamism",
+      "name": "ECONOMIC DYNAMISM",
+      "rank": 353,
+      "score": 2.9985,
+      "scoreAsPublished": "2.9985",
+      "indicators": [
+        {"name":"Local Economy Size","rank":87,"score":0.0339,"scoreAsPublished":"0.0339"},
+        {"name":"Local Economy Growth","rank":31,"score":0.0048,"scoreAsPublished":"0.0048"},
+        {"name":"Active Establishments in the Locality","rank":213,"score":0.1824,"scoreAsPublished":"0.1824"},
+        {"name":"Safety Compliant Business","rank":214,"score":0.1445,"scoreAsPublished":"0.1445"},
+        {"name":"Employment Generation","rank":180,"score":0.0935,"scoreAsPublished":"0.0935"},
+        {"name":"Cost of Living","rank":53,"score":0.7677,"scoreAsPublished":"0.7677"},
+        {"name":"Cost of Doing Business","rank":279,"score":1.5066,"scoreAsPublished":"1.5066"},
+        {"name":"Financial Deepening","rank":274,"score":0.1309,"scoreAsPublished":"0.1309"},
+        {"name":"Productivity","rank":200,"score":0.0522,"scoreAsPublished":"0.0522"},
+        {"name":"Presence of Business and Professional Organizations","rank":86,"score":0.082,"scoreAsPublished":"0.0820"}
+      ]
+    },
+    {
+      "id": "government-efficiency",
+      "name": "GOVERNMENT EFFICIENCY",
+      "rank": 314,
+      "score": 8.1908,
+      "scoreAsPublished": "8.1908",
+      "indicators": [
+        {"name":"Compliance to National Directives","rank":7,"score":1.76,"scoreAsPublished":"1.7600"},
+        {"name":"Presence of Investment Promotion Unit","rank":3,"score":1.9524,"scoreAsPublished":"1.9524"},
+        {"name":"Compliance to ARTA Citizens Charter","rank":1,"score":2,"scoreAsPublished":"2.0000"},
+        {"name":"Capacity to Generate Local Resource","rank":75,"score":0.1838,"scoreAsPublished":"0.1838"},
+        {"name":"Capacity of Health Services","rank":150,"score":0.2027,"scoreAsPublished":"0.2027"},
+        {"name":"Capacity of School Services","rank":128,"score":0.0722,"scoreAsPublished":"0.0722"},
+        {"name":"Recognition of Performance","rank":170,"score":0.1233,"scoreAsPublished":"0.1233"},
+        {"name":"Getting Business Permits","rank":2,"score":1.5,"scoreAsPublished":"1.5000"},
+        {"name":"Peace and Order","rank":48,"score":0.0722,"scoreAsPublished":"0.0722"},
+        {"name":"Social Protection","rank":398,"score":0.3242,"scoreAsPublished":"0.3242"}
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "name": "INFRASTRUCTURE",
+      "rank": 148,
+      "score": 2.603,
+      "scoreAsPublished": "2.6030",
+      "indicators": [
+        {"name":"Road Network","rank":47,"score":0.0011,"scoreAsPublished":"0.0011"},
+        {"name":"Distance to Ports","rank":75,"score":1.9461,"scoreAsPublished":"1.9461"},
+        {"name":"Availability of Basic Utilities","rank":106,"score":0.3443,"scoreAsPublished":"0.3443"},
+        {"name":"Transportation Vehicles","rank":88,"score":0.0599,"scoreAsPublished":"0.0599"},
+        {"name":"Education","rank":198,"score":0.0596,"scoreAsPublished":"0.0596"},
+        {"name":"Health","rank":288,"score":0.0934,"scoreAsPublished":"0.0934"},
+        {"name":"LGU Investment","rank":99,"score":0.0031,"scoreAsPublished":"0.0031"},
+        {"name":"Accommodation Capacity","rank":240,"score":0,"scoreAsPublished":"0.0000"},
+        {"name":"Information Technology Capacity","rank":26,"score":0.0204,"scoreAsPublished":"0.0204"},
+        {"name":"Financial Technology Capacity","rank":65,"score":0.0751,"scoreAsPublished":"0.0751"}
+      ]
+    },
+    {
+      "id": "resiliency",
+      "name": "RESILIENCY",
+      "rank": 306,
+      "score": 11.2929,
+      "scoreAsPublished": "11.2929",
+      "indicators": [
+        {"name":"Land Use Plan","rank":7,"score":1.9143,"scoreAsPublished":"1.9143"},
+        {"name":"Disaster Risk Reduction Plan","rank":6,"score":1.8913,"scoreAsPublished":"1.8913"},
+        {"name":"Annual Disaster Drill","rank":105,"score":1.0023,"scoreAsPublished":"1.0023"},
+        {"name":"Early Warning System","rank":122,"score":1.0028,"scoreAsPublished":"1.0028"},
+        {"name":"Budget for DRRMP","rank":45,"score":0.002,"scoreAsPublished":"0.0020"},
+        {"name":"Local Risk Assessments","rank":1,"score":2,"scoreAsPublished":"2.0000"},
+        {"name":"Emergency Infrastructure","rank":178,"score":0.4035,"scoreAsPublished":"0.4035"},
+        {"name":"Utilities","rank":46,"score":1.5186,"scoreAsPublished":"1.5186"},
+        {"name":"Employed Population","rank":148,"score":0.0581,"scoreAsPublished":"0.0581"},
+        {"name":"Sanitary System","rank":22,"score":1.5,"scoreAsPublished":"1.5000"}
+      ]
+    },
+    {
+      "id": "innovation",
+      "name": "INNOVATION",
+      "rank": 65,
+      "score": 7.4326,
+      "scoreAsPublished": "7.4326",
+      "indicators": [
+        {"name":"ICT Plan","rank":1,"score":2.0001,"scoreAsPublished":"2.0001"},
+        {"name":"Innovation Financing: R&D; Expenditures Allotment","rank":42,"score":0.0001,"scoreAsPublished":"0.0001"},
+        {"name":"ICT Use: E-BPLS Software","rank":1,"score":2,"scoreAsPublished":"2.0000"},
+        {"name":"Online Payment Facilities","rank":1,"score":2,"scoreAsPublished":"2.0000"},
+        {"name":"STEM graduates","rank":154,"score":0.0219,"scoreAsPublished":"0.0219"},
+        {"name":"Intellectual Property Registration","rank":208,"score":0.0032,"scoreAsPublished":"0.0032"},
+        {"name":"Internet Capability","rank":42,"score":1.0054,"scoreAsPublished":"1.0054"},
+        {"name":"Availability of Basic Internet Service","rank":114,"score":0.39,"scoreAsPublished":"0.3900"},
+        {"name":"Start Up and Innovation Facilities","rank":145,"score":0.011,"scoreAsPublished":"0.0110"},
+        {"name":"New Technology","rank":24,"score":0.0009,"scoreAsPublished":"0.0009"}
+      ]
+    }
+  ],
+  "limitations": [
+    "Assessment year is 2024; archive timestamp is June 2026, not a 2026 ranking.",
+    "Ranking cohort size is not stated in this profile; no denominator or percentile is inferred.",
+    "Overall score 32.52 comes from the original score-input value, not a sum of rounded pillar scores.",
+    "Category and contact/profile fields are historical and are not current municipal classifications or directory entries."
+  ]
+}
