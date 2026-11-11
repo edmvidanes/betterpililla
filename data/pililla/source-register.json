@@ -909,48 +909,36 @@
     },
     {
       "id": "philatlas-pililla",
-      "name": "PhilAtlas Pililla profile and 2015/2020 barangay table",
+      "name": "PhilAtlas Pililla, Rizal profile (historical census reference)",
       "tier": "secondary-reference",
-      "url": "https://www.philatlas.com/luzon/r04a/laguna/pililla.html",
+      "url": "https://www.philatlas.com/luzon/r04a/rizal/pililla.html",
       "formats": [
         "HTML table"
       ],
-      "retrievalStatus": "readable; full 19-row table extracted",
-      "coverage": "Publishes population series and 2015/2020 barangay counts, percentages, changes, and growth rates attributed to census sources. Use as a separately labeled secondary dataset until cross-checked against PSA tables.",
-      "lastCheckedAt": "2026-10-28T12:34:59.082Z",
+      "retrievalStatus": "Readable Pililla, Rizal profile; nine barangay rows. Municipal 2015 and 2020 counts cross-checked against PSA OpenSTAT on 11 November 2026.",
+      "coverage": "Historical secondary reference: 64,812 people in 2015 and 71,535 in 2020. PSA 2024 POPCEN is the latest census used by BetterPililla. The previous Laguna URL and 19-row extraction claim were incorrect and are superseded. Older income, area and age figures are not current municipal records.",
+      "lastCheckedAt": "2026-11-11T12:42:04.187Z",
       "refreshCheck": {
         "sourceId": "philatlas-pililla",
         "adapter": "reference-documentation-coverage",
-        "requestedUrl": "https://www.philatlas.com/luzon/r04a/laguna/pililla.html",
-        "retrievedAt": "2026-10-28T12:34:59.082Z",
-        "finalUrl": "https://www.philatlas.com/luzon/r04a/laguna/pililla.html",
+        "requestedUrl": "https://www.philatlas.com/luzon/r04a/rizal/pililla.html",
+        "retrievedAt": "2026-11-11T12:42:04.187Z",
+        "finalUrl": "https://www.philatlas.com/luzon/r04a/rizal/pililla.html",
         "httpStatus": 200,
         "contentType": "text/html; charset=utf-8",
-        "sourceDate": "2026-07-18T03:44:53.000Z",
-        "responseSha256": "680e10485f147487fc57fef8f948f5e1a898d68332efff7617d70a3d7ca4a2df",
+        "sourceDate": null,
+        "responseSha256": "f470cf583f57e5588fd70f6a5107cca05b3c147b37ef2c9bb7b82ef2d7ad904a",
         "availabilityStatus": "available",
-        "freshnessStatus": "not-checked",
-        "note": "HTTP/page-shape coverage only. Existing claims, source wording and last complete parsed records were not replaced.",
+        "freshnessStatus": "current-at-capture",
+        "note": "Correct Rizal page fetched directly. Historical census periods are separate from this access-check date.",
         "observed": {
-          "title": "Pililla, Laguna Profile – PhilAtlas",
+          "title": "Pililla, Rizal Profile – PhilAtlas",
           "headings": [
-            "Pililla , Province of Laguna",
-            "Contents",
+            "Pililla, Province of Rizal",
             "Barangays",
-            "Economy",
-            "Historical annual regular income data",
             "Demographics",
-            "Households",
-            "Population by age group",
-            "Historical population",
-            "Location",
-            "Distances",
-            "Nearest towns",
-            "Nearest cities",
-            "Notes"
-          ],
-          "linkCount": 118,
-          "tableCount": 6
+            "Historical population"
+          ]
         }
       }
     },
