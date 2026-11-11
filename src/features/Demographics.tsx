@@ -6,9 +6,11 @@ import { PageIntro, SourceNote, type CivicProps } from './Civic'
 import './records-polish.css'
 import { rows } from '../data/loaders'
 import { Pagination, usePagination } from '../components/Pagination'
+import { useClientReady } from '../components/useClientReady'
 
 export default function Demographics(props: CivicProps) {
   const { data, locale } = props
+  const ready = useClientReady()
   const t = catalogs[locale], c = civicCatalogs[locale]
   const facts = rows(data.municipality.populationFacts)
   const factPages = usePagination(facts)
@@ -31,13 +33,13 @@ export default function Demographics(props: CivicProps) {
   const points = visible.map(row => `${x(Number(row.referenceYear))},${y(Number(row.value))}`).join(' ')
   return <><PageIntro title={t.demographics} />
     {selected && <section className="population-chart" aria-labelledby="population-title">
-      <header><div><h2 id="population-title">{c.populationTrend}</h2><p className="civic-meta">{c.populationUnit} · {t.geography}: {lgu.name}</p></div><label htmlFor="population-range">{t.period}<select id="population-range" value={String(allYears)} onChange={event => setAllYears(event.target.value === 'true')}><option value="false">{c.recentYears}</option><option value="true">{c.allYears}</option></select></label></header>
+      <header><div><h2 id="population-title">{c.populationTrend}</h2><p className="civic-meta">{c.populationUnit} · {t.geography}: {lgu.name}</p></div><label htmlFor="population-range">{t.period}<select id="population-range" disabled={!ready} value={String(allYears)} onChange={event => setAllYears(event.target.value === 'true')}><option value="false">{c.recentYears}</option><option value="true">{c.allYears}</option></select></label></header>
       <div className="population-plot-scroll" role="region" aria-label={c.populationTrend} tabIndex={0}><svg className="chart-plot" viewBox="0 0 760 280" role="img" aria-labelledby="population-chart-description"><title id="population-chart-description">{c.chartDescription}</title>
         {[0, 1, 2, 3, 4, 5].map(step => { const value = ceiling * step / 5; return <g key={step}><line className="chart-grid" x1="65" x2="725" y1={y(value)} y2={y(value)} /><text x="52" y={y(value) + 4} textAnchor="end">{formatNumber(value, locale)}</text></g> })}
         <polyline className="chart-line" points={points} />
         {visible.map(row => <g key={Number(row.referenceYear)} onMouseEnter={() => setSelectedYear(Number(row.referenceYear))}><circle cx={x(Number(row.referenceYear))} cy={y(Number(row.value))} r="16" fill="transparent" /><circle cx={x(Number(row.referenceYear))} cy={y(Number(row.value))} r={row === selected ? 7 : 5} fill={row === selected ? '#172b4d' : '#1d4ed8'} stroke="white" strokeWidth="2" />{(!allYears || row === visible[0] || row === visible.at(-1)) && <text x={x(Number(row.referenceYear))} y="265" textAnchor="middle">{String(row.referenceYear)}</text>}</g>)}
       </svg></div>
-      <div className="chart-years" role="group" aria-label={c.selectYear}>{visible.map(row => <button key={Number(row.referenceYear)} type="button" aria-pressed={row === selected} onClick={() => setSelectedYear(Number(row.referenceYear))}>{String(row.referenceYear)}</button>)}</div>
+      <div className="chart-years" role="group" aria-label={c.selectYear}>{visible.map(row => <button key={Number(row.referenceYear)} type="button" disabled={!ready} aria-pressed={row === selected} onClick={() => setSelectedYear(Number(row.referenceYear))}>{String(row.referenceYear)}</button>)}</div>
       <div aria-live="polite" aria-atomic="true"><p className="chart-selection">{formatNumber(Number(selected.value), locale)} <small>{c.populationUnit} · {String(selected.referenceYear)}</small></p><p className="chart-note">{selected.verificationStatus === 'primary-direct' ? c.directCensusValue : selected.sourceTier === 'primary-government' ? c.indexedValue : c.secondaryValue}</p>{typeof selected.referenceDate === 'string' && <p className="chart-note">{t.homeCensusReference} <time dateTime={selected.referenceDate}>{formatDate(selected.referenceDate, locale)}</time></p>}</div>
       <SourceNote {...props} id={String(selected.sourceId)} />
       <p className="chart-note">{c.chartNoInterpolation}</p>

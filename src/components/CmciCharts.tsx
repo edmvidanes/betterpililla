@@ -3,9 +3,11 @@ import CheckedLink from './CheckedLink'
 import cmci from '../data/cmci-pililla-2024.json'
 import { formatDate, formatNumber, type Locale } from '../i18n/locales'
 import './cmci-charts.css'
+import { useClientReady } from './useClientReady'
 
 export default function CmciCharts({ locale }: { locale: Locale }) {
   const fil = locale === 'fil'
+  const ready = useClientReady()
   const [selected, setSelected] = useState(0)
   const [showData, setShowData] = useState(false)
   const names = fil ? ['Dinamismo ng ekonomiya', 'Kahusayan ng pamahalaan', 'Imprastraktura', 'Katatagan', 'Inobasyon'] : ['Economic dynamism', 'Government efficiency', 'Infrastructure', 'Resiliency', 'Innovation']
@@ -17,7 +19,7 @@ export default function CmciCharts({ locale }: { locale: Locale }) {
       <div className="cmci-totals"><div><span>{fil ? 'Kabuuang ranggo' : 'Overall rank'}</span><strong>{formatNumber(cmci.overallRank, locale)}</strong></div><div><span>{fil ? 'Kabuuang marka' : 'Overall score'}</span><strong>{score(cmci.overallScore, 2)}</strong></div><p>{fil ? 'Ranggo at marka para sa 2024, ayon sa profile ng DTI.' : '2024 rank and score as displayed on the DTI profile.'}</p></div>
       <div className="cmci-bars" role="group" aria-label={fil ? 'Mga marka ng limang haligi' : 'Five pillar scores'}>
         <div className="cmci-scale" aria-hidden="true"><span>0</span><span>4</span><span>8</span><span>12</span></div>
-        {cmci.pillars.map((item, index) => <button className="cmci-bar-row" type="button" key={item.id} aria-pressed={selected === index} aria-controls="cmci-indicator-data" onClick={() => { setSelected(index); setShowData(true) }}>
+        {cmci.pillars.map((item, index) => <button className="cmci-bar-row" type="button" key={item.id} disabled={!ready} aria-pressed={selected === index} aria-controls="cmci-indicator-data" onClick={() => { setSelected(index); setShowData(true) }}>
           <span className="cmci-bar-name">{names[index]}<small>{fil ? 'Ranggo' : 'Rank'} {formatNumber(item.rank, locale)}</small></span>
           <span className="cmci-bar-track" aria-hidden="true"><span style={{ width: `${item.score / 12 * 100}%` }} /></span><strong>{score(item.score)}</strong>
         </button>)}

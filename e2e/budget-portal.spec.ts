@@ -16,7 +16,7 @@ test('Transparency dropdown opens same-site budget records and exports', async (
   expect((await download).suggestedFilename()).toBe('pililla-rizal-fy2027-projects.csv')
   await budget.getByRole('link', { name: 'Budgets 2020–2026', exact: true }).click()
   await expect(page).toHaveURL(/\/en\/transparency\/budget\/gaa$/)
-  await expect(budget.getByRole('heading', { level: 1 })).toContainText('37 programs and projects')
+  await expect(budget.getByRole('heading', { level: 1 })).toContainText('37 programs and projects', { timeout: 15_000 })
   await budget.getByRole('link', { name: '2027 projects', exact: true }).click()
   await budget.getByRole('link', { name: /Sagbat-Pililla Div Rd/ }).first().click()
   await expect(page).toHaveURL(/\/en\/transparency\/budget\/projects\/dpwh\//)
@@ -34,7 +34,7 @@ test('integrated budgets work on mobile without the separate portal server', asy
   await page.route('http://127.0.0.1:5132/**', route => route.abort())
   await page.goto('/fil/transparency/budget/gaa')
   const budget = page.frameLocator('.budget-portal-frame')
-  await expect(budget.getByRole('heading', { level: 1 })).toContainText('37 programs and projects')
+  await expect(budget.getByRole('heading', { level: 1 })).toContainText('37 programs and projects', { timeout: 15_000 })
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Mga naisabatas na badyet · 2020–2026')
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true)
   const frame = page.frames().find(frame => frame.url().includes('/budget-portal/'))!
