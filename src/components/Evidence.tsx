@@ -5,6 +5,8 @@ import type { NormalizedSource as SourceRecord } from '../domain/types'
 import { catalogs, type Locale } from '../i18n/locales'
 import { civicCatalogs } from '../i18n/civic'
 import { normalizeStatus } from '../domain/status'
+import StatusBadge from './StatusBadge'
+import { linkContentStatus } from '../i18n/content-status'
 
 export function ExternalDocumentLink({ url, children }: { url: string; children?: ReactNode }) {
   if (!/^https?:\/\//.test(url)) return <span>{url}</span>
@@ -17,7 +19,7 @@ export function SourceCitation({ source, href, locale }: { source: SourceRecord;
     <CheckedLink href={href}>{c.sourceDetails}</CheckedLink>
     <p><ExternalDocumentLink url={source.url || source.canonicalUrl || ''} /></p>
     <dl>
-      {currentCheck && <div><dt>{locale === 'fil' ? 'Pagsuri ng link' : 'Link check'}</dt><dd>{currentCheck.status === 'ok' ? (locale === 'fil' ? 'May nilalaman' : 'Content received') : 'WorkInProgress'} · {currentCheck.checkedAt?.slice(0, 10) || 'Unchecked'}</dd></div>}
+      {currentCheck && <div><dt>{locale === 'fil' ? 'Pagsuri ng link' : 'Link check'}</dt><dd>{currentCheck.status === 'ok' ? (locale === 'fil' ? 'May nilalaman' : 'Content received') : <StatusBadge status={linkContentStatus(currentCheck.status)} locale={locale} />} · {currentCheck.checkedAt?.slice(0, 10) || (locale === 'fil' ? 'Hindi pa nasuri' : 'Not checked')}</dd></div>}
       <div><dt>{c.verification}</dt><dd>{c[source.status.verificationStatus]}</dd></div>
       <div><dt>{c.availability}</dt><dd>{c[source.status.availabilityStatus]}</dd></div>
       <div><dt>{c.freshness}</dt><dd>{c[source.status.freshnessStatus]}</dd></div>
@@ -34,6 +36,7 @@ export function EvidenceTree({ value, locale, sources, sourceHref }: { value: Ev
   if (value == null) return <span className="muted">{locale === 'fil' ? 'Hindi alam' : 'Unknown'}</span>
   if (typeof value === 'boolean') return <span lang="en">{String(value)}</span>
   if (typeof value === 'string') {
+    if (value === 'WorkInProgress') return <StatusBadge status="pending" locale={locale} />
     const source = sources.find(s => s.id === value || s.sourceId === value)
     return source ? <CheckedLink href={sourceHref(source.id || source.sourceId!)}>{source.name || source.publisher}</CheckedLink> : /^https?:\/\//.test(value) ? <ExternalDocumentLink url={value} /> : <span className="source-text">{value}</span>
   }

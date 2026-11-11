@@ -7,14 +7,14 @@ test('failed external links are visibly unavailable and never clickable', async 
   await expect(page.locator('[data-external-url]').first()).toBeAttached()
   const links = await page.locator('main a[href]').evaluateAll(nodes => nodes.map(node => (node as HTMLAnchorElement).href))
   expect(links.filter(url => failed.has(url))).toEqual([])
-  await expect(page.locator('[data-external-url]').first()).toContainText('WorkInProgress')
+  await expect(page.locator('[data-external-url]').first()).toContainText('Unavailable')
 })
 
 test('deep map route renders without runtime or hydration errors', async ({ page }) => {
   const errors: string[] = []
   page.on('pageerror', error => errors.push(error.message))
   await page.goto('/fil/map')
-  await expect(page.getByRole('heading', { name: 'WorkInProgress' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Kulang pa ang tala' })).toBeVisible()
   await expect(page.locator('main')).toBeVisible()
   expect(errors).toEqual([])
 })

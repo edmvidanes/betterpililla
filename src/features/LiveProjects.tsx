@@ -45,7 +45,7 @@ export default function LiveProjects(props: CivicProps & { recordId?: string }) 
 
   if (recordId) {
     if (detail === 'loading') return <><PageIntro title={t.projects} /><p role="status">{fil ? 'Kinukuha ang rekord…' : 'Loading record…'}</p></>
-    if (detail === 'error') return <><PageIntro title={t.projects} /><WorkInProgress locale={locale}>{unavailable}</WorkInProgress><p><CheckedLink href={lgu.transparency.dpwhDashboard}>BetterGov PH DPWH dashboard</CheckedLink></p></>
+    if (detail === 'error') return <><PageIntro title={t.projects} /><WorkInProgress locale={locale} status="unavailable">{unavailable}</WorkInProgress><p><CheckedLink href={lgu.transparency.dpwhDashboard}>BetterGov PH DPWH dashboard</CheckedLink></p></>
     if (!detail) return <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><CheckedLink href={href('transparency/projects')}>{t.projects}</CheckedLink></>
     const facts: [string, string][] = [
       [fil ? 'Kontrata' : 'Contract', detail.contractId || '—'],
@@ -80,7 +80,7 @@ export default function LiveProjects(props: CivicProps & { recordId?: string }) 
       : 'DPWH projects whose description mentions Pililla, live from the BetterGov PH search index. Some may span neighboring towns.'}</PageIntro>
     <p><CheckedLink href={lgu.transparency.dpwhDashboard}>{fil ? 'Pinagmulan: BetterGov PH Transparency (DPWH)' : 'Source: BetterGov PH Transparency (DPWH)'}</CheckedLink></p>
     {state.kind === 'loading' && <p role="status">{fil ? 'Kinukuha ang mga rekord…' : 'Loading records…'}</p>}
-    {state.kind === 'error' && <WorkInProgress locale={locale}>{unavailable}</WorkInProgress>}
+    {state.kind === 'error' && <WorkInProgress locale={locale} status="unavailable">{unavailable}</WorkInProgress>}
     {state.kind === 'ready' && !docs.length && <WorkInProgress locale={locale} />}
     {state.kind === 'ready' && <>
       <div className="directory-tools"><label htmlFor="live-project-query">{fil ? 'Maghanap' : 'Search'}<input id="live-project-query" type="search" value={query} onChange={event => setQuery(event.target.value)} /></label></div>

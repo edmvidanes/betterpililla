@@ -51,7 +51,7 @@ export default function LiveProcurement(props: CivicProps & { recordId?: string 
 
   if (recordId) {
     if (detail === 'loading') return <><PageIntro title={t.procurement} /><p role="status">{fil ? 'Kinukuha ang rekord…' : 'Loading record…'}</p></>
-    if (detail === 'error') return <><PageIntro title={t.procurement} /><WorkInProgress locale={locale}>{unavailable}</WorkInProgress><p><CheckedLink href={dashboard}>BetterGov PH dashboard</CheckedLink></p></>
+    if (detail === 'error') return <><PageIntro title={t.procurement} /><WorkInProgress locale={locale} status="unavailable">{unavailable}</WorkInProgress><p><CheckedLink href={dashboard}>BetterGov PH dashboard</CheckedLink></p></>
     if (!detail) return <><h1>{t.notFound}</h1><p>{t.notFoundText}</p><CheckedLink href={href('transparency/procurement')}>{t.procurement}</CheckedLink></>
     const facts: [string, string][] = [
       [fil ? 'Sanggunian' : 'Reference', detail.reference_id || '—'],
@@ -85,7 +85,7 @@ export default function LiveProcurement(props: CivicProps & { recordId?: string 
       : 'Procurement awards of MUNICIPALITY OF PILILLA, RIZAL from PhilGEPS, live from the BetterGov PH search index. Schools and other agencies located in Pililla are not included.'}</PageIntro>
     <p><CheckedLink href={dashboard}>{fil ? 'Pinagmulan: BetterGov PH Transparency dashboard' : 'Source: BetterGov PH Transparency dashboard'}</CheckedLink></p>
     {state.kind === 'loading' && <p role="status">{fil ? 'Kinukuha ang mga rekord…' : 'Loading records…'}</p>}
-    {state.kind === 'error' && <WorkInProgress locale={locale}>{unavailable}</WorkInProgress>}
+    {state.kind === 'error' && <WorkInProgress locale={locale} status="unavailable">{unavailable}</WorkInProgress>}
     {state.kind === 'ready' && !docs.length && <WorkInProgress locale={locale} />}
     {state.kind === 'ready' && <>
       <div className="directory-tools"><label htmlFor="live-procurement-query">{fil ? 'Maghanap' : 'Search'}<input id="live-procurement-query" type="search" value={query} onChange={event => setQuery(event.target.value)} /></label></div>

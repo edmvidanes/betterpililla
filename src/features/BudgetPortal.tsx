@@ -46,7 +46,7 @@ export default function BudgetPortal({ locale, route }: { locale: Locale; route:
     <h1>{route.endsWith('/gaa') ? t.enactedBudgets : route.endsWith('/about') ? t.budgetSources : t.budgetPortal}</h1>
     <p className="civic-intro">{locale === 'fil' ? 'Mga rekord ng badyet na binabanggit ang Pililla. Nasa English ang orihinal na datos at nakabinbin ang pagsusuri; maaaring kasama ang mga karatig-bayan.' : 'Budget source records naming Pililla. Original records are in English and await review; title matches may include neighboring towns.'}</p>
     {!ready && !failed && <p role="status">{locale === 'fil' ? 'Kinakarga ang mga rekord ng badyet…' : 'Loading budget records…'}</p>}
-    {failed && !ready && <WorkInProgress locale={locale} />}
+    {failed && !ready && <WorkInProgress locale={locale} status="unavailable">{locale === 'fil' ? 'Matagal nang naglo-load ang budget portal. I-reload ang pahina upang subukang muli.' : 'The budget portal is taking longer to load. Reload this page to try again.'}</WorkInProgress>}
     <iframe ref={frame} className="budget-portal-frame" src={source} height={height} title={locale === 'fil' ? 'Mga rekord ng badyet ng Pililla (English)' : 'Pililla budget source records (English)'} sandbox="allow-scripts allow-same-origin allow-downloads allow-popups allow-popups-to-escape-sandbox" />
   </section>
 }
