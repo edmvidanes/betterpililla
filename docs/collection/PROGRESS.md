@@ -1,6 +1,6 @@
 # BetterPililla public-record collection progress
 
-Updated: **11 November 2026**. Latest source collection: **5 November 2026**. Municipality: **Pililla, Rizal (PSGC 0405810000)**.
+Updated: **11 November 2026**. Latest document collection: **5 November 2026**; latest source access recheck: **11 November 2026**. Municipality: **Pililla, Rizal (PSGC 0405810000)**.
 
 This Markdown file is the working tracker. Update it after each collection/review pass; the collection plan is no longer a website page. Public services and source records remain on the website. No requests, calls, form submissions or payment transactions have been made.
 
@@ -108,3 +108,4 @@ Evidence: [first-pass report](README.md), [PRWD/Rizal report](PRWD-RIZAL.md), [m
 | 2026-11-05 | First municipal pass: 17 source attempts (7 captures, 10 blocked); provider collection: 67 documents | Source evidence retained; municipal records withheld pending review |
 | 2026-11-06 | Moved the 17-section/six-phase plan to this Markdown tracker; established A/B/C baseline (10/51) | No new source collection; website plan/navigation and public request checklist removed; QA results |
 | 2026-11-06 | Removed the About template-attribution paragraph and three extra Public Contacts links; added homepage Transparency shortcut | English/Filipino checks pass; collected records retained; collection checkpoints unchanged |
+| 2026-11-11 | Restarted the preview; checked six main routes and nine direct source targets; public release readiness | Six routes passed; two source HTML captures, seven blocked/time-out results; older charter and DILG referral leads recorded; no new municipal documents, checkpoints remain 10/51 |
