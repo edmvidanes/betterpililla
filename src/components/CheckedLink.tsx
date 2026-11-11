@@ -1,5 +1,7 @@
 import type { ComponentProps } from 'react'
 import audit from '../data/link-audit.json'
+import StatusBadge from './StatusBadge'
+import { linkContentStatus } from '../i18n/content-status'
 import './work-in-progress.css'
 
 type Result = { url: string; status: string; reason?: string; checkedAt?: string }
@@ -10,8 +12,8 @@ export function linkStatus(href: string) {
 }
 export default function CheckedLink({ href = '', children, className, ...props }: ComponentProps<'a'>) {
   const result = linkStatus(href)
-  if (result && result.status !== 'ok') return <span className={`${className ?? ''} link-work-in-progress`} aria-disabled="true" data-external-url={href} title={result.reason}>
-    {children}<span className="work-in-progress-label" lang="en">WorkInProgress</span>
+  if (result && result.status !== 'ok') return <span className={`${className ?? ''} link-work-in-progress`} aria-disabled="true" data-external-url={href} title={result.reason === 'WorkInProgress' ? undefined : result.reason}>
+    {children}<StatusBadge status={linkContentStatus(result.status)} />
   </span>
   return <a {...props} className={className} href={href}>{children}</a>
 }

@@ -12,6 +12,8 @@ import PageMotion from './PageMotion'
 import Home from '../features/home/Home'
 import { searchPortal } from './search'
 import WorkInProgress from '../components/WorkInProgress'
+import StatusBadge from '../components/StatusBadge'
+import { LocaleContext } from '../i18n/LocaleContext'
 
 const Services = lazy(() => import('../features/Services'))
 const ServiceDetail = lazy(() => import('../features/ServiceDetail'))
@@ -224,7 +226,7 @@ function App({ initialPath }: { initialPath?: string }) {
   const unavailableSection = unavailableSections.find(([path]) => route === path || route.startsWith(path + '/'))
   if (data && unavailableSection) content = <><h1>{t[unavailableSection[1]]}</h1><WorkInProgress locale={locale} /></>
   else if (data && ['services', 'open-lgu/legislation', 'places', 'advisories', 'history', 'statistics/demographics'].includes(route)) content = <>{content}<WorkInProgress locale={locale} /></>
-  return <>
+  return <LocaleContext value={locale}>
     <CheckedLink className="skip-link" href="#main">{t.skip}</CheckedLink>
     <div className={`community-bar${route === '' ? ' atlas-utility' : ''}`}><div className="utility-inner">
       <p>{t.community}</p>
@@ -250,7 +252,7 @@ function App({ initialPath }: { initialPath?: string }) {
           }) ? 'is-active' : undefined}>{group.label}<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg></summary>
           <div className="nav-dropdown">{group.keys.map(key => {
             const path = routes.find(([, label]) => label === key)![0]
-            return <CheckedLink key={key} href={href(path)} aria-current={route === path ? 'page' : undefined}>{t[key]}{key === 'finance' && <span className="work-in-progress-label">WorkInProgress</span>}</CheckedLink>
+            return <CheckedLink key={key} href={href(path)} aria-current={route === path ? 'page' : undefined}>{t[key]}{key === 'finance' && <StatusBadge status="pending" />}</CheckedLink>
           })}</div>
         </details>)}
         <CheckedLink className="header-search" href={href('search')} aria-label={t.search} aria-keyshortcuts="Control+K Meta+K" onClick={event => { event.preventDefault(); openSearch() }}><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg><span>{t.search}</span></CheckedLink>
@@ -285,7 +287,7 @@ function App({ initialPath }: { initialPath?: string }) {
         {(['about', 'accessibility', 'privacy', 'corrections', 'sources', 'downloads'] as MessageKey[]).map(key => <CheckedLink key={key} href={href(routes.find(([, k]) => k === key)![0])}>{t[key]}</CheckedLink>)}
         {lgu.repository && <CheckedLink href={lgu.repository} aria-label="GitHub">{githubIcon}</CheckedLink>}
       </nav></footer>}
-  </>
+  </LocaleContext>
 }
 
 function PageContent({ children, locale, route, error, ready, officeName }: { children: ReactNode; locale: Locale; route: string; error: boolean; ready: boolean; officeName: string }) {

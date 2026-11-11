@@ -1,6 +1,6 @@
-:root { --progress-ink: #5c420b; --progress-background: #fffaeb; }
+:root { --progress-ink: #9a3412; --progress-background: #fff7ed; --progress-badge-background: #ffedd5; }
 .link-work-in-progress { display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: .35rem; overflow-wrap: anywhere; }
-.work-in-progress-label { color: var(--progress-ink); background: var(--progress-background); font-size: .75rem; line-height: 1.5; padding: .1rem .35rem; border-radius: .25rem; }
+.work-in-progress-label { display: inline-block; color: var(--progress-ink); background: var(--progress-badge-background); font-size: .75rem; font-weight: 600; line-height: 1.5; padding: .1rem .4rem; border-radius: .25rem; max-width: 100%; vertical-align: baseline; }
 .work-in-progress { margin-block: 1.5rem; padding: 1.25rem; background: var(--progress-background); color: var(--progress-ink); }
 .work-in-progress h2 { margin: 0 0 .5rem; font-size: 1.25rem; }
 .work-in-progress p { margin: 0; max-width: 70ch; }
