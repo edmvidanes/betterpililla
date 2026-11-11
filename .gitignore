@@ -43,3 +43,11 @@ dist-ssr
 *.key
 *.p12
 *.pfx
+
+# Keep personal operational notes outside the public source repository
+/docs/qa/
+/docs/references/
+/docs/EC2_DEPLOYMENT.md
+/docs/NAMECHEAP_DNS.md
+/docs/LOCAL_SETUP.md
+/docs/PUBLIC_RELEASE.md
