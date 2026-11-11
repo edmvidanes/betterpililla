@@ -1,6 +1,6 @@
 # BetterPililla public-record collection progress
 
-Updated: **11 November 2026**. Latest document collection and source access recheck: **11 November 2026**. Municipality: **Pililla, Rizal (PSGC 0405810000)**.
+Updated: **12 November 2026**. Latest document collection and source access recheck: **12 November 2026**. Municipality: **Pililla, Rizal (PSGC 0405810000)**.
 
 This Markdown file is the working tracker. Update it after each collection/review pass; the collection plan is no longer a website page. Public services and source records remain on the website. No requests, calls, form submissions or payment transactions have been made.
 
@@ -34,7 +34,7 @@ Bars have ten segments, rounded to the nearest segment; the percentages and frac
 | terms / 3 | Terms and appointments | `[###.......]` 1/3 | DILG term reference captured | Current dated roster; proclamation/oath/appointment/succession references | DILG / COMELEC / LGU |
 | legislation / 3 | Ordinances and resolutions | `[..........]` 0/3 | Full municipal texts missing | 2022–2026 index and texts; number, series, enactment/effectivity and amendments/repeals | SB Secretariat |
 | population / 4 | Municipal population | `[##########]` 3/3 | PSA original JSON and CSV: 72,503 as of 1 July 2024; historical 2015/2020 totals match; released with provenance | Maintain census year/date; no 2026 estimate inferred | PSA |
-| barangays / 4 | Barangay codes/population | `[###.......]` 1/3 | Nine PSA rows dated 31 July 2025; population sum reconciles | Compare codes/roster with latest PSGC release, including September 2026 lead | PSA |
+| barangays / 4 | Barangay codes/population | `[###.......]` 1/3 | Nine 2015/2020 PhilAtlas population rows published with historical source labels; yearly sums match PSA totals. Separate nine-row 2024 PSA reader transcription retained | Direct PSA check of barangay cells; compare codes/roster with latest PSGC release, including September 2026 lead | PSA |
 | geography / 4 | Geographic facts | `[..........]` 0/3 | Missing | Published area/units, boundary references and authoritative map | PSA / NAMRIA / LGU planning |
 | competitiveness / 4 | Competitiveness | `[#######...]` 2/3 | Archived DTI 2024 assessment: rank 155, score 32.52, five pillar tables/50 indicators; dated charts published | Latest assessment and ranking cohort definition/size still need confirmation | DTI CMCI |
 | income / 4 | Income class and annual income | `[..........]` 0/3 | DOF/BLGF access blocked | DOF 074-2024 annex row/later orders, effective date, annual SRE income and units | DOF / BLGF / Treasurer |
@@ -44,6 +44,10 @@ Bars have ten segments, rounded to the nearest segment; the percentages and frac
 | history / 6 | History and heritage | `[###.......]` 1/3 | NHCP Simbahan ng Pililla registry captured | Additional primary town-history records and direct archival citations | NHCP / LGU archives |
 
 Status totals: **2 cleared, 1 archived assessment reviewed, 6 evidence-for-review, 3 source-blocked, 5 missing-document sections**. Blocked is an access result, not evidence that the record does not exist.
+
+### 12 November: historical barangay population
+
+- [Barangay population evidence](BARANGAY-POPULATION.md): populated the missing nine PhilAtlas rows for 2015 and 2020. The totals match the verified municipal census counts; source review for 2024 barangay cells and the current roster remains pending. Readiness checkpoints are unchanged.
 
 ### 11 November: census, CMCI and public utility bar
 

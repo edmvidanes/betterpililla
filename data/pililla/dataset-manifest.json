@@ -32,7 +32,7 @@
       "id": "barangays",
       "canonicalJson": "barangays.json",
       "schemaVersion": "civic-barangay-roster-evidence/v1",
-      "recordCount": 0,
+      "recordCount": 9,
       "sourceIds": [
         "pililla-about",
         "pililla-barangay-count-ordinance",

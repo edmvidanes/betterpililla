@@ -1,7 +1,7 @@
 {
   "schemaVersion": "civic-barangay-roster-evidence/v1",
   "municipality": "Pililla, Rizal, Philippines",
-  "capturedAt": "2026-11-03",
+  "capturedAt": "2026-11-12",
   "canonicalRoster": {
     "status": "unverified-needs-PSA-PSGC-extract",
     "count": 9,
@@ -32,9 +32,23 @@
   "secondaryPopulationTable": {
     "sourceId": "philatlas-pililla",
     "sourceTier": "secondary-reference",
-    "referenceYears": [],
-    "verificationStatus": "not-yet-collected",
-    "rows": []
+    "sourceUrl": "https://www.philatlas.com/luzon/r04a/rizal/pililla.html",
+    "sourceTableLocator": "table#lguTable, Population (2020) and Population (2015) columns",
+    "sourceResponseSha256": "56497f8be27d448c556f7264b013efe1e69c3d73f488080e1d04532b017d9ec8",
+    "referenceYears": [2015, 2020],
+    "verificationStatus": "secondary-only",
+    "verificationNote": "Counts transcribed from the correct PhilAtlas Rizal profile. Both yearly totals match PSA OpenSTAT municipal census counts; individual barangay cells await a direct PSA cross-check. These are historical census counts, not current population estimates.",
+    "rows": [
+      { "sourceName": "Bagumbayan", "population2015": 11101, "population2020": 13468 },
+      { "sourceName": "Halayhayin", "population2015": 8090, "population2020": 9210 },
+      { "sourceName": "Hulo", "population2015": 9966, "population2020": 11243 },
+      { "sourceName": "Imatong", "population2015": 931, "population2020": 957 },
+      { "sourceName": "Malaya", "population2015": 7748, "population2020": 7550 },
+      { "sourceName": "Niogan", "population2015": 4938, "population2020": 5816 },
+      { "sourceName": "Quisao", "population2015": 15826, "population2020": 17302 },
+      { "sourceName": "Takungan", "population2015": 1677, "population2020": 1623 },
+      { "sourceName": "Wawa", "population2015": 4535, "population2020": 4366 }
+    ]
   },
   "discrepancies": []
 }
