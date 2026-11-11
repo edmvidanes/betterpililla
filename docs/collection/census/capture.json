@@ -1,0 +1,36 @@
+{
+  "capturedOn": "2026-11-11",
+  "municipality": "Pililla, Rizal",
+  "psgcCode": "0405810000",
+  "method": "Public PSA OpenSTAT read-only POST table queries, original response bytes",
+  "responses": [
+    {
+      "url": "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/1A/PO_2024/0041A6DTPH3.px",
+      "method": "POST read-only table query",
+      "httpStatus": 200,
+      "contentType": "application/json; charset=utf-8",
+      "checkedAt": "2026-11-11T12:43:42.021Z",
+      "bytes": 522,
+      "sha256": "551b5f1b38269a00ac76d398ddb0d603deb3dd9f177764a9a11aabc066fa30f5",
+      "file": "0041A6DTPH3.px-response.json"
+    },
+    {
+      "url": "https://openstat.psa.gov.ph/PXWeb/api/v1/en/DB/1A/PO_2024/0221A6DLPD0.px",
+      "method": "POST read-only table query",
+      "httpStatus": 200,
+      "contentType": "application/json; charset=utf-8",
+      "checkedAt": "2026-11-11T12:43:42.162Z",
+      "bytes": 672,
+      "sha256": "fef2a4222cc49404e17f9cb8c52da62fda1cf6a81b3cc0eef45a69c575972141",
+      "file": "0221A6DLPD0.px-response.json"
+    }
+  ],
+  "csvSha256": "d77e32794e2cf73fd6fa489b93605dd73b40d9e7d0d302b8b71ac1c1e6648640",
+  "referenceDate2024": "2024-07-01",
+  "releaseDate2024": "2025-07-17",
+  "notes": [
+    "JSON exports match CSV and two primary-page reader tables.",
+    "json-stat2 export was inconsistent and excluded.",
+    "API updated values are not treated as publication dates."
+  ]
+}

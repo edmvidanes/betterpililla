@@ -1,1 +1,3 @@
-*.sh text eol=lf
+# Preserve original PSA export bytes for reproducible capture hashes.
+docs/collection/census/*-response.json -text
+docs/collection/census/*-response.csv -text

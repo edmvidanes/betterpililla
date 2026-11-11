@@ -1,0 +1,25 @@
+{
+  "query": [
+    {
+      "code": "Geographic Location",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "0405810000"
+        ]
+      }
+    },
+    {
+      "code": "Parameter",
+      "selection": {
+        "filter": "item",
+        "values": [
+          "0"
+        ]
+      }
+    }
+  ],
+  "response": {
+    "format": "json"
+  }
+}
